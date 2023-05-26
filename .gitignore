@@ -23,6 +23,8 @@
 *.tar.gz
 *.rar
 project_mj/.classpath
+project_mj/.project
+project_mj/.settings/
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
