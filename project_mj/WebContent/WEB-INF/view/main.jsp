@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
 
+<<<<<<< Updated upstream
 			<div class="content-header">
 				<div class="container">
 					<div class="row mb-2">
@@ -75,6 +76,13 @@
 
 				</div>
 			</div>
+=======
+
+
+
+		
+
+>>>>>>> Stashed changes
 
 		
 
