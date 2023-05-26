@@ -11,7 +11,8 @@
     <!-- Font awesome -->
     <link href="<%= request.getContextPath() %>/assets/css/font-awesome.css" rel="stylesheet">
     <!-- Bootstrap -->
-    <link href="<%= request.getContextPath() %>/assets/css/bootstrap.css" rel="stylesheet">   
+    <link href="<%= request.getContextPath() %>/assets/css/bootstrap.css" rel="stylesheet">
+       
     <!-- SmartMenus jQuery Bootstrap Addon CSS -->
     <link href="<%= request.getContextPath() %>/assets/css/jquery.smartmenus.bootstrap.css" rel="stylesheet">
     <!-- Product view slider -->
@@ -161,7 +162,7 @@
               <li><a href="<%=request.getContextPath()%>/cs/main.do">홈 </a></li>
 <%--               <li><a href="<%=request.getContextPath()%>"> 술집 </a></li>             --%>
 <%--               <li><a href="<%=request.getContextPath()%>"> 카페 </a></li>             --%>
-<%--               <li><a href="<%=request.getContextPath()%>"> Contact </a></li> --%>
+              <li><a href="<%=request.getContextPath()%>/admin/adminMain.do"> 관리자페이지 </a></li>
               <li><a href="<%=request.getContextPath()%>/store/storeMain.do"> 맛집찾기 </a></li>            
               <li><a href="<%=request.getContextPath()%>/user/userLoginForm.do"> 로그인 </a></li>            
               <li><a href="<%=request.getContextPath()%>/user/userSignupForm.do"> 회원가입 </a></li>            
