@@ -8,7 +8,7 @@
 			<div class="col-md-3"></div>
 			<div class="col-md-6">
 				<div class="card">
-					<a href="#" style="color:black;">
+					<a href="<%=request.getContextPath() %>/admin/modifyUserForm.do" style="color:black;">
 						<div class="card-body">
 							<h5 class="card-title">회원 관리</h5>
 							<p class="card-text">Some quick example text to build on the
