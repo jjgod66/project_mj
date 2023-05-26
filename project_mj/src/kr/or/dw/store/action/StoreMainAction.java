@@ -1,4 +1,4 @@
-package kr.or.dw.cs.action;
+package kr.or.dw.store.action;
 
 import java.io.IOException;
 
@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.dw.web.IAction;
 
-public class MainAction implements IAction {
+public class StoreMainAction implements IAction {
 
 	@Override
 	public boolean isRedirect() {
@@ -16,10 +16,9 @@ public class MainAction implements IAction {
 	}
 
 	@Override
-	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-	
-//		req.setAttribute("title_nm", "Starter");
-		return "/main.jsp";
+	public String process(HttpServletRequest req, HttpServletResponse res)
+			throws ServletException, IOException {
+		return "/store/storeMain.jsp";
 	}
 
 }

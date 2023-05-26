@@ -33,7 +33,7 @@
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     
-
+    <script src="<%=request.getContextPath() %>/assets/js/jquery/jquery.js"></script>
 
   </head>
   <body> 
@@ -158,14 +158,14 @@
           <div class="navbar-collapse collapse">
             <!-- Left nav -->
             <ul class="nav navbar-nav">
-              <li><a href="index.html">홈 </a></li>
-              <li><a href="#">술집  </a></li>            
-              <li><a href="#">카페  </a></li>            
-              <li><a href="#">맛집찾기    </a></li>            
-              <li><a href="contact.html">Contact</a></li>
-              <li><a href="#">로그인   </a></li>            
-              <li><a href="#">회원가입   </a></li>            
-              <li><a href="#">커뮤니티    </a></li>
+              <li><a href="<%=request.getContextPath()%>/cs/main.do">홈 </a></li>
+<%--               <li><a href="<%=request.getContextPath()%>"> 술집 </a></li>             --%>
+<%--               <li><a href="<%=request.getContextPath()%>"> 카페 </a></li>             --%>
+<%--               <li><a href="<%=request.getContextPath()%>"> Contact </a></li> --%>
+              <li><a href="<%=request.getContextPath()%>/store/storeMain.do"> 맛집찾기 </a></li>            
+              <li><a href="<%=request.getContextPath()%>/user/userLoginForm.do"> 로그인 </a></li>            
+              <li><a href="<%=request.getContextPath()%>/user/userSignupForm.do"> 회원가입 </a></li>            
+              <li><a href="<%=request.getContextPath()%>/comm/commMain.do"> 커뮤니티 </a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
