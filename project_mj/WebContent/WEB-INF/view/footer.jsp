@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+</div>
+</div>
 <footer class="main-footer">
 
 			<div class="float-right d-none d-sm-inline">Anything you want</div>
@@ -18,7 +20,6 @@
 	<script src="../../dist/js/adminlte.min.js?v=3.2.0"></script>
 
 	<script src="../../dist/js/demo.js"></script>
-
 
 
 </body>

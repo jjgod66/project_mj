@@ -1,35 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
-<section id="aa-myaccount">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="aa-myaccount-area">
-					<div class="row">
-						<div class="col-md-3"></div>
-						<div class="col-md-6">
-							<div class="aa-myaccount-login">
-								<h4>Login</h4>
-								<form action="<%=request.getContextPath()%>/user/userLogin.do" class="aa-login-form">
-									<label for="">이메일을 적어 주세요.<span>*</span></label> <input
-										type="text" placeholder="email"> <label for="">비밀번호
-										<span>*</span>
-									</label> <input type="password" placeholder="Password">
-									<button type="submit" class="aa-browse-btn">로그인</button>
-									<label class="rememberme" for="rememberme"><input
-										type="checkbox" id="rememberme"> 로그인 정보 기억하기 </label>
-									<p class="aa-lost-password">
-										<a href="#">아이디 비밀번호 찾기 </a>
-									</p>
-								</form>
-							</div>
-						</div>
-						<div class="col-md-3"></div>
+
+<div class="card card-info">
+	<div class="card-header">
+		<h3 class="card-title">Horizontal Form</h3>
+	</div>
+
+
+	<form class="form-horizontal">
+		<div class="card-body">
+			<div class="form-group row">
+				<label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+				<div class="col-sm-10">
+					<input type="email" class="form-control" id="inputEmail3"
+						placeholder="Email">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+				<div class="col-sm-10">
+					<input type="password" class="form-control" id="inputPassword3"
+						placeholder="Password">
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="offset-sm-2 col-sm-10">
+					<div class="form-check">
+						<input type="checkbox" class="form-check-input" id="exampleCheck2">
+						<label class="form-check-label" for="exampleCheck2">Remember
+							me</label>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
+
+		<div class="card-footer">
+			<button type="submit" class="btn btn-info">Sign in</button>
+			<button type="submit" class="btn btn-default float-right">Cancel</button>
+		</div>
+
+	</form>
+</div>
+
 <%@ include file="../footer.jsp" %>

@@ -5,7 +5,7 @@
 
 
 
-		<div class="content-wrapper" style="min-height: 822px;">
+		
 
 			<div class="content-header">
 				<div class="container">
@@ -81,7 +81,7 @@
 				</div>
 			</div>
 
-		</div>
+		
 
 
 		
