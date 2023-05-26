@@ -1,55 +1,91 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
-<script>
-	$(function(){
-		
-		// email 정규식 체크
-		let email = $("input[name=email]");
-		email.on("keyup", function() {
-			let emailVal = email.val().trim();
-			
-			regEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
-			
-			console.log(regEmail.test(emailVal));
-			
-			if( !(regEmail.test(emailVal)) ) {
-				email.attr("class", "form-control is-invalid");
-			} else {
-				email.attr("class", "form-control is-valid");
-			}
-		});
-	});
-</script>
-<section id="aa-myaccount">
-	<div class="container2">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="aa-myaccount-area">
-					<div class="row">
 
-						<div class="col-md-6">
-							<div class="aa-myaccount-register">
-								<h4>회원가입</h4>
-								<form method="post"	action="<%=request.getContextPath()%>/user/insertUser.do" id="signupForm" class="aa-login-form">
-									<div>
-										<label for="">이메일<span>*</span></label> <input type="text" placeholder="addr" name="email" required>
-										<span class="error invalid-feedback">이메일 형식을 맞춰서 작성해주세요.</span>
-										
-										
-									</div>
-									<label for="">비밀번호 <span>*</span></label> <input type="password" placeholder="Password" name="pass" required> 
-									<label for="">비밀번호 확인 <span>*</span></label> <input type="password" placeholder="PasswordCheck" name="passCheck" required> 
-									<label for="">이름 <span>*</span></label> <input type="text" placeholder="name" name="name" required>
-									<label for="">닉네임<span>*</span></label> <input type="text" placeholder="nickname" name="nick" required>
-									<button type="submit" class="aa-browse-btn">가입하기</button>
-								</form>
+<div class="content">
+	<div class="container-fluid">
+		<div class="row" style="padding-top:150px">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<div class="card card-info">
+					<div class="card-header">
+						<h3 class="card-title">Sign Up</h3>
+					</div>
+					<form method="post"
+						action="<%=request.getContextPath()%>/user/insertUser.do"
+						id="joinForm">
+						<div class="card-body">
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> <i
+										class="fas fa-envelope"></i>
+									</span>
+								</div>
+								<input type="email" class="form-control" placeholder="email"
+									name="email" required> <span
+									class="error invalid-feedback"> 이메일 형식을 맞춰서 작성해주세요. </span>
+							</div>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> <i
+										class="fas fa-solid fa-key"></i>
+									</span>
+								</div>
+								<input type="password" class="form-control"
+									placeholder="password" name="pass" required> <span
+									class="error invalid-feedback"> 비밀번호는 영문 소문자, 대문자, 숫자,
+									특수문자가 최소 1개씩 입력되어야 합니다. </span>
+							</div>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> <i
+										class="fas fa-solid fa-check"></i>
+									</span>
+								</div>
+								<input type="password" class="form-control"
+									placeholder="check password" name="passCheck" required>
+								<span class="error invalid-feedback"> 입력하신 비밀번호와 일치하지
+									않습니다. </span>
+							</div>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text"> <i
+										class="fab fa-brands fa-kickstarter-k"></i>
+									</span>
+								</div>
+								<input type="text" class="form-control" placeholder="nickname"
+									name="nick" required> <span
+									class="error invalid-feedback"> 닉네임은 특수문자를 제외한 3-13 자리로
+									입력해주세요. </span> <span class="input-group-append">
+									<button type="button" class="btn btn-info btn-flat"
+										id="nickCheckBtn">중복확인</button>
+								</span>
+							</div>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i
+										class="fas fa-solid fa-user"></i></span>
+								</div>
+								<input type="text" class="form-control" placeholder="name"
+									name="name" required>
+							</div>
+							
+							<div class="input-group input-group-sm">
+								<input type="text" class="form-control"> <span
+									class="input-group-append">
+									<button type="submit" class="btn btn-info btn-flat">Go!</button>
+								</span>
 							</div>
 						</div>
-					</div>
+					</form>
 				</div>
 			</div>
+			<div class="col-md-3"></div>
 		</div>
+		<!-- /.row -->
 	</div>
-</section>
+	<!-- /.container-fluid -->
+</div>
+<!-- /.content -->
+
 <%@ include file="../footer.jsp" %>
