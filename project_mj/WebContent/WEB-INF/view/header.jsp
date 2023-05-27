@@ -1,3 +1,4 @@
+<%@page import="kr.or.dw.user.vo.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,10 +19,15 @@
 	<link rel="stylesheet"
 		href="<%=request.getContextPath()%>/assets/dist/css/adminlte.min.css">
 	<script src="<%=request.getContextPath()%>/assets/plugins/jquery/jquery.js"></script>
-
+	<%
+		UserVO userVO = (UserVO)session.getAttribute("userVO");
+	%>
   </head>
 
 <body class="layout-top-nav" style="height: auto;">
+<%
+	String gcp = request.getContextPath();
+%>
 	<div class="wrapper">
 
 		<nav
@@ -41,9 +47,11 @@
 				<div class="collapse navbar-collapse order-3" id="navbarCollapse">
 
 					<ul class="navbar-nav">
-						<li class="nav-item"><a href="index3.html" class="nav-link">홈 </a>
+						<li class="nav-item"><a href="<%=gcp%>/cs/main.do" class="nav-link">홈 </a>
 						</li>
-						<li class="nav-item"><a href="#" class="nav-link">맛집찾기 </a>
+						<li class="nav-item"><a href="<%=gcp%>/store/storeMain.do" class="nav-link">맛집찾기 </a>
+						</li>
+						<li class="nav-item"><a href="<%=gcp%>/comm/commMain.do" class="nav-link">커뮤 </a>
 						</li>
 						
 					</ul>
@@ -63,13 +71,13 @@
 
 				<ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
 
-					<li class="nav-item"><a href="index3.html" class="nav-link">로그인  </a>
+					<li class="nav-item"><a href="<%=gcp%>/user/userLoginForm.do" class="nav-link">로그인  </a>
 						</li>
 
-					<li class="nav-item"><a href="index3.html" class="nav-link">회원가입  </a>
+					<li class="nav-item"><a href="<%=gcp%>/user/userSignupForm.do" class="nav-link">회원가입  </a>
 						</li>
 						
-					<li class="nav-item"><a href="index3.html" class="nav-link">고객센터  </a>
+					<li class="nav-item"><a href="<%=gcp%>/cs/csMain.do" class="nav-link">고객센터  </a>
 						</li>
 				</ul>
 			</div>
