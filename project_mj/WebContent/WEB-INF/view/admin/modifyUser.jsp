@@ -9,9 +9,35 @@
 <%
  	List<UserVO> userList = (List<UserVO>) request.getAttribute("userList");
 %>
+
 <script>
-console.log(<%=userList%>)
+	$(function(){
+		// 회원 삭제
+		$(document).on("click", ".deleteUser", function(e){
+			if (confirm("해당 회원을 삭제하시겠습니까?")){
+				let deleteUserNo = $(this).parents("tr").find(".userNo").text();
+				let target = $(this).closest(".userRow");
+				$.ajax({
+					url : "<%=request.getContextPath()%>/admin/deleteUser.do",
+					type : "post",
+					dataType : "json",
+					data : {
+						user_no : deleteUserNo
+					},
+					success : function(res) {
+						if (res.result ==1) {
+							$(target).remove();
+						}
+					},
+					error : function(err) {
+						alert(err.status);
+					}
+				});
+			}
+		});
+	});
 </script>
+
 <section class="content-header">
 	<div class="container-fluid">
 		<div class="row mb-2">
@@ -36,16 +62,16 @@ console.log(<%=userList%>)
 			<div class="col-md-10">
 				<div class="card">
 					<div class="card-header">
-						<h3 class="card-title">게시판</h3>
+						<h3 class="card-title">등록회원정보</h3>
 						<div class="card-tools">
-							<div class="input-group input-group-sm">
-								<input type="text" class="form-control" placeholder="Search">
-								<div class="input-group-append">
-									<div class="btn btn-primary">
-										<i class="fas fa-search"></i>
-									</div>
-								</div>
-							</div>
+<!-- 							<div class="input-group input-group-sm"> -->
+<!-- 								<input type="text" class="form-control" placeholder="Search"> -->
+<!-- 								<div class="input-group-append"> -->
+<!-- 									<div class="btn btn-primary"> -->
+<!-- 										<i class="fas fa-search"></i> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
 						</div>
 					</div>
 					<div class="card-body p-0">
@@ -53,10 +79,11 @@ console.log(<%=userList%>)
 							<thead>
 							
 								<tr>
-									<th style="width: 30%">회원번호</th>
+									<th style="width: 15%;">회원번호</th>
 									<th style="">이메일</th>
-									<th style="width: 20%">닉네임</th>
-									<th style="width: 30%">가입날짜</th>
+									<th style="width: 20%;">닉네임</th>
+									<th style="width: 30%;">가입날짜</th>
+									<th style="width: 5%;"></th>
 								</tr>
 							</thead>
 							<%
@@ -70,10 +97,8 @@ console.log(<%=userList%>)
 								String user_sdt = user.getUser_sdt();							
 							%>
 							<tbody>
-								<tr>
-									<td>
-										<%= user_no %>
-									</td>
+								<tr class="userRow">
+									<td class="userNo"><%= user_no %></td>
 									<td>
 										<%= user_email %>
 									</td>
@@ -81,6 +106,9 @@ console.log(<%=userList%>)
 										<%= user_nick %>
 									</td>
 									<td><%=user_sdt %></td>
+									<td>
+									<button type="button" class="btn btn-block bg-gradient-danger btn-sm deleteUser">Delete</button>
+									</td>
 								</tr>
 							<% } %>
 							</tbody>
