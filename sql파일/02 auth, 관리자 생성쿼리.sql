@@ -17,3 +17,16 @@ CREATE SEQUENCE  user_seq;
 
 INSERT INTO user_ (user_no, user_email, user_pass, user_name, user_nick, auth_cd, user_sdt, gb_del)
 		   VALUES (user_seq.nextval, 'test@test.com', '1', '관리자', '관리자닉네임', 'A101', sysdate, 'N');
+		  
+SELECT *
+  FROM STORE s ;
+
+INSERT INTO store (store_no, store_id, STORE_NAME, STORE_ADDR, STORE_TEL, STORE_HOUR, STORE_BREAK, STORE_URL, store)
+		  
+SELECT user_no
+			  ,user_email
+			  ,user_nick
+			  ,user_sdt
+			  ,gb_del
+		  FROM user_;
+SELECT user_nick FROM user_ WHERE user_no = 1;
