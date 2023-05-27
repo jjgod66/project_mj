@@ -3,6 +3,7 @@ DEFAULT tablespace TS_DBSQL
 TEMPORARY tablespace temp
 ;
 
+
 GRANT CONNECT, resource TO project_mj;
 GRANT CREATE SESSION TO project_mj;
 GRANT CREATE ANY TABLE TO project_mj;
