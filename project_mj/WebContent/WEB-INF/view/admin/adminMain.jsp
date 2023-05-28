@@ -30,7 +30,7 @@
 					</a>
 				</div>
 				<div class="card">
-					<a href="#" style="color:black;">
+					<a href="<%=request.getContextPath() %>/admin/insertStoreForm.do" style="color:black;">
 						<div class="card-body">
 							<h4 class="card-title">점포 등록</h4>
 							<p class="card-text">새로운 점포를 등록하는 페이지</p>

@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.dw.admin.service.AdminServiceImpl;
 import kr.or.dw.admin.service.IAdminService;
-import kr.or.dw.user.vo.UserVO;
+import kr.or.dw.comm.vo.CommVO;
 import kr.or.dw.util.PaginationUtil;
 import kr.or.dw.web.IAction;
 
-public class ModifyUserFormAction implements IAction {
+public class UserCommListViewAction implements IAction {
 
 	@Override
 	public boolean isRedirect() {
@@ -23,10 +23,13 @@ public class ModifyUserFormAction implements IAction {
 	}
 
 	@Override
-	public String process(HttpServletRequest req, HttpServletResponse res)
-			throws ServletException, IOException {
+	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		
+		int user_no = 0;
+		user_no = Integer.parseInt(req.getParameter("user_no"));
 		
 		IAdminService service = AdminServiceImpl.getInstance();
+		
 		// 페이징처리
 		Map<String, Integer> pagingConfigMap = null;
 		PaginationUtil pagination = new PaginationUtil();
@@ -40,14 +43,14 @@ public class ModifyUserFormAction implements IAction {
 		Map<String, Object> paramMap = new HashMap<>();
 		paramMap.put("start", pagingConfigMap.get("start"));
 		paramMap.put("end", pagingConfigMap.get("end"));
+		paramMap.put("user_no", user_no);
 		
-		// 게시판 목록을 가져온다.
-		List<UserVO> userList = service.selectUserList(paramMap);
-		req.setAttribute("userList", userList);
+		List<CommVO> userCommList = (List<CommVO>)service.selectUserCommList(paramMap);
+		req.setAttribute("user_no", user_no);
+		req.setAttribute("userCommList", userCommList);
 		req.setAttribute("pagingConfigMap", pagination);
-//		req.setAttribute("title_nm", "Board");
 		
-		return "/admin/modifyUser.jsp";
+		return "/admin/userCommListView.jsp";
 	}
 
 }

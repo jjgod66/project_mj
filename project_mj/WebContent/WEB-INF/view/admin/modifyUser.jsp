@@ -10,8 +10,8 @@
  	List<UserVO> userList = (List<UserVO>) request.getAttribute("userList");
 %>
 
-<script>
-	$(function(){
+<script>		
+	$(function(){	
 		// 회원 삭제
 		$(document).on("click", ".deleteUser", function(e){
 			if (confirm("해당 회원을 삭제하시겠습니까?")){
@@ -72,7 +72,7 @@
 <!-- 									</div> -->
 <!-- 								</div> -->
 <!-- 							</div> -->
-						</div>
+						</div>    
 					</div>
 					<div class="card-body p-0">
 						<table class="table table-striped projects">
@@ -83,6 +83,7 @@
 									<th style="">이메일</th>
 									<th style="width: 20%;">닉네임</th>
 									<th style="width: 30%;">가입날짜</th>
+									<th style="width: 5%;"></th>
 									<th style="width: 5%;"></th>
 								</tr>
 							</thead>
@@ -107,6 +108,11 @@
 									</td>
 									<td><%=user_sdt %></td>
 									<td>
+									<a href="<%=request.getContextPath()%>/admin/userCommListView.do?user_no=<%=user_no%>">
+									<button type="button" class="btn btn-block bg-gradient-danger btn-sm viewUserCommList">Comm</button>
+									</a>
+									</td>
+									<td>
 									<button type="button" class="btn btn-block bg-gradient-danger btn-sm deleteUser">Delete</button>
 									</td>
 								</tr>
@@ -116,9 +122,9 @@
 						</table>
 						<div class="container"style="margin-top:20px;">
 							<% 
-// 								PaginationUtil pagination = (PaginationUtil) request.getAttribute("pagingConfigMap");
+								PaginationUtil pagination = (PaginationUtil) request.getAttribute("pagingConfigMap");
  							%> 
-<%-- 						<%= pagination.getPaginationHtml(request, new String[] {"search"}) %> --%>
+						<%= pagination.getPaginationHtml(request, new String[] {"search"}) %>
 						</div>
 					</div>
 				</div>
