@@ -69,7 +69,7 @@ public class AdminDaoImpl implements IAdminDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+		System.out.println("q :" + selectUserCommList);
 		return selectUserCommList;
 	}
 }
