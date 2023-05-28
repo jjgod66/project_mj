@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% 
-
 	String user_nick = (String)request.getAttribute("user_Nick");
 	if(user_nick == null){
 %>
