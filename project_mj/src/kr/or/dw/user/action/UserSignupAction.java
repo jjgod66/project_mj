@@ -18,6 +18,9 @@ public class UserSignupAction implements IAction {
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
+	
+		res.setContentType("application/json; charset=UTF-8");
+		String nick = req.getParameter("nick");
 		return null;
 	}
 

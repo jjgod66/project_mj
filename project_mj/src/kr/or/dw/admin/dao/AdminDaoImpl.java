@@ -31,4 +31,17 @@ public class AdminDaoImpl implements IAdminDao {
 		}
 		return userList;
 	}
+
+	@Override
+	public int deleteUser(int user_no) {
+		int result = 0;
+		
+		try {
+			result = client.update("user.deleteUser", user_no);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 }

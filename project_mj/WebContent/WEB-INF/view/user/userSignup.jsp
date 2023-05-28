@@ -2,6 +2,120 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 
+<script>
+
+$(function(){
+	
+	n_check = false;
+	
+	$("#joinForm").on("submit", function (e) {
+		console.log($("#joinForm").find(".is-invalid").length)
+		if (!n_check) {
+			alert("닉네임 중복확인 체크를 해주세요.");
+			$("input[name=nick]").focus();
+			e.preventDefault();
+			return;
+		};
+			
+		if ($("#joinForm").find(".is-invalid").length > 0) {
+			alert("형식에 맞게 입력해주세요.");
+			$("#joinForm").find(".is-invalid").focus();
+			e.preventDefault();
+		};
+		
+	});
+	
+	// email 정규식 체크
+	let email = $("input[name=email]");
+	email.on("keyup", function() {
+		let emailVal = email.val().trim();
+		
+		regEmail = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+		
+		console.log(regEmail.test(emailVal));
+		
+		if( !(regEmail.test(emailVal)) ) {
+			email.attr("class", "form-control is-invalid");
+		} else {
+			email.attr("class", "form-control is-valid");
+		}
+	});
+	
+	// password 정규식 체크 - 영문 소문자, 대문자, 특수문자, 숫자가 반드시 하나 이상씩 입력
+	let pass = $("input[name=pass]");
+	pass.on("keyup",  function () {
+		passVal = pass.val().trim();
+		
+		regPass =  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[`~!@$%&?*])[A-Za-z\d`~!@$%&?*]{8,15}/;
+		
+		if ( !(regPass.test(passVal)) ) {
+			pass.attr("class", "form-control is-invalid");
+		} else {
+			pass.attr("class", "form-control is-valid");
+		}
+	});
+	
+	// pass2 pass일치 비교
+	let passCheck = $("input[name=passCheck]");
+	passCheck.on("keyup", function () {
+		let passCheckVal = passCheck.val().trim();
+		
+		if (passVal != passCheckVal) {
+			passCheck.attr("class", "form-control is-invalid");
+		} else {
+			passCheck.attr("class", "form-control is-valid");
+		}
+	});
+	
+	let nickCheck = false;
+	
+	// 닉네임 정규식 체크
+	let nick = $("input[name=nick]");
+	nick.on("keyup", function () {
+		nickVal = nick.val().trim();
+		
+		regNick = /^[가-힣a-zA-Z0-9]{3,13}$/;
+		
+		if ( !(regNick.test(nickVal)) ) {
+			nick.attr("class", "form-control is-invalid");
+			nickCheck = false;
+		} else {
+			nick.attr("class", "form-control is-valid");
+			nickCheck = true;
+		}
+	});
+	
+	// 닉네임 중복체크
+	$("#nickCheckBtn").on("click", function () {
+		if (nickCheck) {
+			$.ajax({
+				url : "<%=request.getContextPath()%>/user/nickCheck.do",
+				method : "post",
+				data : {"nick" : nickVal},
+				dataType : "json",
+				success : function (res) {
+					if(res == "사용가능한 닉네임입니다.") {
+						alert(res);
+						n_check = true;
+					} else {
+						alert(res);
+						n_check = false;
+					}
+				},
+				error : function (req) {
+					alert("상태 : " + req.status);
+				}
+			});
+		} else {
+			alert("닉네임을 확인해주세요.");
+		}
+	});
+	
+	
+});
+
+</script>
+
 <div class="content">
 	<div class="container-fluid">
 		<div class="row" style="padding-top:150px">

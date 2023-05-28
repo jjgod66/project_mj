@@ -23,4 +23,9 @@ public class AdminServiceImpl implements IAdminService {
 	public List<UserVO> selectUserList() {
 		return dao.selectUserList();
 	}
+
+	@Override
+	public int deleteUser(int user_no) {
+		return dao.deleteUser(user_no);
+	}
 }

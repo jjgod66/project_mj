@@ -11,6 +11,12 @@
 			  ,user_sdt
 			  ,gb_del
 		  FROM user_
+		 WHERE gb_del = 'N'
 	</select>
 	
+	<update id="deleteUser" parameterClass="int">
+		UPDATE user_
+		   SET gb_del = 'Y'
+		 WHERE user_no = #user_no#
+	</update>
 </sqlMap>
