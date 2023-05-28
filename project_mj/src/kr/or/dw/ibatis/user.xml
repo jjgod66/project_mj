@@ -4,14 +4,32 @@
 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="user">
 
-	<select id="selectUserList" resultClass="userVO">
+	<select id="selectUserList" parameterClass="Map" resultClass="userVO">
 		SELECT user_no
 			  ,user_email
 			  ,user_nick
 			  ,user_sdt
 			  ,gb_del
+		  FROM (
+				SELECT *
+				  FROM (
+				  		SELECT rownum rnum, v1.*
+						  FROM (
+						  		SELECT *
+								  FROM user_
+								 WHERE gb_del = 'N'
+								 ORDER BY user_no
+						  		) v1
+						 WHERE rownum <![CDATA[ <= ]]> #end#
+				  		) v2
+				 WHERE rnum <![CDATA[ >= ]]> #start#
+				) u
+	</select>
+	
+	<select id="selectUserCount" resultClass="int">
+		SELECT COUNT(*) cnt
 		  FROM user_
-		 WHERE gb_del = 'N'
+		WHERE gb_del = 'N'
 	</select>
 	
 	<update id="deleteUser" parameterClass="int">
