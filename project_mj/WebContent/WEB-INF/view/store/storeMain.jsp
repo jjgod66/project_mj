@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 <!-- content -->
+
+
+<br><br>
+
 <section id="aa-blog-archive">
 	<div class="container">
 		<div class="row" style="margin:0;">
@@ -11,198 +15,279 @@
 						<div class="col-md-9">
 							<div class="aa-blog-content">
 								<div class="row" style="margin:0;">
+								
+								
+								
+								
 									<div class="col-md-4 col-sm-4">
 										<article class="aa-latest-blog-single">
 											<figure class="aa-blog-img">
-												<a href="#"><img alt="img" src="img/promo-banner-1.jpg"></a>
+												<a href="<%=gcp%>/user/userLoginForm.do"><img alt="img" src="https://placehold.it/200x200"></a>
 												<figcaption class="aa-blog-img-caption">
-													<span href="#"><i class="fa fa-eye"></i>5K</span> <a
-														href="#"><i class="fa fa-thumbs-o-up"></i>426</a> <a
-														href="#"><i class="fa fa-comment-o"></i>20</a> <span
-														href="#"><i class="fa fa-clock-o"></i>June 26, 2016</span>
+													<span href="#"><i class="fa fa-eye"></i>조회수 : 5</span> 
+													<i class="fa fa-thumbs-o-up"></i>좋아요 : 3 
+													 <i class="fa fa-clock-o"></i> 2023 05 29</span>
 												</figcaption>
 											</figure>
 											<div class="aa-blog-info">
 												<h3 class="aa-blog-title">
-													<a href="#">Lorem ipsum dolor sit amet</a>
+													<a href="<%=gcp%>/user/userLoginForm.do">대전 식당 1 </a>
 												</h3>
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-													elit. Assumenda, ad? Autem quos natus nisi aperiam, beatae,
-													fugiat odit vel impedit dicta enim repellendus animi.
-													Expedita quas reprehenderit incidunt, voluptates corporis.</p>
-												<a class="aa-read-mor-btn" href="#">Read more <span
-													class="fa fa-long-arrow-right"></span></a>
+												<p>돼지고기가 맛있는 식당 입니다. </p>
+												
 											</div>
 										</article>
 									</div>
+									
+									
+									
 									<div class="col-md-4 col-sm-4">
 										<article class="aa-latest-blog-single">
 											<figure class="aa-blog-img">
-												<a href="#"><img alt="img" src="img/promo-banner-2.jpg"></a>
+												<a href="#"><img alt="img" src="https://placehold.it/200x200"></a>
 												<figcaption class="aa-blog-img-caption">
-													<span href="#"><i class="fa fa-eye"></i>5K</span> <a
-														href="#"><i class="fa fa-thumbs-o-up"></i>426</a> <a
-														href="#"><i class="fa fa-comment-o"></i>20</a> <span
-														href="#"><i class="fa fa-clock-o"></i>June 26, 2016</span>
+													<span href="#"><i class="fa fa-eye"></i>조회수 : 5</span> 
+													<i class="fa fa-thumbs-o-up"></i>좋아요 : 3 
+													 <i class="fa fa-clock-o"></i> 2023 05 29</span>
 												</figcaption>
 											</figure>
 											<div class="aa-blog-info">
 												<h3 class="aa-blog-title">
-													<a href="#">Lorem ipsum dolor sit amet</a>
+													<a href="#">대전 식당 1 </a>
 												</h3>
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-													elit. Assumenda, ad? Autem quos natus nisi aperiam, beatae,
-													fugiat odit vel impedit dicta enim repellendus animi.
-													Expedita quas reprehenderit incidunt, voluptates corporis.</p>
-												<a class="aa-read-mor-btn" href="#">Read more <span
-													class="fa fa-long-arrow-right"></span></a>
+												<p>돼지고기가 맛있는 식당 입니다. </p>
+												
 											</div>
 										</article>
 									</div>
+									
+									
 									<div class="col-md-4 col-sm-4">
 										<article class="aa-latest-blog-single">
 											<figure class="aa-blog-img">
-												<a href="#"><img alt="img" src="img/promo-banner-3.jpg"></a>
+												<a href="#"><img alt="img" src="https://placehold.it/200x200"></a>
 												<figcaption class="aa-blog-img-caption">
-													<span href="#"><i class="fa fa-eye"></i>5K</span> <a
-														href="#"><i class="fa fa-thumbs-o-up"></i>426</a> <a
-														href="#"><i class="fa fa-comment-o"></i>20</a> <span
-														href="#"><i class="fa fa-clock-o"></i>June 26, 2016</span>
+													<span href="#"><i class="fa fa-eye"></i>조회수 : 5</span> 
+													<i class="fa fa-thumbs-o-up"></i>좋아요 : 3 
+													 <i class="fa fa-clock-o"></i> 2023 05 29</span>
 												</figcaption>
 											</figure>
 											<div class="aa-blog-info">
 												<h3 class="aa-blog-title">
-													<a href="#">Lorem ipsum dolor sit amet</a>
+													<a href="#">대전 식당 1 </a>
 												</h3>
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-													elit. Assumenda, ad? Autem quos natus nisi aperiam, beatae,
-													fugiat odit vel impedit dicta enim repellendus animi.
-													Expedita quas reprehenderit incidunt, voluptates corporis.</p>
-												<a class="aa-read-mor-btn" href="#">Read more <span
-													class="fa fa-long-arrow-right"></span></a>
+												<p>돼지고기가 맛있는 식당 입니다. </p>
+												
 											</div>
+									<br>
 										</article>
 									</div>
+									
+									
+									
 									<div class="col-md-4 col-sm-4">
 										<article class="aa-latest-blog-single">
 											<figure class="aa-blog-img">
-												<a href="#"><img alt="img" src="img/promo-banner-4.jpg"></a>
+												<a href="#"><img alt="img" src="https://placehold.it/200x200"></a>
 												<figcaption class="aa-blog-img-caption">
-													<span href="#"><i class="fa fa-eye"></i>5K</span> <a
-														href="#"><i class="fa fa-thumbs-o-up"></i>426</a> <a
-														href="#"><i class="fa fa-comment-o"></i>20</a> <span
-														href="#"><i class="fa fa-clock-o"></i>June 26, 2016</span>
+													<span href="#"><i class="fa fa-eye"></i>조회수 : 5</span> 
+													<i class="fa fa-thumbs-o-up"></i>좋아요 : 3 
+													 <i class="fa fa-clock-o"></i> 2023 05 29</span>
 												</figcaption>
 											</figure>
 											<div class="aa-blog-info">
 												<h3 class="aa-blog-title">
-													<a href="#">Lorem ipsum dolor sit amet</a>
+													<a href="#">대전 식당 1 </a>
 												</h3>
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-													elit. Assumenda, ad? Autem quos natus nisi aperiam, beatae,
-													fugiat odit vel impedit dicta enim repellendus animi.
-													Expedita quas reprehenderit incidunt, voluptates corporis.</p>
-												<a class="aa-read-mor-btn" href="#">Read more <span
-													class="fa fa-long-arrow-right"></span></a>
+												<p>돼지고기가 맛있는 식당 입니다. </p>
+												
 											</div>
 										</article>
 									</div>
+									
 									<div class="col-md-4 col-sm-4">
 										<article class="aa-latest-blog-single">
 											<figure class="aa-blog-img">
-												<a href="#"><img alt="img" src="img/promo-banner-5.jpg"></a>
+												<a href="#"><img alt="img" src="https://placehold.it/200x200"></a>
 												<figcaption class="aa-blog-img-caption">
-													<span href="#"><i class="fa fa-eye"></i>5K</span> <a
-														href="#"><i class="fa fa-thumbs-o-up"></i>426</a> <a
-														href="#"><i class="fa fa-comment-o"></i>20</a> <span
-														href="#"><i class="fa fa-clock-o"></i>June 26, 2016</span>
+													<span href="#"><i class="fa fa-eye"></i>조회수 : 5</span> 
+													<i class="fa fa-thumbs-o-up"></i>좋아요 : 3 
+													 <i class="fa fa-clock-o"></i> 2023 05 29</span>
 												</figcaption>
 											</figure>
 											<div class="aa-blog-info">
 												<h3 class="aa-blog-title">
-													<a href="#">Lorem ipsum dolor sit amet</a>
+													<a href="#">대전 식당 1 </a>
 												</h3>
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-													elit. Assumenda, ad? Autem quos natus nisi aperiam, beatae,
-													fugiat odit vel impedit dicta enim repellendus animi.
-													Expedita quas reprehenderit incidunt, voluptates corporis.</p>
-												<a class="aa-read-mor-btn" href="#">Read more <span
-													class="fa fa-long-arrow-right"></span></a>
+												<p>돼지고기가 맛있는 식당 입니다. </p>
+												
 											</div>
 										</article>
 									</div>
+									
 									<div class="col-md-4 col-sm-4">
 										<article class="aa-latest-blog-single">
 											<figure class="aa-blog-img">
-												<a href="#"><img alt="img" src="img/promo-banner-1.jpg"></a>
+												<a href="#"><img alt="img" src="https://placehold.it/200x200"></a>
 												<figcaption class="aa-blog-img-caption">
-													<span href="#"><i class="fa fa-eye"></i>5K</span> <a
-														href="#"><i class="fa fa-thumbs-o-up"></i>426</a> <a
-														href="#"><i class="fa fa-comment-o"></i>20</a> <span
-														href="#"><i class="fa fa-clock-o"></i>June 26, 2016</span>
+													<span href="#"><i class="fa fa-eye"></i>조회수 : 5</span> 
+													<i class="fa fa-thumbs-o-up"></i>좋아요 : 3 
+													 <i class="fa fa-clock-o"></i> 2023 05 29</span>
 												</figcaption>
 											</figure>
 											<div class="aa-blog-info">
 												<h3 class="aa-blog-title">
-													<a href="#">Lorem ipsum dolor sit amet</a>
+													<a href="#">대전 식당 1 </a>
 												</h3>
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-													elit. Assumenda, ad? Autem quos natus nisi aperiam, beatae,
-													fugiat odit vel impedit dicta enim repellendus animi.
-													Expedita quas reprehenderit incidunt, voluptates corporis.</p>
-												<a class="aa-read-mor-btn" href="#">Read more <span
-													class="fa fa-long-arrow-right"></span></a>
+												<p>돼지고기가 맛있는 식당 입니다. </p>
+												
 											</div>
+											<br>
 										</article>
 									</div>
+									
+									
 									<div class="col-md-4 col-sm-4">
 										<article class="aa-latest-blog-single">
 											<figure class="aa-blog-img">
-												<a href="#"><img alt="img" src="img/promo-banner-2.jpg"></a>
+												<a href="#"><img alt="img" src="https://placehold.it/200x200"></a>
 												<figcaption class="aa-blog-img-caption">
-													<span href="#"><i class="fa fa-eye"></i>5K</span> <a
-														href="#"><i class="fa fa-thumbs-o-up"></i>426</a> <a
-														href="#"><i class="fa fa-comment-o"></i>20</a> <span
-														href="#"><i class="fa fa-clock-o"></i>June 26, 2016</span>
+													<span href="#"><i class="fa fa-eye"></i>조회수 : 5</span> 
+													<i class="fa fa-thumbs-o-up"></i>좋아요 : 3 
+													 <i class="fa fa-clock-o"></i> 2023 05 29</span>
 												</figcaption>
 											</figure>
 											<div class="aa-blog-info">
 												<h3 class="aa-blog-title">
-													<a href="#">Lorem ipsum dolor sit amet</a>
+													<a href="#">대전 식당 1 </a>
 												</h3>
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-													elit. Assumenda, ad? Autem quos natus nisi aperiam, beatae,
-													fugiat odit vel impedit dicta enim repellendus animi.
-													Expedita quas reprehenderit incidunt, voluptates corporis.</p>
-												<a class="aa-read-mor-btn" href="#">Read more <span
-													class="fa fa-long-arrow-right"></span></a>
+												<p>돼지고기가 맛있는 식당 입니다. </p>
+												
 											</div>
 										</article>
 									</div>
+									
+									
 									<div class="col-md-4 col-sm-4">
 										<article class="aa-latest-blog-single">
 											<figure class="aa-blog-img">
-												<a href="#"><img alt="img" src="img/promo-banner-3.jpg"></a>
+												<a href="#"><img alt="img" src="https://placehold.it/200x200"></a>
 												<figcaption class="aa-blog-img-caption">
-													<span href="#"><i class="fa fa-eye"></i>5K</span> <a
-														href="#"><i class="fa fa-thumbs-o-up"></i>426</a> <a
-														href="#"><i class="fa fa-comment-o"></i>20</a> <span
-														href="#"><i class="fa fa-clock-o"></i>June 26, 2016</span>
+													<span href="#"><i class="fa fa-eye"></i>조회수 : 5</span> 
+													<i class="fa fa-thumbs-o-up"></i>좋아요 : 3 
+													 <i class="fa fa-clock-o"></i> 2023 05 29</span>
 												</figcaption>
 											</figure>
 											<div class="aa-blog-info">
 												<h3 class="aa-blog-title">
-													<a href="#">Lorem ipsum dolor sit amet</a>
+													<a href="#">대전 식당 1 </a>
 												</h3>
-												<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-													elit. Assumenda, ad? Autem quos natus nisi aperiam, beatae,
-													fugiat odit vel impedit dicta enim repellendus animi.
-													Expedita quas reprehenderit incidunt, voluptates corporis.</p>
-												<a class="aa-read-mor-btn" href="#">Read more <span
-													class="fa fa-long-arrow-right"></span></a>
+												<p>돼지고기가 맛있는 식당 입니다. </p>
+												
 											</div>
 										</article>
 									</div>
+									
+									
+									<div class="col-md-4 col-sm-4">
+										<article class="aa-latest-blog-single">
+											<figure class="aa-blog-img">
+												<a href="#"><img alt="img" src="https://placehold.it/200x200"></a>
+												<figcaption class="aa-blog-img-caption">
+													<span href="#"><i class="fa fa-eye"></i>조회수 : 5</span> 
+													<i class="fa fa-thumbs-o-up"></i>좋아요 : 3 
+													 <i class="fa fa-clock-o"></i> 2023 05 29</span>
+												</figcaption>
+											</figure>
+											<div class="aa-blog-info">
+												<h3 class="aa-blog-title">
+													<a href="#">대전 식당 1 </a>
+												</h3>
+												<p>돼지고기가 맛있는 식당 입니다. </p>
+												
+											</div>
+											<br>
+										</article>
+									</div>
+									
+									
+									<div class="col-md-4 col-sm-4">
+										<article class="aa-latest-blog-single">
+											<figure class="aa-blog-img">
+												<a href="#"><img alt="img" src="https://placehold.it/200x200"></a>
+												<figcaption class="aa-blog-img-caption">
+													<span href="#"><i class="fa fa-eye"></i>조회수 : 5</span> 
+													<i class="fa fa-thumbs-o-up"></i>좋아요 : 3 
+													 <i class="fa fa-clock-o"></i> 2023 05 29</span>
+												</figcaption>
+											</figure>
+											<div class="aa-blog-info">
+												<h3 class="aa-blog-title">
+													<a href="#">대전 식당 1 </a>
+												</h3>
+												<p>돼지고기가 맛있는 식당 입니다. </p>
+												
+											</div>
+										</article>
+									</div>
+									
+									
+									<div class="col-md-4 col-sm-4">
+										<article class="aa-latest-blog-single">
+											<figure class="aa-blog-img">
+												<a href="#"><img alt="img" src="https://placehold.it/200x200"></a>
+												<figcaption class="aa-blog-img-caption">
+													<span href="#"><i class="fa fa-eye"></i>조회수 : 5</span> 
+													<i class="fa fa-thumbs-o-up"></i>좋아요 : 3 
+													 <i class="fa fa-clock-o"></i> 2023 05 29</span>
+												</figcaption>
+											</figure>
+											<div class="aa-blog-info">
+												<h3 class="aa-blog-title">
+													<a href="#">대전 식당 1 </a>
+												</h3>
+												<p>돼지고기가 맛있는 식당 입니다. </p>
+												
+											</div>
+											<br>
+										</article>
+									</div>
+									
+									
+									<div class="col-md-4 col-sm-4">
+										<article class="aa-latest-blog-single">
+											<figure class="aa-blog-img">
+												<a href="#"><img alt="img" src="https://placehold.it/200x200"></a>
+												<figcaption class="aa-blog-img-caption">
+													<span href="#"><i class="fa fa-eye"></i>조회수 : 5</span> 
+													<i class="fa fa-thumbs-o-up"></i>좋아요 : 3 
+													 <i class="fa fa-clock-o"></i> 2023 05 29</span>
+												</figcaption>
+											</figure>
+											<div class="aa-blog-info">
+												<h3 class="aa-blog-title">
+													<a href="#">대전 식당 1 </a>
+												</h3>
+												<p>돼지고기가 맛있는 식당 입니다. </p>
+												
+											</div>
+										</article>
+									</div>
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
+									
 								</div>
 							</div>
 							<!-- Blog Pagination -->
@@ -227,51 +312,45 @@
 						<div class="col-md-3">
 							<aside class="aa-blog-sidebar">
 								<div class="aa-sidebar-widget">
-									<h3>Category</h3>
+									<h3>카테고리 </h3>
 									<ul class="aa-catg-nav">
-										<li><a href="#">Men</a></li>
-										<li><a href="">Women</a></li>
-										<li><a href="">Kids</a></li>
-										<li><a href="">Electornics</a></li>
-										<li><a href="">Sports</a></li>
+										<li><a href="#">식당 </a></li>
+										<li><a href="">술집 </a></li>
+										<li><a href="">카페 </a></li>
 									</ul>
 								</div>
 								<div class="aa-sidebar-widget">
-									<h3>Tags</h3>
+									<h3>태그 </h3>
 									<div class="tag-cloud">
-										<a href="#">Fashion</a> <a href="#">Ecommerce</a> <a href="#">Shop</a>
-										<a href="#">Hand Bag</a> <a href="#">Laptop</a> <a href="#">Head
-											Phone</a> <a href="#">Pen Drive</a>
+										<a href="#">#분위기 좋은 </a> <a href="#">#달달한 술 </a> <a href="#">#커피가 맛있는 </a>
+										
 									</div>
-								</div>
+								</div><br>
 								<div class="aa-sidebar-widget">
-									<h3>Recent Post</h3>
+									<h3>정렬 </h3>
 									<div class="aa-recently-views">
 										<ul>
-											<li><a class="aa-cartbox-img" href="#"><img
-													src="img/woman-small-2.jpg" alt="img"></a>
+											<li>
 												<div class="aa-cartbox-info">
-													<h4>
-														<a href="#">Lorem ipsum dolor sit amet.</a>
-													</h4>
-													<p>March 26th 2016</p>
+													<h6>
+														<a href="#">좋아요 </a>
+													</h6>
 												</div></li>
-											<li><a class="aa-cartbox-img" href="#"><img
-													src="img/woman-small-1.jpg" alt="img"></a>
+												
+												<li>
 												<div class="aa-cartbox-info">
-													<h4>
-														<a href="#">Lorem ipsum dolor.</a>
-													</h4>
-													<p>March 26th 2016</p>
+													<h6>
+														<a href="#">조회수  </a>
+													</h6>
 												</div></li>
-											<li><a class="aa-cartbox-img" href="#"><img
-													src="img/woman-small-2.jpg" alt="img"></a>
+												
+												<li>
 												<div class="aa-cartbox-info">
-													<h4>
-														<a href="#">Lorem ipsum dolor.</a>
-													</h4>
-													<p>March 26th 2016</p>
+													<h6>
+														<a href="#">좋아요 </a>
+													</h6>
 												</div></li>
+											
 										</ul>
 									</div>
 								</div>
