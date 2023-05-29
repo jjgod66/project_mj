@@ -1,7 +1,10 @@
 package kr.or.dw.user.dao;
 
+import java.sql.SQLException;
+
 import com.ibatis.sqlmap.client.SqlMapClient;
 
+import kr.or.dw.user.vo.UserVO;
 import kr.or.dw.util.BuildSqlMapClient;
 
 public class UserDaoImpl implements IUserDao {
@@ -17,7 +20,7 @@ public class UserDaoImpl implements IUserDao {
 		return dao;
 	}
 
-
+	@Override
 	public String getUser_Nick(String user_nick) {
 		String nick = null;
 		try {
@@ -27,7 +30,7 @@ public class UserDaoImpl implements IUserDao {
 		}
 		return nick;
 	}
-
+	@Override
 	public int insertUser(UserVO vo) {
 		int result=0;
 		
@@ -40,7 +43,7 @@ public class UserDaoImpl implements IUserDao {
 	
 		return result;
 	}
-
+	@Override
 	public UserVO loginUser(String user_email) {
 		
 		UserVO vo = null;
@@ -52,6 +55,5 @@ public class UserDaoImpl implements IUserDao {
 		}
 		return vo;
 	}
-=======
 
 }
