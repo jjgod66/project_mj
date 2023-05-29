@@ -17,5 +17,23 @@ public class UserServiceImpl implements IUserService {
 		if(service == null) service = new UserServiceImpl();
 		return service;
 	}
+
+
+	@Override
+	public int insertUser(UserVO vo) {
+		return dao.insertUser(vo);
+	}
+
+	@Override
+	public UserVO loginUser(String user_email) {
+		return dao.loginUser(user_email);
+	}
+
+	@Override
+	public String getUser_nick(String user_nick) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }

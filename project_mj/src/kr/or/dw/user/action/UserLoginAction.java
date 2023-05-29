@@ -24,21 +24,21 @@ public class UserLoginAction implements IAction {
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
-		String email = req.getParameter("email");
-		String pass = req.getParameter("pass");
+		String user_email = req.getParameter("user_email");
+		String user_pass = req.getParameter("user_pass");
 		
 		IUserService service = UserServiceImpl.getInstance();
-		UserVO vo = service.loginUser(email);
+		UserVO vo = service.loginUser(user_email);
 		String cpass = "";
 		try {
-			cpass = CryptoUtil.sha512(pass);
+			cpass = CryptoUtil.sha512(user_pass);
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
 		
 		int result = 0;
 		
-		if(vo != null && (cpass.equals(vo.getPass()))) {
+		if(vo != null && (cpass.equals(vo.getUser_pass()))) {
 			result = 1;
 			HttpSession session = req.getSession();
 			session.setAttribute("userVO", vo);

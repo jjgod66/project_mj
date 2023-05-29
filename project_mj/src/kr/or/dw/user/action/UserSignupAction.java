@@ -18,10 +18,39 @@ public class UserSignupAction implements IAction {
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
+
+		UserVO vo = new UserVO();
+		
+		BeanUtils bean = new BeanUtils();
+		
+		try {
+			bean.populate(vo, req.getParameterMap());
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		}
+		
+		// 비밀번호 암호화 
+		String user_pass = req.getParameter("user_pass");
+		try {
+			user_pass = CryptoUtil.sha512(user_pass);
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		vo.setUser_pass(user_pass);
+		
+		IUserService service = UserServiceImpl.getInstance();
+		int user_no = service.insertUser(vo);
+		req.setAttribute("user_no", user_no);
+		
+		return "/user/userSignupSuccess.jsp";
+
 	
 		res.setContentType("application/json; charset=UTF-8");
 		String nick = req.getParameter("nick");
 		return null;
+
 	}
 
 }
