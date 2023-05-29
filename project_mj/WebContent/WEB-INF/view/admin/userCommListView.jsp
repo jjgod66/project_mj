@@ -67,7 +67,7 @@
 <!-- 									<th style="width: 5%;"></th> -->
 								</tr>
 							</thead>
-							<%
+							<% 
 							for (CommVO comm : userCommList) {
 								int bd_no = comm.getBd_no();
 								String bd_cat = comm.getBd_cat();

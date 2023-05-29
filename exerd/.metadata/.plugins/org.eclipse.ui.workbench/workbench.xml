@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< Updated upstream
 <workbench progressCount="8" version="2.0">
 <workbenchAdvisor/>
 <window height="768" maximized="true" width="1024" x="26" y="26">
+=======
+<workbench progressCount="14" version="2.0">
+<workbenchAdvisor/>
+<window height="768" maximized="true" width="1024" x="540" y="45">
+>>>>>>> Stashed changes
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
@@ -130,11 +136,19 @@
 </presentation>
 </folder>
 </info>
+<<<<<<< Updated upstream
 <info folder="true" part="bottomFolder" ratio="0.7916219" ratioLeft="737" ratioRight="194" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="com.tomato.exerd.ui.views.domain" appearance="2" expanded="2">
 <page content="com.tomato.exerd.ui.views.domain" label="도메인"/>
 <page content="com.tomato.exerd.validate.ui.ValidateView" label="검토"/>
 <page content="org.eclipse.ui.console.ConsoleView" label="콘솔"/>
+=======
+<info folder="true" part="bottomFolder" ratio="0.94481236" ratioLeft="856" ratioRight="50" relationship="4" relative="org.eclipse.ui.editorss">
+<folder appearance="2" expanded="2">
+<page content="com.tomato.exerd.ui.views.domain" label="LabelNotFound"/>
+<page content="com.tomato.exerd.validate.ui.ValidateView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.console.ConsoleView" label="LabelNotFound"/>
+>>>>>>> Stashed changes
 <page content="com.tomato.exerd.xscript.ScriptView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>

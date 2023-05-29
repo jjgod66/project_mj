@@ -45,6 +45,7 @@ public class UserCommListViewAction implements IAction {
 		paramMap.put("user_no", user_no);
 		
 		List<CommVO> userCommList = (List<CommVO>)service.selectUserCommList(paramMap);
+		
 		System.out.println(userCommList);
 		req.setAttribute("user_no", user_no);
 		req.setAttribute("userCommList", userCommList);

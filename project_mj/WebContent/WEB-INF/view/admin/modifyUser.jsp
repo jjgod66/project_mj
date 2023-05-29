@@ -88,9 +88,6 @@
 								</tr>
 							</thead>
 							<%
-							
-// 							DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-							
 							for (UserVO user : userList) {
 								int user_no = user.getUser_no ();
 								String user_email = user.getUser_email();
