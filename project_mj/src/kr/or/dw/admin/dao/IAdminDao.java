@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import kr.or.dw.comm.vo.CommVO;
+import kr.or.dw.store.vo.StoreVO;
 import kr.or.dw.user.vo.UserVO;
 
 public interface IAdminDao {
@@ -28,6 +29,29 @@ public interface IAdminDao {
 	 * @param paramMap 
 	 * @return List<CommVO>
 	 */
-	List<CommVO> selectUserCommList(Map<String, Object> paramMap);
+
+	List<CommVO> selectUserCommList(int user_no);
+
+	List<String> selectStoreCatList();
+	
+	/**
+	 * 새로운 점포를 등록한다.
+	 * @param storeVo
+	 * @return
+	 */
+	int insertStore(StoreVO storeVo);
+	
+	/**
+	 * 등록된 점포의 리스트를 불러온다.
+	 * @param paramMap
+	 * @return List<StoreVO>
+	 */
+	List<StoreVO> selectStoreList(Map<String, Object> paramMap);
+
+	/**
+	 * 등록된 점포의 수를 센다.
+	 * @return 등록점포 수
+	 */
+	int selectStoreCount();
 
 }

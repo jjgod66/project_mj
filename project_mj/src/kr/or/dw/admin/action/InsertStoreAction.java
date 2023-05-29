@@ -24,21 +24,20 @@ public class InsertStoreAction implements IAction {
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		IAdminService service = AdminServiceImpl.getInstance();
-		StoreVO storeVO = new StoreVO();
+		StoreVO storeVo = new StoreVO();
 		
 		BeanUtils bean = new BeanUtils();
 		
 		try {
-			bean.populate(storeVO, req.getParameterMap());
+			bean.populate(storeVo, req.getParameterMap());
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
 		}
-		
-//		service.insertStore();
-		
-		return "/admin/storeList.jsp";
+		int store_no = service.insertStore(storeVo);
+		req.setAttribute("store_no", store_no);
+		return "/admin/insertStoreSuccess.jsp";
 	}
 
 }

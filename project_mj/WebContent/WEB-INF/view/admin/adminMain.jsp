@@ -38,10 +38,10 @@
 					</a>	
 				</div>
 				<div class="card">
-					<a href="#" style="color:black;">
+					<a href="<%=request.getContextPath() %>/admin/adminStoreForm.do" style="color:black;">
 						<div class="card-body">
-							<h4 class="card-title">점포 수정 및 삭제</h4>
-							<p class="card-text">기존에 등록되있는 점포의 정보를 수정하는 페이지</p>
+							<h4 class="card-title">점포 관리</h4>
+							<p class="card-text">기존에 등록되있는 점포의 정보를 수정하고 새 점포를 등록한다.</p>
 						</div>
 					</a>
 				</div>

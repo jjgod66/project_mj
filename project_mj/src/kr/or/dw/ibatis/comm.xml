@@ -3,22 +3,13 @@
 	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="comm">
-	<select id="selectUserCommList" parameterClass="Map" resultClass="commVO">
+	
+	<select id="selectUserCommList" parameterClass="int" resultClass="commVO">
 		SELECT *
-		  FROM (
-				SELECT *
-				  FROM (
-				  		SELECT rownum rnum, v1.*
-						  FROM (
-						  		SELECT *
-								  FROM bd_comm
-								 WHERE gb_del = 'N'
-								 ORDER BY bd_no ASC
-						  		) v1
-						 WHERE rownum <![CDATA[ <= ]]> #end#
-				  		) v2
-				 WHERE rnum <![CDATA[ >= ]]> #start#
-				) comm
+		  FROM bd_comm
 		 WHERE user_no = #user_no#
+		   AND gb_del = 'N'
+	  ORDER BY bd_no ASC
 	</select>
+	
 </sqlMap>

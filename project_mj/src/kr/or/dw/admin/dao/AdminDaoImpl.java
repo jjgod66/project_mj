@@ -7,6 +7,7 @@ import java.util.Map;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
 import kr.or.dw.comm.vo.CommVO;
+import kr.or.dw.store.vo.StoreVO;
 import kr.or.dw.user.vo.UserVO;
 import kr.or.dw.util.BuildSqlMapClient;
 
@@ -61,15 +62,65 @@ public class AdminDaoImpl implements IAdminDao {
 	}
 
 	@Override
-	public List<CommVO> selectUserCommList(Map<String, Object> paramMap) {
+	public List<CommVO> selectUserCommList(int user_no) {
 		List<CommVO> selectUserCommList = null;
 		
 		try {
-			selectUserCommList = client.queryForList("comm.selectUserCommList", paramMap);
+			selectUserCommList = client.queryForList("comm.selectUserCommList", user_no);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println("q :" + selectUserCommList);
 		return selectUserCommList;
+	}
+
+	@Override
+	public List<String> selectStoreCatList() {
+		List<String> selectStoreCatList = null;
+		
+		try {
+			selectStoreCatList = client.queryForList("store.selectStoreCatList");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return selectStoreCatList;
+	}
+
+	@Override
+	public int insertStore(StoreVO storeVo) {
+		int result = 0;
+		
+		try {
+			result = (int) client.insert("store.insertStore", storeVo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
+	@Override
+	public List<StoreVO> selectStoreList(Map<String, Object> paramMap) {
+		List<StoreVO> storeList = null;
+		
+		try {
+			storeList = client.queryForList("store.selectStoreList", paramMap);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return storeList;
+	}
+
+	@Override
+	public int selectStoreCount() {
+		int count = 0;
+		
+		try {
+			count = (int) client.queryForObject("store.selectStoreCount");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return count;
 	}
 }
