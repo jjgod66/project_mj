@@ -1,17 +1,11 @@
 DROP SEQUENCE user_seq;
 DROP SEQUENCE bd_comm_seq;
 
-
-
 -- 사용자
 DROP TABLE user_;
 
 -- 권한코드
 DROP TABLE auth;
-
--- 관리자
-DROP TABLE admin;
-
 -- 태그
 DROP TABLE tag_info;
 
@@ -56,7 +50,6 @@ DROP TABLE img_store_review;
 
 -- 공지사항게시판
 DROP TABLE bd_announce;
-
 
 -- 사용자
 CREATE TABLE user_ (
@@ -243,22 +236,24 @@ ALTER TABLE bd_comm_like
 
 -- 점포
 CREATE TABLE store (
-	store_no     INTEGER        NOT NULL, -- 점포번호
-	store_cat_id VARCHAR2(4)    NULL,     -- 업종id
-	store_name   VARCHAR2(100)  NULL,     -- 상호명
-	store_addr   VARCHAR2(200)  NULL,     -- 도로명주소
-	store_tel    VARCHAR2(13)   NULL,     -- 전화번호
-	store_hour   VARCHAR2(50)   NULL,     -- 영업시간
-	store_break  VARCHAR2(50)   NULL,     -- 휴식시간
-	store_url    VARCHAR2(100)  NULL,     -- 점포웹주소
-	store_des_s  VARCHAR2(200)  NULL,     -- 점포간단설명
-	store_des_d  VARCHAR2(4000) NULL,     -- 점포상세설명
-	store_rate   NUMBER(1,1)    NULL,     -- 평점평균
-	store_views  INTEGER        NULL,     -- 조회수
-	store_like   INTEGER        NULL,     -- 좋아요수
-	store_fav    INTEGER        NULL,     -- 즐겨찾기수
-	store_rdt    DATE           NULL,     -- 등록일자
-	gb_del       VARCHAR2(1)    NULL      -- 삭제여부
+
+	store_no    INTEGER        NOT NULL, -- 점포번호
+	cat_name    VARCHAR2(200)  NOT NULL, -- 업종명
+	store_name  VARCHAR2(100)  NULL,     -- 상호명
+	store_addr  VARCHAR2(200)  NULL,     -- 도로명주소
+	store_tel   VARCHAR2(15)   NULL,     -- 전화번호
+	store_hour  VARCHAR2(50)   NULL,     -- 영업시간
+	store_break VARCHAR2(50)   NULL,     -- 휴식시간
+	store_url   VARCHAR2(100)  NULL,     -- 점포웹주소
+	store_des_s VARCHAR2(200)  NULL,     -- 점포간단설명
+	store_des_d VARCHAR2(4000) NULL,     -- 점포상세설명
+	store_rate  NUMBER(1,1)    NULL,     -- 평점평균
+	store_views INTEGER        NULL,     -- 조회수
+	store_like  INTEGER        NULL,     -- 좋아요수
+	store_fav   INTEGER        NULL,     -- 즐겨찾기수
+	store_rdt   DATE           NULL,     -- 등록일자
+	gb_del      VARCHAR2(1)    NULL      -- 삭제여부
+
 );
 
 -- 점포 기본키
@@ -368,14 +363,16 @@ ALTER TABLE store_favorites
 
 -- 업종
 CREATE TABLE cat_store (
-	cat_id   VARCHAR2(4)   NOT NULL, -- 업종id
-	cat_name VARCHAR2(200) NULL      -- 업종명
+
+	cat_name VARCHAR2(200) NOT NULL -- 업종명
+  
 );
 
 -- 업종 기본키
 CREATE UNIQUE INDEX PK_cat_store
 	ON cat_store ( -- 업종
-		cat_id ASC -- 업종id
+		cat_name ASC -- 업종명
+
 	);
 
 -- 업종
@@ -383,7 +380,8 @@ ALTER TABLE cat_store
 	ADD
 		CONSTRAINT PK_cat_store -- 업종 기본키
 		PRIMARY KEY (
-			cat_id -- 업종id
+			cat_name -- 업종명
+
 		);
 
 -- 점포리뷰
@@ -457,26 +455,6 @@ ALTER TABLE bd_announce
 			bd_no -- 글번호
 		);
 
--- 공개여부
-CREATE TABLE store_expose_cd (
-	gb_expose VARCHAR2(1)  NOT NULL, -- 공개여부코드
-	gb_des    VARCHAR2(50) NULL      -- 공개여부설명
-);
-
--- 공개여부 기본키
-CREATE UNIQUE INDEX PK_store_expose_cd
-	ON store_expose_cd ( -- 공개여부
-		gb_expose ASC -- 공개여부코드
-	);
-
--- 공개여부
-ALTER TABLE store_expose_cd
-	ADD
-		CONSTRAINT PK_store_expose_cd -- 공개여부 기본키
-		PRIMARY KEY (
-			gb_expose -- 공개여부코드
-		);
-
 -- 커뮤니티게시판
 ALTER TABLE bd_comm
 	ADD
@@ -541,17 +519,6 @@ ALTER TABLE bd_comm_like
 		)
 		REFERENCES user_ ( -- 사용자
 			user_no -- 회원번호
-		);
-
--- 점포
-ALTER TABLE store
-	ADD
-		CONSTRAINT FK_cat_store_TO_store -- 업종 -> 점포
-		FOREIGN KEY (
-			store_cat_id -- 업종id
-		)
-		REFERENCES cat_store ( -- 업종
-			cat_id -- 업종id
 		);
 
 -- 가게사진
@@ -645,16 +612,17 @@ ALTER TABLE store_review
 -- 가게리뷰사진
 ALTER TABLE img_store_review
 	ADD
-		CONSTRAINT FK_store_re_TO_img_store_re -- 점포리뷰 -> 가게리뷰사진
+
+		CONSTRAINT FK_store_rev_TO_img_store_rev -- 점포리뷰 -> 가게리뷰사진
+
 		FOREIGN KEY (
 			re_no -- 리뷰번호
 		)
 		REFERENCES store_review ( -- 점포리뷰
 			re_no -- 리뷰번호
 		);
-		
 	
-	
+
 	
 -- 테스트용
 
@@ -670,6 +638,27 @@ INSERT INTO user_ (user_no, USER_EMAIL, USER_PASS, USER_NAME, USER_NICK, AUTH_CD
 			VALUES(user_seq.nextval, 'user1@test.com', '!Test12345', '테스트1이름', '테스트1닉네임', 'B101', SYSDATE, 'N');
 INSERT INTO user_ (user_no, USER_EMAIL, USER_PASS, USER_NAME, USER_NICK, AUTH_CD, USER_SDT, gb_del)
 			VALUES(user_seq.nextval, 'user2@test.com', '!Test12345', '테스트2이름', '테스트2닉네임', 'B101', SYSDATE, 'N');
+INSERT INTO user_ (user_no, USER_EMAIL, USER_PASS, USER_NAME, USER_NICK, AUTH_CD, USER_SDT, gb_del)
+			VALUES(user_seq.nextval, 'user3@test.com', '!Test12345', '테스트3이름', '테스트3닉네임', 'B101', SYSDATE, 'N');
+INSERT INTO user_ (user_no, USER_EMAIL, USER_PASS, USER_NAME, USER_NICK, AUTH_CD, USER_SDT, gb_del)
+			VALUES(user_seq.nextval, 'user4@test.com', '!Test12345', '테스트4이름', '테스트4닉네임', 'B101', SYSDATE, 'N');
+INSERT INTO user_ (user_no, USER_EMAIL, USER_PASS, USER_NAME, USER_NICK, AUTH_CD, USER_SDT, gb_del)
+			VALUES(user_seq.nextval, 'user5@test.com', '!Test12345', '테스트5이름', '테스트5닉네임', 'B101', SYSDATE, 'N');
+INSERT INTO user_ (user_no, USER_EMAIL, USER_PASS, USER_NAME, USER_NICK, AUTH_CD, USER_SDT, gb_del)
+			VALUES(user_seq.nextval, 'user6@test.com', '!Test12345', '테스트6이름', '테스트6닉네임', 'B101', SYSDATE, 'N');
+INSERT INTO user_ (user_no, USER_EMAIL, USER_PASS, USER_NAME, USER_NICK, AUTH_CD, USER_SDT, gb_del)
+			VALUES(user_seq.nextval, 'user7@test.com', '!Test12345', '테스트7이름', '테스트7닉네임', 'B101', SYSDATE, 'N');
+INSERT INTO user_ (user_no, USER_EMAIL, USER_PASS, USER_NAME, USER_NICK, AUTH_CD, USER_SDT, gb_del)
+			VALUES(user_seq.nextval, 'user8@test.com', '!Test12345', '테스트8이름', '테스트8닉네임', 'B101', SYSDATE, 'N');
+INSERT INTO user_ (user_no, USER_EMAIL, USER_PASS, USER_NAME, USER_NICK, AUTH_CD, USER_SDT, gb_del)
+			VALUES(user_seq.nextval, 'user9@test.com', '!Test12345', '테스트9이름', '테스트9닉네임', 'B101', SYSDATE, 'N');
+INSERT INTO user_ (user_no, USER_EMAIL, USER_PASS, USER_NAME, USER_NICK, AUTH_CD, USER_SDT, gb_del)
+			VALUES(user_seq.nextval, 'user10@test.com', '!Test12345', '테스트10이름', '테스트10닉네임', 'B101', SYSDATE, 'N');
+INSERT INTO user_ (user_no, USER_EMAIL, USER_PASS, USER_NAME, USER_NICK, AUTH_CD, USER_SDT, gb_del)
+			VALUES(user_seq.nextval, 'user11@test.com', '!Test12345', '테스트1이름', '테스트11닉네임', 'B101', SYSDATE, 'N');
+INSERT INTO user_ (user_no, USER_EMAIL, USER_PASS, USER_NAME, USER_NICK, AUTH_CD, USER_SDT, gb_del)
+			VALUES(user_seq.nextval, 'user12@test.com', '!Test12345', '테스트12이름', '테스트12닉네임', 'B101', SYSDATE, 'N');
+
 -- 테스트 커뮤글
 CREATE SEQUENCE  bd_comm_seq;
 INSERT INTO bd_comm VALUES (bd_comm_seq.nextval, 2, '리뷰','커뮤게시글테스트1제목','테스트닉네임1','커뮤게시글테스트1내용', 0, 0, SYSDATE, 'N');
@@ -685,5 +674,38 @@ INSERT INTO bd_comm VALUES (bd_comm_seq.nextval, 3, '리뷰','커뮤게시글테
 INSERT INTO bd_comm VALUES (bd_comm_seq.nextval, 3, '리뷰','커뮤게시글테스트11제목','테스트닉네임2','커뮤게시글테스트11내용', 0, 0, SYSDATE, 'N');
 INSERT INTO bd_comm VALUES (bd_comm_seq.nextval, 3, '리뷰','커뮤게시글테스트12제목','테스트닉네임2','커뮤게시글테스트12내용', 0, 0, SYSDATE, 'N');
 
-SELECT * FROM bd_comm;
-SELECT * FROM user_;
+-- 업종
+INSERT INTO CAT_STORE cs VALUES ('한식');
+INSERT INTO CAT_STORE cs VALUES ('중식');
+INSERT INTO CAT_STORE cs VALUES ('일식');
+INSERT INTO CAT_STORE cs VALUES ('분식');
+INSERT INTO CAT_STORE cs VALUES ('양식');
+INSERT INTO CAT_STORE cs VALUES ('주점');
+INSERT INTO CAT_STORE cs VALUES ('카페');
+
+-- 상점 테스트용 레코드
+CREATE SEQUENCE store_seq;
+INSERT INTO store
+	 VALUES (store_seq.nextval, '한식', '테스트매장1', '대전광역시 테스트동1', '042-1111-1111', '09:00-21:00', '15:00-17:00', 'www.test.com', '테스트1간단설명입니다.', '테스트1상세설명입니다.', 0, 0, 0, 0, sysdate, 'N');
+INSERT INTO store
+	 VALUES (store_seq.nextval, '한식', '테스트매장2', '대전광역시 테스트동2', '042-1111-1112', '09:00-21:00', '15:00-17:00', 'www.test.com', '테스트2간단설명입니다.', '테스트2상세설명입니다.', 0, 0, 0, 0, sysdate, 'N');
+INSERT INTO store
+	 VALUES (store_seq.nextval, '일식', '테스트매장3', '대전광역시 테스트동3', '042-1111-1113', '09:00-21:00', '15:00-17:00', 'www.test.com', '테스트3간단설명입니다.', '테스트3상세설명입니다.', 0, 0, 0, 0, sysdate, 'N');
+INSERT INTO store
+	 VALUES (store_seq.nextval, '일식', '테스트매장4', '대전광역시 테스트동4', '042-1111-1114', '09:00-21:00', '15:00-17:00', 'www.test.com', '테스트4간단설명입니다.', '테스트4상세설명입니다.', 0, 0, 0, 0, sysdate, 'N');
+INSERT INTO store
+	 VALUES (store_seq.nextval, '분식', '테스트매장5', '대전광역시 테스트동5', '042-1111-1115', '09:00-21:00', '15:00-17:00', 'www.test.com', '테스트5간단설명입니다.', '테스트5상세설명입니다.', 0, 0, 0, 0, sysdate, 'N');
+INSERT INTO store
+	 VALUES (store_seq.nextval, '분식', '테스트매장6', '대전광역시 테스트동6', '042-1111-1116', '09:00-21:00', '15:00-17:00', 'www.test.com', '테스트6간단설명입니다.', '테스트6상세설명입니다.', 0, 0, 0, 0, sysdate, 'N');
+INSERT INTO store
+	 VALUES (store_seq.nextval, '중식', '테스트매장7', '대전광역시 테스트동7', '042-1111-1117', '09:00-21:00', '15:00-17:00', 'www.test.com', '테스트7간단설명입니다.', '테스트7상세설명입니다.', 0, 0, 0, 0, sysdate, 'N');
+INSERT INTO store
+	 VALUES (store_seq.nextval, '중식', '테스트매장8', '대전광역시 테스트동8', '042-1111-1118', '09:00-21:00', '15:00-17:00', 'www.test.com', '테스트8간단설명입니다.', '테스트8상세설명입니다.', 0, 0, 0, 0, sysdate, 'N');
+INSERT INTO store
+	 VALUES (store_seq.nextval, '양식', '테스트매장9', '대전광역시 테스트동9', '042-1111-1119', '09:00-21:00', '15:00-17:00', 'www.test.com', '테스트9간단설명입니다.', '테스트9상세설명입니다.', 0, 0, 0, 0, sysdate, 'N');
+INSERT INTO store
+	 VALUES (store_seq.nextval, '양식', '테스트매장10', '대전광역시 테스트동10', '042-1111-1120', '09:00-21:00', '15:00-17:00', 'www.test.com', '테스트10간단설명입니다.', '테스트10상세설명입니다.', 0, 0, 0, 0, sysdate, 'N');
+INSERT INTO store
+	 VALUES (store_seq.nextval, '주점', '테스트매장11', '대전광역시 테스트동11', '042-1111-1121', '09:00-21:00', '15:00-17:00', 'www.test.com', '테스트11간단설명입니다.', '테스트11상세설명입니다.', 0, 0, 0, 0, sysdate, 'N');
+INSERT INTO store
+	 VALUES (store_seq.nextval, '카페', '테스트매장12', '대전광역시 테스트동12', '042-1111-1122', '09:00-21:00', '15:00-17:00', 'www.test.com', '테스트12간단설명입니다.', '테스트12상세설명입니다.', 0, 0, 0, 0, sysdate, 'N');

@@ -4,19 +4,15 @@
 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="user">
 
-<<<<<<< Updated upstream
-
 	<select id="getUserNick" parameterClass="String" resultClass = "String">
 		SELECT user_nick FROM user_ WHERE user_nick = #user_nick#
 	</select>
-	<insert id="insertUser" parameterClass="userVO">
-=======
+
 	<select id="getUser_nick" parameterClass="String" resultClass = "String">
 		SELECT user_nick FROM user_ WHERE user_nick = #user_nick#
 	</select>
 	
 	<insert id="insertUser" parameterClass="UserVO">
->>>>>>> Stashed changes
 		
 		<selectKey keyProperty="user_no" resultClass="int">
 			SELECT user_seq.nextval user_no 
@@ -42,14 +38,7 @@
 							,'N'
 							)
 	</insert>
-<<<<<<< Updated upstream
 
-	<select id="selectUserList" resultClass="userVO">
-
-=======
-	
-	
->>>>>>> Stashed changes
 	<select id="selectUserList" parameterClass="Map" resultClass="userVO">
 
 		SELECT user_no
@@ -88,6 +77,5 @@
 		   SET gb_del = 'Y'
 		 WHERE user_no = #user_no#
 	</update>
-	
 	
 </sqlMap>

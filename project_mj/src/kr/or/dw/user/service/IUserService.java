@@ -1,5 +1,7 @@
 package kr.or.dw.user.service;
 
+import kr.or.dw.user.vo.UserVO;
+
 public interface IUserService {
 
 
@@ -10,8 +12,5 @@ public interface IUserService {
 	public UserVO loginUser(String user_email);
 
 	
-
-
-=======
 
 }
