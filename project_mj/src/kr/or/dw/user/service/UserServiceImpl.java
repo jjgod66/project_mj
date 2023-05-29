@@ -20,14 +20,19 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public String getUserNick(String user_nick) {
-		
-		return dao.getUserNick(user_nick);
+	public int insertUser(UserVO vo) {
+		return dao.insertUser(vo);
 	}
 
 	@Override
-	public int insertUser(UserVO vo) {
-		return dao.insertUser(vo);
+	public UserVO loginUser(String user_email) {
+		return dao.loginUser(user_email);
+	}
+
+	@Override
+	public String getUser_nick(String user_nick) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

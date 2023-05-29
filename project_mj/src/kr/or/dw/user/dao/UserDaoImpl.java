@@ -20,14 +20,14 @@ public class UserDaoImpl implements IUserDao {
 		return dao;
 	}
 
-	public String getUserNick(String user_nick) {
-		String user_Nick = null;
+	public String getUser_Nick(String user_nick) {
+		String nick = null;
 		try {
-			user_Nick = (String)client.queryForObject("user.getUserNick", user_nick);
+			nick = (String)client.queryForObject("user.getUserNick", user_nick);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return user_Nick;
+		return nick;
 	}
 
 	public int insertUser(UserVO vo) {
@@ -41,5 +41,17 @@ public class UserDaoImpl implements IUserDao {
 		}
 	
 		return result;
+	}
+
+	public UserVO loginUser(String user_email) {
+		
+		UserVO vo = null;
+		try {
+			vo = (UserVO)client.queryForObject("user.loginUser", user_email);
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		return vo;
 	}
 }

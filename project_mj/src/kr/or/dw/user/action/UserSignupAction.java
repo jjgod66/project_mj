@@ -51,7 +51,7 @@ public class UserSignupAction implements IAction {
 		int user_no = service.insertUser(vo);
 		req.setAttribute("user_no", user_no);
 		
-		return "/user/joinSuccess.jsp";
+		return "/user/userSignupSuccess.jsp";
 	}
 
 }

@@ -27,7 +27,7 @@ public class UserNickCheckAction implements IAction{
 		String user_nick = req.getParameter("user_nick");		
 		IUserService service = UserServiceImpl.getInstance();
 
-		user_nick = service.getUserNick(user_nick);
+		user_nick = service.getUser_nick(user_nick);
 		
 		Gson gson = new Gson();
 		String result = null;
