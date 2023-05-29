@@ -17,11 +17,16 @@ public class UserDaoImpl implements IUserDao {
 		return dao;
 	}
 
+<<<<<<< Updated upstream
 
 	public String getUser_Nick(String user_nick) {
+=======
+	@Override
+	public String getUser_nick(String user_nick) {
+>>>>>>> Stashed changes
 		String nick = null;
 		try {
-			nick = (String)client.queryForObject("user.getUserNick", user_nick);
+			nick = (String)client.queryForObject("user.getUser_nick", user_nick);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

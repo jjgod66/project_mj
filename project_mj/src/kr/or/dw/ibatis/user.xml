@@ -4,36 +4,52 @@
 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="user">
 
+<<<<<<< Updated upstream
 
 	<select id="getUserNick" parameterClass="String" resultClass = "String">
 		SELECT user_nick FROM user_ WHERE user_nick = #user_nick#
 	</select>
 	<insert id="insertUser" parameterClass="userVO">
+=======
+	<select id="getUser_nick" parameterClass="String" resultClass = "String">
+		SELECT user_nick FROM user_ WHERE user_nick = #user_nick#
+	</select>
+	
+	<insert id="insertUser" parameterClass="UserVO">
+>>>>>>> Stashed changes
 		
 		<selectKey keyProperty="user_no" resultClass="int">
-			SELECT t_user_seq.nextVal user_no FROM dual
+			SELECT user_seq.nextval user_no 
+			FROM dual
 		</selectKey>
 		
 		INSERT INTO user_ (
 							user_no
 							,user_email
 							,user_pass
-							,user_nick
 							,user_name
+							,user_nick
+							,auth_cd
+							,gb_del
 							)
 					VALUES (
 							#user_no#
 							,#user_email#
 							,#user_pass#
-							,#user_nick#
 							,#user_name#
-							,'A101'
+							,#user_nick#
+							,'B101'
 							,'N'
 							)
 	</insert>
+<<<<<<< Updated upstream
 
 	<select id="selectUserList" resultClass="userVO">
 
+=======
+	
+	
+>>>>>>> Stashed changes
 	<select id="selectUserList" parameterClass="Map" resultClass="userVO">
 
 		SELECT user_no
@@ -55,6 +71,10 @@
 				  		) v2
 				 WHERE rnum <![CDATA[ >= ]]> #start#
 				) u
+	</select>
+	
+	<select id="loginUser" parameterClass="String" resultClass="userVO">
+		SELECT * FROM user_ WHERE user_email = #user_email#
 	</select>
 	
 	<select id="selectUserCount" resultClass="int">

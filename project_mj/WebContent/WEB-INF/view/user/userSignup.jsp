@@ -26,7 +26,7 @@ $(function(){
 	});
 	
 	// email 정규식 체크
-	let email = $("input[name=email]");
+	let email = $("input[name=user_email]");
 	email.on("keyup", function() {
 		let emailVal = email.val().trim();
 		
@@ -42,7 +42,7 @@ $(function(){
 	});
 	
 	// password 정규식 체크 - 영문 소문자, 대문자, 특수문자, 숫자가 반드시 하나 이상씩 입력
-	let pass = $("input[name=pass]");
+	let pass = $("input[name=user_pass]");
 	pass.on("keyup",  function () {
 		passVal = pass.val().trim();
 		
@@ -126,7 +126,7 @@ $(function(){
 						<h3 class="card-title">Sign Up</h3>
 					</div>
 					<form method="post"
-						action="<%=request.getContextPath()%>/user/userSignup.do"
+						action="<%=request.getContextPath()%>/user/insertUser.do"
 						id="joinForm">
 						<div class="card-body">
 							<div class="input-group mb-3">
@@ -136,7 +136,7 @@ $(function(){
 									</span>
 								</div>
 								<input type="email" class="form-control" placeholder="email"
-									name="email" required> <span
+									name="user_email" required> <span
 									class="error invalid-feedback"> 이메일 형식을 맞춰서 작성해주세요. </span>
 							</div>
 							<div class="input-group mb-3">
@@ -146,7 +146,7 @@ $(function(){
 									</span>
 								</div>
 								<input type="password" class="form-control"
-									placeholder="password" name="pass" required> <span
+									placeholder="password" name="user_pass" required> <span
 									class="error invalid-feedback"> 비밀번호는 영문 소문자, 대문자, 숫자,
 									특수문자가 최소 1개씩 입력되어야 합니다. </span>
 							</div>
@@ -181,7 +181,7 @@ $(function(){
 										class="fas fa-solid fa-user"></i></span>
 								</div>
 								<input type="text" class="form-control" placeholder="name"
-									name="name" required>
+									name="user_name" required>
 							</div>
 							
 							<div class="input-group input-group-sm">
