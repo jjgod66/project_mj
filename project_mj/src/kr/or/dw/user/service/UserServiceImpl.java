@@ -32,8 +32,7 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public String getUser_nick(String user_nick) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.getUser_nick(user_nick);
 	}
 
 

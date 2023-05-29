@@ -28,6 +28,11 @@ public class UserSignupAction implements IAction {
 			throws ServletException, IOException {
 
 		UserVO vo = new UserVO();
+//		vo.setUser_email(req.getParameter("user_email"));
+//		vo.setUser_pass(req.getParameter("user_pass"));
+//		vo.setUser_nick(req.getParameter("user_nick"));
+//		vo.setUser_name(req.getParameter("user_name"));
+
 		
 		BeanUtils bean = new BeanUtils();
 		

@@ -6,7 +6,7 @@
 	int user_no = (int)request.getAttribute("user_no");
 %>
 	<script>
-	
+		alert("<%=user_no%>번 회원님 가입을 축하합니다!!");
 		lacation.href="<%= request.getContextPath()%>/user/userLoginForm.do"
 	
 	</script>	

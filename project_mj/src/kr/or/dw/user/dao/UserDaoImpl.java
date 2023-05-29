@@ -21,10 +21,11 @@ public class UserDaoImpl implements IUserDao {
 	}
 
 	@Override
-	public String getUser_Nick(String user_nick) {
+	public String getUser_nick(String user_nick) {
+
 		String nick = null;
 		try {
-			nick = (String)client.queryForObject("user.getUserNick", user_nick);
+			nick = (String)client.queryForObject("user.getUser_nick", user_nick);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

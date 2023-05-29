@@ -4,10 +4,11 @@ import kr.or.dw.user.vo.UserVO;
 
 public interface IUserDao {
 
-	String getUser_Nick(String user_nick);
+	public int insertUser(UserVO vo);
 
-	int insertUser(UserVO vo);
+	public UserVO loginUser(String user_email);
 
-	UserVO loginUser(String user_email);
+	public String getUser_nick(String user_nick);
+
 	
 }
