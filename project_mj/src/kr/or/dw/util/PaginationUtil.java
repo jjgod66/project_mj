@@ -57,7 +57,7 @@ public class PaginationUtil {
 		
 		StringBuilder stringBuilder = new StringBuilder();
 		StringBuilder paramStr = new StringBuilder();
-		
+		String user_no = (String) req.getAttribute("user_no");
 		// boardMain.do?page=볼페이지
 		for (String param : params) {
 			paramStr.append("&" + param + "=" + (req.getParameter(param) == null ? "" : req.getParameter(param)));
