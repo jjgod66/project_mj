@@ -2,9 +2,11 @@ package kr.or.dw.admin.dao;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
+import kr.or.dw.comm.vo.CommVO;
 import kr.or.dw.user.vo.UserVO;
 import kr.or.dw.util.BuildSqlMapClient;
 
@@ -22,10 +24,10 @@ public class AdminDaoImpl implements IAdminDao {
 	}
 
 	@Override
-	public List<UserVO> selectUserList() {
+	public List<UserVO> selectUserList(Map<String, Object> paramMap) {
 		List<UserVO> userList = null;
 		try {
-			userList = client.queryForList("user.selectUserList");
+			userList = client.queryForList("user.selectUserList", paramMap);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -43,5 +45,31 @@ public class AdminDaoImpl implements IAdminDao {
 		}
 		
 		return result;
+	}
+
+	@Override
+	public int selectUserCount() {
+		int count = 0;
+		
+		try {
+			count = (int) client.queryForObject("user.selectUserCount");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return count;
+	}
+
+	@Override
+	public List<CommVO> selectUserCommList(Map<String, Object> paramMap) {
+		List<CommVO> selectUserCommList = null;
+		
+		try {
+			selectUserCommList = client.queryForList("comm.selectUserCommList", paramMap);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println("q :" + selectUserCommList);
+		return selectUserCommList;
 	}
 }
