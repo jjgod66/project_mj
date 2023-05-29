@@ -27,29 +27,13 @@ public class UserCommListViewAction implements IAction {
 		
 		int user_no = 0;
 		user_no = Integer.parseInt(req.getParameter("user_no"));
+		System.out.println(user_no);
 		IAdminService service = AdminServiceImpl.getInstance();
 		
-		// 페이징처리
-		Map<String, Integer> pagingConfigMap = null;
-		PaginationUtil pagination = new PaginationUtil();
-		String pageParam = req.getParameter("page");	// 사용자가 선택한 페이지 번호
-		int page = (pageParam == null ? 1 : Integer.parseInt(pageParam));
-		int totalCount = service.selectUserCount();
-		pagination.setConfig(page, 5, 5, totalCount);
-		pagingConfigMap = pagination.getConfig();
+		List<CommVO> userCommList = (List<CommVO>)service.selectUserCommList(user_no);
 		
-		// ibatis에서 받을 parameterMap 을 만든다.
-		Map<String, Object> paramMap = new HashMap<>();
-		paramMap.put("start", pagingConfigMap.get("start"));
-		paramMap.put("end", pagingConfigMap.get("end"));
-		paramMap.put("user_no", user_no);
-		
-		List<CommVO> userCommList = (List<CommVO>)service.selectUserCommList(paramMap);
-		
-		System.out.println(userCommList);
 		req.setAttribute("user_no", user_no);
 		req.setAttribute("userCommList", userCommList);
-		req.setAttribute("pagingConfigMap", pagination);
 		
 		return "/admin/userCommListView.jsp";
 	}

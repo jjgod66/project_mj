@@ -2,7 +2,7 @@ package kr.or.dw.store.vo;
 
 public class StoreVO {
 	private int store_no;
-	private String store_cat_id;
+	private String store_cat;
 	private String store_name;
 	private String store_addr;
 	private String store_tel;
@@ -24,11 +24,11 @@ public class StoreVO {
 	public void setStore_no(int store_no) {
 		this.store_no = store_no;
 	}
-	public String getStore_cat_id() {
-		return store_cat_id;
+	public String getStore_cat() {
+		return store_cat;
 	}
-	public void setStore_cat_id(String store_cat_id) {
-		this.store_cat_id = store_cat_id;
+	public void setStore_cat(String store_cat) {
+		this.store_cat = store_cat;
 	}
 	public String getStore_name() {
 		return store_name;

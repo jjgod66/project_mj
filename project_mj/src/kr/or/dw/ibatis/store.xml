@@ -4,4 +4,77 @@
 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="store">
 
+	<select id="selectStoreCatList" resultClass="String">
+		SELECT * FROM CAT_STORE
+	</select>
+	
+	<insert id="insertStore" parameterClass="storeVO">
+	
+		<selectKey keyProperty="store_no" resultClass="int">
+			SELECT store_seq.nextVal store_no From dual
+		</selectKey>
+			INSERT INTO store (
+								store_no
+							   ,store_name
+							   ,cat_name
+							   ,store_addr
+							   ,store_tel
+							   ,store_hour
+							   ,store_break
+							   ,store_url
+							   ,store_des_s
+							   ,store_des_d
+							   ,store_rate
+							   ,store_views
+							   ,store_like
+							   ,store_fav
+							   ,store_rdt
+							   ,gb_del
+							  )
+					   VALUES (
+					   		  	#store_no#
+					   		   ,#store_name#
+					   		   ,#store_cat#
+					   		   ,#store_addr#
+					   		   ,#store_tel#
+					   		   ,#store_hour#
+					   		   ,#store_break#
+					   		   ,#store_url#
+					   		   ,#store_des_s#
+					   		   ,#store_des_d#
+					   		   ,'0'
+					   		   ,'0'
+					   		   ,'0'
+					   		   ,'0'
+					   		   ,SYSDATE
+					   		   ,'W'
+					   		  )
+	</insert>
+	
+	<select id="selectStoreList" parameterClass="Map" resultClass="storeVO">
+		SELECT store_no
+		 	  ,cat_name
+		 	  ,store_name
+		 	  ,gb_del
+		  FROM (
+				SELECT *
+				  FROM (
+				  		SELECT rownum rnum, v1.*
+						  FROM (
+						  		SELECT *
+								  FROM store
+								 WHERE gb_del != 'Y'
+								 ORDER BY store_no
+						  		) v1
+						 WHERE rownum <![CDATA[ <= ]]> #end#
+				  		) v2
+				 WHERE rnum <![CDATA[ >= ]]> #start#
+				) s
+	</select>
+	
+	<select id="selectStoreCount" resultClass="int">
+		SELECT COUNT(*) cnt
+		  FROM store
+		 WHERE gb_del != 'Y'
+	</select>
 </sqlMap>

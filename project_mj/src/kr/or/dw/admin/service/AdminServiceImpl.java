@@ -6,6 +6,7 @@ import java.util.Map;
 import kr.or.dw.admin.dao.AdminDaoImpl;
 import kr.or.dw.admin.dao.IAdminDao;
 import kr.or.dw.comm.vo.CommVO;
+import kr.or.dw.store.vo.StoreVO;
 import kr.or.dw.user.vo.UserVO;
 
 public class AdminServiceImpl implements IAdminService {
@@ -37,7 +38,27 @@ public class AdminServiceImpl implements IAdminService {
 	}
 
 	@Override
-	public List<CommVO> selectUserCommList(Map<String, Object> paramMap) {
-		return dao.selectUserCommList(paramMap);
+	public List<CommVO> selectUserCommList(int user_no) {
+		return dao.selectUserCommList(user_no);
+	}
+
+	@Override
+	public List<String> selectStoreCatList() {
+		return dao.selectStoreCatList();
+	}
+
+	@Override
+	public int insertStore(StoreVO storeVo) {
+		return dao.insertStore(storeVo);
+	}
+
+	@Override
+	public List<StoreVO> selectStoreList(Map<String, Object> paramMap) {
+		return dao.selectStoreList(paramMap);
+	}
+
+	@Override
+	public int selectStoreCount() {
+		return dao.selectStoreCount();
 	}
 }
