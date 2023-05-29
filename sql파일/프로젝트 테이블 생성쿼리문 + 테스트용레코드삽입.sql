@@ -6,7 +6,6 @@ DROP TABLE user_;
 
 -- 권한코드
 DROP TABLE auth;
-
 -- 태그
 DROP TABLE tag_info;
 
@@ -237,6 +236,7 @@ ALTER TABLE bd_comm_like
 
 -- 점포
 CREATE TABLE store (
+
 	store_no    INTEGER        NOT NULL, -- 점포번호
 	cat_name    VARCHAR2(200)  NOT NULL, -- 업종명
 	store_name  VARCHAR2(100)  NULL,     -- 상호명
@@ -253,6 +253,7 @@ CREATE TABLE store (
 	store_fav   INTEGER        NULL,     -- 즐겨찾기수
 	store_rdt   DATE           NULL,     -- 등록일자
 	gb_del      VARCHAR2(1)    NULL      -- 삭제여부
+
 );
 
 -- 점포 기본키
@@ -362,13 +363,16 @@ ALTER TABLE store_favorites
 
 -- 업종
 CREATE TABLE cat_store (
+
 	cat_name VARCHAR2(200) NOT NULL -- 업종명
+  
 );
 
 -- 업종 기본키
 CREATE UNIQUE INDEX PK_cat_store
 	ON cat_store ( -- 업종
 		cat_name ASC -- 업종명
+
 	);
 
 -- 업종
@@ -377,6 +381,7 @@ ALTER TABLE cat_store
 		CONSTRAINT PK_cat_store -- 업종 기본키
 		PRIMARY KEY (
 			cat_name -- 업종명
+
 		);
 
 -- 점포리뷰
@@ -607,7 +612,9 @@ ALTER TABLE store_review
 -- 가게리뷰사진
 ALTER TABLE img_store_review
 	ADD
+
 		CONSTRAINT FK_store_rev_TO_img_store_rev -- 점포리뷰 -> 가게리뷰사진
+
 		FOREIGN KEY (
 			re_no -- 리뷰번호
 		)
@@ -615,7 +622,7 @@ ALTER TABLE img_store_review
 			re_no -- 리뷰번호
 		);
 	
-	
+
 	
 -- 테스트용
 
@@ -651,7 +658,7 @@ INSERT INTO user_ (user_no, USER_EMAIL, USER_PASS, USER_NAME, USER_NICK, AUTH_CD
 			VALUES(user_seq.nextval, 'user11@test.com', '!Test12345', '테스트1이름', '테스트11닉네임', 'B101', SYSDATE, 'N');
 INSERT INTO user_ (user_no, USER_EMAIL, USER_PASS, USER_NAME, USER_NICK, AUTH_CD, USER_SDT, gb_del)
 			VALUES(user_seq.nextval, 'user12@test.com', '!Test12345', '테스트12이름', '테스트12닉네임', 'B101', SYSDATE, 'N');
-		
+
 -- 테스트 커뮤글
 CREATE SEQUENCE  bd_comm_seq;
 INSERT INTO bd_comm VALUES (bd_comm_seq.nextval, 2, '리뷰','커뮤게시글테스트1제목','테스트닉네임1','커뮤게시글테스트1내용', 0, 0, SYSDATE, 'N');

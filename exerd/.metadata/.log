@@ -133,8 +133,7 @@ Command-line arguments:  -os win32 -ws win32 -arch x86
 
 !ENTRY org.eclipse.osgi 2 1 2023-05-25 20:02:10.576
 !MESSAGE NLS unused message: ToggleColumnVisibilityHandler_5 in: com.tomato.exerd.handler.messages
-<<<<<<< Updated upstream
-=======
+
 !SESSION 2023-05-28 22:34:18.058 -----------------------------------------------
 eclipse.buildId=M20090211-1700
 java.version=1.8.0_60
@@ -204,87 +203,3 @@ Command-line arguments:  -os win32 -ws win32 -arch x86
 
 !ENTRY org.eclipse.osgi 2 1 2023-05-28 22:34:25.447
 !MESSAGE NLS unused message: ToggleColumnVisibilityHandler_5 in: com.tomato.exerd.handler.messages
-!SESSION 2023-05-29 11:43:23.118 -----------------------------------------------
-eclipse.buildId=M20090211-1700
-java.version=1.8.0_60
-java.vendor=Oracle Corporation
-BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=ko_KR
-Command-line arguments:  -os win32 -ws win32 -arch x86
-
-!ENTRY org.eclipse.osgi 2 1 2023-05-29 11:43:24.855
-!MESSAGE NLS unused message: OpenResourceDialog_openButton_text in: org.eclipse.ui.internal.ide.messages
-
-!ENTRY org.eclipse.osgi 2 1 2023-05-29 11:43:24.856
-!MESSAGE NLS unused message: OpenResourceDialog_openWithMenu_label in: org.eclipse.ui.internal.ide.messages
-
-!ENTRY org.eclipse.osgi 2 1 2023-05-29 11:43:24.856
-!MESSAGE NLS unused message: OpenResourceDialog_openWithButton_toolTip in: org.eclipse.ui.internal.ide.messages
-
-!ENTRY org.eclipse.osgi 2 1 2023-05-29 11:43:24.856
-!MESSAGE NLS unused message: CleanDialog_cleanSelectedTaskName in: org.eclipse.ui.internal.ide.messages
-
-!ENTRY org.eclipse.osgi 2 1 2023-05-29 11:43:24.856
-!MESSAGE NLS unused message: RecentWorkspacesPreferencePage_PromptAtStartup_label in: org.eclipse.ui.internal.ide.messages
-
-!ENTRY org.eclipse.osgi 2 1 2023-05-29 11:43:24.857
-!MESSAGE NLS unused message: RecentWorkspacesPreferencePage_RemoveButton_label in: org.eclipse.ui.internal.ide.messages
-
-!ENTRY org.eclipse.osgi 2 1 2023-05-29 11:43:26.578
-!MESSAGE NLS unused message: url_couldNotResolve_projectDoesNotExist in: org.eclipse.core.internal.utils.messages
-
-!ENTRY org.eclipse.core.resources 2 10035 2023-05-29 11:43:26.615
-!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
-
-!ENTRY org.eclipse.osgi 2 1 2023-05-29 11:43:26.762
-!MESSAGE NLS unused message: Shortcuts_shortcutTab in: org.eclipse.ui.internal.messages
-
-!ENTRY org.eclipse.osgi 2 1 2023-05-29 11:43:26.763
-!MESSAGE NLS unused message: Shortcuts_selectShortcutsLabel in: org.eclipse.ui.internal.messages
-
-!ENTRY org.eclipse.osgi 2 1 2023-05-29 11:43:26.763
-!MESSAGE NLS unused message: Shortcuts_availableMenus in: org.eclipse.ui.internal.messages
-
-!ENTRY org.eclipse.osgi 2 1 2023-05-29 11:43:26.763
-!MESSAGE NLS unused message: Shortcuts_availableCategories in: org.eclipse.ui.internal.messages
-
-!ENTRY org.eclipse.osgi 2 1 2023-05-29 11:43:26.763
-!MESSAGE NLS unused message: Shortcuts_allShortcuts in: org.eclipse.ui.internal.messages
-
-!ENTRY org.eclipse.osgi 2 1 2023-05-29 11:43:26.763
-!MESSAGE NLS unused message: Util_listNull in: org.eclipse.ui.internal.messages
-
-!ENTRY org.eclipse.osgi 2 1 2023-05-29 11:43:26.763
-!MESSAGE NLS unused message: OpenBrowserHandler_NoInfoDialogTitle in: org.eclipse.ui.internal.messages
-
-!ENTRY org.eclipse.osgi 2 1 2023-05-29 11:43:26.764
-!MESSAGE NLS unused message: AboutFeaturesDialog_SimpleTitle in: org.eclipse.ui.internal.messages
-
-!ENTRY org.eclipse.osgi 2 1 2023-05-29 11:43:29.148
-!MESSAGE NLS unused message: BinaryDumpHandler_1 in: com.tomato.exerd.handler.messages
-
-!ENTRY org.eclipse.osgi 2 1 2023-05-29 11:43:29.148
-!MESSAGE NLS unused message: ConvertToXMLHandler_1 in: com.tomato.exerd.handler.messages
-
-!ENTRY org.eclipse.osgi 2 1 2023-05-29 11:43:29.148
-!MESSAGE NLS unused message: SelectHandler_11 in: com.tomato.exerd.handler.messages
-
-!ENTRY org.eclipse.osgi 2 1 2023-05-29 11:43:29.148
-!MESSAGE NLS unused message: ToggleColumnVisibilityHandler_4 in: com.tomato.exerd.handler.messages
-
-!ENTRY org.eclipse.osgi 2 1 2023-05-29 11:43:29.149
-!MESSAGE NLS unused message: ToggleColumnVisibilityHandler_5 in: com.tomato.exerd.handler.messages
-
-!ENTRY org.eclipse.core.jobs 4 2 2023-05-29 11:49:47.315
-!MESSAGE "Save ecore file" 중에 내부 오류가 발생했습니다.
-!STACK 0
-org.eclipse.emf.common.util.BasicEList$BasicIndexOutOfBoundsException: index=0, size=0
-	at org.eclipse.emf.common.util.BasicEList.remove(BasicEList.java:939)
-	at org.eclipse.emf.common.notify.impl.NotifyingListImpl.doRemove(NotifyingListImpl.java:762)
-	at org.eclipse.emf.common.notify.impl.NotifyingListImpl.basicRemove(NotifyingListImpl.java:1046)
-	at org.eclipse.emf.ecore.impl.BasicEObjectImpl.eSetResource(BasicEObjectImpl.java:950)
-	at org.eclipse.emf.ecore.resource.impl.ResourceImpl$ContentsEList.inverseAdd(ResourceImpl.java:414)
-	at org.eclipse.emf.common.notify.impl.NotifyingListImpl.addUnique(NotifyingListImpl.java:318)
-	at org.eclipse.emf.common.util.BasicEList.add(BasicEList.java:626)
-	at com.tomato.exerd.model.EcoreResourceHelper$SaveFileJob.run(EcoreResourceHelper.java:212)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
->>>>>>> Stashed changes

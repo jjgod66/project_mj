@@ -12,7 +12,7 @@ $(function(){
 		console.log($("#joinForm").find(".is-invalid").length)
 		if (!n_check) {
 			alert("닉네임 중복확인 체크를 해주세요.");
-			$("input[name=nick]").focus();
+			$("input[name=user_nick]").focus();
 			e.preventDefault();
 			return;
 		};
@@ -70,7 +70,7 @@ $(function(){
 	let nickCheck = false;
 	
 	// 닉네임 정규식 체크
-	let nick = $("input[name=nick]");
+	let nick = $("input[name=user_nick]");
 	nick.on("keyup", function () {
 		nickVal = nick.val().trim();
 		
@@ -91,7 +91,7 @@ $(function(){
 			$.ajax({
 				url : "<%=request.getContextPath()%>/user/nickCheck.do",
 				method : "post",
-				data : {"nick" : nickVal},
+				data : {"user_nick" : nickVal},
 				dataType : "json",
 				success : function (res) {
 					if(res == "사용가능한 닉네임입니다.") {
@@ -126,7 +126,7 @@ $(function(){
 						<h3 class="card-title">Sign Up</h3>
 					</div>
 					<form method="post"
-						action="<%=request.getContextPath()%>/user/insertUser.do"
+						action="<%=request.getContextPath()%>/user/userSignup.do"
 						id="joinForm">
 						<div class="card-body">
 							<div class="input-group mb-3">
@@ -168,7 +168,7 @@ $(function(){
 									</span>
 								</div>
 								<input type="text" class="form-control" placeholder="nickname"
-									name="nick" required> <span
+									name="user_nick" required> <span
 									class="error invalid-feedback"> 닉네임은 특수문자를 제외한 3-13 자리로
 									입력해주세요. </span> <span class="input-group-append">
 									<button type="button" class="btn btn-info btn-flat"
