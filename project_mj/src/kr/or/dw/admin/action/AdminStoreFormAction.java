@@ -41,7 +41,7 @@ public class AdminStoreFormAction implements IAction {
 		paramMap.put("end", pagingConfigMap.get("end"));
 		
 		List<StoreVO> storeList = service.selectStoreList(paramMap);
-		
+		System.out.println(storeList.get(0).getCat_name());
 		req.setAttribute("storeList", storeList);
 		req.setAttribute("pagingConfigMap", pagination);
 		
