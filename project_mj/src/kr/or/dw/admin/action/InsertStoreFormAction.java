@@ -22,7 +22,6 @@ public class InsertStoreFormAction implements IAction {
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		IAdminService service = AdminServiceImpl.getInstance();
 		List<String> storeCatList = service.selectStoreCatList();
-		System.out.println(storeCatList);
 		req.setAttribute("storeCatList", storeCatList);
 		return "/admin/insertStoreForm.jsp";
 	}

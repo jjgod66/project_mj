@@ -34,7 +34,7 @@
 					   VALUES (
 					   		  	#store_no#
 					   		   ,#store_name#
-					   		   ,#store_cat#
+					   		   ,#cat_name#
 					   		   ,#store_addr#
 					   		   ,#store_tel#
 					   		   ,#store_hour#
