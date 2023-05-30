@@ -20,8 +20,21 @@
 		href="<%=request.getContextPath()%>/assets/dist/css/adminlte.min.css">
 	<script src="<%=request.getContextPath()%>/assets/plugins/jquery/jquery.js"></script>
 	<%
-		UserVO userVO = (UserVO)session.getAttribute("userVO");
+		UserVO userVO = (UserVO)session.getAttribute("UserVO");
+		if(userVO != null){
 	%>
+	 
+	  <script type="text/javascript">
+  	$(function(){
+  		
+		$('#loginCheck').text('로그아웃');  				
+		$('#loginCheck').attr('href', '<%= request.getContextPath()%>/user/userLogout.do');  
+<%-- 		$('#signUp').find('p').text('Profile');
+ 		$('#signUp').find('i').attr('class', 'nav-icon fas fa-solid fa-id-card'); 
+		$('#signUp').attr('href', '<%= request.getContextPath()%>/user/myPage.do'); --%>
+  	})
+  </script>
+<%	}	%>
   </head>
 
 <body class="layout-top-nav" style="height: auto;">
@@ -71,14 +84,18 @@
 
 				<ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
 
-					<li class="nav-item"><a href="<%=gcp%>/user/userLoginForm.do" class="nav-link">로그인  </a>
-						</li>
+					<li class="nav-item">
+					<a href="<%= request.getContextPath() %>/user/userLoginForm.do" class="nav-link" id = "loginCheck">로그인  </a>
+					</li>
+					
 
-					<li class="nav-item"><a href="<%=gcp%>/user/userSignupForm.do" class="nav-link">회원가입  </a>
-						</li>
+					<li class="nav-item">
+					<a href="<%= request.getContextPath() %>/user/userSignupForm.do" class="nav-link" id="signUp">회원가입  </a>
+					</li>
 						
-					<li class="nav-item"><a href="<%=gcp%>/cs/csMain.do" class="nav-link">고객센터  </a>
-						</li>
+					<li class="nav-item">
+					<a href="<%=gcp%>/cs/csMain.do" class="nav-link">고객센터  </a>
+					</li>
 				</ul>
 			</div>
 		</nav>
