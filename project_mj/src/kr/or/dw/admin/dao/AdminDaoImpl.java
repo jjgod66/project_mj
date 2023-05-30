@@ -123,4 +123,30 @@ public class AdminDaoImpl implements IAdminDao {
 		
 		return count;
 	}
+
+	@Override
+	public StoreVO selectStoreView(int store_no) {
+		StoreVO storeVo = null;
+		
+		try {
+			storeVo = (StoreVO) client.queryForObject("store.selectStoreView", store_no);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return storeVo;
+	}
+
+	@Override
+	public int updateStore(StoreVO storeVo) {
+		int result = 0;
+		
+		try {
+			result = client.update("store.updateStore", storeVo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 }

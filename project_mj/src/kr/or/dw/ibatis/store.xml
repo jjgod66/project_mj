@@ -77,4 +77,24 @@
 		  FROM store
 		 WHERE gb_del != 'Y'
 	</select>
+	
+	<select id="selectStoreView" parameterClass="int" resultClass="storeVO">
+		SELECT *
+		  FROM store
+		 WHERE store_no = #store_no#
+	</select>
+	
+	<update id="updateStore" parameterClass="storeVO">
+		UPDATE store SET store_name = #store_name#
+					    ,cat_name = #cat_name#
+					    ,store_addr = #store_addr#
+					    ,store_tel = #store_tel#
+					    ,store_hour = #store_hour#
+					    ,store_break = #store_break#
+					    ,store_url = #store_url#
+					    ,store_des_s = #store_des_s#
+					    ,store_des_d = #store_des_d#
+	     WHERE store_no = #store_no#
+	</update>
+	
 </sqlMap>
