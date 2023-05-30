@@ -67,5 +67,18 @@ public interface IAdminDao {
 	 * @return 결과값 1
 	 */
 	int updateStore(StoreVO storeVo);
+	
+	/**
+	 * 태그 리스트를 불러온다.
+	 * @return List<String>
+	 */
+	List<String> selectTagList();
+	
+	/**
+	 * 태그를 추가한다.
+	 * @param tagName
+	 * @return
+	 */
+	int insertTagName(String tagName);
 
 }

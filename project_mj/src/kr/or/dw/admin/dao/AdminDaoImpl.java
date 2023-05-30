@@ -149,4 +149,32 @@ public class AdminDaoImpl implements IAdminDao {
 		
 		return result;
 	}
+
+	@Override
+	public List<String> selectTagList() {
+		List<String> tagList = null;
+		
+		try {
+			tagList = client.queryForList("store.selectTagList");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return tagList;
+	}
+
+	@Override
+	public int insertTagName(String tagName) {
+		int result = 0;
+		
+		try {
+			Object res = client.insert("store.insertTagName", tagName);
+			if (res == null) {
+				result = 1;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+			return result;
+	}
 }

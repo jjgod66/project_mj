@@ -97,4 +97,11 @@
 	     WHERE store_no = #store_no#
 	</update>
 	
+	<select id="selectTagList" resultClass="String">
+		SELECT * FROM tag_info ORDER BY store_tagnm
+	</select>
+	
+	<insert id="insertTagName" parameterClass="String">
+		INSERT INTO tag_info ( store_tagnm ) VALUES ( #tagName# )
+	</insert>
 </sqlMap>

@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
 
-
 <div class="card">
 	<div class="card-header">
 		<h3 class="card-title">Carousel</h3>
