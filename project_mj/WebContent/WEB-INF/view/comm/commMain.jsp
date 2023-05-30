@@ -1,17 +1,20 @@
+<%@page import="kr.or.dw.util.PaginationUtil"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="kr.or.dw.comm.vo.CommVO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
-
+<%
+	List<CommVO> boardList = (List<CommVO>) request.getAttribute("CommList");
+%>
 
 <section class="content">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-12">
-				
-
 				<div class="card">
-					
-
 					<div class="card-body">
 						<div id="example1_wrapper"
 							class="dataTables_wrapper dt-bootstrap4">
@@ -26,10 +29,19 @@
 											tabindex="0" aria-controls="example1" type="button">
 											<span>좋아요 </span>
 										</button>
-										
-										
-										
-										
+
+
+										<%
+											if(userVO != null) {
+										%>
+										<a class="btn btn-primary btn-sm"
+											href="<%=request.getContextPath()%>/board/boardInsert.do">글작성</a>
+										<%
+											}
+										%>
+
+
+
 									</div>
 								</div>
 								<div class="col-sm-12 col-md-6">
@@ -47,14 +59,18 @@
 										aria-describedby="example1_info">
 										<thead>
 											<tr>
+												
+												<th class="sorting" tabindex="0" aria-controls="example1"
+													rowspan="1" colspan="1"
+													aria-label="Browser: activate to sort column ascending">제목 </th>
+													
 												<th class="sorting sorting_asc" tabindex="0"
 													aria-controls="example1" rowspan="1" colspan="1"
 													aria-sort="ascending"
 													aria-label="Rendering engine: activate to sort column descending">
-													작성자 </th>
-												<th class="sorting" tabindex="0" aria-controls="example1"
-													rowspan="1" colspan="1"
-													aria-label="Browser: activate to sort column ascending">제목 </th>
+													작성자 </th>	
+													
+													
 												<th class="sorting" tabindex="0" aria-controls="example1"
 													rowspan="1" colspan="1"
 													aria-label="Platform(s): activate to sort column ascending">작성일자 </th>
