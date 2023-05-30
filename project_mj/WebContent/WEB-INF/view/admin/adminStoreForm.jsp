@@ -30,8 +30,11 @@
 			<div class="card-header">
 				<h3 class="card-title"><!-- Simple Full Width Table --></h3>
 				<div class="card-tools float-right">
+					<a href="<%=request.getContextPath() %>/admin/modifyTagForm.do" class="btn btn-app bg-info" style="margin:0;">
+						<i class="fas fa-solid fa-tag"></i>태그 관리
+					</a>
 					<a href="<%=request.getContextPath() %>/admin/insertStoreForm.do" class="btn btn-app bg-success" style="margin:0;">
-						<i class="fas fa-store"></i> 점포 추가
+						<i class="fas fa-store"></i>점포 추가
 					</a>
 <!-- 					<ul class="pagination pagination-sm float-right"> -->
 <!-- 						<li class="page-item"><a class="page-link" href="#">«</a></li> -->

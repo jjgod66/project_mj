@@ -71,4 +71,14 @@ public class AdminServiceImpl implements IAdminService {
 	public int updateStore(StoreVO storeVo) {
 		return dao.updateStore(storeVo);
 	}
+
+	@Override
+	public List<String> selectTagList() {
+		return dao.selectTagList();
+	}
+
+	@Override
+	public int insertTagName(String tagName) {
+		return dao.insertTagName(tagName);
+	}
 }
