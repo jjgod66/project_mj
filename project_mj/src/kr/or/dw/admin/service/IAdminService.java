@@ -60,5 +60,19 @@ public interface IAdminService {
 	 * @return 등록점포 수
 	 */
 	int selectStoreCount();
+	
+	/**
+	 * 점포번호로 해당 점포객체의 정보 불러온다.
+	 * @param store_no
+	 * @return StoreVO
+	 */
+	StoreVO selectStoreView(int store_no);
+	
+	/**
+	 * 점포의 정보를 업데이트한다.
+	 * @param store_no
+	 * @return 결과값 1
+	 */
+	int updateStore(StoreVO storeVo);
 
 }

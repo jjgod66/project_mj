@@ -35,7 +35,22 @@ public class InsertStoreAction implements IAction {
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
 		}
-		int store_no = service.insertStore(storeVo);
+		
+		int store_no = 0;
+		String[] cat_name = null;
+		//수정일때
+		if (req.getParameter("store_no") != null) {
+			store_no = Integer.parseInt(req.getParameter("store_no"));
+			cat_name = req.getParameterValues("cat_name");
+			System.out.println(cat_name);
+			System.out.println("수정 : " + storeVo.getCat_name());
+			int result = service.updateStore(storeVo);
+			req.setAttribute("type", "update");
+		} else {
+			store_no = service.insertStore(storeVo);
+			req.setAttribute("type", "insert");
+		}
+		
 		req.setAttribute("store_no", store_no);
 		return "/admin/insertStoreSuccess.jsp";
 	}

@@ -61,4 +61,14 @@ public class AdminServiceImpl implements IAdminService {
 	public int selectStoreCount() {
 		return dao.selectStoreCount();
 	}
+
+	@Override
+	public StoreVO selectStoreView(int store_no) {
+		return dao.selectStoreView(store_no);
+	}
+
+	@Override
+	public int updateStore(StoreVO storeVo) {
+		return dao.updateStore(storeVo);
+	}
 }

@@ -12,7 +12,7 @@
 <a href="#">커뮤니티 </a> 
 <a href="#">고객센터 </a> 
 </div>
-dw © academy 
+dw © academy
 <p></p>
 </div>
 </footer>
