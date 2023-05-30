@@ -39,6 +39,10 @@
 							)
 	</insert>
 
+	<select id="loginUser" parameterClass="String" resultClass="UserVO">
+		SELECT * FROM user_ WHERE user_email= #user_email#
+	</select>
+		
 	<select id="selectUserList" parameterClass="Map" resultClass="userVO">
 
 		SELECT user_no
@@ -61,11 +65,7 @@
 				 WHERE rnum <![CDATA[ >= ]]> #start#
 				) u
 	</select>
-	
-	<select id="loginUser" parameterClass="String" resultClass="userVO">
-		SELECT * FROM user_ WHERE user_email = #user_email#
-	</select>
-	
+
 	<select id="selectUserCount" resultClass="int">
 		SELECT COUNT(*) cnt
 		  FROM user_
