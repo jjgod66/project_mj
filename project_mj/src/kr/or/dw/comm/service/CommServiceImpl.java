@@ -6,6 +6,7 @@ import java.util.Map;
 import kr.or.dw.comm.dao.CommDaoImpl;
 import kr.or.dw.comm.dao.ICommDao;
 import kr.or.dw.comm.vo.CommVO;
+import kr.or.dw.comm.vo.ReplyVO;
 
 public class CommServiceImpl implements ICommService{
 	private ICommDao dao;
@@ -29,6 +30,18 @@ public class CommServiceImpl implements ICommService{
 	@Override
 	public CommVO selectCommView(int bd_no) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.selectCommView(bd_no);
+	}
+
+	@Override
+	public int selectCommCount() {
+		// TODO Auto-generated method stub
+		return dao.selectCommCount();
+	}
+
+	@Override
+	public List<ReplyVO> selectReplyList(int bd_no) {
+		// TODO Auto-generated method stub
+		return dao.selectReplyList(bd_no);
 	}
 }

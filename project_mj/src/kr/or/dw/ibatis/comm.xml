@@ -6,10 +6,51 @@
 	
 	<select id="selectUserCommList" parameterClass="int" resultClass="commVO">
 		SELECT *
-		  FROM bd_comm
-		 WHERE user_no = #user_no#
-		   AND gb_del = 'N'
-	  ORDER BY bd_no ASC
+		  FROM (
+				SELECT *
+				  FROM (
+				  		SELECT rownum rnum, v1.*
+						  FROM (
+						  		SELECT *
+								  FROM bd_comm
+								 WHERE gb_del = 'N'
+								 ORDER BY bd_no ASC
+						  		) v1
+						 WHERE rownum <![CDATA[ <= ]]> #end#
+				  		) v2
+				 WHERE rnum <![CDATA[ >= ]]> #start#
+				) comm
+		 <!-- WHERE user_no = #user_no# -->
 	</select>
 	
+ 	<select id="selectCommCount" resultClass="int">
+		SELECT COUNT(*) cnt
+		  FROM bd_comm
+		 WHERE gb_del = 'N'
+	</select>
+	
+	<select id="selectCommView" parameterClass="int" resultClass="commVO">
+		SELECT bd_no
+			  ,bd_title
+			  ,bd_content
+			  ,bd_wdt
+			  ,bd_hit
+			  ,NVL((SELECT SUM(like_cnt)
+			  		  FROM bd_comm_like
+			  		 WHERE bd_no = b.bd_no), 0) bd_like
+			  ,NVL((SELECT COUNT(*)
+			  		  FROM bd_comm_re
+			  		 WHERE bd_no = b.bd_no), 0) reply_cnt
+			  ,b.user_no
+			  ,b.user_nick
+		  FROM bd_comm b
+		  	  ,user_ u
+		 WHERE b.user_no = u.user_no
+		   AND b.gb_del = 'N'
+		   AND bd_no = #bd_no#
+	</select> 
+	
+	
+	
+
 </sqlMap>
