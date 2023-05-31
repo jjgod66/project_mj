@@ -37,10 +37,9 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public void updateUserPicPath(UserVO vo) {
-		
+		dao.updateUserPicPath(vo);
 		
 	}
-
 
 	
 }
