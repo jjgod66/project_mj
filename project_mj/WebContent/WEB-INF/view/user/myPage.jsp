@@ -24,7 +24,8 @@
 					- processData : flase 로 선언 시 formData를 String 으로 변환하지 않음
  -->
 				
-<div class="col-md-3">
+
+
 
 	<!-- 내 정보 확인  -->
 	<div class="content">

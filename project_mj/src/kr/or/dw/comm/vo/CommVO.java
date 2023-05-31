@@ -11,7 +11,14 @@ public class CommVO {
 	private int bd_like;
 	private String bd_wdt;
 	private String gb_del;
+	private String user_img;
 	
+	public String getUser_img() {
+		return user_img;
+	}
+	public void setUser_img(String user_img) {
+		this.user_img = user_img;
+	}
 	public int getBd_no() {
 		return bd_no;
 	}
