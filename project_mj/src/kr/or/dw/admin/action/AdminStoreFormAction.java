@@ -26,6 +26,9 @@ public class AdminStoreFormAction implements IAction {
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		IAdminService service = AdminServiceImpl.getInstance();
 		
+		// 업종 리스트
+		List<String> tagList = service.selectTagList();
+		
 		// 페이징처리
 		Map<String, Integer> pagingConfigMap = null;
 		PaginationUtil pagination = new PaginationUtil();
@@ -41,10 +44,9 @@ public class AdminStoreFormAction implements IAction {
 		paramMap.put("end", pagingConfigMap.get("end"));
 		
 		List<StoreVO> storeList = service.selectStoreList(paramMap);
-		System.out.println(storeList.get(0).getCat_name());
 		req.setAttribute("storeList", storeList);
 		req.setAttribute("pagingConfigMap", pagination);
-		
+		req.setAttribute("tagList", tagList);
 		return "/admin/adminStoreForm.jsp";
 	}
 

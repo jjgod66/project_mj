@@ -69,6 +69,7 @@ public class AdminServiceImpl implements IAdminService {
 
 	@Override
 	public int updateStore(StoreVO storeVo) {
+		dao.updateStoreTag(storeVo);
 		return dao.updateStore(storeVo);
 	}
 
@@ -80,5 +81,10 @@ public class AdminServiceImpl implements IAdminService {
 	@Override
 	public int insertTagName(String tagName) {
 		return dao.insertTagName(tagName);
+	}
+
+	@Override
+	public int deleteTagName(String tagName) {
+		return dao.deleteTagName(tagName);
 	}
 }

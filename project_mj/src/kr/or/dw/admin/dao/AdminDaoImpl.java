@@ -177,4 +177,27 @@ public class AdminDaoImpl implements IAdminDao {
 		}
 			return result;
 	}
+
+	@Override
+	public int deleteTagName(String tagName) {
+		int result = 0;
+		
+		try {
+			result = client.delete("store.deleteTagName", tagName);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		
+		return result;
+	}
+
+	@Override
+	public void updateStoreTag(StoreVO storeVo) {
+		int store_no = storeVo.getStore_no();
+		try {
+			client.update("store.updateStoreTag", storeVo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

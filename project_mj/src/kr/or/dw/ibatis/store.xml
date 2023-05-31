@@ -52,10 +52,13 @@
 	</insert>
 	
 	<select id="selectStoreList" parameterClass="Map" resultClass="storeVO">
-		SELECT store_no
+		SELECT s.store_no
 		 	  ,cat_name
 		 	  ,store_name
 		 	  ,gb_del
+		 	  ,t.store_tagnm_1
+		 	  ,t.store_tagnm_2
+		 	  ,t.store_tagnm_3
 		  FROM (
 				SELECT *
 				  FROM (
@@ -69,7 +72,8 @@
 						 WHERE rownum <![CDATA[ <= ]]> #end#
 				  		) v2
 				 WHERE rnum <![CDATA[ >= ]]> #start#
-				) s
+				) s, store_tag t
+		WHERE s.store_no = t.store_no
 	</select>
 	
 	<select id="selectStoreCount" resultClass="int">
@@ -79,9 +83,10 @@
 	</select>
 	
 	<select id="selectStoreView" parameterClass="int" resultClass="storeVO">
-		SELECT *
-		  FROM store
-		 WHERE store_no = #store_no#
+		SELECT s.*, t.store_tagnm_1, t.store_tagnm_2, t.store_tagnm_3
+		  FROM store s, store_tag t 
+		 WHERE s.store_no = t.store_no
+		   AND s.store_no = #store_no#
 	</select>
 	
 	<update id="updateStore" parameterClass="storeVO">
@@ -104,4 +109,15 @@
 	<insert id="insertTagName" parameterClass="String">
 		INSERT INTO tag_info ( store_tagnm ) VALUES ( #tagName# )
 	</insert>
+	
+	<delete id="deleteTagName" parameterClass="String">
+		DELETE FROM tag_info WHERE store_tagnm = #tagName#
+	</delete>
+	
+	<update id="updateStoreTag" parameterClass="storeVO">
+		UPDATE store_tag SET store_tagNm_1 = #store_tagNm_1#
+							,store_tagNm_2 = #store_tagNm_2#
+							,store_tagNm_3 = #store_tagNm_3#
+		 WHERE store_no = #store_no#
+	</update>
 </sqlMap>

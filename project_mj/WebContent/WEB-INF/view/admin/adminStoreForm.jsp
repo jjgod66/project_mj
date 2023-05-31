@@ -24,8 +24,7 @@
 	</div>
 </section>
 <div class="row">
-	<div class="col-md-2"></div>
-	<div class="col-md-8">
+	<div class="col-md-12">
 		<div class="card">
 			<div class="card-header">
 				<h3 class="card-title"><!-- Simple Full Width Table --></h3>
@@ -50,12 +49,15 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th style="width: 15%">점포번호</th>
-							<th style="width: 20%">업종</th>
+							<th style="width: 5%">#</th>
+							<th style="width: 10%">업종</th>
 							<th>점포명</th>
-							<th style="width: 15%">등록상태</th>
-							<th style="width: 5%">Progress</th>
-							<th style="width: 5%">수정</th> 
+							<th style="width: 15%">태그1</th> 
+							<th style="width: 15%">태그2</th> 
+							<th style="width: 15%">태그3</th> 
+							<th style="width: 10%">등록상태</th>
+							<th style="width: 10%">수정</th>
+							<th style="width: 10%"></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -65,21 +67,26 @@
 							String store_cat = store.getCat_name();
 							String store_name = store.getStore_name();
 							String gb_del = store.getGb_del();
+							String store_tagNm_1 = store.getStore_tagNm_1();
+							String store_tagNm_2 = store.getStore_tagNm_2();
+							String store_tagNm_3 = store.getStore_tagNm_3();
 					%>
 						<tr>
 							<td><%=store_no %></td>
 							<td><%=store_cat %></td>
 							<td><%=store_name %></td>
+							<td><%=store_tagNm_1%></td>
+							<td><%=store_tagNm_2%></td>
+							<td><%=store_tagNm_3%></td>
 							<td><%=gb_del %></td>
 							<td>
-								<div class="progress progress-xs">
-									<div class="progress-bar progress-bar-danger"
-										style="width: 55%"></div>
-								</div>
+								<a href="<%=request.getContextPath() %>/admin/insertStoreForm.do?store_no=<%=store_no %>&w=m" class="btn btn-app bg-secondary" style="margin:0;">
+									<i class="fas fa-solid fa-wrench"></i> 정보수정
+								</a>
 							</td>
 							<td>
-								<a href="<%=request.getContextPath() %>/admin/insertStoreForm.do?store_no=<%=store_no %>&w=m" class="btn btn-app bg-secondary" style="margin:0;">
-									<i class="fas fa-solid fa-wrench"></i> 수정
+								<a href="<%=request.getContextPath() %>/admin/insertStoreImgForm.do?store_no=<%=store_no %>&w=m" class="btn btn-app bg-secondary" style="margin:0;">
+									<i class="fas fa-solid fa-image"></i> 사진수정
 								</a>
 							</td>
 						</tr>
@@ -94,7 +101,6 @@
 							<%= pagination.getPaginationHtml(request, new String[] {"search"}) %>
 			</div>
 		</div>
-		<div class="col-md-2"></div>
 	</div>
 
 </div>

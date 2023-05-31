@@ -10,12 +10,14 @@
 		
 		function tagNameTemplate(tag_name){
 			
-			$(".tagList>.row:last").append(
-				'<div class="col-12 col-sm-2">'
+			$(".tagList > .row").append(
+				'<div class="col-12 col-sm-2 tagBox">'
 		       +'<div class="info-box bg-light">'
 			   +'<div class="info-box-content">'
 			   +'<span class="info-box-number text-center text-muted mb-0">' + tag_name + '</span>'
-			   +'</div></div></div>'
+			   +'</div>'
+			   +'<a href="#" class="float-right btn-tool reply-delete-btn" id="deleteTag"><i class="fas fa-times"></i></a>'
+			   +'</div></div>'
 			);
 		}
 		
@@ -33,9 +35,12 @@
 					tag_name : tag_name,
 				}, 
 				success : function(res){
-					console.log(res);
+					console.log(res.result);
+					if (res.result == 1) {
 					tagNameTemplate(res.tag_name);
-// 					replyTemplate(res.reply);
+					} else if (res.result == 0) {
+						alert("이미 등록된 태그입니다.");
+					}
 				},
 				error : function(err){
 					console.log(err);
@@ -43,10 +48,33 @@
 			});
 		});
 		
-		// 태그 삭제
-		$("#deleteTag").on("click", function(e){
-			let tag_name = $(this).;
-		})
+ 		//태그 삭제
+		$(document).on("click", "#deleteTag", function(e){
+ 			let tag_name = $(this).prev("div").find("span").text();
+			if (confirm("'" + tag_name + "' 태그를 삭제하시겠습니까?")){
+	 			$(this).parents(".tagBox").hide();
+	 			$.ajax({
+	 				url : "<%=request.getContextPath()%>/admin/storeTag.do",
+					dataType : "json",
+					method : "post",
+					data : {
+						cmd : "delete",
+						tag_name : tag_name,
+					}, 
+					success : function(res){
+						console.log(res.result);
+						if (res.result == 1) {
+						tagNameTemplate(res.tag_name);
+						} else if (res.result == 0) {
+							alert("이미 등록된 태그입니다.");
+						}
+					},
+					error : function(err){
+						console.log(err);
+					}
+	 			});
+			}
+		});
 	});
 </script>
 <section class="content-header">
@@ -80,7 +108,7 @@
 					int i;
 					for (i = 0; i < tagList.size(); i++) {
 				%>
-				<div class="col-12 col-sm-2">
+				<div class="col-12 col-sm-2 tagBox">
 					<div class="info-box bg-light">
 						<div class="info-box-content">
 							<span class="info-box-number text-center text-muted mb-0"><%=tagList.get(i)%></span>
