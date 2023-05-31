@@ -2,7 +2,7 @@ package kr.or.dw.store.vo;
 
 public class StoreVO {
 	private int store_no;
-	private String store_cat_id;
+	private String cat_name;
 	private String store_name;
 	private String store_addr;
 	private String store_tel;
@@ -17,18 +17,22 @@ public class StoreVO {
 	private int store_fav;
 	private String store_rdt;
 	private String gb_del;
+	private String store_tagNm_1;
+	private String store_tagNm_2;
+	private String store_tagNm_3;
 	
+
 	public int getStore_no() {
 		return store_no;
 	}
 	public void setStore_no(int store_no) {
 		this.store_no = store_no;
 	}
-	public String getStore_cat_id() {
-		return store_cat_id;
+	public String getCat_name() {
+		return cat_name;
 	}
-	public void setStore_cat_id(String store_cat_id) {
-		this.store_cat_id = store_cat_id;
+	public void setCat_name(String cat_name) {
+		this.cat_name = cat_name;
 	}
 	public String getStore_name() {
 		return store_name;
@@ -114,4 +118,23 @@ public class StoreVO {
 	public void setGb_del(String gb_del) {
 		this.gb_del = gb_del;
 	}
+	public String getStore_tagNm_1() {
+		return store_tagNm_1;
+	}
+	public void setStore_tagNm_1(String store_tagNm_1) {
+		this.store_tagNm_1 = store_tagNm_1;
+	}
+	public String getStore_tagNm_2() {
+		return store_tagNm_2;
+	}
+	public void setStore_tagNm_2(String store_tagNm_2) {
+		this.store_tagNm_2 = store_tagNm_2;
+	}
+	public String getStore_tagNm_3() {
+		return store_tagNm_3;
+	}
+	public void setStore_tagNm_3(String store_tagNm_3) {
+		this.store_tagNm_3 = store_tagNm_3;
+	}
+	
 }

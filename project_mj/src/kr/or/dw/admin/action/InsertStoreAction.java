@@ -24,21 +24,33 @@ public class InsertStoreAction implements IAction {
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		IAdminService service = AdminServiceImpl.getInstance();
-		StoreVO storeVO = new StoreVO();
+		StoreVO storeVo = new StoreVO();
 		
 		BeanUtils bean = new BeanUtils();
 		
 		try {
-			bean.populate(storeVO, req.getParameterMap());
+			bean.populate(storeVo, req.getParameterMap());
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
 		}
 		
-//		service.insertStore();
+		int store_no = 0;
+		// 수정일 때
+		if (req.getParameter("store_no") != null) {
+			store_no = Integer.parseInt(req.getParameter("store_no"));
+			System.out.println("tag 1 : " + req.getParameterValues("store_tagNm_1")[0]);
+			int result = service.updateStore(storeVo);
+			req.setAttribute("type", "update");
+		// 등록일 때
+		} else {
+			store_no = service.insertStore(storeVo);
+			req.setAttribute("type", "insert");
+		}
 		
-		return "/admin/storeList.jsp";
+		req.setAttribute("store_no", store_no);
+		return "/admin/insertStoreSuccess.jsp";
 	}
 
 }

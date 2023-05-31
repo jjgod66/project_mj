@@ -4,4 +4,120 @@
 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="store">
 
+	<select id="selectStoreCatList" resultClass="String">
+		SELECT * FROM CAT_STORE
+	</select>
+	
+	<insert id="insertStore" parameterClass="storeVO">
+	
+		<selectKey keyProperty="store_no" resultClass="int">
+			SELECT store_seq.nextVal store_no From dual
+		</selectKey>
+			INSERT INTO store (
+								store_no
+							   ,store_name
+							   ,cat_name
+							   ,store_addr
+							   ,store_tel
+							   ,store_hour
+							   ,store_break
+							   ,store_url
+							   ,store_des_s
+							   ,store_des_d
+							   ,store_rate
+							   ,store_views
+							   ,store_like
+							   ,store_fav
+							   ,store_rdt
+							   ,gb_del
+							  )
+					   VALUES (
+					   		  	#store_no#
+					   		   ,#store_name#
+					   		   ,#cat_name#
+					   		   ,#store_addr#
+					   		   ,#store_tel#
+					   		   ,#store_hour#
+					   		   ,#store_break#
+					   		   ,#store_url#
+					   		   ,#store_des_s#
+					   		   ,#store_des_d#
+					   		   ,'0'
+					   		   ,'0'
+					   		   ,'0'
+					   		   ,'0'
+					   		   ,SYSDATE
+					   		   ,'W'
+					   		  )
+	</insert>
+	
+	<select id="selectStoreList" parameterClass="Map" resultClass="storeVO">
+		SELECT s.store_no
+		 	  ,cat_name
+		 	  ,store_name
+		 	  ,gb_del
+		 	  ,t.store_tagnm_1
+		 	  ,t.store_tagnm_2
+		 	  ,t.store_tagnm_3
+		  FROM (
+				SELECT *
+				  FROM (
+				  		SELECT rownum rnum, v1.*
+						  FROM (
+						  		SELECT *
+								  FROM store
+								 WHERE gb_del != 'Y'
+								 ORDER BY store_no
+						  		) v1
+						 WHERE rownum <![CDATA[ <= ]]> #end#
+				  		) v2
+				 WHERE rnum <![CDATA[ >= ]]> #start#
+				) s, store_tag t
+		WHERE s.store_no = t.store_no
+	</select>
+	
+	<select id="selectStoreCount" resultClass="int">
+		SELECT COUNT(*) cnt
+		  FROM store
+		 WHERE gb_del != 'Y'
+	</select>
+	
+	<select id="selectStoreView" parameterClass="int" resultClass="storeVO">
+		SELECT s.*, t.store_tagnm_1, t.store_tagnm_2, t.store_tagnm_3
+		  FROM store s, store_tag t 
+		 WHERE s.store_no = t.store_no
+		   AND s.store_no = #store_no#
+	</select>
+	
+	<update id="updateStore" parameterClass="storeVO">
+		UPDATE store SET store_name = #store_name#
+					    ,cat_name = #cat_name#
+					    ,store_addr = #store_addr#
+					    ,store_tel = #store_tel#
+					    ,store_hour = #store_hour#
+					    ,store_break = #store_break#
+					    ,store_url = #store_url#
+					    ,store_des_s = #store_des_s#
+					    ,store_des_d = #store_des_d#
+	     WHERE store_no = #store_no#
+	</update>
+	
+	<select id="selectTagList" resultClass="String">
+		SELECT * FROM tag_info ORDER BY store_tagnm
+	</select>
+	
+	<insert id="insertTagName" parameterClass="String">
+		INSERT INTO tag_info ( store_tagnm ) VALUES ( #tagName# )
+	</insert>
+	
+	<delete id="deleteTagName" parameterClass="String">
+		DELETE FROM tag_info WHERE store_tagnm = #tagName#
+	</delete>
+	
+	<update id="updateStoreTag" parameterClass="storeVO">
+		UPDATE store_tag SET store_tagNm_1 = #store_tagNm_1#
+							,store_tagNm_2 = #store_tagNm_2#
+							,store_tagNm_3 = #store_tagNm_3#
+		 WHERE store_no = #store_no#
+	</update>
 </sqlMap>

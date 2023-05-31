@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
-
-
-
 
 <div class="card">
 	<div class="card-header">
@@ -55,15 +52,37 @@
 </div>
 
 
-
-<div class="timeline-item">
-	<div class="timeline-body">
-		<a href="#"> <img src="https://placehold.it/450x450" alt="...">
-		</a> <a href="#"> <img src="https://placehold.it/450x450" alt="...">
+<div class="rkrptkdghaud">
+	<div class="rkrptkdghaud">
+		<a class="rkrptkdghaud3" href="#"> <img class="rkrptkdghaud2" src="https://placehold.it/450x450" alt="...">			
 		</a>
+		<h2>가게 이름</h2><br>
+		<p>가게 소개</p>
+		<a class="rkrptkdghaud3" href="#"> <img class="rkrptkdghaud2" src="https://placehold.it/450x450" alt="...">
+		</a>
+		<h2>가게 이름</h2><br>
+		<p>가게 소개</p>
 	</div>
-	<h3 class="timeline-header">가게 상호명1</h3>
 </div>
+
+
+<div class="rkrptkdghaud">
+	<div class="rkrptkdghaud">
+		<a class="rkrptkdghaud3" href="#"> <img class="rkrptkdghaud2" src="https://placehold.it/450x450" alt="...">			
+		</a>
+		<h2>가게 이름</h2><br>
+		<p>가게 소개</p>
+		<a class="rkrptkdghaud3" href="#"> <img class="rkrptkdghaud2" src="https://placehold.it/450x450" alt="...">
+		</a>
+		<h2>가게 이름</h2><br>
+		<p>가게 소개</p>
+	</div>
+</div>
+
+		
+
+	<h3 class="timeline-header">가게 상호명1</h3>
+
 
 
 
@@ -88,16 +107,22 @@
 										<a href="#"> <img src="https://placehold.it/300x300"
 											alt="...">
 										</a>
+										<h2 class="vhsxm">가게 이름</h2>
+										<p>가게 소개</p>
 								</div>
 								<div class="col-sm-4">
 										<a href="#"> <img src="https://placehold.it/300x300"
 											alt="...">
 										</a>
+										<h2>가게 이름</h2>
+										<p>가게 소개</p>
 								</div>
 								<div class="col-sm-4">
 										<a href="#"> <img src="https://placehold.it/300x300"
 											alt="...">
 										</a>
+										<h2>가게 이름</h2>
+										<p>가게 소개</p>
 								</div>
 							</div>
 							<div class="row mt-4">
@@ -105,16 +130,23 @@
 										<a href="#"> <img src="https://placehold.it/300x300"
 											alt="...">
 										</a>
+										<h2>가게 이름</h2>
+										<p>가게 소개</p>
+								</div>
+								
+								<div class="col-sm-4">
+										<a href="#"> <img src="https://placehold.it/300x300"
+											alt="...">
+										</a>
+										<h2>가게 이름</h2>
+										<p>가게 소개</p>
 								</div>
 								<div class="col-sm-4">
 										<a href="#"> <img src="https://placehold.it/300x300"
 											alt="...">
 										</a>
-								</div>
-								<div class="col-sm-4">
-										<a href="#"> <img src="https://placehold.it/300x300"
-											alt="...">
-										</a>
+										<h2>가게 이름</h2>
+										<p>가게 소개</p>
 								</div>
 							</div>
 							
