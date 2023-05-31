@@ -11,6 +11,8 @@ public interface IUserService {
 
 	public UserVO loginUser(String user_email);
 
+	public void updateUserPicPath(UserVO vo);
+
 	
 
 }
