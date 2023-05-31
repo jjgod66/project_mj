@@ -28,10 +28,12 @@ public class UserLoginAction implements IAction {
 		String user_pass = req.getParameter("user_pass");
 		
 		IUserService service = UserServiceImpl.getInstance();
+		
 		UserVO vo = service.loginUser(user_email);
+		
 		String cpass = "";
 		try {
-			cpass = CryptoUtil.sha512(user_pass);
+			cpass = CryptoUtil.sha512(user_pass);	// 암호화 
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
@@ -41,7 +43,7 @@ public class UserLoginAction implements IAction {
 		if(vo != null && (cpass.equals(vo.getUser_pass()))) {
 			result = 1;
 			HttpSession session = req.getSession();
-			session.setAttribute("userVO", vo);
+			session.setAttribute("UserVO", vo);
 		};
 		
 		req.setAttribute("result", result);

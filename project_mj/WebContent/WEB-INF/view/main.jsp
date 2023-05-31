@@ -2,9 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp"%>
 
-
-
-
 <div class="card">
 	<div class="card-header">
 		<h3 class="card-title">Carousel</h3>
@@ -54,6 +51,19 @@
 
 </div>
 
+
+<div class="rkrptkdghaud">
+	<div class="rkrptkdghaud">
+		<a class="rkrptkdghaud3" href="#"> <img class="rkrptkdghaud2" src="https://placehold.it/450x450" alt="...">			
+		</a>
+		<h2>가게 이름</h2><br>
+		<p>가게 소개</p>
+		<a class="rkrptkdghaud3" href="#"> <img class="rkrptkdghaud2" src="https://placehold.it/450x450" alt="...">
+		</a>
+		<h2>가게 이름</h2><br>
+		<p>가게 소개</p>
+	</div>
+</div>
 
 
 <div class="rkrptkdghaud">

@@ -4,35 +4,41 @@
 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="user">
 
-
-	<select id="getUserNick" parameterClass="String" resultClass = "String">
+	<select id="getUser_nick" parameterClass="String" resultClass = "String">
 		SELECT user_nick FROM user_ WHERE user_nick = #user_nick#
 	</select>
-	<insert id="insertUser" parameterClass="userVO">
+	
+	<insert id="insertUser" parameterClass="UserVO">
 		
 		<selectKey keyProperty="user_no" resultClass="int">
-			SELECT t_user_seq.nextVal user_no FROM dual
+			SELECT user_seq.nextval user_no 
+			FROM dual
 		</selectKey>
 		
 		INSERT INTO user_ (
 							user_no
 							,user_email
 							,user_pass
-							,user_nick
 							,user_name
+							,user_nick
+							,auth_cd
+							,gb_del
 							)
 					VALUES (
 							#user_no#
 							,#user_email#
 							,#user_pass#
-							,#user_nick#
 							,#user_name#
-							,'A101'
+							,#user_nick#
+							,'B101'
 							,'N'
 							)
 	</insert>
 
-
+	<select id="loginUser" parameterClass="String" resultClass="UserVO">
+		SELECT * FROM user_ WHERE user_email= #user_email#
+	</select>
+		
 	<select id="selectUserList" parameterClass="Map" resultClass="userVO">
 
 		SELECT user_no
@@ -55,7 +61,7 @@
 				 WHERE rnum <![CDATA[ >= ]]> #start#
 				) u
 	</select>
-	
+
 	<select id="selectUserCount" resultClass="int">
 		SELECT COUNT(*) cnt
 		  FROM user_
@@ -67,6 +73,5 @@
 		   SET gb_del = 'Y'
 		 WHERE user_no = #user_no#
 	</update>
-	
 	
 </sqlMap>

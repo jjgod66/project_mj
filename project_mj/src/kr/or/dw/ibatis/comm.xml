@@ -3,7 +3,8 @@
 	PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="comm">
-	<select id="selectUserCommList" parameterClass="Map" resultClass="commVO">
+	
+	<select id="selectUserCommList" parameterClass="int" resultClass="commVO">
 		SELECT *
 		  FROM (
 				SELECT *
@@ -51,4 +52,5 @@
 	
 	
 	
+
 </sqlMap>

@@ -1,6 +1,7 @@
 package kr.or.dw.user.service;
 
 import kr.or.dw.user.dao.UserDaoImpl;
+import kr.or.dw.user.vo.UserVO;
 
 public class UserServiceImpl implements IUserService {
 	
@@ -31,9 +32,15 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public String getUser_nick(String user_nick) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.getUser_nick(user_nick);
 	}
+
+	@Override
+	public void updateUserPicPath(UserVO vo) {
+		
+		
+	}
+
 
 	
 }

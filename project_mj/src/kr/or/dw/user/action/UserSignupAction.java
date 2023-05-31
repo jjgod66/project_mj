@@ -1,11 +1,19 @@
 package kr.or.dw.user.action;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.security.NoSuchAlgorithmException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.beanutils.BeanUtils;
+
+import kr.or.dw.user.service.IUserService;
+import kr.or.dw.user.service.UserServiceImpl;
+import kr.or.dw.user.vo.UserVO;
+import kr.or.dw.util.CryptoUtil;
 import kr.or.dw.web.IAction;
 
 public class UserSignupAction implements IAction {
@@ -20,6 +28,11 @@ public class UserSignupAction implements IAction {
 			throws ServletException, IOException {
 
 		UserVO vo = new UserVO();
+//		vo.setUser_email(req.getParameter("user_email"));
+//		vo.setUser_pass(req.getParameter("user_pass"));
+//		vo.setUser_nick(req.getParameter("user_nick"));
+//		vo.setUser_name(req.getParameter("user_name"));
+
 		
 		BeanUtils bean = new BeanUtils();
 		
@@ -47,9 +60,9 @@ public class UserSignupAction implements IAction {
 		return "/user/userSignupSuccess.jsp";
 
 	
-		res.setContentType("application/json; charset=UTF-8");
-		String nick = req.getParameter("nick");
-		return null;
+//		res.setContentType("application/json; charset=UTF-8");
+//		String nick = req.getParameter("nick");
+//		return null;
 
 	}
 
