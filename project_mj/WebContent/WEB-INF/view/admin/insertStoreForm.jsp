@@ -1,18 +1,52 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="kr.or.dw.store.vo.StoreVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
+<style>
+	
+</style>
 <%
 	List<String> storeCatList = (List<String>) request.getAttribute("storeCatList");
+	List<String> tagList = (List<String>)request.getAttribute("tagList");
+	
 	StoreVO storeVo = null;
+	List<String> storeTagList = new ArrayList<>();
 	if (request.getAttribute("storeVo") != null) {
 		storeVo = (StoreVO) request.getAttribute("storeVo");
+		storeTagList.add(storeVo.getStore_tagNm_1());
+		storeTagList.add(storeVo.getStore_tagNm_2());
+		storeTagList.add(storeVo.getStore_tagNm_3());
 	}
+	
 %>
 <script>
 	$(function(){
 		
+		$("#insertStoreForm").on("submit", function (e) {
+			if ($("#insertStoreForm").find(".is-invalid").length > 0) {
+				alert("형식에 맞게 입력해주세요.");
+				$("#joinForm").find(".is-invalid").focus();
+				e.preventDefault();
+			}
+		});
+		
+		
+		$(".selectTagNm").on("change", function(){
+			thisTag = $(this).find("option:selected").val();
+			sbTag1 = $(this).closest(".tagBox").siblings(":first").find("option:selected").val();
+			sbTag2 =$(this).closest(".tagBox").siblings(":last").find("option:selected").val();
+			if (thisTag == sbTag1 || thisTag == sbTag2) {
+				$(this).attr("class", "form-control selectTagNm is-invalid");
+				$(this).closest(".form-group").attr("class", "form-group is-invalid");
+			} 
+			else {
+				$(this).attr("class", "form-control selectTagNm");
+				$(this).closest(".form-group").attr("class", "form-group");
+
+			}
+		});
 		
 	});
 </script>
@@ -65,6 +99,65 @@
 						<%	}	%>	
 						</select>
 					</div>
+					<div class="form-group">
+						<div class="row" style="justify-content: space-around;">
+							<div class="col-mid-4 tagBox">
+								<label for="store_tagNm_2">태그2</label> <select
+									class="form-control selectTagNm" name="store_tagNm_2">
+									<%
+										for (String tag : tagList) {
+									%>
+									<option value="<%=tag%>"
+										<% if (storeVo == null) {
+											if (tag.equals("가족식사")) {
+												%>selected<%
+											}
+										} else if (storeVo != null && storeTagList.contains(tag)) {%>
+										selected <%} %>><%=tag%></option>
+									<%
+										}
+									%>
+								</select>
+							</div>
+							<div class="col-mid-4 tagBox">
+								<label for="store_tagNm_2">태그2</label> <select
+									class="form-control selectTagNm" name="store_tagNm_2">
+									<%
+										for (String tag : tagList) {
+									%>
+									<option value="<%=tag%>"
+										<% if (storeVo == null) {
+											if (tag.equals("기념일")) {
+												%>selected<%
+											}
+										} else if (storeVo != null && storeTagList.contains(tag)) {%>
+										selected <%} %>><%=tag%></option>
+									<%
+										}
+									%>
+								</select>
+							</div>
+							<div class="col-mid-4 tagBox">
+								<label for="store_tagNm_2">태그2</label> <select
+									class="form-control selectTagNm" name="store_tagNm_2">
+									<%
+										for (String tag : tagList) {
+									%>
+									<option value="<%=tag%>"
+										<% if (storeVo == null) {
+											if (tag.equals("남자들끼리")) {
+												%>selected<%
+											}
+										} else if (storeVo != null && storeTagList.contains(tag)) {%>
+										selected <%} %>><%=tag%></option>
+									<%
+										}
+									%>
+								</select>
+							</div>
+						</div>
+					</div>
+					<span class="error invalid-feedback col-md-12" style="padding-bottom: 1rem; text-align: center;">중복된 태그가 선택되었습니다.</span>
 					<div class="form-group">
 						<div class="form-group">
 							<label for="storeAddr">주소</label> <input type="text"

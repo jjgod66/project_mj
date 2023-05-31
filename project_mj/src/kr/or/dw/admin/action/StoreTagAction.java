@@ -23,14 +23,26 @@ public class StoreTagAction implements IAction {
 		IAdminService service = AdminServiceImpl.getInstance();
 		String tagName = req.getParameter("tag_name");
 		String cmd = req.getParameter("cmd");
+		int result = 0; 
 		
 		if (cmd.equals("insert")) {
 			
-			int result = service.insertTagName(tagName);
+			result = service.insertTagName(tagName);
 			if (result == 1) {
 				req.setAttribute("result", result);
 				req.setAttribute("tag_name", tagName);
+			} else {
+				req.setAttribute("result", 0);
 			}
+			
+		} else if (cmd.equals("delete")) {
+			result = service.deleteTagName(tagName);
+//			if (result == 1) {
+//				System.out.println("삭제성공");
+//			} else {
+//				System.out.println("삭제실패");
+//			}
+//			
 		}
 		
 		

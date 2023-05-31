@@ -118,7 +118,10 @@
 				
 						</table>
 						<div class="container"style="margin-top:20px;">
-							
+							<%
+								PaginationUtil pagination = (PaginationUtil) request.getAttribute("pagingConfigMap");
+							%>
+							<%= pagination.getPaginationHtml(request, new String[] {"search"}) %>
 						</div>
 					</div>
 				</div>

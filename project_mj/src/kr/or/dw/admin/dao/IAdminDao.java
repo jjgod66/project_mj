@@ -81,4 +81,18 @@ public interface IAdminDao {
 	 */
 	int insertTagName(String tagName);
 
+	/**
+	 * 태그를 삭제한다.
+	 * @param tagName
+	 * @return 삭제한 row 수(1) 
+	 */
+	int deleteTagName(String tagName);
+	
+	/**
+	 * 	해당 점포의 태그를 업데이트 한다.
+	 * @param storeVo
+	 */
+	void updateStoreTag(StoreVO storeVo);
+
+
 }

@@ -84,8 +84,15 @@ public interface IAdminService {
 	/**
 	 * 태그를 추가한다.
 	 * @param tagName
-	 * @return
+	 * @return 성공시1, 중복시0
 	 */
 	int insertTagName(String tagName);
+	
+	/**
+	 * 태그를 삭제한다.
+	 * @param tagName
+	 * @return 삭제한 row 수(1) 
+	 */
+	int deleteTagName(String tagName);
 
 }
