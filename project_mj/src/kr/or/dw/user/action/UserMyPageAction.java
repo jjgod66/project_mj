@@ -18,7 +18,7 @@ public class UserMyPageAction implements IAction{
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		
+		System.out.println("abcdefg");
 		return "/user/myPage.jsp";
 	}
 

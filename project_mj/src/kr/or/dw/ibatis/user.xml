@@ -4,9 +4,6 @@
 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="user">
 
-	<select id="getUserNick" parameterClass="String" resultClass = "String">
-		SELECT user_nick FROM user_ WHERE user_nick = #user_nick#
-	</select>
 
 	<select id="getUser_nick" parameterClass="String" resultClass = "String">
 		SELECT user_nick FROM user_ WHERE user_nick = #user_nick#
