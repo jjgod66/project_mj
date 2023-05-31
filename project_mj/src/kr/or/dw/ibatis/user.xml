@@ -32,7 +32,6 @@
 							)
 	</insert>
 
-	<select id="selectUserList" resultClass="userVO">
 
 	<select id="selectUserList" parameterClass="Map" resultClass="userVO">
 
