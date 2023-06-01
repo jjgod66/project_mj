@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.dw.web.IAction;
 
-public class UserMyPageAction implements IAction{
+public class UserChangeAction implements IAction{
 
 	@Override
 	public boolean isRedirect() {
@@ -18,8 +18,8 @@ public class UserMyPageAction implements IAction{
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		
-		return "/user/myPage.jsp";
+		// TODO Auto-generated method stub
+		return "/user/myPageChange.jsp";
 	}
 
 }
