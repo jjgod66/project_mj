@@ -26,11 +26,16 @@ public class InsertStoreImgFormAction implements IAction{
 		IAdminService service = AdminServiceImpl.getInstance();
 		int store_no = 0;
 		
-		// 수정시
 		if (req.getParameter("store_no") != null) {
-			}
-		
-		req.setAttribute("store_no", store_no);
+			store_no = Integer.parseInt(req.getParameter("store_no"));
+			StoreVO storeVo = service.selectStoreView(store_no);
+			
+			
+			
+			req.setAttribute("storeVo", storeVo);
+			System.out.println(storeVo.getStore_name());
+		}
+			
 		return "/admin/insertStoreImgForm.jsp";
 	}
 

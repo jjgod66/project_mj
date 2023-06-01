@@ -7,6 +7,7 @@ import java.util.Map;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
 import kr.or.dw.comm.vo.CommVO;
+import kr.or.dw.store.vo.ImgStoreVO;
 import kr.or.dw.store.vo.StoreVO;
 import kr.or.dw.user.vo.UserVO;
 import kr.or.dw.util.BuildSqlMapClient;
@@ -200,4 +201,27 @@ public class AdminDaoImpl implements IAdminDao {
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public void insertImgStore(ImgStoreVO imgStoreVo) {
+		int store_no = imgStoreVo.getStore_no();
+		String imgStore = imgStoreVo.getImg_url();
+		try {
+			client.insert("store.insertImgStore", imgStoreVo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void deleteImgStore(int store_no) {
+		
+		try {
+			client.delete("store.deleteImgStore", store_no);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 }

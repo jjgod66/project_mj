@@ -86,7 +86,7 @@
 							</td>
 							<td>
 								<a href="<%=request.getContextPath() %>/admin/insertStoreImgForm.do?store_no=<%=store_no %>&w=m" class="btn btn-app bg-secondary" style="margin:0;">
-									<i class="fas fa-solid fa-image"></i> 사진수정
+									<i class="fas fa-solid fa-image"></i> 사진등록
 								</a>
 							</td>
 						</tr>
