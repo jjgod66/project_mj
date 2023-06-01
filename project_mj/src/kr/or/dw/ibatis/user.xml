@@ -68,6 +68,13 @@
 		WHERE gb_del = 'N'
 	</select>
 	
+	<update id="updateUser" parameterClass="userVO">
+		UPDATE user_ 
+		SET user_nick = #user_nick# 
+			,user_pass = #user_pass#
+		 WHERE user_no = #user_no#
+	</update>
+	
 	<update id="deleteUser" parameterClass="int">
 		UPDATE user_
 		   SET gb_del = 'Y'

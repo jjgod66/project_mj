@@ -4,7 +4,7 @@
 
 	<div class="content">
 		<div class="container-fluid">
-			<div class="row">
+			<div class="row" style="padding-top:150px">
 				<div class="col-md-4"></div>
 				<div class="col-md-4">
 					<div class="card card-primary card-outline">

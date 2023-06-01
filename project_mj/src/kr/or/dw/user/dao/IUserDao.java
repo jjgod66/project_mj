@@ -10,5 +10,11 @@ public interface IUserDao {
 
 	public String getUser_nick(String user_nick);
 
+	int updateUser(UserVO userVO);
+
+	int deleteUser(int user_no);
+
+	void updateUserPicPath(UserVO vo);
+
 	
 }
