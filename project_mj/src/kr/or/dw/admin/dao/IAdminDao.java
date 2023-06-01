@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import kr.or.dw.comm.vo.CommVO;
+import kr.or.dw.store.vo.ImgStoreVO;
 import kr.or.dw.store.vo.StoreVO;
 import kr.or.dw.user.vo.UserVO;
 
@@ -94,5 +95,17 @@ public interface IAdminDao {
 	 */
 	void updateStoreTag(StoreVO storeVo);
 
+	/**
+	 * 점포 이미지를 등록한다.
+	 * @param imgStoreVo
+	 */
+	void insertImgStore(ImgStoreVO imgStoreVo);
+
+	/**
+	 * 기존 점포 이미지를 모두 지운다.
+	 * @param store_no
+	 */
+	void deleteImgStore(int store_no);
+	
 
 }

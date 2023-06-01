@@ -16,7 +16,10 @@
 		 (형식) <typeAlias alias = "alias명" type = "클래스의 전체 이름" /> -->
 	 <typeAlias alias = "userVO" type="kr.or.dw.user.vo.UserVO" />
 	 <typeAlias alias = "commVO" type="kr.or.dw.comm.vo.CommVO" />
+	 <typeAlias alias = "likeVO" type="kr.or.dw.comm.vo.LikeVO" />
+	 <typeAlias alias = "replyVO" type="kr.or.dw.comm.vo.ReplyVO" />
 	 <typeAlias alias = "storeVO" type="kr.or.dw.store.vo.StoreVO" />
+	 <typeAlias alias = "imgStoreVO" type="kr.or.dw.store.vo.ImgStoreVO" />
 	
 	<!-- DB와 연결을 처리하는 부분 -->
 	<transactionManager type="JDBC">
