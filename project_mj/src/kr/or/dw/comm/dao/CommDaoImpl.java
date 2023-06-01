@@ -7,6 +7,7 @@ import java.util.Map;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
 import kr.or.dw.comm.vo.CommVO;
+import kr.or.dw.comm.vo.LikeVO;
 import kr.or.dw.comm.vo.ReplyVO;
 import kr.or.dw.util.BuildSqlMapClient;
 
@@ -74,5 +75,20 @@ public class CommDaoImpl implements ICommDao {
 			e.printStackTrace();
 		}
 		return replyList;
+	}
+
+	@Override
+	public int selectUserLike(LikeVO likeVo) {
+		// TODO Auto-generated method stub
+		Object result;
+		int num = 0;
+		
+		try {
+			result = client.queryForObject("comm.selectUserLike", likeVo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return num;
 	}
 }
