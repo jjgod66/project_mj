@@ -29,9 +29,8 @@
   		
 		$('#loginCheck').text('로그아웃');  				
 		$('#loginCheck').attr('href', '<%= request.getContextPath()%>/user/userLogout.do');  
-<%-- 		$('#signUp').find('p').text('Profile');
- 		$('#signUp').find('i').attr('class', 'nav-icon fas fa-solid fa-id-card'); 
-		$('#signUp').attr('href', '<%= request.getContextPath()%>/user/myPage.do'); --%>
+		$('#signUp').text('마이페이지');
+		$('#signUp').attr('href', '<%= request.getContextPath()%>/user/userMyPage.do'); 
   	})
   </script>
 <%	}	%>

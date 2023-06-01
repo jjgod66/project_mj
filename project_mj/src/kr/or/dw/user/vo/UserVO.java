@@ -3,14 +3,14 @@ package kr.or.dw.user.vo;
 public class UserVO {
 	private int user_no;
 	private String user_email;
-	private String user_pass;
+	private String user_pass;			
 	private String user_name;
-	private String user_nick;
+	private String user_nick;			
 	private String auth_cd;
 	private String user_sdt;
 	private String user_mdt;
 	private String gb_del;
-	private String user_img;
+	private String user_img;			
 	
 	public int getUser_no() {
 		return user_no;

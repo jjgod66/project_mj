@@ -7,7 +7,7 @@
 	if (result == 1) {
 		UserVO vo = (UserVO)session.getAttribute("UserVO");
 %>
-		alert("<%= vo.getUser_nick() %>님 환영합니다!!");
+
 		location.href="<%=request.getContextPath()%>/cs/main.do";
 <%		
 	} else {

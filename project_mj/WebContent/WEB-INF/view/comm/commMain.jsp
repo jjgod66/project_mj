@@ -7,7 +7,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
 <%
-	List<CommVO> boardList = (List<CommVO>) request.getAttribute("CommList");
+	List<CommVO> commList = (List<CommVO>) request.getAttribute("commList");
 %>
 
 <section class="content">
@@ -35,22 +35,13 @@
 											if(userVO != null) {
 										%>
 										<a class="btn btn-primary btn-sm"
-											href="<%=request.getContextPath()%>/board/boardInsert.do">글작성</a>
+											href="<%=request.getContextPath()%>/comm/commInsert.do">글작성</a>
 										<%
 											}
 										%>
-
-
-
 									</div>
 								</div>
-								<div class="col-sm-12 col-md-6">
-									<div id="example1_filter" class="dataTables_filter">
-										<label>Search:<input type="search"
-											class="form-control form-control-sm" placeholder=""
-											aria-controls="example1"></label>
-									</div>
-								</div>
+								
 							</div>
 							<div class="row">
 								<div class="col-sm-12">
@@ -62,47 +53,52 @@
 												
 												<th class="sorting" tabindex="0" aria-controls="example1"
 													rowspan="1" colspan="1"
-													aria-label="Browser: activate to sort column ascending">제목 </th>
+													aria-label="Browser: activate to sort column ascending">순번  </th>
 													
 												<th class="sorting sorting_asc" tabindex="0"
 													aria-controls="example1" rowspan="1" colspan="1"
 													aria-sort="ascending"
 													aria-label="Rendering engine: activate to sort column descending">
-													작성자 </th>	
+													제목  </th>	
 													
 													
 												<th class="sorting" tabindex="0" aria-controls="example1"
 													rowspan="1" colspan="1"
-													aria-label="Platform(s): activate to sort column ascending">작성일자 </th>
+													aria-label="Platform(s): activate to sort column ascending">작성자  </th>
 												<th class="sorting" tabindex="0" aria-controls="example1"
 													rowspan="1" colspan="1"
 													aria-label="Engine version: activate to sort column ascending">
 													조회수 </th>
-												<th class="sorting" tabindex="0" aria-controls="example1"
+													
+													<th class="sorting" tabindex="0" aria-controls="example1"
 													rowspan="1" colspan="1"
-													aria-label="CSS grade: activate to sort column ascending"
-													style="display: none;">CSS grade</th>
+													aria-label="Engine version: activate to sort column ascending">
+													좋아요 </th>
+												
 											</tr>
 										</thead>
 										<tbody>
 
+											<%
+												for (CommVO comm : commList) {
+													int bd_no = comm.getBd_no();
+													String bd_title = comm.getBd_title();
+													String bd_nick = comm.getUser_nick();
 
-
-											<tr class="odd">
-												<td class="dtr-control sorting_1" tabindex="0">김상재 </td>
-												<td> 테스트 제목 입니다. </td>
-												<td>오늘입니다. </td>
-												<td>10 </td>
-												<td style="display: none;">A</td>
+													int bd_hit = comm.getBd_hit();
+													int bd_like = comm.getBd_like();
+											%>
+											<tr>
+												<td><%=bd_no%></td>
+												<td><a
+													href="<%=request.getContextPath()%>/comm/commView.do?bd_no=<%=bd_no%>"><%=bd_title%></a>
+												</td>
+												<td><img alt="작성자 프로필사진" class="table-avatar"
+													><%=bd_nick%></td>
+												<td><%=bd_hit%></td>
+												<td><%=bd_like%></td>
 											</tr>
-											<tr class="even">
-												<td class="dtr-control sorting_1" tabindex="0">Gecko</td>
-												<td>Firefox 1.5</td>
-												<td>Win 98+ / OSX.2+</td>
-												<td>1.8</td>
-												<td style="display: none;">A</td>
-											</tr>
-											
+											<% } %>
 										</tbody>
 										
 									</table>

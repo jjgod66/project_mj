@@ -35,6 +35,11 @@ public class UserServiceImpl implements IUserService {
 		return dao.getUser_nick(user_nick);
 	}
 
+	@Override
+	public void updateUserPicPath(UserVO vo) {
+		dao.updateUserPicPath(vo);
+		
+	}
 
 	
 }
