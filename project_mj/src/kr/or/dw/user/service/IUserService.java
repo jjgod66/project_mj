@@ -13,6 +13,10 @@ public interface IUserService {
 
 	public void updateUserPicPath(UserVO vo);
 
+	public int updateUser(UserVO userVO);
+
+	public int deleteUser(int user_no);
+
 	
 
 }

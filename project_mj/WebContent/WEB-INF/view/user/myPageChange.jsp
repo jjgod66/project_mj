@@ -1,70 +1,188 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../header.jsp" %>
+<%@ include file="../header.jsp"%>
+<script>
 
-<div class="card">
-	<div class="card-header p-2">
-		<ul class="nav nav-pills">
-			<li class="nav-item"><a class="nav-link" href="#activity"
-				data-toggle="tab">회원정보 수정</a></li>
-		</ul>
-	</div>
-			<div class="tab-pane active" id="settings">
-				<form class="form-horizontal">
-					<div class="form-group row">
-						<label for="inputName" class="col-sm-2 col-form-label">Name</label>
-						<div class="col-sm-10">
-							<input type="email" class="form-control" id="inputName"
-								placeholder="Name">
+$(function(){
+	
+	n_check = false;
+	
+	$("#userChange").on("submit", function (e) {
+		console.log($("#joinForm").find(".is-invalid").length)
+		if (!n_check) {
+			alert("닉네임 중복확인 체크를 해주세요.");
+			$("input[name=user_nick]").focus();
+			e.preventDefault();
+			return;
+		};
+			
+		if ($("#userChange").find(".is-invalid").length > 0) {
+			alert("형식에 맞게 입력해주세요.");
+			$("#userChange").find(".is-invalid").focus();
+			e.preventDefault();
+		};
+		
+	});
+	
+	// password 정규식 체크 - 영문 소문자, 대문자, 특수문자, 숫자가 반드시 하나 이상씩 입력
+	let pass = $("input[name=user_pass]");
+	pass.on("keyup",  function () {
+		passVal = pass.val().trim();
+		
+		regPass =  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[`~!@$%&?*])[A-Za-z\d`~!@$%&?*]{8,15}/;
+		
+		if ( !(regPass.test(passVal)) ) {
+			pass.attr("class", "form-control is-invalid");
+		} else {
+			pass.attr("class", "form-control is-valid");
+		}
+	});
+	
+	// pass2 pass일치 비교
+	let passCheck = $("input[name=passCheck]");
+	passCheck.on("keyup", function () {
+		let passCheckVal = passCheck.val().trim();
+		
+		if (passVal != passCheckVal) {
+			passCheck.attr("class", "form-control is-invalid");
+		} else {
+			passCheck.attr("class", "form-control is-valid");
+		}
+	});
+	
+	let nickCheck = false;
+	
+	// 닉네임 정규식 체크
+	let nick = $("input[name=user_nick]");
+	nick.on("keyup", function () {
+		nickVal = nick.val().trim();
+		
+		regNick = /^[가-힣a-zA-Z0-9]{3,13}$/;
+		
+		if ( !(regNick.test(nickVal)) ) {
+			nick.attr("class", "form-control is-invalid");
+			nickCheck = false;
+		} else {
+			nick.attr("class", "form-control is-valid");
+			nickCheck = true;
+		}
+	});
+	
+	// 닉네임 중복체크
+	$("#nickCheckBtn").on("click", function () {
+		if (nickCheck) {
+			$.ajax({
+				url : "<%=request.getContextPath()%>/user/nickCheck.do",
+				method : "post",
+				data : {"user_nick" : nickVal},
+				dataType : "json",
+				success : function (res) {
+					if(res == "사용가능한 닉네임입니다.") {
+						alert(res);
+						n_check = true;
+					} else {
+						alert(res);
+						n_check = false;
+					}
+				},
+				error : function (req) {
+					alert("상태 : " + req.status);
+				}
+			});
+		} else {
+			alert("닉네임을 확인해주세요.");
+		}
+	});
+	
+	
+});
+
+</script>
+
+<div class="content">
+	<div class="container-fluid">
+		<div class="row" style="padding-top: 150px">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<div class="card card-info">
+					<div class="card-header">
+						<h3 class="card-title">회원정보수정</h3>
+					</div>
+					<!-- 사진변경 -->
+						<form id="upload_form" method="post" enctype="multipart/form-data">
+								<div class="text-center">
+									<a href="#" id="changeSelfie">
+										<img class="profile-user-img img-fluid img-circle" id="profile_picture" src="/profilePath/<%=userVO.getUser_img()  %>" alt="User profile picture">
+									</a>
+									<input type="file" style="display: none;" name="selfie" id="selfie" accept=".jpg, .jpeg, .png">
+									<a href="#" class="btn btn-primary btn-block" id="saveProfileBtn" style="display: none;"><b>프로필 사진 저장</b></a>
+								</div>
+							</form>
+					<!-- 이메일 -->
+					<form method= "post"  id = "userChange"action = "<%=request.getContextPath() %>/user/userUpdate.do">
+					
+					<p class="text-muted text-center"><%=userVO.getUser_name() %></p>
+					<div class="input-group mb-3">
+						<div class="card-email">
+							<P class="text-muted text-center" ><%=userVO.getUser_email() %></P>
 						</div>
 					</div>
-					<div class="form-group row">
-						<label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-						<div class="col-sm-10">
-							<input type="email" class="form-control" id="inputEmail"
-								placeholder="Email">
+					<input type = "hidden" name = "user_no" value="<%=userVO.getUser_no()%>">
+					<!-- 비밀번호  -->
+					<div class="tinput-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i
+								class="fas fa-solid fa-key"></i> </span>
 						</div>
+						<input type="password" class="form-control" placeholder="password"
+							name="user_pass" required> <span
+							class="error invalid-feedback"> 비밀번호는 영문 소문자, 대문자, 숫자,
+							특수문자가 최소 1개씩 입력되어야 합니다. </span>
 					</div>
-					<div class="form-group row">
-						<label for="inputName2" class="col-sm-2 col-form-label">Name</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="inputName2"
-								placeholder="Name">
+					<!-- 비밀번호  확인-->
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <i
+								class="fas fa-solid fa-check"></i>
+							</span>
 						</div>
+						<input type="password" class="form-control"
+							placeholder="check password" name="passCheck" required> <span
+							class="error invalid-feedback"> 입력하신 비밀번호와 일치하지 않습니다. </span>
 					</div>
-					<div class="form-group row">
-						<label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
-						<div class="col-sm-10">
-							<textarea class="form-control" id="inputExperience"
-								placeholder="Experience"></textarea>
+					<!--  닉네임 -->
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <i
+								class="fab fa-brands fa-kickstarter-k"></i>
+							</span>
 						</div>
+						<input type="text" class="form-control" placeholder="nickname"
+							name="user_nick" required> <span
+							class="error invalid-feedback"> 닉네임은 특수문자를 제외한 3-13 자리로
+							입력해주세요. </span> <span class="input-group-append">
+							<button type="button" class="btn btn-info btn-flat"
+								id="nickCheckBtn">중복확인</button>
+						</span>
 					</div>
-					<div class="form-group row">
-						<label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="inputSkills"
-								placeholder="Skills">
-						</div>
+					<div class="input-group input-group-sm">
+						<span class="input-group-append">
+							<button type="submit" class="btn btn-info btn-flat text-right"  >수정완료</button>
+							<button type="submit" class="btn btn-info btn-flat text-left"  >회원탈퇴</button>
+						</span>
 					</div>
-					<div class="form-group row">
-						<div class="offset-sm-2 col-sm-10">
-							<div class="checkbox">
-								<label> <input type="checkbox"> I agree to the <a
-									href="#">terms and conditions</a>
-								</label>
-							</div>
-						</div>
-					</div>
-					<div class="form-group row">
-						<div class="offset-sm-2 col-sm-10">
-							<button type="submit" class="btn btn-danger">Submit</button>
-						</div>
-					</div>
-				</form>
+					</form>
+				</div><%-- 
+<%=request.getContextPath()%>/cs/main.do"
+"<%=request.getContextPath()%>/user/userMyPage.do" --%>
 			</div>
-
 		</div>
-
+		<div class="col-md-3"></div>
 	</div>
+	<!-- /.row -->
 </div>
-<%@ include file="../footer.jsp" %>
+<!-- /.container-fluid -->
+</div>
+<!-- /.content -->
+
+<%@ include file="../footer.jsp"%>

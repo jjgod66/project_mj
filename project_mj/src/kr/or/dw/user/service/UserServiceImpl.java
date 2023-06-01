@@ -41,5 +41,17 @@ public class UserServiceImpl implements IUserService {
 		
 	}
 
+	@Override
+	public int updateUser(UserVO userVO) {
+	
+		return dao.updateUser(userVO);
+	}
+
+	@Override
+	public int deleteUser(int user_no) {
+	
+		return dao.deleteUser(user_no);
+	}
+
 	
 }
