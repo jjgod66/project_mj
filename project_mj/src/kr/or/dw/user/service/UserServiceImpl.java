@@ -36,8 +36,8 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public void updateUserPicPath(UserVO vo) {
-		dao.updateUserPicPath(vo);
+	public void updateUserPicPath(UserVO userVO) {
+		dao.updateUserPicPath(userVO);
 		
 	}
 
@@ -47,10 +47,11 @@ public class UserServiceImpl implements IUserService {
 		return dao.updateUser(userVO);
 	}
 
+
 	@Override
 	public int deleteUser(int user_no) {
-	
-		return dao.deleteUser(user_no);
+		// TODO Auto-generated method stub
+		return  dao.deleteUser(user_no);
 	}
 
 	

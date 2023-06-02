@@ -12,9 +12,9 @@ public interface IUserDao {
 
 	int updateUser(UserVO userVO);
 
-	int deleteUser(int user_no);
-
 	void updateUserPicPath(UserVO vo);
+
+	int deleteUser(int user_no);
 
 	
 }
