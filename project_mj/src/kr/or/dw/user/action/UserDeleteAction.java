@@ -14,7 +14,7 @@ import kr.or.dw.user.vo.UserVO;
 import kr.or.dw.util.CryptoUtil;
 import kr.or.dw.web.IAction;
 
-public class UserChangeAction implements IAction{
+public class UserDeleteAction implements IAction{
 
 	@Override
 	public boolean isRedirect() {
@@ -25,7 +25,25 @@ public class UserChangeAction implements IAction{
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
-		return "/user/myPageChange.jsp";
+
+		
+		IUserService service = UserServiceImpl.getInstance();
+		
+		HttpSession session = req.getSession();
+		String gb_del = ((UserVO) session.getAttribute("UserVO")).getGb_del();
+
+		UserVO userVO = new UserVO();
+		userVO.setGb_del(gb_del);
+
+		int user_no = Integer.parseInt(req.getParameter("user_no"));
+		int result = service.deleteUser(user_no);
+		
+		req.setAttribute("result", result);
+	
+//		session.setAttribute("UserVO", userVO);
+		session.invalidate();
+		
+		return "/user/userDelete.jsp";
 	}
 
 }

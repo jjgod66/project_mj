@@ -236,7 +236,8 @@
 	});
 </script>
 
-
+<div class="content">
+<div class></div>
 <div class="col-md-6">
 
 	<div class="card card-widget">
@@ -346,7 +347,7 @@
 
 </div>
 
-
+</div>
 
 
 <%@ include file="../footer.jsp"%>

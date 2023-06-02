@@ -13,9 +13,6 @@ public interface IUserDao {
 
 	public String getUser_nick(String user_nick);
 
-<<<<<<< Updated upstream
-	
-=======
 	int updateUser(UserVO userVO);
 
 	int deleteUser(int user_no);
@@ -23,5 +20,5 @@ public interface IUserDao {
 	void updateUserPicPath(UserVO vo);
 
 	public List<AnnouncementVO> selectAnVoList();
->>>>>>> Stashed changes
+
 }

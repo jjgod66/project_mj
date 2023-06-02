@@ -60,6 +60,7 @@
 		<p>가게 소개</p>
 		<a class="rkrptkdghaud3" href="#"> <img class="rkrptkdghaud2" src="https://placehold.it/450x450" alt="...">
 		</a>
+		
 		<h2>가게 이름</h2><br>
 		<p>가게 소개</p>
 	</div>

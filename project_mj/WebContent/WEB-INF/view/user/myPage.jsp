@@ -2,19 +2,31 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
 
-	<div class="content">
+<%
+/* 		userVO = (UserVO) request.getAttribute("userVO"); */
+		String src = "";		
+
+		if (userVO.getUser_img() != null) {
+			src = " /profilePath/" + userVO.getUser_img();
+		}else{
+			src = "/profilePath/default/defaultProfile.jpg";
+			
+		}
+%>
+
+
+<div class="content">
 		<div class="container-fluid">
-			<div class="row">
+			<div class="row" style="padding-top:150px">
 				<div class="col-md-4"></div>
 				<div class="col-md-4">
 					<div class="card card-primary card-outline">
 						<div class="card-body box-profile">
 							<form id="upload_form" method="post" enctype="multipart/form-data">
 								<div class="text-center">
-									<a  id="changeSelfie">
-										<img class="profile-user-img img-fluid img-circle" id="profile_picture" src="/profilePath/<%=userVO.getUser_img() %>" alt="User profile picture">
+								<a  id="changeSelfie">
+										<img class="profile-user-img img-fluid img-circle" id="profile_picture" src="<%= src %>" alt="User profile picture">
 									</a>
-									
 								</div>
 							</form> 
 							<p class="text-muted text-center"><br></p>

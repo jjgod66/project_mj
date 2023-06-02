@@ -14,7 +14,11 @@ public interface IUserService {
 
 	public UserVO loginUser(String user_email);
 
-	public void updateUserPicPath(UserVO vo);
+	public void updateUserPicPath(UserVO userVO);
+
+	public int deleteUser(int user_no);
+
+	public int updateUser(UserVO userVO);
 
 <<<<<<< Updated upstream
 =======

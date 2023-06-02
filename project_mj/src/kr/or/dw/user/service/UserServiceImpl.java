@@ -39,20 +39,18 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public void updateUserPicPath(UserVO vo) {
-		dao.updateUserPicPath(vo);
+	public void updateUserPicPath(UserVO userVO) {
+		dao.updateUserPicPath(userVO);
 		
 	}
 
-<<<<<<< Updated upstream
-=======
 	@Override
 	public int updateUser(UserVO userVO) {
 	
 		return dao.updateUser(userVO);
 	}
 
-	@Override
+  @Override
 	public int deleteUser(int user_no) {
 	
 		return dao.deleteUser(user_no);
@@ -65,6 +63,6 @@ public class UserServiceImpl implements IUserService {
 
 
 
->>>>>>> Stashed changes
+
 	
 }
