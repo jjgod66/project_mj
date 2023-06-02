@@ -26,7 +26,7 @@ public class StorePicture implements IAction{
 
 	@Override
 	public boolean isRedirect() {
-		return false;
+		return true;
 	}
 
 	@Override
@@ -39,32 +39,46 @@ public class StorePicture implements IAction{
 		
 		IAdminService service = AdminServiceImpl.getInstance();
 		
-		// 일단 올려놓은거 다 지운다
+		// 일단 올려놓은거 다 지운다(db)
 		service.deleteImgStore(store_no);
+		
 		
 		// 이미지 추가한다
 //		StoreVO storeVo = service.selectStoreView(store_no);
-		String picFoldName = String.valueOf(storeVo.getStore_no());
-		String realPath = "C:/file_project_mj/upload/storeImg/" + picFoldName;
+		String picFoldName = String.valueOf(storeVo.getStore_no());		// 점포번호(폴더이름)
+		String realPath = "C:/file_project_mj/upload/storeImg/" + picFoldName;	// 실제폴더경로
 		
-		String fileName = "";
+		String fileName = "";	//파일 이름을 담을 곳
 		
-		File fileUploadDirectory = new File(realPath);
+		File fileUploadDirectory = new File(realPath);	//  
+		
+		// 해당 디렉토리 안에 있는 모든 파일을 구한다.
+		File[] alreadyFiles = fileUploadDirectory.listFiles();
+		// 그 파일들의 이름을 구하고 새로운 파일 객체에 경로+파일 이름을 담아 delete한다. 
+		for (int i = 0; i < alreadyFiles.length; i++) {
+			fileName = alreadyFiles[i].getName();
+			System.out.println(fileName);
+			new File(realPath + "/" + fileName).delete();
+		}
+		
 		if (!fileUploadDirectory.exists()) {
 			fileUploadDirectory.mkdirs();
 		}
 		
 		MultipartRequest multi = new MultipartRequest(req, realPath, 100*1024*1024, "utf-8");
 		Enumeration en = multi.getFileNames();
-		System.out.println(en);
+//		System.out.println(en);
 		int cnt = 0;
 		ImgStoreVO imgStoreVo = new ImgStoreVO();
 		imgStoreVo.setStore_no(store_no);
+//		while (en.hasMoreElements()) {
+//			System.out.println(en.nextElement());
+//		}
 		while (en.hasMoreElements()) {
 			cnt++;
-			System.out.println("[ " + (String) en.nextElement() +" ]");
-			fileName = multi.getFilesystemName("imgUp" + cnt);
-			System.out.println(fileName);
+//			System.out.println("[ " + (String) en.nextElement() +" ]");
+			fileName = multi.getFilesystemName((String) en.nextElement());
+//			System.out.println(fileName);
 			imgStoreVo.setImg_url(picFoldName + "/" + fileName);
 			service.insertImgStore(imgStoreVo);
 		}

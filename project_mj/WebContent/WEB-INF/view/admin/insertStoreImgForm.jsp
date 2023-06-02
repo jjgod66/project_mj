@@ -1,3 +1,5 @@
+<%@page import="kr.or.dw.store.vo.ImgStoreVO"%>
+<%@page import="java.util.List"%>
 <%@page import="kr.or.dw.store.vo.StoreVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -5,27 +7,43 @@
 
 <%
 	StoreVO storeVo = (StoreVO) request.getAttribute("storeVo");
+	List<ImgStoreVO> imgStoreVoList = (List<ImgStoreVO>)request.getAttribute("imgStoreVoList");
 %>
+<style>
+	.boxImg {
+		display:block;
+		width:100%;
+		height:auto;
+	}
+</style>
 <script>
 	$(function(){
 		
+	<%
+		for (ImgStoreVO imgStore : imgStoreVoList) {
+	%>
+		$(".rowImg").append("<div class='col-md-6 alreadyImg'><img src='/storePath/<%=imgStore.getImg_url()%>' class='boxImg'>")
+	<%		
+		}
+	%>
+		
+		
+		let cnt = 0;
 		function imgFilePreview (e) {
-			let formData = new FormData();
-//			console.log(formData.keys());
-			let fileList = ($('#imgUp')[0]).files;
-			console.log(fileList);
-			let cnt = 0;
-			for(let file of fileList){
-				cnt++;
-				$(this).closest(".row").append("<div class='col-12 col-sm-6'>" + (file) +"</div>")
-			}
-			let reader = new FileReader();
+			$(".alreadyImg").remove();
 			
-			reader.onload = function (e) {
-				$("#profile_picture").attr("src", e.target.result);
-			};
-// 			console.log(e.target);
-			reader.readAsDataURL(e.target.files[0]);
+			let previewBox = $(this);
+			let formData = new FormData();
+			let fileList = e.target.files;
+			let priviewImg;
+			for(let file of fileList){
+				let reader = new FileReader();
+				reader.onload = function (e) {
+					previewBox.closest(".row").append("<div class='col-md-6'><img src='" + e.target.result + "'class='boxImg' id='" + cnt + "'></div>");
+				};
+				reader.readAsDataURL(e.target.files[cnt]);
+				cnt++;
+			}
 			
 			/* 
 				readAsText 	  	  - 그 냥 Text로 읽는 것. 이미지 같은 것을 읽으면 인코딩이 되어 있지 않으므로 깨진 내용을 반환한다.
@@ -39,24 +57,22 @@
 		function onFilePicked(event) {
 		  var input = event.target;
 		  var file = input;
-// 		  console.log(file.files[1]);
 		};
 		
 		$("#imgUp").on("change", imgFilePreview);
 		
 		$("#saveImgBtn").on("click", function(){
-// 				let formData = new FormData($("#upload_form")[0]);
+			if (confirm("기존의 사진을 지우고 새롭게 올리시겠습니까?")) {
 				let formData = new FormData();
-// 				console.log(formData.keys());
 				let fileList = ($('#imgUp')[0]).files;
+				
 				console.log(fileList);
 				let cnt = 0;
 				for(let file of fileList){
 					cnt++;
 					formData.append('imgUp'+cnt, file);
 				}
-				console.log(formData.get('imgUp1'))
-				console.log(formData.get('imgUp2'))
+				
 			/*  
 				FormData를 사용하여 <form> 태그처럼 파일을 넘기는 방식을 알아보려고 한다.
 				dataType 은 내가 보내는 데이터의 타입이 아니고, 서버가 응답(response)할 때 보내줄 데이터의 타입니다.
@@ -71,20 +87,22 @@
 				- processData : false 로 선언 시 formData를 String 으로 변환하지 않음
 			*/
 			
-			$.ajax({
-				url : "<%=request.getContextPath()%>/file/storePicture.do?store_no=<%=storeVo.getStore_no()%>",
-				processData : false,
-				contentType : false,
-				data : formData,
-				dataType : "json",
-				method : "post",
-				success : function(res){
-					console.log(res);
-				},
-				error : function(err){
-					console.log(err);
-				}
-			});
+				$.ajax({
+					url : "<%=request.getContextPath()%>/file/storePicture.do?store_no=<%=storeVo.getStore_no()%>",
+					processData : false,
+					contentType : false,
+					data : formData,
+					dataType : "json",
+					method : "post",
+					success : function(res){
+						console.log(res);
+					},
+					error : function(err){
+						console.log(err);
+					}
+				});
+				alert("사진이 변경되었습니다.");
+			}	
 		});
 		
 		
@@ -106,31 +124,17 @@
 <div class="card card-primary card-outline">
 	<div class="card-body">
 		<div class="imgList">
-			<div class="row">
-				<div class="col-12 col-sm-6">
-				adddddddddddddddddddddddddd
-				</div>
-				<div class="col-12 col-sm-6">
+			<div class="row rowImg">
+				<div class="col-md-4"></div>			
+				<div class="col-md-4" style="text-align: center;">
 					<form id="upload_form" method="post" enctype="multipart/form-data">
-						<div class="text-center">
-									<a href="#" id="changeSelfie">
-									
-									<%
-										String src = "/storePath/" + storeVo.getStore_no() + "/cat1.jpg";
-// 										if (storeVo != null) {
-// 											if (storeVo.getPic_path() != null) {
-// 												src = "/profilePath/" + vo.getPic_path();
-// 												}
-// 										}
-									%>
-									
-										<img id="profile_picture" src="<%= src %>" alt="User profile picture" >
-									</a>
-						<input type="file" name="imgUp" id="imgUp" accept=".jpg, .jpeg, .png" multiple>
+<!-- 									<a href="#" id="changeSelfie"></a> -->
+						<input type="file" name="imgUp" id="imgUp" accept=".jpg, .jpeg, .png" style="padding-left: 3rem;padding-bottom: 1rem;"multiple>
 <!-- 						<input type="file" name="imgUp2" id="imgUp2" accept=".jpg, .jpeg, .png" multiple> -->
 						<a href="#" class="btn btn-primary btn-block" id="saveImgBtn"><b>사진 저장</b></a>
 					</form>
 				</div>
+				<div class="col-md-4"></div>
 			</div>
 		</div>
 	</div>

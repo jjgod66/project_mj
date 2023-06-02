@@ -107,5 +107,11 @@ public interface IAdminService {
 	 * @param store_no
 	 */
 	void deleteImgStore(int store_no);
+	
+	/**
+	 * 기존에 점포에 등록된 이미지를 모두 가져온다.
+	 * @return
+	 */
+	List<ImgStoreVO> selectImgStoreList(int store_no);
 
 }

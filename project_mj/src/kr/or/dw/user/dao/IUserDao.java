@@ -1,5 +1,8 @@
 package kr.or.dw.user.dao;
 
+import java.util.List;
+
+import kr.or.dw.cs.vo.AnnouncementVO;
 import kr.or.dw.user.vo.UserVO;
 
 public interface IUserDao {
@@ -10,5 +13,15 @@ public interface IUserDao {
 
 	public String getUser_nick(String user_nick);
 
+<<<<<<< Updated upstream
 	
+=======
+	int updateUser(UserVO userVO);
+
+	int deleteUser(int user_no);
+
+	void updateUserPicPath(UserVO vo);
+
+	public List<AnnouncementVO> selectAnVoList();
+>>>>>>> Stashed changes
 }
