@@ -1,5 +1,8 @@
 package kr.or.dw.user.dao;
 
+import java.util.List;
+
+import kr.or.dw.cs.vo.AnnouncementVO;
 import kr.or.dw.user.vo.UserVO;
 
 public interface IUserDao {
@@ -12,9 +15,10 @@ public interface IUserDao {
 
 	int updateUser(UserVO userVO);
 
-	void updateUserPicPath(UserVO vo);
-
 	int deleteUser(int user_no);
 
-	
+	void updateUserPicPath(UserVO vo);
+
+	public List<AnnouncementVO> selectAnVoList();
+
 }

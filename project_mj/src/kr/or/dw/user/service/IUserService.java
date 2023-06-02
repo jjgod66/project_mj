@@ -1,5 +1,8 @@
 package kr.or.dw.user.service;
 
+import java.util.List;
+
+import kr.or.dw.cs.vo.AnnouncementVO;
 import kr.or.dw.user.vo.UserVO;
 
 public interface IUserService {
@@ -17,6 +20,19 @@ public interface IUserService {
 
 	public int updateUser(UserVO userVO);
 
+<<<<<<< Updated upstream
+=======
+	public int updateUser(UserVO userVO);
+
+	public int deleteUser(int user_no);
+
+	/**
+	 * 공지사항 게시글 리스트를 불러온다
+	 * @return
+	 */
+	public List<AnnouncementVO> selectAnVoList();
+
+>>>>>>> Stashed changes
 	
 
 }

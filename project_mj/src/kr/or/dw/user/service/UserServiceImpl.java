@@ -1,5 +1,8 @@
 package kr.or.dw.user.service;
 
+import java.util.List;
+
+import kr.or.dw.cs.vo.AnnouncementVO;
 import kr.or.dw.user.dao.UserDaoImpl;
 import kr.or.dw.user.vo.UserVO;
 
@@ -47,12 +50,19 @@ public class UserServiceImpl implements IUserService {
 		return dao.updateUser(userVO);
 	}
 
+  @Override
+	public int deleteUser(int user_no) {
+	
+		return dao.deleteUser(user_no);
+	}
 
 	@Override
-	public int deleteUser(int user_no) {
-		// TODO Auto-generated method stub
-		return  dao.deleteUser(user_no);
+	public List<AnnouncementVO> selectAnVoList() {
+		return dao.selectAnVoList();
 	}
+
+
+
 
 	
 }
