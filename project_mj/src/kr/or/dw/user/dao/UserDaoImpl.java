@@ -57,9 +57,10 @@ public class UserDaoImpl implements IUserDao {
 		return vo;
 	}
 	@Override
-	public void updateUserPicPath(UserVO vo) {
+	public void updateUserPicPath(UserVO userVO) {
+		System.out.println(userVO.getUser_img());
 		try {
-			client.update("user.updateUserPicPath", vo);
+			client.update("user.updateUserPicPath", userVO);
 		} catch (SQLException e) {
 
 			e.printStackTrace();
@@ -77,6 +78,7 @@ public class UserDaoImpl implements IUserDao {
 			}
 		return result;
 	}
+	
 	@Override
 	public int deleteUser(int user_no) {
 		int result = 0;

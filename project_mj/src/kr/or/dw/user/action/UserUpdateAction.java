@@ -27,11 +27,9 @@ public class UserUpdateAction implements IAction{
 		IUserService service = UserServiceImpl.getInstance();
 		
 		HttpSession session = req.getSession();
-		String user_change = req.getParameter("user_change");
-//		String cmd = req.getParameter("cmd");
-//		System.out.println(cmd);
+		String user_email = ((UserVO) session.getAttribute("UserVO")).getUser_email(); // 상재오빠한테 물어보기 
 		
-//		if(cmd.equals("update")) {
+		
 			int user_no = Integer.parseInt(req.getParameter("user_no")); // 히든으로 가져와야함
 			String user_pass = req.getParameter("user_pass");   //  
 			String user_nick = req.getParameter("user_nick");
@@ -51,14 +49,12 @@ public class UserUpdateAction implements IAction{
 			
 			req.setAttribute("result", result);
 			
-//		}else if(cmd.equals("delete")) {
-//			int user_no = Integer.parseInt(req.getParameter("user_no"));
-//			int result = service.deleteUser(user_no);
-//			
-//			req.setAttribute("result", result);
-//		}
+			userVO = service.loginUser(user_email);		// 상재오빠한테 물어보기 
+			
+			session.setAttribute("UserVO", userVO);		// 상재오빠한테 물어보기 
+
 		
-		return "/user/UpdateSuccess.jsp";
+		return "/user/userUpdateSuccess.jsp";
 	}
 
 }

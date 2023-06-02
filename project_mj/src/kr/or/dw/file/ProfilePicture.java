@@ -25,28 +25,36 @@ public class ProfilePicture implements IAction{
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		HttpSession session = req.getSession();
-		UserVO vo = (UserVO) session.getAttribute("userVO");
-		int user_no = vo.getUser_no();
+//		HttpSession session = req.getSession();
+//		UserVO userVO = (UserVO) session.getAttribute("userVO");
+		int user_no = Integer.parseInt(req.getParameter("user_no"));
+		UserVO userVO = new UserVO();
+		userVO.setUser_no(user_no);
+		System.out.println(user_no);
 		String picFoldName = "" + user_no;
-		String realPath = "C:/upload/userProfile/" + picFoldName;
+		String realPath = "C:/file_project_mj/upload/userProfile/" + picFoldName;
 		
 		String fileName = "";
 		
+		// 프로필사진을 저장하려는 폴더 생성
 		File fileUploadDirectory = new File(realPath);
 		if(!fileUploadDirectory.exists()) {
 			fileUploadDirectory.mkdirs();
 		}
 		
+		// 해당 프로필사진 파일을 해당 경로안에 생성
 		MultipartRequest multi = new MultipartRequest(req, realPath, 100*1024*1024, "utf-8");
 		fileName = multi.getFilesystemName("selfie");
 		
-		vo.setUser_img(picFoldName + "/" + fileName);
+		
+		
+		System.out.println(fileName);
+		userVO.setUser_img(picFoldName + "/" + fileName);
 		
 		IUserService service = UserServiceImpl.getInstance();
-		service.updateUserPicPath(vo);
+		service.updateUserPicPath(userVO);
 		
-		req.setAttribute("vo", vo);
+		req.setAttribute("userVO", userVO);
 		
 		return "/user/myPageModResJson.jsp";
 	}

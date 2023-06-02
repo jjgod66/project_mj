@@ -41,10 +41,16 @@ public class UserLoginAction implements IAction {
 		int result = 0;
 		
 		if(vo != null && (cpass.equals(vo.getUser_pass()))) {
-			result = 1;
-			HttpSession session = req.getSession();
-			session.setAttribute("UserVO", vo);
+			if(vo.getGb_del().equals("Y")) {
+				result = 2;
+			} else {
+				result = 1;
+				HttpSession session = req.getSession();
+				session.setAttribute("UserVO", vo);
+			}
 		};
+		
+		
 		
 		req.setAttribute("result", result);
 		

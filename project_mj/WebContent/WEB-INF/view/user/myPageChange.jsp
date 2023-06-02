@@ -3,14 +3,63 @@
 <%@ include file="../header.jsp"%>
 <script>
 
+<%
+/* 		userVO = (UserVO) request.getAttribute("userVO"); */
+		String src = "";		
+
+		if (userVO.getUser_img() != null) {
+			src = " /profilePath/" + userVO.getUser_img();
+		}else{
+			src = "/profilePath/default/defaultProfile.jpg";
+			
+		}
+%>
+
 $(function(){
+			
+		$('#changeSelfie').on('click', function(){
+			$('input[name=selfie]').click();
+		
+
+		function imgFilePreview(e){
+			let reader = new FileReader();
+			
+			reader.onload = function(e){
+				$('#profile_picture').attr('src', e.target.result);
+			};
+			
+			reader.readAsDataURL(e.target.files[0]);
+			
+			$('#saveProfileBtn').toggle();
+		};
+		
+		$('#selfie').on('change', imgFilePreview);
+		
+		$('#saveProfileBtn').on('click', function(){
+			let formData = new FormData($('#upload_form')[0]);
+			$.ajax({
+				url : "<%=request.getContextPath()%>/file/profilePicture.do?user_no=<%=userVO.getUser_no()%>",
+				processData : false,
+				contentType : false,
+				data : formData,
+				dataType : "json",
+				method : "post",
+				success : function(res){
+					console.log(res);
+				},
+				error : function(){
+					
+				}
+			});
+			
+		});
+		});
 	
 	n_check = false;
-	
 	$("#userChange").on("submit", function (e) {
 		console.log($("#joinForm").find(".is-invalid").length)
 		if (!n_check) {
-			alert("닉네임 중복확인 체크를 해주세요.");
+			alert("닉네임 중복확인 체크를 해주세요."); 
 			$("input[name=user_nick]").focus();
 			e.preventDefault();
 			return;
@@ -97,6 +146,7 @@ $(function(){
 	
 });
 
+
 </script>
 
 <div class="content">
@@ -112,27 +162,27 @@ $(function(){
 						<form id="upload_form" method="post" enctype="multipart/form-data">
 								<div class="text-center">
 									<a href="#" id="changeSelfie">
-										<img class="profile-user-img img-fluid img-circle" id="profile_picture" src="/profilePath/<%=userVO.getUser_img()  %>" alt="User profile picture">
+								
+										<img class="profile-user-img img-fluid img-circle" id="profile_picture" src=<%=src%> alt="User profile picture">
 									</a>
-									<input type="file" style="display: none;" name="selfie" id="selfie" accept=".jpg, .jpeg, .png">
-									<a href="#" class="btn btn-primary btn-block" id="saveProfileBtn" style="display: none;"><b>프로필 사진 저장</b></a>
+									<input type="file" style="display: none;" name="selfie"
+									id="selfie" accept=".jpg, .jpeg, .png"> <a href="#"
+									class="btn btn-primary btn-block" id="saveProfileBtn"
+									style="display: none;"><b>프로필 사진 저장</b></a>
 								</div>
 							</form>
 					<!-- 이메일 -->
-					<form method= "post"  id = "userChange"action = "<%=request.getContextPath() %>/user/userUpdate.do">
-					
+					<br>
+					<form method= "post"  id = "userChange"action = "<%=request.getContextPath() %>/user/userUpdate.do">					
 					<p class="text-muted text-center"><%=userVO.getUser_name() %></p>
+					<P class="text-center"  ><%=userVO.getUser_email() %></P>
 					<div class="input-group mb-3">
-						<div class="card-email">
-							<P class="text-muted text-center" ><%=userVO.getUser_email() %></P>
-						</div>
 					</div>
 					<input type = "hidden" name = "user_no" value="<%=userVO.getUser_no()%>">
 					<!-- 비밀번호  -->
 					<div class="tinput-group mb-3">
 						<div class="input-group-prepend">
-							<span class="input-group-text"><i
-								class="fas fa-solid fa-key"></i> </span>
+							<span class="input-group-text"><i class="fas fa-solid fa-key"></i> </span>
 						</div>
 						<input type="password" class="form-control" placeholder="password"
 							name="user_pass" required> <span
@@ -168,10 +218,13 @@ $(function(){
 					<div class="input-group input-group-sm">
 						<span class="input-group-append">
 							<button type="submit" class="btn btn-info btn-flat text-right"  >수정완료</button>
+						
+						</form>
+						<form method= "post"  id = "userDelete"action = "<%=request.getContextPath() %>/user/userDelete.do">
+							<input type = "hidden" name = "user_no" value="<%=userVO.getUser_no()%>">
 							<button type="submit" class="btn btn-info btn-flat text-left"  >회원탈퇴</button>
-						</span>
+						</form></span>
 					</div>
-					</form>
 				</div><%-- 
 <%=request.getContextPath()%>/cs/main.do"
 "<%=request.getContextPath()%>/user/userMyPage.do" --%>
