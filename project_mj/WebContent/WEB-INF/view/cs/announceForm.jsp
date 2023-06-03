@@ -4,8 +4,14 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 <!-- if 문 넣어서 관리자인지 아닌지 넣으면 됨  -->
+=======
+<%
+  List<AnnouncementVO> anVoList = (List<AnnouncementVO>)request.getAttribute("anVoList");
+%>
+>>>>>>> Stashed changes
 =======
 <%
   List<AnnouncementVO> anVoList = (List<AnnouncementVO>)request.getAttribute("anVoList");
@@ -16,7 +22,11 @@
 		<div class="row mb-2">
 			<div class="col-sm-6">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 				<h1>공지사항</h1>
+=======
+				<h1>공지사항 페이지</h1>
+>>>>>>> Stashed changes
 =======
 				<h1>공지사항 페이지</h1>
 >>>>>>> Stashed changes
@@ -63,6 +73,7 @@
 										</thead>
 										<tbody>
 
+<<<<<<< Updated upstream
 
 											<tr style ="text-align-last: center">
 												<td><a href="/comm/commView.do?bd_no=3" >테스트 제목입니다.</a>
@@ -70,6 +81,8 @@
 											</tr>
 =======
 
+=======
+>>>>>>> Stashed changes
 												<th class="sorting sorting_asc" tabindex="0"
 													aria-controls="example1" rowspan="1" colspan="1"
 													aria-sort="ascending"
@@ -91,6 +104,9 @@
 											}
 										%>
 	
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 										</tbody>
