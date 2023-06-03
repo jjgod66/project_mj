@@ -20,7 +20,7 @@
 				  		) v2
 				 WHERE rnum <![CDATA[ >= ]]> #start#
 				) comm
-		  <!-- WHERE user_no = #user_no# -->
+<!-- 		  WHERE user_no = #user_no# -->
 	</select>
 	
  	<select id="selectCommCount" resultClass="int">

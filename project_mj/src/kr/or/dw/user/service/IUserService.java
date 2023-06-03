@@ -20,11 +20,7 @@ public interface IUserService {
 
 	public int updateUser(UserVO userVO);
 
-<<<<<<< Updated upstream
-=======
-	public int updateUser(UserVO userVO);
 
-	public int deleteUser(int user_no);
 
 	/**
 	 * 공지사항 게시글 리스트를 불러온다
@@ -32,7 +28,7 @@ public interface IUserService {
 	 */
 	public List<AnnouncementVO> selectAnVoList();
 
->>>>>>> Stashed changes
+
 	
 
 }

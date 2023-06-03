@@ -16,8 +16,6 @@
 		width:100%;
 		height:auto;
 	}
-<<<<<<< Updated upstream
-=======
 	.botPadding {
 		padding-bottom : 1.0rem;
 	}
@@ -26,21 +24,19 @@
 		display : none;
 		color : red;
 	}
->>>>>>> Stashed changes
+
 </style>
 <script>
 	$(function(){
 		
 	<%
-		for (ImgStoreVO imgStore : imgStoreVoList) {
+		if (!imgStoreVoList.isEmpty()) {
+			for (ImgStoreVO imgStore : imgStoreVoList) {
 	%>
-<<<<<<< Updated upstream
-		$(".rowImg").append("<div class='col-md-6 alreadyImg'><img src='/storePath/<%=imgStore.getImg_url()%>' class='boxImg'>")
-=======
 				$(".rowImg").append("<div class='col-md-6 alreadyImg botPadding'><a href='#' class='xbtn'><span class='glyphicon glyphicon-minus'></span></a><img src='/storePath/<%=imgStore.getImg_url()%>' class='boxImg'>");
->>>>>>> Stashed changes
 	<%		
-		}
+			}
+		} 
 	%>
 	
 		$(document).on("mouseenter", ".botPadding",function(){
@@ -64,11 +60,9 @@
 			for(let file of fileList){
 				let reader = new FileReader();
 				reader.onload = function (e) {
-<<<<<<< Updated upstream
-					previewBox.closest(".row").append("<div class='col-md-6'><img src='" + e.target.result + "'class='boxImg' id='" + cnt + "'></div>");
-=======
+
 					previewBox.closest(".row").append("<div class='col-md-6 botPadding'><a href='#' class='xbtn'><span class='glyphicon glyphicon-minus'></span></a><img src='" + e.target.result + "'class='boxImg' id='" + cnt + "'></div>");
->>>>>>> Stashed changes
+
 				};
 				reader.readAsDataURL(e.target.files[cnt]);
 				cnt++;
@@ -154,16 +148,16 @@
 	<div class="card-body">
 		<div class="imgList">
 			<div class="row rowImg">
-				<div class="col-md-4"></div>			
-				<div class="col-md-4" style="text-align: center;">
+				<div class="col-md-4 botPadding"></div>			
+				<div class="col-md-4 botPadding" style="text-align: center; padding-bottom: 1rem;">
 					<form id="upload_form" method="post" enctype="multipart/form-data">
 <!-- 									<a href="#" id="changeSelfie"></a> -->
-						<input type="file" name="imgUp" id="imgUp" accept=".jpg, .jpeg, .png" style="padding-left: 3rem;padding-bottom: 1rem;"multiple>
+						<input type="file" name="imgUp" id="imgUp" accept=".jpg, .jpeg, .png" style="padding-left: 3rem;"multiple>
 <!-- 						<input type="file" name="imgUp2" id="imgUp2" accept=".jpg, .jpeg, .png" multiple> -->
 						<a href="#" class="btn btn-primary btn-block" id="saveImgBtn"><b>사진 저장</b></a>
 					</form>
 				</div>
-				<div class="col-md-4"></div>
+				<div class="col-md-4 botPadding"></div>
 			</div>
 		</div>
 	</div>
