@@ -9,12 +9,24 @@
 	StoreVO storeVo = (StoreVO) request.getAttribute("storeVo");
 	List<ImgStoreVO> imgStoreVoList = (List<ImgStoreVO>)request.getAttribute("imgStoreVoList");
 %>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <style>
 	.boxImg {
 		display:block;
 		width:100%;
 		height:auto;
 	}
+<<<<<<< Updated upstream
+=======
+	.botPadding {
+		padding-bottom : 1.0rem;
+	}
+	.xbtn {
+		position : absolute;
+		display : none;
+		color : red;
+	}
+>>>>>>> Stashed changes
 </style>
 <script>
 	$(function(){
@@ -22,11 +34,24 @@
 	<%
 		for (ImgStoreVO imgStore : imgStoreVoList) {
 	%>
+<<<<<<< Updated upstream
 		$(".rowImg").append("<div class='col-md-6 alreadyImg'><img src='/storePath/<%=imgStore.getImg_url()%>' class='boxImg'>")
+=======
+				$(".rowImg").append("<div class='col-md-6 alreadyImg botPadding'><a href='#' class='xbtn'><span class='glyphicon glyphicon-minus'></span></a><img src='/storePath/<%=imgStore.getImg_url()%>' class='boxImg'>");
+>>>>>>> Stashed changes
 	<%		
 		}
 	%>
-		
+	
+		$(document).on("mouseenter", ".botPadding",function(){
+			$(this).find(".xbtn").css("display", "block")
+		});
+		$(document).on("mouseleave", ".botPadding",function(){
+			$(this).find(".xbtn").css("display", "none")
+		});
+		$(document).on("click", ".xbtn",function(){
+			$(this).closest(".botPadding").remove();
+		});
 		
 		let cnt = 0;
 		function imgFilePreview (e) {
@@ -39,7 +64,11 @@
 			for(let file of fileList){
 				let reader = new FileReader();
 				reader.onload = function (e) {
+<<<<<<< Updated upstream
 					previewBox.closest(".row").append("<div class='col-md-6'><img src='" + e.target.result + "'class='boxImg' id='" + cnt + "'></div>");
+=======
+					previewBox.closest(".row").append("<div class='col-md-6 botPadding'><a href='#' class='xbtn'><span class='glyphicon glyphicon-minus'></span></a><img src='" + e.target.result + "'class='boxImg' id='" + cnt + "'></div>");
+>>>>>>> Stashed changes
 				};
 				reader.readAsDataURL(e.target.files[cnt]);
 				cnt++;
@@ -116,11 +145,11 @@
 		<div class="row mb-2">
 			<div class="col-sm-6">
 				<h1>점포 사진 추가 page</h1>
+				
 			</div>
 		</div>
 	</div>
 </section>
-
 <div class="card card-primary card-outline">
 	<div class="card-body">
 		<div class="imgList">
