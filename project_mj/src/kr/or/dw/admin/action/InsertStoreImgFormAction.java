@@ -29,10 +29,10 @@ public class InsertStoreImgFormAction implements IAction{
 		
 		if (req.getParameter("store_no") != null) {
 			store_no = Integer.parseInt(req.getParameter("store_no"));
-			System.out.println(store_no);
 			StoreVO storeVo = service.selectStoreView(store_no);
 			List<ImgStoreVO> imgStoreVoList = service.selectImgStoreList(store_no); 
 			req.setAttribute("imgStoreVoList", imgStoreVoList);
+			System.out.println(imgStoreVoList);
 			req.setAttribute("storeVo", storeVo);
 		}
 			

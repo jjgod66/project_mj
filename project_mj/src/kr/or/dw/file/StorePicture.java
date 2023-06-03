@@ -49,21 +49,24 @@ public class StorePicture implements IAction{
 		String realPath = "C:/file_project_mj/upload/storeImg/" + picFoldName;	// 실제폴더경로
 		
 		String fileName = "";	//파일 이름을 담을 곳
-		
 		File fileUploadDirectory = new File(realPath);	//  
 		
 		// 해당 디렉토리 안에 있는 모든 파일을 구한다.
 		File[] alreadyFiles = fileUploadDirectory.listFiles();
 		// 그 파일들의 이름을 구하고 새로운 파일 객체에 경로+파일 이름을 담아 delete한다. 
-		for (int i = 0; i < alreadyFiles.length; i++) {
-			fileName = alreadyFiles[i].getName();
-			System.out.println(fileName);
-			new File(realPath + "/" + fileName).delete();
+		if (alreadyFiles != null) {
+			System.out.println(alreadyFiles);
+			for (int i = 0; i < alreadyFiles.length; i++) {
+				fileName = alreadyFiles[i].getName();
+				System.out.println(fileName);
+				new File(realPath + "/" + fileName).delete();
+			}
 		}
 		
 		if (!fileUploadDirectory.exists()) {
 			fileUploadDirectory.mkdirs();
 		}
+		System.out.println("test");
 		
 		MultipartRequest multi = new MultipartRequest(req, realPath, 100*1024*1024, "utf-8");
 		Enumeration en = multi.getFileNames();
