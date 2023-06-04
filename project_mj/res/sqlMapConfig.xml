@@ -19,6 +19,8 @@
 	 <typeAlias alias = "likeVO" type="kr.or.dw.comm.vo.LikeVO" />
 	 <typeAlias alias = "replyVO" type="kr.or.dw.comm.vo.ReplyVO" />
 	 <typeAlias alias = "storeVO" type="kr.or.dw.store.vo.StoreVO" />
+	 <typeAlias alias = "imgStoreVO" type="kr.or.dw.store.vo.ImgStoreVO" />
+	 <typeAlias alias = "anVO" type="kr.or.dw.cs.vo.AnnouncementVO" />
 	
 	<!-- DB와 연결을 처리하는 부분 -->
 	<transactionManager type="JDBC">

@@ -19,6 +19,7 @@
 						 WHERE rownum <![CDATA[ <= ]]> #end#
 				  		) v2
 				 WHERE rnum <![CDATA[ >= ]]> #start#
+
 				) comm 
 		   <!--  WHERE comm.user_no = user_no -->
 	</select>
@@ -41,6 +42,7 @@
 				  		) v2
 				 WHERE rnum <![CDATA[ >= ]]> #start#
 				) b
+
 	</select>
 	
  	<select id="selectCommCount" resultClass="int">

@@ -1,5 +1,8 @@
 package kr.or.dw.user.service;
 
+import java.util.List;
+
+import kr.or.dw.cs.vo.AnnouncementVO;
 import kr.or.dw.user.vo.UserVO;
 
 public interface IUserService {
@@ -11,7 +14,20 @@ public interface IUserService {
 
 	public UserVO loginUser(String user_email);
 
-	public void updateUserPicPath(UserVO vo);
+	public void updateUserPicPath(UserVO userVO);
+
+	public int deleteUser(int user_no);
+
+	public int updateUser(UserVO userVO);
+
+
+
+	/**
+	 * 공지사항 게시글 리스트를 불러온다
+	 * @return
+	 */
+	public List<AnnouncementVO> selectAnVoList();
+
 
 	
 

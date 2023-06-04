@@ -1,9 +1,11 @@
 package kr.or.dw.user.dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
+import kr.or.dw.cs.vo.AnnouncementVO;
 import kr.or.dw.user.vo.UserVO;
 import kr.or.dw.util.BuildSqlMapClient;
 
@@ -56,5 +58,53 @@ public class UserDaoImpl implements IUserDao {
 		}
 		return vo;
 	}
+	@Override
+	public void updateUserPicPath(UserVO userVO) {
+		System.out.println(userVO.getUser_img());
+		try {
+			client.update("user.updateUserPicPath", userVO);
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		
+	}
+	@Override
+	public int updateUser(UserVO userVO) {
+		 int result = 0;
+			try {
+				client.update("user.updateUser", userVO);
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		return result;
+	}
+	
+	@Override
+	public int deleteUser(int user_no) {
+		int result = 0;
+			try {
+				client.update("user.deleteUser", user_no);
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
+			return result;
+	}
+
+	@Override
+	public List<AnnouncementVO> selectAnVoList() {
+		List<AnnouncementVO> AnVoList = null;
+		
+		try {
+			AnVoList = client.queryForList("user.selectAnList");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return AnVoList;
+	}
+
 
 }

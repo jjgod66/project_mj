@@ -29,11 +29,16 @@
   	$(function(){
   		
 		$('#loginCheck').text('로그아웃');  				
-		$('#loginCheck').attr('href', '<%= request.getContextPath()%>/user/userLogout.do');  
-		$('#signUp').text('마이페이지');
- 		$('#signUp').find('i').attr('class', 'nav-icon fas fa-solid fa-id-card'); 
-		$('#signUp').attr('href', '<%= request.getContextPath()%>/user/userMyPage.do'); 
-  	})
+		$('#loginCheck').attr('href', '<%= request.getContextPath()%>/user/userLogout.do');
+		
+		if (<%=userVO.getAuth_cd().equals("A101")%>) {
+			$('#signUp').text('관리자페이지');
+			$('#signUp').attr('href', '<%= request.getContextPath()%>/admin/adminMain.do');
+		} else if (<%=userVO.getAuth_cd().equals("B101")%>) {
+			$('#signUp').text('마이페이지');
+			$('#signUp').attr('href', '<%= request.getContextPath()%>/user/userMyPage.do'); 
+		}
+  	});
   </script>
 <%	}	%>
   </head>
@@ -95,7 +100,7 @@
 					</li>
 						
 					<li class="nav-item">
-					<a href="<%=gcp%>/cs/csMain.do" class="nav-link">고객센터  </a>
+					<a href="<%=gcp%>/cs/announceForm.do" class="nav-link">공지사항  </a>
 					</li>
 				</ul>
 			</div>

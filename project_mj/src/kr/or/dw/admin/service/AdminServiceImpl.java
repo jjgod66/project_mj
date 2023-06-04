@@ -6,6 +6,7 @@ import java.util.Map;
 import kr.or.dw.admin.dao.AdminDaoImpl;
 import kr.or.dw.admin.dao.IAdminDao;
 import kr.or.dw.comm.vo.CommVO;
+import kr.or.dw.store.vo.ImgStoreVO;
 import kr.or.dw.store.vo.StoreVO;
 import kr.or.dw.user.vo.UserVO;
 
@@ -86,5 +87,25 @@ public class AdminServiceImpl implements IAdminService {
 	@Override
 	public int deleteTagName(String tagName) {
 		return dao.deleteTagName(tagName);
+	}
+
+	@Override
+	public void insertImgStore(ImgStoreVO imgStoreVo) {
+		dao.insertImgStore(imgStoreVo);
+	}
+
+	@Override
+	public void deleteImgStore(int store_no) {
+		dao.deleteImgStore(store_no);
+	}
+
+	@Override
+	public List<ImgStoreVO> selectImgStoreList(int store_no) {
+		return dao.selectImgStoreList(store_no);
+	}
+
+	@Override
+	public void deleteThumbImgStore(int store_no) {
+		dao.deleteThumbImgStore(store_no);
 	}
 }

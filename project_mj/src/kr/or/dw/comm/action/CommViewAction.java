@@ -44,6 +44,7 @@ public class CommViewAction implements IAction{
 		if(session.getAttribute("userVO") != null ) {
 			user_no = ((UserVO)session.getAttribute("userVO")).getUser_no();
 		};
+
 		LikeVO likeVo = new LikeVO();
 		likeVo.setBd_no(bd_no);
 		likeVo.setUser_no(user_no);
@@ -54,6 +55,7 @@ public class CommViewAction implements IAction{
 		req.setAttribute("userLike", userLike);
 		System.out.println("commViewAction 리턴 위 입니다 ");
 		return "/comm/commView.jsp";
+
 	}
 
 }

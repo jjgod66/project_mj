@@ -1,5 +1,8 @@
 package kr.or.dw.user.service;
 
+import java.util.List;
+
+import kr.or.dw.cs.vo.AnnouncementVO;
 import kr.or.dw.user.dao.UserDaoImpl;
 import kr.or.dw.user.vo.UserVO;
 
@@ -36,10 +39,29 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public void updateUserPicPath(UserVO vo) {
-		
+	public void updateUserPicPath(UserVO userVO) {
+		dao.updateUserPicPath(userVO);
 		
 	}
+
+	@Override
+	public int updateUser(UserVO userVO) {
+	
+		return dao.updateUser(userVO);
+	}
+
+  @Override
+	public int deleteUser(int user_no) {
+	
+		return dao.deleteUser(user_no);
+	}
+
+	@Override
+	public List<AnnouncementVO> selectAnVoList() {
+		return dao.selectAnVoList();
+	}
+
+
 
 
 	

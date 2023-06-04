@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.dw.admin.service.AdminServiceImpl;
 import kr.or.dw.admin.service.IAdminService;
+import kr.or.dw.store.vo.ImgStoreVO;
 import kr.or.dw.store.vo.StoreVO;
 import kr.or.dw.web.IAction;
 
@@ -26,11 +27,14 @@ public class InsertStoreImgFormAction implements IAction{
 		IAdminService service = AdminServiceImpl.getInstance();
 		int store_no = 0;
 		
-		// 수정시
 		if (req.getParameter("store_no") != null) {
-			}
-		
-		req.setAttribute("store_no", store_no);
+			store_no = Integer.parseInt(req.getParameter("store_no"));
+			StoreVO storeVo = service.selectStoreView(store_no);
+			List<ImgStoreVO> imgStoreVoList = service.selectImgStoreList(store_no); 
+			req.setAttribute("imgStoreVoList", imgStoreVoList);
+			req.setAttribute("storeVo", storeVo);
+		}
+			
 		return "/admin/insertStoreImgForm.jsp";
 	}
 
