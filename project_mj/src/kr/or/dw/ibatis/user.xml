@@ -85,6 +85,8 @@
 		SELECT * FROM bd_announce WHERE gb_del = 'N'
 	</select>
 
+
+
 	<update id="updateUserPicPath" parameterClass="userVO">
 		UPDATE user_ SET user_img = #user_img# WHERE user_no = #user_no#
 	</update>

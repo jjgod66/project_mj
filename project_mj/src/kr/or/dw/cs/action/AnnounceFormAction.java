@@ -20,13 +20,12 @@ public class AnnounceFormAction implements IAction {
 	}
 
 	@Override
-	public String process(HttpServletRequest req, HttpServletResponse res)
-			throws ServletException, IOException {
+	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		IUserService service = UserServiceImpl.getInstance();
+		
 		List<AnnouncementVO> anVoList = service.selectAnVoList();
 		System.out.println(anVoList);
 		req.setAttribute("anVoList", anVoList);
-		
 		return "/cs/announceForm.jsp";
 	}
 
