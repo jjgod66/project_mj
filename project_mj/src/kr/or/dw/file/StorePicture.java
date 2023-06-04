@@ -110,13 +110,6 @@ public class StorePicture implements IAction{
 			}
 		}
 		
-		
-		
-//		File oldFile = new File(realPath + "/" + fileName);
-//		File newFile = new File(realPath + "/" + fileName);
-//		oldFile.renameTo(newFile);
-		
-//		req.setAttribute("storeVo", storeVo);
 		return null;
 	}
 
