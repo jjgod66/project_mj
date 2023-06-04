@@ -32,9 +32,15 @@
 	<%
 		if (!imgStoreVoList.isEmpty()) {
 			for (ImgStoreVO imgStore : imgStoreVoList) {
+				if (imgStore.getGb_rep().equals("N")) {
 	%>
-				$(".rowImg").append("<div class='col-md-6 alreadyImg botPadding'><a href='#' class='xbtn'><span class='glyphicon glyphicon-minus'></span></a><img src='/storePath/<%=imgStore.getImg_url()%>' class='boxImg'>");
+					$(".imgList .row").append("<div class='col-md-6 alreadyImg botPadding'><a href='#' class='xbtn'><span class='glyphicon glyphicon-minus'></span></a><img src='/storePath/<%=imgStore.getImg_url()%>' class='boxImg'>");
 	<%		
+				} else if (imgStore.getGb_rep().equals("Y")) {
+	%>
+					$(".thumbnailImg .row").prepend("<div class='col-md-6 alreadyImg botPadding'><a href='#' class='xbtn'><span class='glyphicon glyphicon-minus'></span></a><img src='/storePath/<%=imgStore.getImg_url()%>' class='boxImg'>");
+	<%				
+				}
 			}
 		} 
 	%>
@@ -61,20 +67,12 @@
 				let reader = new FileReader();
 				reader.onload = function (e) {
 
-					previewBox.closest(".row").append("<div class='col-md-6 botPadding'><a href='#' class='xbtn'><span class='glyphicon glyphicon-minus'></span></a><img src='" + e.target.result + "'class='boxImg' id='" + cnt + "'></div>");
+					previewBox.closest(".imgList .row").append("<div class='col-md-6 botPadding'><a href='#' class='xbtn'><span class='glyphicon glyphicon-minus'></span></a><img src='" + e.target.result + "'class='boxImg' id='" + cnt + "'></div>");
 
 				};
 				reader.readAsDataURL(e.target.files[cnt]);
 				cnt++;
 			}
-			
-			/* 
-				readAsText 	  	  - 그 냥 Text로 읽는 것. 이미지 같은 것을 읽으면 인코딩이 되어 있지 않으므로 깨진 내용을 반환한다.
-				readAsDataURL 	  - base64로 인코딩합니다. 이미지를 다루는데 좋다.
-				readAsArrayBuffer - ArrayBuffer 객체를 반환한다. => buffer니까 데이터를 잘게 조각낸 것이고, 이를 서버에 보내서 stream으로 처리하면 된다.
-																영상, 오디오 등의 스트림 데이터를 다루는데 좋다.
-			*/
-			
 		};
 		
 		function onFilePicked(event) {
@@ -82,8 +80,31 @@
 		  var file = input;
 		};
 		
+		// 일반 이미지 업로드시 ajax로 즉시 프리뷰
 		$("#imgUp").on("change", imgFilePreview);
 		
+		// 썸네일 이미지 업로드
+		$("#saveThumbnailImgBtn").on("click", function(){
+			let formData = new FormData($("#thumb_upload_form")[0]);
+			console.log(formData);
+			
+			$.ajax({
+				url : "<%=request.getContextPath()%>/file/storePicture.do?store_no=<%=storeVo.getStore_no()%>&cmd=thumb",
+				processData : false,
+				contentType : false,
+				data : formData,
+				dataType : "json",
+				method : "post",
+				success : function(res){
+					console.log(res);
+				},
+				error : function(){
+					
+				}
+			});
+		});
+		
+		// 일반 이미지들  업로드
 		$("#saveImgBtn").on("click", function(){
 			if (confirm("기존의 사진을 지우고 새롭게 올리시겠습니까?")) {
 				let formData = new FormData();
@@ -111,7 +132,7 @@
 			*/
 			
 				$.ajax({
-					url : "<%=request.getContextPath()%>/file/storePicture.do?store_no=<%=storeVo.getStore_no()%>",
+					url : "<%=request.getContextPath()%>/file/storePicture.do?store_no=<%=storeVo.getStore_no()%>&cmd=notThumb",
 					processData : false,
 					contentType : false,
 					data : formData,
@@ -146,14 +167,24 @@
 </section>
 <div class="card card-primary card-outline">
 	<div class="card-body">
+		<div class="thumbnailImg">
+			<div class="row rowImg">
+<!-- 				<div class="col-md-6"></div> -->
+				<div class="col-md-6">
+					<form id ="thumb_upload_form" method="post" enctype="multipart/form-data">
+						<input type="file" name="thumbUp" id="thumbUp" accept=".jpg, .jpeg, .png" style="padding-left: 3rem;"multiple>
+						<a href="#" class="btn btn-primary btn-block" id="saveThumbnailImgBtn"><b>썸네일 저장</b></a>
+					</form>
+				</div>
+			</div>
+		</div>
+		<hr>
 		<div class="imgList">
 			<div class="row rowImg">
 				<div class="col-md-4 botPadding"></div>			
 				<div class="col-md-4 botPadding" style="text-align: center; padding-bottom: 1rem;">
 					<form id="upload_form" method="post" enctype="multipart/form-data">
-<!-- 									<a href="#" id="changeSelfie"></a> -->
 						<input type="file" name="imgUp" id="imgUp" accept=".jpg, .jpeg, .png" style="padding-left: 3rem;"multiple>
-<!-- 						<input type="file" name="imgUp2" id="imgUp2" accept=".jpg, .jpeg, .png" multiple> -->
 						<a href="#" class="btn btn-primary btn-block" id="saveImgBtn"><b>사진 저장</b></a>
 					</form>
 				</div>

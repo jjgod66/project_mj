@@ -125,11 +125,15 @@
 		<selectKey keyProperty="img_no" resultClass="int">
 			SELECT img_store_seq.nextVal img_no From dual
 		</selectKey>
-		INSERT INTO img_store ( img_no, store_no, img_url, img_updt, gb_rep ) VALUES ( #img_no#, #store_no#, #img_url#, SYSDATE, 'Y')
+		INSERT INTO img_store ( img_no, store_no, img_url, img_updt, gb_rep ) VALUES ( #img_no#, #store_no#, #img_url#, SYSDATE, 'N')
 	</insert>
 	
 	<delete id="deleteImgStore" parameterClass="int">
-		DELETE FROM img_store WHERE store_no = #store_no#
+		DELETE FROM img_store WHERE store_no = #store_no# AND gb_rep = 'N'
+	</delete>
+	
+	<delete id="deleteThumbImgStore" parameterClass="int">
+		DELETE FROM img_store WHERE store_no = #store_no# AND gb_rep = 'Y'
 	</delete>
 	
 	<select id="selectImgStoreList" parameterClass="int" resultClass="imgStoreVO">
