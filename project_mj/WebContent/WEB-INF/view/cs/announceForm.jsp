@@ -1,12 +1,17 @@
+
+<%@page import="kr.or.dw.cs.vo.AnnouncementVO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
-
-<section class="content-header">
+<%
+  List<AnnouncementVO> anVoList = (List<AnnouncementVO>)request.getAttribute("anVoList");
+%>
+<section class="contsent-header">
 	<div class="container-fluid">
 		<div class="row mb-2">
 			<div class="col-sm-6">
-				<h1>Announcement Page</h1>
+				<h1>공지사항 페이지</h1>
 			</div>
 			<!-- 			<div class="col-sm-6"> -->
 			<!-- 				<ol class="breadcrumb float-sm-right"> -->
@@ -28,21 +33,9 @@
 							class="dataTables_wrapper dt-bootstrap4">
 							<div class="row">
 								<div class="col-sm-12 col-md-6">
-									<div class="dt-buttons btn-group flex-wrap">
-										<button class="btn btn-secondary buttons-copy buttons-html5"
-											tabindex="0" aria-controls="example1" type="button">
-											<span>최신순서 </span>
-										</button>
-										<button class="btn btn-secondary buttons-csv buttons-html5"
-											tabindex="0" aria-controls="example1" type="button">
-											<span>좋아요 </span>
-										</button>
-
-
-
-									</div>
+									
+									<a href ="<%=request.getContextPath()%>/cs/insertAnnounceForm.do"><button>글쓰기</button></a>
 								</div>
-
 							</div>
 							<div class="row">
 								<div class="col-sm-12">
@@ -52,46 +45,27 @@
 										<thead>
 											<tr>
 
-												<th class="sorting" tabindex="0" aria-controls="example1"
-													rowspan="1" colspan="1"
-													aria-label="Browser: activate to sort column ascending">순번
-												</th>
-
 												<th class="sorting sorting_asc" tabindex="0"
 													aria-controls="example1" rowspan="1" colspan="1"
 													aria-sort="ascending"
 													aria-label="Rendering engine: activate to sort column descending">
 													제목</th>
 
-
-												<th class="sorting" tabindex="0" aria-controls="example1"
-													rowspan="1" colspan="1"
-													aria-label="Platform(s): activate to sort column ascending">작성자
-												</th>
-												<th class="sorting" tabindex="0" aria-controls="example1"
-													rowspan="1" colspan="1"
-													aria-label="Engine version: activate to sort column ascending">
-													조회수</th>
-
-												<th class="sorting" tabindex="0" aria-controls="example1"
-													rowspan="1" colspan="1"
-													aria-label="Engine version: activate to sort column ascending">
-													좋아요</th>
-
 											</tr>
 										</thead>
 										<tbody>
-
-
-											<tr>
-												<td>3</td>
-												<td><a href="/comm/commView.do?bd_no=3">테스트 제목입니다.</a>
+										<%
+											for(AnnouncementVO anVo : anVoList ){
+												%>
+												<tr>
+												<td ><a href="<%=request.getContextPath()%>/cs/announceForm.do"><%= anVo.getBd_title()%></a>
 												</td>
-												<td><img alt="작성자 프로필사진" class="table-avatar">name123</td>
-												<td>10</td>
-												<td>5</td>
-											</tr>
 
+											</tr>	
+												<%
+											}
+										%>
+	
 										</tbody>
 
 									</table>
