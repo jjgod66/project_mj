@@ -237,4 +237,13 @@ public class AdminDaoImpl implements IAdminDao {
 		return imgStoreVoList;
 	}
 
+	@Override
+	public void deleteThumbImgStore(int store_no) {
+		try {
+			client.delete("store.deleteThumbImgStore", store_no);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 }
