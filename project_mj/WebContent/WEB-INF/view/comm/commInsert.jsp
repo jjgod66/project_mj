@@ -10,7 +10,7 @@
 %>
 
 <%-- 입력 폼 --%>
-<form action="writerAction" method="post">
+<form action="writerAction" method="post" href="<%= request.getContextPath()%>/cs/insertAnnounce.do">
 	<input type="hidden" name="bdGroup" >
 	<input type="hidden" name="bdOrder" >
 	<input type="hidden" name="bdIndent" >
