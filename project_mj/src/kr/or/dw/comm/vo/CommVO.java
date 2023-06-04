@@ -12,7 +12,15 @@ public class CommVO {
 	private String bd_wdt;
 	private String gb_del;
 	private String user_img;
+	private int reply_cnt;
 	
+	
+	public int getReply_cnt() {
+		return reply_cnt;
+	}
+	public void setReply_cnt(int reply_cnt) {
+		this.reply_cnt = reply_cnt;
+	}
 	public String getUser_img() {
 		return user_img;
 	}
