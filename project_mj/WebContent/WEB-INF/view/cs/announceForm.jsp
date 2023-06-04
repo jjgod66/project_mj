@@ -1,4 +1,3 @@
-
 <%@page import="kr.or.dw.cs.vo.AnnouncementVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -7,6 +6,11 @@
 <%
   List<AnnouncementVO> anVoList = (List<AnnouncementVO>)request.getAttribute("anVoList");
 %>
+<%
+	
+	
+%>
+
 <section class="contsent-header">
 	<div class="container-fluid">
 		<div class="row mb-2">
@@ -33,9 +37,12 @@
 							class="dataTables_wrapper dt-bootstrap4">
 							<div class="row">
 								<div class="col-sm-12 col-md-6">
-									
+									<%
+										if (userVO != null && userVO.getAuth_cd().equals("A101")){
+									%>
 									<a href ="<%=request.getContextPath()%>/cs/insertAnnounceForm.do"><button>글쓰기</button></a>
-								</div>
+						<% }%>	
+						</div>
 							</div>
 							<div class="row">
 								<div class="col-sm-12">
