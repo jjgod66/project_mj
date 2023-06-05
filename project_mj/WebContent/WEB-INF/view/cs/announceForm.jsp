@@ -55,7 +55,6 @@
 										</thead>
 										<tbody>
 										<%
-
 											for(AnnouncementVO anVo : anVOList ){											
 												String bd_title = anVo.getBd_title();
 												%>
@@ -63,11 +62,6 @@
 
 												<td ><a href= "<%=request.getContextPath()%>/cs/announceForm.do"><%= anVo.getBd_title()%></a>
 
-											for(AnnouncementVO anVo : anVOList ){
-												%>
-												<tr>
-
-												<td ><a href="<%=request.getContextPath()%>/cs/announceForm.do"><%= anVo.getBd_title()%></a>
 												</td>
 
 											</tr>	
