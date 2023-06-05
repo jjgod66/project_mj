@@ -81,6 +81,34 @@
 		 WHERE user_no = #user_no#
 	</update>
 	
+<<<<<<< Updated upstream
+=======
+	<select id="selectAnList" resultClass="anVo">
+		SELECT * FROM bd_announce WHERE gb_del = 'N' ORDER BY bd_no
+	</select>
+
+	<insert id="insertContent" parameterClass="anVo">
+		<selectKey keyProperty="bd_no" resultClass="int">
+			SELECT bd_announce_seq.nextVal bd_no FROM dual
+		</selectKey>
+			INSERT INTO
+			bd_announce (
+						bd_no
+					   ,bd_title
+					   ,bd_content
+					   ,bd_wdt
+					   ,gb_del
+					)
+			VALUES (
+						#bd_no#
+					   ,#bd_title#
+					   ,#bd_content#
+					   ,SYSDATE
+					   ,'N'
+					)
+	</insert>
+
+>>>>>>> Stashed changes
 	<update id="updateUserPicPath" parameterClass="userVO">
 		UPDATE user_ SET user_img = #user_img# WHERE user_no = #user_no#
 	</update>

@@ -21,14 +21,26 @@ public class CommInsertAction implements IAction{
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+<<<<<<< Updated upstream
 		// TODO Auto-generated method stub
 		if(req.getParameter("bd_no") != null ) {
 			int bd_no = Integer.parseInt(req.getParameter("bd_no"));
 			ICommService service = CommServiceImpl.getInstance();
+=======
+		System.out.println("게시글 등록을 누릅니다.");
+		HttpSession session = req.getSession();
+		UserVO UserVO = (UserVO) session.getAttribute("UserVO");
+		ICommService service = CommServiceImpl.getInstance();
+		
+		if( req.getParameter("bd_no") != null ) {
+			int bd_no = Integer.parseInt(req.getParameter("bd_no"));
+>>>>>>> Stashed changes
 			CommVO commVo = service.selectCommView(bd_no);
 			req.setAttribute("commVo", commVo);
 		}
 		
+		List<String> catCommList = service.selectCatComm();
+		req.setAttribute("catCommList", catCommList);
 		
 		
 		return "/comm/commInsert.jsp";

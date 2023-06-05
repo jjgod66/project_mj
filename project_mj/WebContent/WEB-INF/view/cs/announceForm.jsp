@@ -3,7 +3,7 @@
 <%@ include file="../header.jsp"%>
 <<<<<<< HEAD
 <%
-  List<AnnouncementVO> anVoList = (List<AnnouncementVO>)request.getAttribute("anVoList");
+  List<AnnouncementVO> anVOList = (List<AnnouncementVO>)request.getAttribute("anVoList");
 %>
 =======
 
@@ -39,6 +39,7 @@
 							class="dataTables_wrapper dt-bootstrap4">
 							<div class="row">
 								<div class="col-sm-12 col-md-6">
+<<<<<<< Updated upstream
 									<div class="dt-buttons btn-group flex-wrap">
 										<button class="btn btn-secondary buttons-copy buttons-html5"
 											tabindex="0" aria-controls="example1" type="button">
@@ -54,6 +55,14 @@
 									</div>
 								</div>
 
+=======
+									<%
+										if (userVO != null && userVO.getAuth_cd().equals("A101")){
+									%>
+									<a href ="<%=request.getContextPath()%>/cs/insertAnnounceForm.do"><button>글작성</button></a>
+						<% }%>	
+						</div>
+>>>>>>> Stashed changes
 							</div>
 							<div class="row">
 								<div class="col-sm-12">
@@ -74,10 +83,15 @@
 										</thead>
 										<tbody>
 										<%
-											for(AnnouncementVO anVo : anVoList ){
+											for(AnnouncementVO anVo : anVOList ){											
+												String bd_title = anVo.getBd_title();
 												%>
 												<tr>
+<<<<<<< Updated upstream
 												<td ><a href="<%=%>"><%= anVo.getBd_title()%></a>
+=======
+												<td ><a href= "<%=request.getContextPath()%>/cs/announceForm.do"><%= anVo.getBd_title()%></a>
+>>>>>>> Stashed changes
 												</td>
 
 											</tr>	
