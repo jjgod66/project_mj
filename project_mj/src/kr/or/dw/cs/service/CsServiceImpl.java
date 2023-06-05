@@ -28,4 +28,18 @@ public class CsServiceImpl implements ICsService{
 		return dao.insertContent(anVo);
 
 	}
+
+	@Override
+	public AnnouncementVO selectAnView(int bd_no) {
+		
+		return dao.selectAnView(bd_no);
+	}
+
+	@Override
+	public void deleteAn(int bd_no) {
+		
+		 dao.deleteAn(bd_no);
+	}
+
+
 }

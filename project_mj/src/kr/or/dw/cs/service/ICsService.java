@@ -20,6 +20,11 @@ public interface ICsService {
 		
 		return null;
 	}
+
+	AnnouncementVO selectAnView(int bd_no);
+
+
+	void deleteAn(int parseInt);
 	
 
 

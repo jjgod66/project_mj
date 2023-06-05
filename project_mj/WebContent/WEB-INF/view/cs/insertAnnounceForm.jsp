@@ -11,10 +11,6 @@ if (request.getAttribute("anVo") != null) {
 }
 %>
 
-
-
-
-
 <%-- 입력 폼 --%>
 <br>
 <br>
@@ -27,8 +23,11 @@ if (request.getAttribute("anVo") != null) {
 				<div class="card-header">
 					<h3 class="card-title">글 등록/수정 페이지</h3>
 				</div>
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
 				<form method="post"
 
 					action="<%=request.getContextPath()%>/cs/insertAnnounce.do">
@@ -52,7 +51,12 @@ if (request.getAttribute("anVo") != null) {
 					<button class="btn btn-secondary mb-3" onclick="history.go(-1)">
 						취소</button>
 				</form>
+</div>
+</div>
+</div>
+</div>
 
+<<<<<<< Updated upstream
 			</div>
 		</div>
 	</div>
@@ -62,3 +66,6 @@ if (request.getAttribute("anVo") != null) {
 <%@ include file="../footer.jsp"%>
 
 
+=======
+<%@ include file="../footer.jsp"%>
+>>>>>>> Stashed changes

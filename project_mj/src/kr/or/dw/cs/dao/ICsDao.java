@@ -8,4 +8,8 @@ public interface ICsDao {
 
 	int insertContent(AnnouncementVO anVo);
 
+	AnnouncementVO selectAnView(int bd_no);
+
+	int deleteAn(int bd_no);
+
 }
