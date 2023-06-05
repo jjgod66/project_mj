@@ -25,23 +25,23 @@ public class CommInsertAction implements IAction{
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		System.out.println("게시글 등록을 누릅니다.");
+			HttpSession session = req.getSession();
+			UserVO UserVO = (UserVO) session.getAttribute("UserVO");
+			ICommService service = CommServiceImpl.getInstance();
 		
 		if( req.getParameter("bd_no") != null ) {
-			HttpSession session = req.getSession();
 			int bd_no = Integer.parseInt(req.getParameter("bd_no"));
-			ICommService service = CommServiceImpl.getInstance();
-			
 			CommVO commVo = service.selectCommView(bd_no);
-			UserVO UserVO = (UserVO) session.getAttribute("UserVO");
-			
-			List<String> catCommList = service.selectCatComm();
-			req.setAttribute("catCommList", catCommList);
 			req.setAttribute("commVo", commVo);
+			
 		}
 		
+		List<String> catCommList = service.selectCatComm();
+		req.setAttribute("catCommList", catCommList);
+		System.out.println(catCommList);
 		
 		
-			System.out.println("게시글 등록화면 이동하기 전입니다.");
+			System.out.println("게시글 등록화면insert.jsp 이동하기 전입니다.");
 			
 		
 		

@@ -29,8 +29,6 @@
 											tabindex="0" aria-controls="example1" type="button">
 											<span>좋아요 </span>
 										</button>
-
-
 										<%
 											if(userVO != null) {
 										%>
