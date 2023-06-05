@@ -14,4 +14,8 @@ public interface ICsService {
 		return null;
 	}
 
+	int updateContent(AnnouncementVO announcementVO);
+
+	int insertContent(AnnouncementVO announcementVO);
+
 }
