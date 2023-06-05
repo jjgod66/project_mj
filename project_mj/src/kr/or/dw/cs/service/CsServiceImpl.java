@@ -17,15 +17,15 @@ public class CsServiceImpl implements ICsService{
 		return service;
 	}
 
-	@Override
-	public int updateContent(AnnouncementVO announcementVO) {
-		// TODO Auto-generated method stub
-		return 0;
+
+	public int updateContent(AnnouncementVO anVo) {
+
+		return dao.updateContent(anVo);
 	}
 
-	@Override
-	public int insertContent(AnnouncementVO announcementVO) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insertContent(AnnouncementVO anVo) {
+		
+		return dao.insertContent(anVo);
+
 	}
 }

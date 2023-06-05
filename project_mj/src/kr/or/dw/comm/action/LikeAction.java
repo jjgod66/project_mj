@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import kr.or.dw.comm.service.CommServiceImpl;
 import kr.or.dw.comm.service.ICommService;
+import kr.or.dw.comm.vo.LikeVO;
 import kr.or.dw.user.vo.UserVO;
 import kr.or.dw.web.IAction;
 
@@ -27,11 +28,17 @@ public class LikeAction implements IAction{
 		
 		ICommService service = CommServiceImpl.getInstance();
 		
-		int bd_no = Integer.parseInt(req.getParameter("bd_no"));
-		boolean likeFlag = Boolean.parseBoolean(req.getParameter("likeFlag"));	// ajax 로 넘겨준 likeFlag 를 받는다.
-		int user_no = ((UserVO)session.getAttribute("userVO")).getUser_no();
 		
-		kr.or.dw.comm.vo.LikeVO likeVo = new kr.or.dw.comm.vo.LikeVO();
+		int bd_no = Integer.parseInt(req.getParameter("bd_no"));
+		System.out.println(bd_no);
+		boolean likeFlag = Boolean.parseBoolean(req.getParameter("likeFlag"));	// ajax 로 넘겨준 likeFlag 를 받는다.
+		System.out.println(likeFlag);
+		int user_no = ((UserVO)session.getAttribute("UserVO")).getUser_no();
+		System.out.println("LikeAction 클래스입니");
+		System.out.println(user_no);
+		
+		
+		LikeVO likeVo = new LikeVO();
 		likeVo.setBd_no(bd_no);
 		likeVo.setUser_no(user_no);
 		likeVo.setLike_cnt(likeFlag == true ? 1 : -1);	// likeFlag 가 true 이면 like_cnt 수 +1, false 이면 -1
@@ -39,12 +46,12 @@ public class LikeAction implements IAction{
 		int result = 0;
 		int count = 0;	// 좋아요 수를 다시 조회해서 화면으로 가져가기 위한 변수
 		result = service.updateLike(likeVo);
-		
+		System.out.println("라이크액션에서result: "+result);
 		if(result > 0) {	// MERGE 구문이 성공하면(update 태그로 되어있어서 성공하면 '1'반환)
 			count = service.selectLikeCount(bd_no);
 		}
 		req.setAttribute("count", count);
-		
+		System.out.println(count);
 		return "/comm/like_ajax.jsp";
 	}
 

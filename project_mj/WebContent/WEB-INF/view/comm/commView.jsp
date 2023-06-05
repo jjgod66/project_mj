@@ -29,6 +29,7 @@
 		
 		function replyTemplate(reply){
 			let hidden = 'hidden';
+			console.log(reply.user_nick);
 			<%if (userVO != null) {%>
 				if(reply.user_no == "<%=userVO.getUser_no()%>"){
 					hidden = '';
@@ -47,22 +48,27 @@
 // 			};
 			
 			 $('#re_container').prepend(
-					'<div class="card-footer card-comments">'
+					 '<div class="row">'
+			+		'<div class="card-footer card-comments col-md-12">'
 			+		'<div class="card-comment">'
 			+			'<img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">'
 			+			'<div class="comment-text">'
-			+				'<span class="username">' + reply.User_nick + '<span class="text-muted float-right">' + reply.Re_wdt + '</span>'
-			+				'</span>' + reply.Re_content + '</div>'
+			+				'<span class="username">' + reply.user_nick + '<span class="text-muted float-right">' + reply.re_wdt + '</span>'
+			+				'</span>'
+			+				'<div class="col-md-8 align-self-center ">'
+			+					'<div class="reply-update">' + reply.re_content + '</div>'
+			+			'</div>'
 			+				'<div class="icon-block col-md-4 align-self-center">'
-			+				'<input type="hidden" value="' +  reply.Re_no +'">'
+			+				'<input type="hidden" value="' +  reply.re_no +'">'
 			+				'<a href="#" class="float-right btn-tool reply-delete-btn">'
 			+					'<i class="fas fa-times"' +hidden +'></i>'
 			+				'</a>'
-			+				'<a href="#" class="float-right btn-tool reply-delete-btn">'
+			+				'<a href="#" class="float-right btn-tool reply-update-btn">'
 			+					'<i class="fas fa-pen"' +hidden +'></i>'
 			+				'</a>'
 			+			'</div>'
 			+		'</div>'
+			+	'</div>'
 			+	'</div>'
 		     ); 
 		};
@@ -106,6 +112,7 @@
 					re_content : re_content
 				},
 				success : function(res){
+					console.log(res.reply);
 					replyTemplate(res.reply);
 				},
 				error : function(err){
@@ -260,9 +267,6 @@
 			 </a>
 			 
 			 <% } %>
-			
-			
-			
 			<a type="button" class="btn btn-default btn-sm" href="<%= request.getContextPath()%>/comm/commMain.do">
 				<i class="fas fa-reply"></i> 목록  
 			</a>
@@ -270,9 +274,9 @@
 			<a href="#" class="btn btn-default btn-sm" id="likeBtn" data-like=<%= userLike == 1 ? true:false %>>
 				<i class="far fa-thumbs-up"></i> 좋아요 <span id="likeCnt">(<%= commVo.getBd_like() %>)</span>
 			</a>
-				<a href="#" class="btn btn-default btn-sm">
-					<i class="far fa-comments mr-1"></i> 댓글수 (<%= commVo.getReply_cnt() %>)
-				</a>
+			<a href="#" class="btn btn-default btn-sm">
+				<i class="far fa-comments mr-1"></i> 댓글수 (<%= commVo.getReply_cnt() %>)
+			</a>
 		</div>
 		
 		
@@ -287,25 +291,32 @@
 						hidden = "";
 					};
 		%> 
-		 <div class="card-footer card-comments">
+		<div class="row">
+		 <div class="card-footer card-comments col-md-12">
 			<div class="card-comment">
 				<img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg"
 					alt="User Image">
 				<div class="comment-text">
 					<span class="username"> <%= replyVo.getUser_nick() %> 
 						<span class="text-muted float-right"> <%= replyVo.getRe_wdt() %> </span>
-					</span> <%= replyVo.getRe_content() %>
+					</span> 
+					<div class="col-md-8 align-self-center ">
+						<div class="reply-update ">
+							<%= replyVo.getRe_content() %>
+						</div>
+					</div>
 				</div>
 				<div class="icon-block col-md-4 align-self-center">
 					<input type="hidden" value="<%= replyVo.getRe_no()%>">
 					<a href="#" class="float-right btn-tool reply-delete-btn">
 						<i class="fas fa-times" <%=hidden %>></i>
 					</a>
-					<a href="#" class="float-right btn-tool reply-delete-btn">
+					<a href="#" class="float-right btn-tool reply-update-btn">
 						<i class="fas fa-pen" <%=hidden %>></i>
 					</a>
 				</div>
 			</div>
+		</div>
 		</div>
 		 <% } %>
 		</div>
