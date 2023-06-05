@@ -17,7 +17,6 @@ public class InsertAnnounceFormAction implements IAction{
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		
 		 
 		return "/cs/insertAnnounceForm.jsp";
 	}

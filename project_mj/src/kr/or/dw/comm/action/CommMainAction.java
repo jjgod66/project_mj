@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import kr.or.dw.comm.service.CommServiceImpl;
 import kr.or.dw.comm.service.ICommService;
 import kr.or.dw.comm.vo.CommVO;
-import kr.or.dw.user.vo.UserVO;
 import kr.or.dw.util.PaginationUtil;
 import kr.or.dw.web.IAction;
 
@@ -30,7 +29,7 @@ public class CommMainAction implements IAction {
 		
 		ICommService service = CommServiceImpl.getInstance();
 		
-		HttpSession session = req.getSession();
+//		HttpSession session = req.getSession();
 //		int user_no = ((UserVO)session.getAttribute("userVO")).getUser_no();
 		
 		// 페이징처리
@@ -51,10 +50,10 @@ public class CommMainAction implements IAction {
 		
 		// 게시판 목록을 가져온다.
 		List<CommVO> commList = service.selectCommList(paramMap);
-		
+		System.out.println(commList);
 		req.setAttribute("commList", commList);
 		req.setAttribute("pagingConfigMap", pagination);
-		
+		System.out.println("커뮤게시판에 들어갔습니다.");
 		
 		return "/comm/commMain.jsp";
 	}

@@ -30,7 +30,8 @@ public class ContentInsertAction implements IAction{
 		System.out.println(userVO.getUser_nick());
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
-		String choice = req.getParameter("choice");	// 카테고리 
+		String choice = req.getParameter("choice");
+
 		CommVO commVO = new CommVO();
 		commVO.setBd_title(title);
 		commVO.setBd_content(content);

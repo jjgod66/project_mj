@@ -18,5 +18,25 @@ public interface ICommDao {
 	List<ReplyVO> selectReplyList(int bd_no);
 
 	int selectUserLike(LikeVO likeVo);
+
+	void deleteContent(int bd_no);
+
+	int updateContent(CommVO commVO);
+
+	int insertContent(CommVO commVO);
+
+	List<String> selectCatComm();
+
+	int updateLike(LikeVO likeVo);
+
+	int selectLikeCount(int bd_no);
+
+	int insertReply(ReplyVO replyVo);
+
+	ReplyVO selectReply(int re_no);
+
+	int updateReply(ReplyVO replyVo);
+
+	int deleteReply(int re_no);
 	
 }

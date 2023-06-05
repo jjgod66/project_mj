@@ -32,7 +32,6 @@ public class InsertStoreImgFormAction implements IAction{
 			StoreVO storeVo = service.selectStoreView(store_no);
 			List<ImgStoreVO> imgStoreVoList = service.selectImgStoreList(store_no); 
 			req.setAttribute("imgStoreVoList", imgStoreVoList);
-			System.out.println(imgStoreVoList);
 			req.setAttribute("storeVo", storeVo);
 		}
 			
