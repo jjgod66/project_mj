@@ -25,8 +25,6 @@
 	</select>
 	
 	<select id="selectCommList" parameterClass="Map" resultClass="commVO">
-		
-		
 		SELECT *
 		  FROM (
 				SELECT *
@@ -42,7 +40,6 @@
 				  		) v2
 				 WHERE rnum <![CDATA[ >= ]]> #start#
 				) b
-
 	</select>
 	
  	<select id="selectCommCount" resultClass="int">
@@ -85,7 +82,7 @@
 			SELECT bd_comm_seq.nextVal bd_no FROM dual
 		</selectKey>
 			INSERT INTO
-			bd_comm (
+			bd_comm b(
 						bd_no
 					   ,user_no
 					   ,bd_cat
@@ -198,7 +195,7 @@
 			  ,re_content
 			  ,re_wdt
 			  ,r.user_no
-			  ,r.nick
+			  ,r.user_nick
 		  FROM BD_COMM_RE r
 		  	  ,USER_ u 
 		 WHERE r.user_no = u.user_no

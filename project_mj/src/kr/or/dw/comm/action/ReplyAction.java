@@ -57,6 +57,7 @@ public class ReplyAction implements IAction{
 			ReplyVO resultReplyVo = service.selectReply(re_no);
 			
 			req.setAttribute("replyVo", resultReplyVo);
+			
 		}else if(cmd.equals("update")) {
 			int re_no = Integer.parseInt(req.getParameter("re_no"));
 			ReplyVO replyVo = new ReplyVO();
@@ -72,7 +73,7 @@ public class ReplyAction implements IAction{
 			
 			req.setAttribute("result", result);
 		}
-		
+		System.out.println("여기는 리플라이 액션의 ajax 위쪽입니다. ");
 		return "/comm/reply_ajax.jsp";
 	}
 
