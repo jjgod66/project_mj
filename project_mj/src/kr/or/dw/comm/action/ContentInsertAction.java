@@ -31,6 +31,7 @@ public class ContentInsertAction implements IAction{
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 		String choice = req.getParameter("choice");
+
 		CommVO commVO = new CommVO();
 		commVO.setBd_title(title);
 		commVO.setBd_content(content);
