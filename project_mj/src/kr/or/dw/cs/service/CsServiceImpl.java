@@ -17,6 +17,7 @@ public class CsServiceImpl implements ICsService{
 		return service;
 	}
 
+
 	public int updateContent(AnnouncementVO anVo) {
 
 		return dao.updateContent(anVo);
@@ -25,5 +26,6 @@ public class CsServiceImpl implements ICsService{
 	public int insertContent(AnnouncementVO anVo) {
 		
 		return dao.insertContent(anVo);
+
 	}
 }

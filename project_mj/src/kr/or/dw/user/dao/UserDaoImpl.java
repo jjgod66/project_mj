@@ -1,9 +1,11 @@
 package kr.or.dw.user.dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
+import kr.or.dw.cs.vo.AnnouncementVO;
 import kr.or.dw.user.vo.UserVO;
 import kr.or.dw.util.BuildSqlMapClient;
 
@@ -90,5 +92,19 @@ public class UserDaoImpl implements IUserDao {
 			}
 			return result;
 	}
+
+	@Override
+	public List<AnnouncementVO> selectAnVoList() {
+		List<AnnouncementVO> AnVoList = null;
+		
+		try {
+			AnVoList = client.queryForList("user.selectAnList");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return AnVoList;
+	}
+
 
 }

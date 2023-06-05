@@ -18,11 +18,14 @@ public class InsertAnnounceAction implements IAction{
 	@Override
 	public boolean isRedirect() {
 		// TODO Auto-generated method stub
+
 		return true;
+
 	}
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
 		
 
 		ICsService service = CsServiceImpl.getInstance();
@@ -34,11 +37,13 @@ public class InsertAnnounceAction implements IAction{
 		
 		anVO.setBd_content(bdcontent);
 		anVO.setBd_title(bdtitle);
+
 		
 		int bd_no = 0;
 		
 		if(req.getParameter("bd_no") != null) {
 			bd_no = Integer.parseInt(req.getParameter("bd_no"));
+
 			anVO.setBd_no(bd_no);
 			/* int result = service. updateContent(anVO); */
 			
@@ -46,11 +51,14 @@ public class InsertAnnounceAction implements IAction{
 			System.out.println("test1");
 			bd_no = service.insertContent(anVO);
 			System.out.println("test2");
+
 		}
 		
 
 		
+
 		return "/cs/announceForm.do?bd_no="+bd_no ;
+
 	}
 
 

@@ -19,8 +19,6 @@ public class CsDaoImpl implements ICsDao {
 		if (dao == null) dao = new CsDaoImpl();
 		return dao;
 	}
-<<<<<<< Updated upstream
-=======
 
 	@Override
 	public int updateContent(AnnouncementVO anVo) {
@@ -48,5 +46,5 @@ public class CsDaoImpl implements ICsDao {
 		return bd_no;
 	}
 	
->>>>>>> Stashed changes
+
 }

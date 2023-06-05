@@ -224,4 +224,26 @@ public class AdminDaoImpl implements IAdminDao {
 		}
 	}
 
+	@Override
+	public List<ImgStoreVO> selectImgStoreList(int store_no) {
+		List<ImgStoreVO> imgStoreVoList = null;
+		
+		try {
+			imgStoreVoList = client.queryForList("store.selectImgStoreList", store_no);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return imgStoreVoList;
+	}
+
+	@Override
+	public void deleteThumbImgStore(int store_no) {
+		try {
+			client.delete("store.deleteThumbImgStore", store_no);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 }

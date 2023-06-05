@@ -4,7 +4,9 @@
 <%@ include file="../header.jsp"%>
 
 <%
+
 	AnnouncementVO anVo = null;
+
 if (request.getAttribute("anVo") != null) {
 	anVo = (AnnouncementVO) request.getAttribute("anVo");
 }
@@ -22,6 +24,7 @@ if (request.getAttribute("anVo") != null) {
 				<div class="card-header">
 					<h3 class="card-title">글 등록/수정 페이지</h3>
 				</div>
+
 
 				<form method="post"
 					action="<%=request.getContextPath()%>/cs/insertAnnounce.do">
@@ -52,3 +55,4 @@ if (request.getAttribute("anVo") != null) {
 </div>
 
 <%@ include file="../footer.jsp"%>
+

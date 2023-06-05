@@ -28,6 +28,7 @@ public class CommViewAction implements IAction{
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("commViewAction 입니다 ");
 		int bd_no = 0;
 		bd_no = Integer.parseInt(req.getParameter("bd_no"));
 		ICommService commService = CommServiceImpl.getInstance();
@@ -52,6 +53,7 @@ public class CommViewAction implements IAction{
 		req.setAttribute("commVo", commVo);
 		req.setAttribute("replyList", replyList);
 		req.setAttribute("userLike", userLike);
+		System.out.println("게시글 상세보기로 들어갔습니다. ");
 		return "/comm/commView.jsp";
 
 	}

@@ -1,31 +1,18 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
-<<<<<<< HEAD
+
 <%
   List<AnnouncementVO> anVOList = (List<AnnouncementVO>)request.getAttribute("anVoList");
 %>
-=======
 
-<!-- if 문 넣어서 관리자인지 아닌지 넣으면 됨  -->
->>>>>>> parent of b8c4eac (20230603)
 <section class="content-header">
 	<div class="container-fluid">
 		<div class="row mb-2">
 			<div class="col-sm-6">
-<<<<<<< HEAD
+
 				<h1>공지사항 페이지</h1>
-=======
-				<h1>공지사항</h1>
->>>>>>> parent of b8c4eac (20230603)
-			</div>
-			<!-- 			<div class="col-sm-6"> -->
-			<!-- 				<ol class="breadcrumb float-sm-right"> -->
-			<!-- 					<li class="breadcrumb-item"><a href="#">Home</a></li> -->
-			<!-- 					<li class="breadcrumb-item active">Admin Page</li> -->
-			<!-- 				</ol> -->
-			<!-- 			</div> -->
-		</div>
 	</div>
 </section>
 
@@ -39,30 +26,18 @@
 							class="dataTables_wrapper dt-bootstrap4">
 							<div class="row">
 								<div class="col-sm-12 col-md-6">
-<<<<<<< Updated upstream
-									<div class="dt-buttons btn-group flex-wrap">
-										<button class="btn btn-secondary buttons-copy buttons-html5"
-											tabindex="0" aria-controls="example1" type="button">
-											<span>최신순서 </span>
-										</button>
-										<button class="btn btn-secondary buttons-csv buttons-html5"
-											tabindex="0" aria-controls="example1" type="button">
-											<span>좋아요 </span>
-										</button>
-
-
 
 									</div>
 								</div>
 
-=======
+
 									<%
 										if (userVO != null && userVO.getAuth_cd().equals("A101")){
 									%>
 									<a href ="<%=request.getContextPath()%>/cs/insertAnnounceForm.do"><button>글작성</button></a>
 						<% }%>	
 						</div>
->>>>>>> Stashed changes
+
 							</div>
 							<div class="row">
 								<div class="col-sm-12">
@@ -71,52 +46,34 @@
 										aria-describedby="example1_info">
 										<thead>
 											<tr>
-<<<<<<< HEAD
-
 												<th class="sorting sorting_asc" tabindex="0"
 													aria-controls="example1" rowspan="1" colspan="1"
 													aria-sort="ascending"
 													aria-label="Rendering engine: activate to sort column descending">
 													제목</th>
-
 											</tr>
 										</thead>
 										<tbody>
 										<%
+
 											for(AnnouncementVO anVo : anVOList ){											
 												String bd_title = anVo.getBd_title();
 												%>
 												<tr>
-<<<<<<< Updated upstream
-												<td ><a href="<%=%>"><%= anVo.getBd_title()%></a>
-=======
+
 												<td ><a href= "<%=request.getContextPath()%>/cs/announceForm.do"><%= anVo.getBd_title()%></a>
->>>>>>> Stashed changes
+
+											for(AnnouncementVO anVo : anVOList ){
+												%>
+												<tr>
+
+												<td ><a href="<%=request.getContextPath()%>/cs/announceForm.do"><%= anVo.getBd_title()%></a>
 												</td>
 
 											</tr>	
 												<%
 											}
 										%>
-	
-=======
-												<th class="sorting sorting_asc" tabindex="0"
-													aria-controls="example1" rowspan="1" colspan="1"
-													aria-sort="ascending"
-													aria-label="Rendering engine: activate to sort column descending"
-													 style = "text-align-last: center">
-													제목</th>										
-											</tr>
-										</thead>
-										<tbody>
-
-
-											<tr style ="text-align-last: center">
-												<td><a href="/comm/commView.do?bd_no=3" >테스트 제목입니다.</a>
-												</td>
-											</tr>
->>>>>>> parent of b8c4eac (20230603)
-
 										</tbody>
 
 									</table>

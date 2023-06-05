@@ -22,6 +22,7 @@
 	<%
 		UserVO userVO = (UserVO)session.getAttribute("UserVO");
 		if(userVO != null){
+			
 	%>
 	 
 	  <script type="text/javascript">
@@ -99,7 +100,7 @@
 					</li>
 						
 					<li class="nav-item">
-					<a href="<%=gcp%>/cs/csMain.do" class="nav-link">고객센터  </a>
+					<a href="<%=gcp%>/cs/announceForm.do" class="nav-link">공지사항  </a>
 					</li>
 				</ul>
 			</div>

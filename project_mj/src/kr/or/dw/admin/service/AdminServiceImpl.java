@@ -98,4 +98,14 @@ public class AdminServiceImpl implements IAdminService {
 	public void deleteImgStore(int store_no) {
 		dao.deleteImgStore(store_no);
 	}
+
+	@Override
+	public List<ImgStoreVO> selectImgStoreList(int store_no) {
+		return dao.selectImgStoreList(store_no);
+	}
+
+	@Override
+	public void deleteThumbImgStore(int store_no) {
+		dao.deleteThumbImgStore(store_no);
+	}
 }
