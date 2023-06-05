@@ -4,39 +4,24 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
 <%
-  List<AnnouncementVO> anVoList = (List<AnnouncementVO>)request.getAttribute("anVoList");
-%>
-<%
-	
-	
+	List<AnnouncementVO> anVOList = (List<AnnouncementVO>)request.getAttribute("anVoList");
 %>
 
-<section class="contsent-header">
+
+<!-- if 문 넣어서 관리자인지 아닌지 넣으면 됨  -->
+
+<section class="content-header">
 	<div class="container-fluid">
 		<div class="row mb-2">
 			<div class="col-sm-6">
-				<h1>공지사항 페이지</h1>
-			</div>
-			<!-- 			<div class="col-sm-6"> -->
-			<!-- 				<ol class="breadcrumb float-sm-right"> -->
-			<!-- 					<li class="breadcrumb-item"><a href="#">Home</a></li> -->
-			<!-- 					<li class="breadcrumb-item active">Admin Page</li> -->
-			<!-- 				</ol> -->
-			<!-- 			</div> -->
-		</div>
-	</div>
-</section>
+				<h1>공지사항</h1>
 
-<section class="content">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-12">
-				<div class="card">
-					<div class="card-body">
-						<div id="example1_wrapper"
-							class="dataTables_wrapper dt-bootstrap4">
-							<div class="row">
-								<div class="col-sm-12 col-md-6">
+
+
+									</div>
+								</div>
+
+
 									<%
 										if (userVO != null && userVO.getAuth_cd().equals("A101")){
 									%>
@@ -62,9 +47,10 @@
 										</thead>
 										<tbody>
 										<%
-											for(AnnouncementVO anVo : anVoList ){
+											for(AnnouncementVO anVo : anVOList ){
 												%>
 												<tr>
+
 												<td ><a href="<%=request.getContextPath()%>/cs/announceForm.do"><%= anVo.getBd_title()%></a>
 												</td>
 
@@ -73,6 +59,7 @@
 											}
 										%>
 	
+
 										</tbody>
 
 									</table>

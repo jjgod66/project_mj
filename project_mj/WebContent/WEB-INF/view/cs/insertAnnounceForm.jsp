@@ -4,9 +4,9 @@
 <%@ include file="../header.jsp"%>
 
 <%
-AnnouncementVO announcementVO = null;
-if (request.getAttribute("announcementVO") != null) {
-	announcementVO = (AnnouncementVO) request.getAttribute("announcementVO");
+AnnouncementVO anVo = null;
+if (request.getAttribute("anVo") != null) {
+	anVo = (AnnouncementVO) request.getAttribute("anVo");
 }
 %>
 
@@ -26,13 +26,13 @@ if (request.getAttribute("announcementVO") != null) {
 				<form action="writerAction" method="post"
 					action="<%=request.getContextPath()%>/cs/insertAnnounce.do">
 					<input type="text" name=bdtitle " class="form-control mt-4 mb-2"
-						placeholder="제목을 입력해주세요." required value="<%= announcementVO != null? announcementVO.getBd_title(): ""%>">
+						placeholder="제목을 입력해주세요." required value="<%= anVo != null? anVo.getBd_title(): ""%>">
 					<div class="form-group">
 						<textarea class="form-control" rows="10" name="bdcontent"
-							placeholder="내용을 입력해주세요" required> <%= announcementVO != null ? announcementVO.getBd_content() : "" %></textarea>
+							placeholder="내용을 입력해주세요" required> <%= anVo != null ? anVo.getBd_content() : "" %></textarea>
 					</div>
 					<button type="submit" class="btn btn-secondary mb-3">
-						<%= announcementVO != null ? "수정" : "등록" %>
+						<%= anVo != null ? "수정" : "등록" %>
 					</button>
 				</form>
 

@@ -1,7 +1,6 @@
 package kr.or.dw.user.service;
 
 import java.util.List;
-
 import kr.or.dw.cs.vo.AnnouncementVO;
 import kr.or.dw.user.vo.UserVO;
 
@@ -19,7 +18,6 @@ public interface IUserService {
 	public int deleteUser(int user_no);
 
 	public int updateUser(UserVO userVO);
-
 
 
 	/**
