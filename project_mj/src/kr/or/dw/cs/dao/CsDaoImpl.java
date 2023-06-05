@@ -45,6 +45,33 @@ public class CsDaoImpl implements ICsDao {
 		
 		return bd_no;
 	}
+
+	@Override
+	public AnnouncementVO selectAnView(int bd_no) {
+		AnnouncementVO anVo = null;
+			try {
+				anVo = (AnnouncementVO) client.queryForObject("user.selectAnView", bd_no);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		return anVo;
+	}
+
+	@Override
+	public int deleteAn(int bd_no) {
+		int result = 0;
+			try {
+				client.update("user.deleteAn", bd_no);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		return result;
+	}
+
+
 	
 
 }

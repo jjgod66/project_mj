@@ -46,10 +46,10 @@
 						%>
 					</select> 
 						
-					<input type="text" id="inputName" name="title" class="form-control mt-4 mb-2"
+					<input type="text" id="inputName" name="bdtitle" class="form-control mt-4 mb-2"
 						placeholder="제목을 입력해주세요." required value="<%= commVo != null ? commVo.getBd_title():""%>">
 					<div class="form-group">
-						<textarea class="form-control" rows="10" name="content"
+						<textarea class="form-control" rows="10" name="bdcontent"
 							placeholder="내용을 입력해주세요" required><%=commVo != null ? commVo.getBd_content() : "" %></textarea>
 					</div>
 					<button type="submit" class="btn btn-secondary mb-3">

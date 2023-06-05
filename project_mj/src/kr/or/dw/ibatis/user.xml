@@ -105,7 +105,22 @@
 					   ,'N'
 					)
 	</insert>
+	
+	<select id="selectAnView" parameterClass="int" resultClass="anVo">
+		SELECT bd_title
+			  ,bd_content
+			  ,bd_wdt
+			  ,gb_del 
+	      FROM bd_announce 
+	      WHERE	gb_del = 'N'
+	        AND bd_no = #bd_no#
+	</select>
 
+	<update id="deleteAn" parameterClass="int" >
+		UPDATE bd_announce
+		   SET gb_del = 'Y'
+		 WHERE bd_no = #bd_no#
+	</update>
 
 	<update id="updateUserPicPath" parameterClass="userVO">
 		UPDATE user_ SET user_img = #user_img# WHERE user_no = #user_no#
