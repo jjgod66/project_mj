@@ -5,8 +5,6 @@ import kr.or.dw.cs.vo.AnnouncementVO;
 public interface ICsService {
 
 
-	int updateContent(AnnouncementVO anVO);
-
 	int insertContent(AnnouncementVO anVO);
 
 	static ICsService getInstance() {
@@ -25,6 +23,9 @@ public interface ICsService {
 
 
 	void deleteAn(int parseInt);
+
+	int updateAn(AnnouncementVO anVo);
+
 	
 
 

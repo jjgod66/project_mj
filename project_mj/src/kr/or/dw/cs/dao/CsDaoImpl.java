@@ -20,18 +20,7 @@ public class CsDaoImpl implements ICsDao {
 		return dao;
 	}
 
-	@Override
-	public int updateContent(AnnouncementVO anVo) {
-		int result = 0;
-		
-		try {
-			result = client.update("user.updateContent",anVo);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return result;
-	}
+
 
 	@Override
 	public int insertContent(AnnouncementVO anVo) {
@@ -59,14 +48,28 @@ public class CsDaoImpl implements ICsDao {
 	}
 
 	@Override
-	public int deleteAn(int bd_no) {
-		int result = 0;
+	public void deleteAn(int bd_no) {
+	
 			try {
 				client.update("user.deleteAn", bd_no);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		
+	}
+
+	@Override
+	public int updateAn(AnnouncementVO anVo) {
+		int result = 0;
+		
+		 try {
+			result = client.update("user.updateAn", anVo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 		return result;
 	}
