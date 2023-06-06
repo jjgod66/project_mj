@@ -29,7 +29,11 @@ public class AnnounceViewAction implements IAction {
 		ICsService service = CsServiceImpl.getInstance();
 
 		AnnouncementVO anVo = null;
-		anVo = service.selectAnView(bd_no);
+		
+		anVo = service.selectAnView(bd_no); 
+		
+		System.out.println(anVo.getBd_content());
+		System.out.println("bdno : " + anVo.getBd_no());
 		System.out.println("제목 : " + anVo.getBd_title());
 		req.setAttribute("anVo", anVo);
 

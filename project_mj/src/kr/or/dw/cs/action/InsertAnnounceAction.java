@@ -26,31 +26,25 @@ public class InsertAnnounceAction implements IAction{
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-		
-
-		ICsService service = CsServiceImpl.getInstance();
+		AnnouncementVO anVo = new AnnouncementVO();
 		
 		String bdtitle = req.getParameter("bdtitle");
 		String bdcontent = req.getParameter("bdcontent");
 		
-		AnnouncementVO anVO = new AnnouncementVO();
 		
-		anVO.setBd_content(bdcontent);
-		anVO.setBd_title(bdtitle);
-
+		anVo.setBd_content(bdcontent);
+		anVo.setBd_title(bdtitle);
 		
+		ICsService service = CsServiceImpl.getInstance();
 		int bd_no = 0;
 		
 		if(req.getParameter("bd_no") != null) {
 			bd_no = Integer.parseInt(req.getParameter("bd_no"));
-
-			anVO.setBd_no(bd_no);
-			/* int result = service. updateContent(anVO); */
+			anVo.setBd_no(bd_no);
+		    bd_no = service.updateAn(anVo);
 			
 		}else {
-			System.out.println("test1");
-			bd_no = service.insertContent(anVO);
-			System.out.println("test2");
+			bd_no = service.insertContent(anVo);
 
 		}
 		

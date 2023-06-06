@@ -107,7 +107,8 @@
 	</insert>
 	
 	<select id="selectAnView" parameterClass="int" resultClass="anVo">
-		SELECT bd_title
+		SELECT bd_no
+			  ,bd_title
 			  ,bd_content
 			  ,bd_wdt
 			  ,gb_del 
@@ -119,6 +120,13 @@
 	<update id="deleteAn" parameterClass="int" >
 		UPDATE bd_announce
 		   SET gb_del = 'Y'
+		 WHERE bd_no = #bd_no#
+	</update>
+
+	<update id="updateAn" parameterClass="anVo" >
+		UPDATE bd_announce 
+		SET bd_title = #bd_title#
+			,bd_content = #bd_content#
 		 WHERE bd_no = #bd_no#
 	</update>
 

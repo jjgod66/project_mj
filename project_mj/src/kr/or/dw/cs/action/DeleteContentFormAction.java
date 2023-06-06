@@ -25,7 +25,10 @@ public class DeleteContentFormAction implements IAction{
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
 		ICsService service = CsServiceImpl.getInstance();
+		System.out.println("bdno : " + req.getParameter("bd_no"));
 		service.deleteAn(Integer.parseInt(req.getParameter("bd_no")));
+		
+		
 		
 		return "/cs/announceForm.do";
 	}

@@ -18,11 +18,6 @@ public class CsServiceImpl implements ICsService{
 	}
 
 
-	public int updateContent(AnnouncementVO anVo) {
-
-		return dao.updateContent(anVo);
-	}
-
 	public int insertContent(AnnouncementVO anVo) {
 		
 		return dao.insertContent(anVo);
@@ -39,6 +34,12 @@ public class CsServiceImpl implements ICsService{
 	public void deleteAn(int bd_no) {
 		
 		 dao.deleteAn(bd_no);
+	}
+
+	@Override
+	public int updateAn(AnnouncementVO anVo) {
+		
+		return dao.updateAn(anVo);
 	}
 
 
