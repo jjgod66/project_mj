@@ -13,47 +13,31 @@ import kr.or.dw.cs.vo.AnnouncementVO;
 import kr.or.dw.user.vo.UserVO;
 import kr.or.dw.web.IAction;
 
-public class InsertAnnounceAction implements IAction{
+public class AnnounceViewAction implements IAction {
 
 	@Override
 	public boolean isRedirect() {
 		// TODO Auto-generated method stub
-
-		return true;
-
+		return false;
 	}
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-		AnnouncementVO anVo = new AnnouncementVO();
-		
-		String bdtitle = req.getParameter("bdtitle");
-		String bdcontent = req.getParameter("bdcontent");
-		
-		
-		anVo.setBd_content(bdcontent);
-		anVo.setBd_title(bdtitle);
-		
-		ICsService service = CsServiceImpl.getInstance();
 		int bd_no = 0;
-		
-		if(req.getParameter("bd_no") != null) {
-			bd_no = Integer.parseInt(req.getParameter("bd_no"));
-			anVo.setBd_no(bd_no);
-		    bd_no = service.updateAn(anVo);
-			
-		}else {
-			bd_no = service.insertContent(anVo);
+		bd_no = Integer.parseInt(req.getParameter("bd_no"));
+		ICsService service = CsServiceImpl.getInstance();
 
-		}
+		AnnouncementVO anVo = null;
 		
-
+		anVo = service.selectAnView(bd_no); 
 		
+		System.out.println(anVo.getBd_content());
+		System.out.println("bdno : " + anVo.getBd_no());
+		System.out.println("제목 : " + anVo.getBd_title());
+		req.setAttribute("anVo", anVo);
 
-		return "/cs/announceForm.do?bd_no="+bd_no ;
+		return "/cs/announceView.jsp";
 
 	}
-
-
 }

@@ -72,4 +72,5 @@ public class UserVO {
 	public void setUser_img(String user_img) {
 		this.user_img = user_img;
 	}
+
 }

@@ -1,4 +1,3 @@
-
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="kr.or.dw.cs.vo.AnnouncementVO"%>
@@ -7,7 +6,6 @@
 <%@ include file="../header.jsp"%>
 <%
 	AnnouncementVO anVo = (AnnouncementVO) request.getAttribute("anVo");
-	DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 %>
 
 <div class="content">
@@ -18,37 +16,39 @@
 
 				<div class="card card-widget">
 					<div class="card-header">
-						<br>
+						<div class="user-block">
+							<p><%=anVo.getBd_title()%></p>
+						</div>
+					</div>
 
-						<div class="card-body text-center">
-							<p><%=anVo.getBd_content()%></p>
+					<div class="card-body text-center">
+							<p><%=anVo.getBd_content()%></p>						
 							<br>
 							<br>
 							<br> 
-							
-								<%
-									if (userVO != null && userVO.getAuth_cd().equals("A101")){
-								%>
+							<%
+										if (userVO != null && userVO.getAuth_cd().equals("A101")){
+							%>
 							<a type="button" class="btn btn-default btn-sm"
 								href="<%=request.getContextPath()%>/cs/deleteContent.do?bd_no=<%=anVo.getBd_no()%>">
 								<i class="fas fa-trash-alt">삭제</i>
-							</a> <a type="button" class="btn btn-default btn-sm"
+							</a>
+							 <a type="button" class="btn btn-default btn-sm"
 								href="<%=request.getContextPath()%>/cs/insertAnnounceForm.do?bd_no=<%=anVo.getBd_no()%>">
 								<i class="fas fa-pen">수정 </i>
 							</a> 
-							<%} %>
+							<%}%>
 							
 							<a type="button" class="btn btn-default btn-sm"
 								href="<%=request.getContextPath()%>/cs/announceForm.do"> <i
 								class="fas fa-reply"></i> 목록
 							</a>
 						</div>
-
 					</div>
 
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+
 <%@ include file="../footer.jsp"%>
