@@ -29,8 +29,6 @@
 											tabindex="0" aria-controls="example1" type="button">
 											<span>좋아요 </span>
 										</button>
-
-
 										<%
 											if(userVO != null) {
 										%>
@@ -70,7 +68,7 @@
 													aria-label="Engine version: activate to sort column ascending">
 													조회수 </th>
 													
-													<th class="sorting" tabindex="0" aria-controls="example1"
+												<th class="sorting" tabindex="0" aria-controls="example1"
 													rowspan="1" colspan="1"
 													aria-label="Engine version: activate to sort column ascending">
 													좋아요 </th>
@@ -84,7 +82,6 @@
 													int bd_no = comm.getBd_no();
 													String bd_title = comm.getBd_title();
 													String bd_nick = comm.getUser_nick();
-
 													int bd_hit = comm.getBd_hit();
 													int bd_like = comm.getBd_like();
 											%>

@@ -5,10 +5,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
 import kr.or.dw.cs.dao.CsDaoImpl;
 import kr.or.dw.cs.dao.ICsDao;
 import kr.or.dw.store.vo.StoreVO;
+import kr.or.dw.cs.vo.AnnouncementVO;
+
 
 public class CsServiceImpl implements ICsService{
 	private ICsDao dao;
@@ -22,6 +23,7 @@ public class CsServiceImpl implements ICsService{
 		if (service == null) service = new CsServiceImpl();
 		return service;
 	}
+
 
 	@Override
 	public List<StoreVO> selectMainStoreVoList() {
@@ -41,4 +43,32 @@ public class CsServiceImpl implements ICsService{
 		System.out.println("randomMap : " + randomMap);
 		return dao.selectMainStoreVoList(randomMap);
 	}
+
+
+	public int insertContent(AnnouncementVO anVo) {
+		
+		return dao.insertContent(anVo);
+
+	}
+
+	@Override
+	public AnnouncementVO selectAnView(int bd_no) {
+		
+		return dao.selectAnView(bd_no);
+	}
+
+	@Override
+	public void deleteAn(int bd_no) {
+		
+		 dao.deleteAn(bd_no);
+	}
+
+	@Override
+	public int updateAn(AnnouncementVO anVo) {
+		
+		return dao.updateAn(anVo);
+	}
+
+
+
 }

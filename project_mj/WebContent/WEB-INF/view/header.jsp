@@ -41,6 +41,7 @@
 	<%
 		UserVO userVO = (UserVO)session.getAttribute("UserVO");
 		if(userVO != null){
+			
 	%>
 	<script>
 	 
