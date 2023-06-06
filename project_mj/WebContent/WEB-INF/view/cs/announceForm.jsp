@@ -1,6 +1,7 @@
 
-<%@page import="java.util.List"%>
 <%@page import="kr.or.dw.cs.vo.AnnouncementVO"%>
+<%@page import="java.util.List"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
@@ -15,10 +16,12 @@
 		<div class="row mb-2">
 			<div class="col-sm-6">
 
-				<h1>공지사항 페이지</h1>
+
+				<h1>공지사항</h1>
 			</div>
 			</div>
 			</div>
+			
 </section>
 
 <section class="content">
@@ -58,14 +61,15 @@
 										<%
 											for (AnnouncementVO anVo : anVOList) {
 												String bd_title = anVo.getBd_title();
-										%>
-										<tr>
-											<td><a
-												href="<%=request.getContextPath()%>/cs/announceView.do?bd_no=<%=anVo.getBd_no()%>"><%=anVo.getBd_title()%></a>
-											</td>
-										</tr>
-										<%
-											}
+
+												%>
+												<tr>
+
+												<td ><a href= "<%=request.getContextPath()%>/cs/announceForm.do"><%= anVo.getBd_title()%></a>
+
+											</tr>	
+												<%
+			}
 										%>
 
 
