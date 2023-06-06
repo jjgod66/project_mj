@@ -1,9 +1,16 @@
 package kr.or.dw.cs.service;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import kr.or.dw.cs.dao.CsDaoImpl;
 import kr.or.dw.cs.dao.ICsDao;
+import kr.or.dw.store.vo.StoreVO;
 
-public class CsServiceImpl {
+public class CsServiceImpl implements ICsService{
 	private ICsDao dao;
 	private static CsServiceImpl service;
 	
@@ -14,5 +21,24 @@ public class CsServiceImpl {
 	public static CsServiceImpl getInstance() {
 		if (service == null) service = new CsServiceImpl();
 		return service;
+	}
+
+	@Override
+	public List<StoreVO> selectMainStoreVoList() {
+		//총 점포 수 알아오기, 
+		int count = dao.selectStoreTotalCount();
+		//랜덤 숫자 세개 뽑기
+		Map<String, Integer> randomMap = new HashMap<>();
+		for (int i = 1; i < 4; i++) {
+			int random = (int)(Math.random()*count + 1);
+			if (!randomMap.containsValue(random)) {
+				randomMap.put(("num"+i), random);
+			} else {
+				System.out.println("중복");
+				i--;
+			} 
+		}
+		System.out.println("randomMap : " + randomMap);
+		return dao.selectMainStoreVoList(randomMap);
 	}
 }

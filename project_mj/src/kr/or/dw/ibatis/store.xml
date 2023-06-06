@@ -134,4 +134,12 @@
 	<select id="selectImgStoreList" parameterClass="int" resultClass="imgStoreVO">
 		SELECT img_no, store_no, img_url, img_updt, gb_rep FROM img_store WHERE store_no = #store_no#
 	</select>
+	
+	<select id="selectStoreTotalCount" resultClass="int">
+		SELECT COUNT(*) FROM store WHERE gb_del = 'N'
+	</select>
+	
+	<select id="mainStoreVoList" parameterClass="Map" resultClass="storeVO">
+		SELECT * FROM store WHERE (store_no IN (#num1#, #num2#, #num3#))
+	</select>
 </sqlMap>

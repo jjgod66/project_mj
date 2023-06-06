@@ -15,16 +15,35 @@
 	<!-- Font Awesome Icons -->
 	<link rel="stylesheet"
 		href="<%=request.getContextPath()%>/assets/plugins/fontawesome-free/css/all.min.css">
+
+	
+<%-- 	<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/bootstrapDist/css/bootstrap.min.css"> --%>
+<%-- 	<script src="<%=request.getContextPath()%>/assets/plugins/jquery/jquery.js"></script> --%>
+<!-- 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+	
 	<!-- Theme style -->
-	<link rel="stylesheet"
-		href="<%=request.getContextPath()%>/assets/dist/css/adminlte.min.css">
-	<script src="<%=request.getContextPath()%>/assets/plugins/jquery/jquery.js"></script>
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/dist/css/adminlte.min.css">
+	
+	<!-- 합쳐지고 최소화된 최신 CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+	<!-- 부가적인 테마 -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+
+	<!-- 제이쿼리 -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
+	
+	<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/js/bootstrap.js"></script>
 	<%
 		UserVO userVO = (UserVO)session.getAttribute("UserVO");
 		if(userVO != null){
 	%>
+	<script>
 	 
-	  <script type="text/javascript">
   	$(function(){
   		
 		$('#loginCheck').text('로그아웃');  				
@@ -49,10 +68,10 @@
 	<div class="wrapper">
 
 		<nav
-			class="main-header navbar navbar-expand-md navbar-light navbar-white">
+			class="main-header navbar navbar-expand-md navbar-light navbar-white bg-warning bg-gradient">
 			<div class="container">
-				<a href="../../index3.html" class="navbar-brand"> <img
-					src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
+				<a href="<%=request.getContextPath() %>/cs/main.do" class="navbar-brand"> <img
+					src="<%=request.getContextPath() %>/logoPath/logo.jpg" alt="AdminLTE Logo"
 					class="brand-image img-circle elevation-3" style="opacity: .8">
 					<span class="brand-text font-weight">은행나무 </span>
 				</a>
