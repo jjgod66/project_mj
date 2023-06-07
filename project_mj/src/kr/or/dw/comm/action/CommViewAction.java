@@ -39,12 +39,17 @@ public class CommViewAction implements IAction{
 		replyList = commService.selectReplyList(bd_no);
 		
 		HttpSession session = req.getSession();
-		UserVO userVo = null;
+		UserVO userVo = new UserVO();
 		int user_no = 0;
-		if(session.getAttribute("userVO") != null ) {
-			user_no = ((UserVO)session.getAttribute("userVO")).getUser_no();
+		
+		
+		if(session.getAttribute("UserVO") != null ) {
+			userVo = (UserVO)session.getAttribute("UserVO");
+			user_no = userVo.getUser_no();
 		};
 
+		System.out.println("text : "+userVo.getUser_name());
+		System.out.println("user_no : "+user_no);
 		LikeVO likeVo = new LikeVO();
 		likeVo.setBd_no(bd_no);
 		likeVo.setUser_no(user_no);
@@ -53,6 +58,7 @@ public class CommViewAction implements IAction{
 		req.setAttribute("commVo", commVo);
 		req.setAttribute("replyList", replyList);
 		req.setAttribute("userLike", userLike);
+		System.out.println(userLike);
 		System.out.println("게시글 상세보기로 들어갔습니다. ");
 		return "/comm/commView.jsp";
 

@@ -45,10 +45,12 @@ public class CommDaoImpl implements ICommDao {
 		
 		try {
 			commVo = (CommVO) client.queryForObject("comm.selectCommView", bd_no);
+			client.update("comm.increaseHit", bd_no);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		return commVo;
 	}
 
@@ -86,10 +88,15 @@ public class CommDaoImpl implements ICommDao {
 		
 		try {
 			result = client.queryForObject("comm.selectUserLike", likeVo);
+			if(result != null) {
+				num = Integer.parseInt(result.toString());
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		System.out.println(num);
 		return num;
 	}
 
@@ -233,5 +240,30 @@ public class CommDaoImpl implements ICommDao {
 		}
 		
 		return result;
+	}
+
+	@Override
+	public void updateCommLikeCount(int bd_no) {
+		// TODO Auto-generated method stub
+		try {
+			client.update("comm.updateCommLikeCount", bd_no);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public int pageCount() {
+		// TODO Auto-generated method stub
+		int sum = 0;
+		try {
+			sum =  (int) client.queryForObject("comm.pageCount");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return sum;
+		
 	}
 }
