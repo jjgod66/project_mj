@@ -253,17 +253,4 @@ public class CommDaoImpl implements ICommDao {
 		}
 	}
 
-	@Override
-	public int pageCount() {
-		// TODO Auto-generated method stub
-		int sum = 0;
-		try {
-			sum =  (int) client.queryForObject("comm.pageCount");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return sum;
-		
-	}
 }

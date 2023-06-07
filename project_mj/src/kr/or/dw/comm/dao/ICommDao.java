@@ -41,6 +41,5 @@ public interface ICommDao {
 
 	void updateCommLikeCount(int bd_no);
 
-	int pageCount();
 	
 }
