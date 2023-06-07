@@ -50,7 +50,8 @@ public class AdminServiceImpl implements IAdminService {
 
 	@Override
 	public int insertStore(StoreVO storeVo) {
-		return dao.insertStore(storeVo);
+		dao.insertStore(storeVo);
+		return dao.insertStoreTag(storeVo);
 	}
 
 	@Override
@@ -59,8 +60,8 @@ public class AdminServiceImpl implements IAdminService {
 	}
 
 	@Override
-	public int selectStoreCount() {
-		return dao.selectStoreCount();
+	public int selectStoreCount(String cat) {
+		return dao.selectStoreCount(cat);
 	}
 
 	@Override
@@ -107,5 +108,20 @@ public class AdminServiceImpl implements IAdminService {
 	@Override
 	public void deleteThumbImgStore(int store_no) {
 		dao.deleteThumbImgStore(store_no);
+	}
+
+	@Override
+	public void updateThumb(StoreVO storeVo) {
+		dao.updateThumb(storeVo);
+	}
+
+	@Override
+	public int selectStoreTagCount(String tag) {
+		return dao.selectStoreTagCount(tag);
+	}
+
+	@Override
+	public List<StoreVO> selectStoreListT(Map<String, Object> paramMap) {
+		return dao.selectStoreListT(paramMap);
 	}
 }

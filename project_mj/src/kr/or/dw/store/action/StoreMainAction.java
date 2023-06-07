@@ -1,6 +1,7 @@
 package kr.or.dw.store.action;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.or.dw.admin.service.AdminServiceImpl;
 import kr.or.dw.admin.service.IAdminService;
+import kr.or.dw.store.vo.ImgStoreVO;
 import kr.or.dw.store.vo.StoreVO;
 import kr.or.dw.user.service.IUserService;
 import kr.or.dw.user.service.UserServiceImpl;
@@ -28,22 +30,52 @@ public class StoreMainAction implements IAction {
 	public String process(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 		IAdminService service = AdminServiceImpl.getInstance();
-		
 		// 페이징처리
 		Map<String, Integer> pagingConfigMap = null;
 		PaginationUtil pagination = new PaginationUtil();
 		String pageParam = req.getParameter("page");	// 사용자가 선택한 페이지 번호
+		System.out.println("page : " + pageParam);
 		int page = (pageParam == null ? 1 : Integer.parseInt(pageParam));
-		int totalCount = service.selectStoreCount();
+		String cat = req.getParameter("cat");
+		String tag = req.getParameter("tag");
+		System.out.println("cat:" + cat);
+//		String tag = req.getParameter("tag");
+		int totalCount = 0;
+		if (cat != null && cat != "") {
+			totalCount = service.selectStoreCount(cat);
+		} else if (tag != null && tag != "") {
+			totalCount = service.selectStoreTagCount(tag);
+		} else {
+			totalCount = service.selectStoreCount(null);	
+		}
+		System.out.println("totalCount : " + totalCount);
 		pagination.setConfig(page, 9, 10, totalCount);
 		pagingConfigMap = pagination.getConfig();
 		
+		
 		// ibatis에서 받을 parameterMap 을 만든다.
 		Map<String, Object> paramMap = new HashMap<>();
+		if (cat != null && cat != "") {
+			String isCat = req.getParameter("cat");
+			paramMap.put("cat", isCat);
+			req.setAttribute("cat", isCat);
+		} else if (tag != null && tag != "") {
+			String isTag = req.getParameter("tag");
+			paramMap.put("tag", isTag);
+			req.setAttribute("tag", isTag);
+		}
 		paramMap.put("start", pagingConfigMap.get("start"));
 		paramMap.put("end", pagingConfigMap.get("end"));
-		 
-		List<StoreVO> storeVoList = service.selectStoreList(paramMap);
+		
+		List<StoreVO> storeVoList = new ArrayList<StoreVO>();
+		if (tag != null && tag != "") {
+			System.out.println("Tes1111111!!!!");
+			storeVoList = service.selectStoreListT(paramMap);
+			System.out.println(storeVoList.get(0).getStore_name());
+		} else {
+			System.out.println("Tes22222!!!!");
+			storeVoList = service.selectStoreList(paramMap);
+		}
 		List<String> tagList = service.selectTagList();
 		List<String> catList = service.selectStoreCatList();
 		

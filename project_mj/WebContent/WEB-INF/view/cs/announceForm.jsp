@@ -1,11 +1,7 @@
-<<<<<<< Updated upstream
 
-=======
 <%@page import="kr.or.dw.util.PaginationUtil"%>
 <%@page import="kr.or.dw.cs.vo.AnnouncementVO"%>
->>>>>>> Stashed changes
 <%@page import="java.util.List"%>
-<%@page import="kr.or.dw.cs.vo.AnnouncementVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
@@ -24,13 +20,6 @@ section.notice {
 	padding: 80px 0;
 }
 
-<<<<<<< Updated upstream
-				<h1>공지사항 페이지</h1>
-			</div>
-			</div>
-			</div>
-</section>
-=======
 .page-title {
 	margin-bottom: 60px;
 }
@@ -41,7 +30,6 @@ section.notice {
 	font-weight: 400;
 	text-align: center;
 }
->>>>>>> Stashed changes
 
 #board-search .search-window {
 	padding: 15px 0;
@@ -56,23 +44,6 @@ section.notice {
 	max-width: 564px;
 }
 
-<<<<<<< Updated upstream
-										</tr>
-									</thead>
-									<tbody>
-										<%
-											for (AnnouncementVO anVo : anVOList) {
-												String bd_title = anVo.getBd_title();
-										%>
-										<tr>
-											<td><a
-												href="<%=request.getContextPath()%>/cs/announceView.do?bd_no=<%=anVo.getBd_no()%>"><%=anVo.getBd_title()%></a>
-											</td>
-										</tr>
-										<%
-											}
-										%>
-=======
 #board-search .search-window .search-wrap input {
 	height: 40px;
 	width: 100%;
@@ -103,7 +74,6 @@ section.notice {
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
 }
->>>>>>> Stashed changes
 
 .board-table a {
 	color: #333;

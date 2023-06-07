@@ -34,7 +34,6 @@ public class InsertStoreImgFormAction implements IAction{
 			req.setAttribute("imgStoreVoList", imgStoreVoList);
 			req.setAttribute("storeVo", storeVo);
 		}
-			
 		return "/admin/insertStoreImgForm.jsp";
 	}
 

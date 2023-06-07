@@ -40,11 +40,13 @@ public class InsertStoreAction implements IAction {
 		// 수정일 때
 		if (req.getParameter("store_no") != null) {
 			store_no = Integer.parseInt(req.getParameter("store_no"));
-			System.out.println("tag 1 : " + req.getParameterValues("store_tagNm_1")[0]);
-			int result = service.updateStore(storeVo);
+			System.out.println("[" + req.getParameterValues("gb_del")[0] + "]");
+			storeVo.setGb_del(req.getParameterValues("gb_del")[0]);
+			service.updateStore(storeVo);
 			req.setAttribute("type", "update");
 		// 등록일 때
 		} else {
+			storeVo.setGb_del("N");
 			store_no = service.insertStore(storeVo);
 			req.setAttribute("type", "insert");
 		}

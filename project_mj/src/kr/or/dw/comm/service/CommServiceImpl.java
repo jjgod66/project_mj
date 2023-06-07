@@ -112,5 +112,13 @@ public class CommServiceImpl implements ICommService{
 		return dao.deleteReply(re_no);
 	}
 
+	@Override
+	public void updateCommLikeCount(int bd_no) {
+		// TODO Auto-generated method stub
+		dao.updateCommLikeCount(bd_no);
+		
+	}
+
+
 	
 }
