@@ -51,4 +51,66 @@ public class CommServiceImpl implements ICommService{
 		// TODO Auto-generated method stub
 		return dao.selectUserLike(likeVo);
 	}
+
+	@Override
+	public void deleteContent(int bd_no) {
+		// TODO Auto-generated method stub
+		dao.deleteContent(bd_no);
+	}
+
+	@Override
+	public int updateContent(CommVO commVO) {
+		// TODO Auto-generated method stub
+		return dao.updateContent(commVO);
+	}
+
+	@Override
+	public int insertContent(CommVO commVO) {
+		// TODO Auto-generated method stub
+		return dao.insertContent(commVO);
+	}
+
+	@Override
+	public List<String> selectCatComm() {
+		// TODO Auto-generated method stub
+		return dao.selectCatComm();
+	}
+
+	@Override
+	public int updateLike(LikeVO likeVo) {
+		// TODO Auto-generated method stub
+		return dao.updateLike(likeVo);
+	}
+
+	@Override
+	public int selectLikeCount(int bd_no) {
+		// TODO Auto-generated method stub
+		return dao.selectLikeCount(bd_no);
+	}
+
+	@Override
+	public int insertReply(ReplyVO replyVo) {
+		// TODO Auto-generated method stub
+		return dao.insertReply(replyVo);
+	}
+
+	@Override
+	public ReplyVO selectReply(int re_no) {
+		// TODO Auto-generated method stub
+		return dao.selectReply(re_no);
+	}
+
+	@Override
+	public int updateReply(ReplyVO replyVo) {
+		// TODO Auto-generated method stub
+		return dao.updateReply(replyVo);
+	}
+
+	@Override
+	public int deleteReply(int re_no) {
+		// TODO Auto-generated method stub
+		return dao.deleteReply(re_no);
+	}
+
+	
 }

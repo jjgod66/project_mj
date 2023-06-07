@@ -181,4 +181,12 @@
 		WHERE s.store_no = t.store_no
 		  AND s.store_no = #store_no#
 	</select>
+	
+	<select id="selectStoreTotalCount" resultClass="int">
+		SELECT COUNT(*) FROM store WHERE gb_del = 'N'
+	</select>
+	
+	<select id="mainStoreVoList" parameterClass="Map" resultClass="storeVO">
+		SELECT * FROM store WHERE (store_no IN (#num1#, #num2#, #num3#))
+	</select>
 </sqlMap>
