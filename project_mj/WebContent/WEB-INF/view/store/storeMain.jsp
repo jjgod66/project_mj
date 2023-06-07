@@ -11,6 +11,7 @@
 		width:100%;
 		height:auto;
 	}
+	
 </style>
 <%
 
@@ -36,13 +37,14 @@
 			<div class="col-md-12">
 				<div class="aa-blog-archive-area aa-blog-archive-2">
 					<div class="row" style="margin:0;">
-						<div class="col-md-9">
+						<div class="col-md-9 border rounded-3 pt-3">
 							<div class="aa-blog-content">
 								<div class="row" style="margin:0;">
 								<% 
 									for (StoreVO storeVo : storeVoList ) {
 								%>
 								
+<<<<<<< Updated upstream
 								
 								
 									<div class="col-md-4 col-sm-4">
@@ -70,6 +72,28 @@
 												
 											</div>
 										</article>
+=======
+									<div class="col-md-4 col-sm-4 mb-3">
+									<a href="<%=request.getContextPath()%>/store/storeView.do?store_no=<%=storeVo.getStore_no()%>" style="text-decoration:none; color:black;">
+										<div class="card h-100">
+											<img alt="img" src="/storePath/<%=storeVo.getThumb_url() != null ? storeVo.getThumb_url() : "default/noImg.jpg" %>" class="card-img-top" style="height: 200px;">
+										  <div class="card-body" style="text-align: center;">
+										 	 <h5 class="card-title"><%=storeVo.getStore_name() %></h5>
+										  		<span><i class="fa fa-eye"></i>  <%=storeVo.getStore_views() %></span> 
+												<span><i class="bi bi-heart-fill" style="color:#FF32B1"></i>  <%=storeVo.getStore_like() %></span>
+												<span><i class="bi bi-bookmark-plus-fill" style="color:#28288C"></i>  <%=storeVo.getStore_fav() %></span> 
+												<span class=""><i class="bi bi-info-square-fill" style="color:#FF8C0A"></i>  <%=storeVo.getCat_name() %></span>
+												<div>
+													<span>#<%=storeVo.getStore_tagNm_1() %></span>
+													<span>#<%=storeVo.getStore_tagNm_2() %></span>
+													<span>#<%=storeVo.getStore_tagNm_3() %></span>
+												</div>
+											<hr>	
+										    <h6 class="card-text"><%=storeVo.getStore_des_s() %> </h6>
+										  </div>
+										</div>
+										</a>
+>>>>>>> Stashed changes
 									</div>
 								<%
 									}
@@ -101,64 +125,66 @@
 							</div>
 						</div>
 						<div class="col-md-3">
-							<aside class="aa-blog-sidebar">
+							<aside class="aa-blog-sidebar border rounded-3 p-3">
 								<div class="aa-sidebar-widget">
-									<h3>카테고리 </h3>
-									<ul class="aa-catg-nav">
+									<h4>카테고리 </h4>
+									<hr>
+									<ul class="aa-catg-nav" style="list-style: none; padding-left:0;">
 									<%
 									for (String cat : catList) {
 									%>
-										<li><a href="<%=request.getContextPath() %>/store/storeMain.do?page=1&cat=<%= cat %>"><%= cat %> </a></li>
+										<li class="mb-2"><a href="<%=request.getContextPath() %>/store/storeMain.do?page=1&cat=<%= cat %>" class="bg-warning text-white rounded-3 p-1" style="text-decoration:none;"><%= cat %> </a></li>
 									<%	
 									}
 									%>
 									</ul>
 								</div>
 								<div class="aa-sidebar-widget">
-									<h3>태그 </h3>
+									<h4>태그 </h4>
+									<hr>
 									<div class="tag-cloud">
 									<%
 									for (String tag : tagList) {
 									%>
-										<a href="<%=request.getContextPath() %>/store/storeMain.do?page=1&tag=<%= tag %>">#<%=tag %></a> 
+										<a href="<%=request.getContextPath() %>/store/storeMain.do?page=1&tag=<%= tag %>" style="text-decoration:none;">#<%=tag %></a> 
 									<%
 									}
 									%>
 									</div>
 								</div><br>
 								<div class="aa-sidebar-widget">
-									<h3>정렬 </h3>
-									<div class="aa-recently-views">
-										<ul>
-											<li>
-												<div class="aa-cartbox-info">
-													<h6>
-														<a href="#">이름순 </a>
-													</h6>
-												</div></li>
-											<li>
-												<div class="aa-cartbox-info">
-													<h6>
-														<a href="#">좋아요순 </a>
-													</h6>
-												</div></li>
+<!-- 									<h3>정렬 </h3> -->
+<!-- 									<div class="aa-recently-views"> -->
+<!-- 										<ul> -->
+<!-- 											<li> -->
+<!-- 												<div class="aa-cartbox-info"> -->
+<!-- 													<h6> -->
+<!-- 														<a href="#">이름순 </a> -->
+<!-- 													</h6> -->
+<!-- 												</div></li> -->
+<!-- 											<li> -->
+<!-- 												<div class="aa-cartbox-info"> -->
+<!-- 													<h6> -->
+<!-- 														<a href="#">좋아요순 </a> -->
+<!-- 													</h6> -->
+<!-- 												</div></li> -->
 												
-												<li>
-												<div class="aa-cartbox-info">
-													<h6>
-														<a href="#">조회수순  </a>
-													</h6>
-												</div></li>
+<!-- 												<li> -->
+<!-- 												<div class="aa-cartbox-info"> -->
+<!-- 													<h6> -->
+<!-- 														<a href="#">조회수순  </a> -->
+<!-- 													</h6> -->
+<!-- 												</div></li> -->
 												
-												<li>
-												<div class="aa-cartbox-info">
-													<h6>
-														<a href="#">좋아요순 </a>
-													</h6>
-												</div></li>
+<!-- 												<li> -->
+<!-- 												<div class="aa-cartbox-info"> -->
+<!-- 													<h6> -->
+<!-- 														<a href="#">좋아요순 </a> -->
+<!-- 													</h6> -->
+<!-- 												</div></li> -->
 											
-										</ul>
-									</div>
+<!-- 										</ul> -->
+<!-- 									</div> -->
 								</div>
 							</aside>
 						</div>

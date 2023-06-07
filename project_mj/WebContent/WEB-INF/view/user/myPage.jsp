@@ -48,6 +48,13 @@
 							<form><button type="button" class="btn btn-block btn-primary btn-xs" id="sudmit">저장</button></form>
 							
 						</div>
+						<div class="card-footer" style="text-align:center;">
+							<div class="btn-group" role="group" aria-label="Basic mixed styles example">
+								<a href="<%=request.getContextPath() %>/store/storeMain.do?like=on" class="btn btn-danger" role="button">좋아요</a>
+								<a href="<%=request.getContextPath() %>/store/storeMain.do?fav=on" class="btn btn-primary" role="button">즐겨찾기</a>
+								<a href="#" class="btn btn-warning text-white" role="button">게시글</a>
+							</div>
+						</div>	
 					</div>
 				</div>
 				<div class="col-md-4"></div>
