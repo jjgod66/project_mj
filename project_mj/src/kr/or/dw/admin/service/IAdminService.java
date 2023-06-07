@@ -58,9 +58,10 @@ public interface IAdminService {
 	
 	/**
 	 * 등록된 점포의 수를 센다.
+	 * @param cat 
 	 * @return 등록점포 수
 	 */
-	int selectStoreCount();
+	int selectStoreCount(String cat);
 	
 	/**
 	 * 점포번호로 해당 점포객체의 정보 불러온다.
@@ -120,4 +121,13 @@ public interface IAdminService {
 	 */
 	void deleteThumbImgStore(int store_no);
 
+	/**
+	 * 썸네일 올린다.
+	 * @param storeVo
+	 */
+	void updateThumb(StoreVO storeVo);
+
+	int selectStoreTagCount(String tag);
+
+	List<StoreVO> selectStoreListT(Map<String, Object> paramMap);
 }

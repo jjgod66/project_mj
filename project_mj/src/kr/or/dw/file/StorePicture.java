@@ -26,7 +26,7 @@ public class StorePicture implements IAction{
 
 	@Override
 	public boolean isRedirect() {
-		return true;
+		return false;
 	}
 
 	@Override
@@ -64,12 +64,15 @@ public class StorePicture implements IAction{
 			MultipartRequest multi = new MultipartRequest(req, realPath, 100*1024*1024, "utf-8");
 			fileName = multi.getFilesystemName("thumbUp");
 			
-			ImgStoreVO imgStoreVo = new ImgStoreVO();
-			imgStoreVo.setImg_url(picFoldName + "/thumb/" + fileName);
-			imgStoreVo.setStore_no(store_no);
-			imgStoreVo.setGb_rep("Y");
+//			ImgStoreVO imgStoreVo = new ImgStoreVO();
+//			imgStoreVo.setImg_url(picFoldName + "/thumb/" + fileName);
+//			imgStoreVo.setStore_no(store_no);
+//			imgStoreVo.setGb_rep("Y");
+//			
+//			service.insertImgStore(imgStoreVo);
 			
-			service.insertImgStore(imgStoreVo);
+			storeVo.setThumb_url(picFoldName + "/thumb/" + fileName);
+			service.updateThumb(storeVo);
 			
 		} else if (cmd.equals("notThumb")) {
 			// 일단 올려놓은거 다 지운다(db)
@@ -105,7 +108,6 @@ public class StorePicture implements IAction{
 				cnt++;
 				fileName = multi.getFilesystemName((String) en.nextElement());
 				imgStoreVo.setImg_url(picFoldName + "/notThumb/" + fileName);
-				imgStoreVo.setGb_rep("N");
 				service.insertImgStore(imgStoreVo);
 			}
 		}

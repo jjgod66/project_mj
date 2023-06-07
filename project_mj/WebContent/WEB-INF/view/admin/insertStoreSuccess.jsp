@@ -10,7 +10,7 @@
 <%
 	if (type.equals("insert")) {
 %>
-		alert("(<%=store_no%>)번 점포가 대기상태로 등록되었습니다.");
+		alert("점포가  등록되었습니다. 점포사진을 넣어주세요");
 <%		
 	} else if (type.equals("update")){
 %>
@@ -18,7 +18,7 @@
 <%		
 	}
 %>		
-		location.href="<%=request.getContextPath()%>/admin/adminMain.do";
+		location.href="<%=request.getContextPath()%>/admin/adminStoreForm.do";
 	</script>
 	
 <%@ include file="../footer.jsp" %>

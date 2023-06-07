@@ -47,12 +47,15 @@
 					   		   ,'0'
 					   		   ,'0'
 					   		   ,SYSDATE
-					   		   ,'W'
+					   		   ,#gb_del#
 					   		  )
 	</insert>
-	
+		
+	<insert id="insertStoreTag" parameterClass="storeVO">
+		INSERT INTO store_tag (store_no, store_tagNm_1, store_tagNm_2, store_tagNm_3) VALUES (#store_no#, #store_tagNm_1#, #store_tagNm_2#, #store_tagNm_3#)
+	</insert>
 	<select id="selectStoreList" parameterClass="Map" resultClass="storeVO">
-		SELECT s.*, t.store_tagnm_1, t.store_tagnm_2, t.store_tagnm_3, img.img_url, img.gb_rep
+		SELECT s.*, t.store_tagNm_1, t.store_tagNm_2, t.store_tagNm_3
 		  FROM (
 				SELECT *
 				  FROM (
@@ -60,21 +63,53 @@
 						  FROM (
 						  		SELECT *
 								  FROM store
-								 WHERE gb_del != 'Y'
+								 <isNotEmpty property="cat">
+								 WHERE cat_name = #cat#
+								 </isNotEmpty>
 								 ORDER BY store_no
 						  		) v1
 						 WHERE rownum <![CDATA[ <= ]]> #end#
 				  		) v2
 				 WHERE rnum <![CDATA[ >= ]]> #start#
-				) s, store_tag t, img_store img
+				) s, store_tag t
 		WHERE s.store_no = t.store_no
-		  AND s.store_no = img.store_no(+)
 	</select>
 	
-	<select id="selectStoreCount" resultClass="int">
+	<select id="selectStoreListT" parameterClass="Map" resultClass="storeVO">
+		SELECT *
+		  FROM (
+				SELECT *
+				  FROM (
+				  		SELECT rownum rnum, v1.*
+						  FROM (
+						  		SELECT s.*, st.STORE_TAGNM_1,st.STORE_TAGNM_2 ,st.STORE_TAGNM_3 
+								  FROM store s, STORE_TAG st
+								 WHERE s.store_no = st.store_no
+								   AND (st.STORE_TAGNM_1 = #tag# OR st.STORE_TAGNM_2 = #tag# OR st.STORE_TAGNM_3 = #tag#)
+								 ORDER BY s.store_no
+						  		) v1
+						 WHERE rownum <![CDATA[ <= ]]> #end#
+				  		) v2
+				 WHERE rnum <![CDATA[ >= ]]> #start#
+				)
+	</select>
+	
+	<select id="selectStoreCount" parameterClass="String" resultClass="int">
 		SELECT COUNT(*) cnt
 		  FROM store
 		 WHERE gb_del != 'Y'
+		 <isNotNull>
+			 <isNotEqual compareValue="">
+			   AND cat_name = #cat#
+			 </isNotEqual>
+		 </isNotNull>
+	</select>
+	
+	<select id="selectStoreTagCount" parameterClass="String" resultClass="int">
+		SELECT COUNT(*) cnt
+		  FROM store s, store_tag st
+		 WHERE s.store_no = st.store_no
+		  AND (st.STORE_TAGNM_1 = #tag# OR st.STORE_TAGNM_2 = #tag# OR st.STORE_TAGNM_3 = #tag#)
 	</select>
 	
 	<select id="selectStoreView" parameterClass="int" resultClass="storeVO">
@@ -94,6 +129,7 @@
 					    ,store_url = #store_url#
 					    ,store_des_s = #store_des_s#
 					    ,store_des_d = #store_des_d#
+					    ,gb_del = #gb_del#
 	     WHERE store_no = #store_no#
 	</update>
 	
@@ -120,19 +156,30 @@
 		<selectKey keyProperty="img_no" resultClass="int">
 			SELECT img_store_seq.nextVal img_no From dual
 		</selectKey>
-		INSERT INTO img_store ( img_no, store_no, img_url, img_updt, gb_rep ) VALUES ( #img_no#, #store_no#, #img_url#, SYSDATE, #gb_rep#)
+		INSERT INTO img_store ( img_no, store_no, img_url, img_updt ) VALUES ( #img_no#, #store_no#, #img_url#, SYSDATE )
 	</insert>
 	
 	<delete id="deleteImgStore" parameterClass="int">
-		DELETE FROM img_store WHERE store_no = #store_no# AND gb_rep = 'N'
+		DELETE FROM img_store WHERE store_no = #store_no#
 	</delete>
 	
 	<delete id="deleteThumbImgStore" parameterClass="int">
-		DELETE FROM img_store WHERE store_no = #store_no# AND gb_rep = 'Y'
+		DELETE FROM img_store WHERE store_no = #store_no#
 	</delete>
 	
 	<select id="selectImgStoreList" parameterClass="int" resultClass="imgStoreVO">
-		SELECT img_no, store_no, img_url, img_updt, gb_rep FROM img_store WHERE store_no = #store_no#
+		SELECT img_no, store_no, img_url, img_updt FROM img_store WHERE store_no = #store_no#
+	</select>
+	
+	<update id="updateThumb" parameterClass="storeVO">
+		UPDATE store SET thumb_url = #thumb_url# WHERE store_no = #store_no#
+	</update>
+	
+	<select id="selectStoreVo" parameterClass="int" resultClass="storeVO">
+		SELECT * 
+		FROM store s, store_tag t
+		WHERE s.store_no = t.store_no
+		  AND s.store_no = #store_no#
 	</select>
 	
 	<select id="selectStoreTotalCount" resultClass="int">

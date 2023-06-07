@@ -13,11 +13,20 @@
 	}
 </style>
 <%
+
+	PaginationUtil pagination = (PaginationUtil) request.getAttribute("pagingConfigMap");
+
 	List<StoreVO> storeVoList = (List<StoreVO>) request.getAttribute("storeVoList");
 	List<String> tagList = (List<String>)request.getAttribute("tagList");
 	List<String> catList = (List<String>)request.getAttribute("catList");
+	String catStore = (String) request.getAttribute("cat");
+	String tagStore = (String) request.getAttribute("tag");
 
 %>
+
+<script>
+
+</script>
 
 <br><br>
 
@@ -39,10 +48,18 @@
 									<div class="col-md-4 col-sm-4">
 										<article class="aa-latest-blog-single">
 											<figure class="aa-blog-img">
-												<a href=""><img alt="img" src="/storePath/3/thumb/spagetti.jpg" class="boxImg"></a>
+												<a href="<%=request.getContextPath()%>/store/storeView.do?store_no=<%=storeVo.getStore_no()%>"><img alt="img" src="/storePath/<%=storeVo.getThumb_url() != null ? storeVo.getThumb_url() : "default/noImg.jpg" %>" class="boxImg"></a>
 												<figcaption class="aa-blog-img-caption">
-													<span href="#"><i class="fa fa-eye"></i>조회수 : <%=storeVo.getStore_views() %></span> 
-													<i class="fa fa-thumbs-o-up"></i>좋아요 : <%=storeVo.getStore_like() %> 
+													<div>
+														<span href="#"><i class="fa fa-eye"></i>조회수 : <%=storeVo.getStore_views() %></span> 
+														<i class="fa fa-thumbs-o-up"></i>좋아요 : <%=storeVo.getStore_like() %> 
+														<span class="">&lt;<%=storeVo.getCat_name() %>&gt;</span>
+													</div>
+													<div>
+														<span>[<%=storeVo.getStore_tagNm_1() %>]</span>
+														<span>[<%=storeVo.getStore_tagNm_2() %>]</span>
+														<span>[<%=storeVo.getStore_tagNm_3() %>]</span>
+													</div>
 												</figcaption>
 											</figure>
 											<div class="aa-blog-info">
@@ -57,263 +74,15 @@
 								<%
 									}
 								%>	
-									
-									
-<!-- 									<div class="col-md-4 col-sm-4"> -->
-<!-- 										<article class="aa-latest-blog-single"> -->
-<!-- 											<figure class="aa-blog-img"> -->
-<!-- 												<a href="#"><img alt="img" src="https://placehold.it/200x200"></a> -->
-<!-- 												<figcaption class="aa-blog-img-caption"> -->
-<!-- 													<span href="#"><i class="fa fa-eye"></i>조회수 : 5</span>  -->
-<!-- 													<i class="fa fa-thumbs-o-up"></i>좋아요 : 3  -->
-<!-- 													 <i class="fa fa-clock-o"></i> 2023 05 29</span> -->
-<!-- 												</figcaption> -->
-<!-- 											</figure> -->
-<!-- 											<div class="aa-blog-info"> -->
-<!-- 												<h3 class="aa-blog-title"> -->
-<!-- 													<a href="#">대전 식당 1 </a> -->
-<!-- 												</h3> -->
-<!-- 												<p>돼지고기가 맛있는 식당 입니다. </p> -->
-												
-<!-- 											</div> -->
-<!-- 										</article> -->
-<!-- 									</div> -->
-									
-									
-<!-- 									<div class="col-md-4 col-sm-4"> -->
-<!-- 										<article class="aa-latest-blog-single"> -->
-<!-- 											<figure class="aa-blog-img"> -->
-<!-- 												<a href="#"><img alt="img" src="https://placehold.it/200x200"></a> -->
-<!-- 												<figcaption class="aa-blog-img-caption"> -->
-<!-- 													<span href="#"><i class="fa fa-eye"></i>조회수 : 5</span>  -->
-<!-- 													<i class="fa fa-thumbs-o-up"></i>좋아요 : 3  -->
-<!-- 													 <i class="fa fa-clock-o"></i> 2023 05 29</span> -->
-<!-- 												</figcaption> -->
-<!-- 											</figure> -->
-<!-- 											<div class="aa-blog-info"> -->
-<!-- 												<h3 class="aa-blog-title"> -->
-<!-- 													<a href="#">대전 식당 1 </a> -->
-<!-- 												</h3> -->
-<!-- 												<p>돼지고기가 맛있는 식당 입니다. </p> -->
-												
-<!-- 											</div> -->
-<!-- 									<br> -->
-<!-- 										</article> -->
-<!-- 									</div> -->
-									
-									
-									
-<!-- 									<div class="col-md-4 col-sm-4"> -->
-<!-- 										<article class="aa-latest-blog-single"> -->
-<!-- 											<figure class="aa-blog-img"> -->
-<!-- 												<a href="#"><img alt="img" src="https://placehold.it/200x200"></a> -->
-<!-- 												<figcaption class="aa-blog-img-caption"> -->
-<!-- 													<span href="#"><i class="fa fa-eye"></i>조회수 : 5</span>  -->
-<!-- 													<i class="fa fa-thumbs-o-up"></i>좋아요 : 3  -->
-<!-- 													 <i class="fa fa-clock-o"></i> 2023 05 29</span> -->
-<!-- 												</figcaption> -->
-<!-- 											</figure> -->
-<!-- 											<div class="aa-blog-info"> -->
-<!-- 												<h3 class="aa-blog-title"> -->
-<!-- 													<a href="#">대전 식당 1 </a> -->
-<!-- 												</h3> -->
-<!-- 												<p>돼지고기가 맛있는 식당 입니다. </p> -->
-												
-<!-- 											</div> -->
-<!-- 										</article> -->
-<!-- 									</div> -->
-									
-<!-- 									<div class="col-md-4 col-sm-4"> -->
-<!-- 										<article class="aa-latest-blog-single"> -->
-<!-- 											<figure class="aa-blog-img"> -->
-<!-- 												<a href="#"><img alt="img" src="https://placehold.it/200x200"></a> -->
-<!-- 												<figcaption class="aa-blog-img-caption"> -->
-<!-- 													<span href="#"><i class="fa fa-eye"></i>조회수 : 5</span>  -->
-<!-- 													<i class="fa fa-thumbs-o-up"></i>좋아요 : 3  -->
-<!-- 													 <i class="fa fa-clock-o"></i> 2023 05 29</span> -->
-<!-- 												</figcaption> -->
-<!-- 											</figure> -->
-<!-- 											<div class="aa-blog-info"> -->
-<!-- 												<h3 class="aa-blog-title"> -->
-<!-- 													<a href="#">대전 식당 1 </a> -->
-<!-- 												</h3> -->
-<!-- 												<p>돼지고기가 맛있는 식당 입니다. </p> -->
-												
-<!-- 											</div> -->
-<!-- 										</article> -->
-<!-- 									</div> -->
-									
-<!-- 									<div class="col-md-4 col-sm-4"> -->
-<!-- 										<article class="aa-latest-blog-single"> -->
-<!-- 											<figure class="aa-blog-img"> -->
-<!-- 												<a href="#"><img alt="img" src="https://placehold.it/200x200"></a> -->
-<!-- 												<figcaption class="aa-blog-img-caption"> -->
-<!-- 													<span href="#"><i class="fa fa-eye"></i>조회수 : 5</span>  -->
-<!-- 													<i class="fa fa-thumbs-o-up"></i>좋아요 : 3  -->
-<!-- 													 <i class="fa fa-clock-o"></i> 2023 05 29</span> -->
-<!-- 												</figcaption> -->
-<!-- 											</figure> -->
-<!-- 											<div class="aa-blog-info"> -->
-<!-- 												<h3 class="aa-blog-title"> -->
-<!-- 													<a href="#">대전 식당 1 </a> -->
-<!-- 												</h3> -->
-<!-- 												<p>돼지고기가 맛있는 식당 입니다. </p> -->
-												
-<!-- 											</div> -->
-<!-- 											<br> -->
-<!-- 										</article> -->
-<!-- 									</div> -->
-									
-									
-<!-- 									<div class="col-md-4 col-sm-4"> -->
-<!-- 										<article class="aa-latest-blog-single"> -->
-<!-- 											<figure class="aa-blog-img"> -->
-<!-- 												<a href="#"><img alt="img" src="https://placehold.it/200x200"></a> -->
-<!-- 												<figcaption class="aa-blog-img-caption"> -->
-<!-- 													<span href="#"><i class="fa fa-eye"></i>조회수 : 5</span>  -->
-<!-- 													<i class="fa fa-thumbs-o-up"></i>좋아요 : 3  -->
-<!-- 													 <i class="fa fa-clock-o"></i> 2023 05 29</span> -->
-<!-- 												</figcaption> -->
-<!-- 											</figure> -->
-<!-- 											<div class="aa-blog-info"> -->
-<!-- 												<h3 class="aa-blog-title"> -->
-<!-- 													<a href="#">대전 식당 1 </a> -->
-<!-- 												</h3> -->
-<!-- 												<p>돼지고기가 맛있는 식당 입니다. </p> -->
-												
-<!-- 											</div> -->
-<!-- 										</article> -->
-<!-- 									</div> -->
-									
-									
-<!-- 									<div class="col-md-4 col-sm-4"> -->
-<!-- 										<article class="aa-latest-blog-single"> -->
-<!-- 											<figure class="aa-blog-img"> -->
-<!-- 												<a href="#"><img alt="img" src="https://placehold.it/200x200"></a> -->
-<!-- 												<figcaption class="aa-blog-img-caption"> -->
-<!-- 													<span href="#"><i class="fa fa-eye"></i>조회수 : 5</span>  -->
-<!-- 													<i class="fa fa-thumbs-o-up"></i>좋아요 : 3  -->
-<!-- 													 <i class="fa fa-clock-o"></i> 2023 05 29</span> -->
-<!-- 												</figcaption> -->
-<!-- 											</figure> -->
-<!-- 											<div class="aa-blog-info"> -->
-<!-- 												<h3 class="aa-blog-title"> -->
-<!-- 													<a href="#">대전 식당 1 </a> -->
-<!-- 												</h3> -->
-<!-- 												<p>돼지고기가 맛있는 식당 입니다. </p> -->
-												
-<!-- 											</div> -->
-<!-- 										</article> -->
-<!-- 									</div> -->
-									
-									
-<!-- 									<div class="col-md-4 col-sm-4"> -->
-<!-- 										<article class="aa-latest-blog-single"> -->
-<!-- 											<figure class="aa-blog-img"> -->
-<!-- 												<a href="#"><img alt="img" src="https://placehold.it/200x200"></a> -->
-<!-- 												<figcaption class="aa-blog-img-caption"> -->
-<!-- 													<span href="#"><i class="fa fa-eye"></i>조회수 : 5</span>  -->
-<!-- 													<i class="fa fa-thumbs-o-up"></i>좋아요 : 3  -->
-<!-- 													 <i class="fa fa-clock-o"></i> 2023 05 29</span> -->
-<!-- 												</figcaption> -->
-<!-- 											</figure> -->
-<!-- 											<div class="aa-blog-info"> -->
-<!-- 												<h3 class="aa-blog-title"> -->
-<!-- 													<a href="#">대전 식당 1 </a> -->
-<!-- 												</h3> -->
-<!-- 												<p>돼지고기가 맛있는 식당 입니다. </p> -->
-												
-<!-- 											</div> -->
-<!-- 											<br> -->
-<!-- 										</article> -->
-<!-- 									</div> -->
-									
-									
-<!-- 									<div class="col-md-4 col-sm-4"> -->
-<!-- 										<article class="aa-latest-blog-single"> -->
-<!-- 											<figure class="aa-blog-img"> -->
-<!-- 												<a href="#"><img alt="img" src="https://placehold.it/200x200"></a> -->
-<!-- 												<figcaption class="aa-blog-img-caption"> -->
-<!-- 													<span href="#"><i class="fa fa-eye"></i>조회수 : 5</span>  -->
-<!-- 													<i class="fa fa-thumbs-o-up"></i>좋아요 : 3  -->
-<!-- 													 <i class="fa fa-clock-o"></i> 2023 05 29</span> -->
-<!-- 												</figcaption> -->
-<!-- 											</figure> -->
-<!-- 											<div class="aa-blog-info"> -->
-<!-- 												<h3 class="aa-blog-title"> -->
-<!-- 													<a href="#">대전 식당 1 </a> -->
-<!-- 												</h3> -->
-<!-- 												<p>돼지고기가 맛있는 식당 입니다. </p> -->
-												
-<!-- 											</div> -->
-<!-- 										</article> -->
-<!-- 									</div> -->
-									
-									
-<!-- 									<div class="col-md-4 col-sm-4"> -->
-<!-- 										<article class="aa-latest-blog-single"> -->
-<!-- 											<figure class="aa-blog-img"> -->
-<!-- 												<a href="#"><img alt="img" src="https://placehold.it/200x200"></a> -->
-<!-- 												<figcaption class="aa-blog-img-caption"> -->
-<!-- 													<span href="#"><i class="fa fa-eye"></i>조회수 : 5</span>  -->
-<!-- 													<i class="fa fa-thumbs-o-up"></i>좋아요 : 3  -->
-<!-- 													 <i class="fa fa-clock-o"></i> 2023 05 29</span> -->
-<!-- 												</figcaption> -->
-<!-- 											</figure> -->
-<!-- 											<div class="aa-blog-info"> -->
-<!-- 												<h3 class="aa-blog-title"> -->
-<!-- 													<a href="#">대전 식당 1 </a> -->
-<!-- 												</h3> -->
-<!-- 												<p>돼지고기가 맛있는 식당 입니다. </p> -->
-												
-<!-- 											</div> -->
-<!-- 											<br> -->
-<!-- 										</article> -->
-<!-- 									</div> -->
-									
-									
-<!-- 									<div class="col-md-4 col-sm-4"> -->
-<!-- 										<article class="aa-latest-blog-single"> -->
-<!-- 											<figure class="aa-blog-img"> -->
-<!-- 												<a href="#"><img alt="img" src="https://placehold.it/200x200"></a> -->
-<!-- 												<figcaption class="aa-blog-img-caption"> -->
-<!-- 													<span href="#"><i class="fa fa-eye"></i>조회수 : 5</span>  -->
-<!-- 													<i class="fa fa-thumbs-o-up"></i>좋아요 : 3  -->
-<!-- 													 <i class="fa fa-clock-o"></i> 2023 05 29</span> -->
-<!-- 												</figcaption> -->
-<!-- 											</figure> -->
-<!-- 											<div class="aa-blog-info"> -->
-<!-- 												<h3 class="aa-blog-title"> -->
-<!-- 													<a href="#">대전 식당 1 </a> -->
-<!-- 												</h3> -->
-<!-- 												<p>돼지고기가 맛있는 식당 입니다. </p> -->
-												
-<!-- 											</div> -->
-<!-- 										</article> -->
-<!-- 									</div> -->
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
 								</div>
 							</div>
 							<!-- Blog Pagination -->
-							<div class="aa-blog-archive-pagination">
-							<%
-								PaginationUtil pagination = (PaginationUtil) request.getAttribute("pagingConfigMap");
-							%>
-							<%= pagination.getPaginationHtml(request, new String[] {"search"}) %>
+							<div class="aa-blog-archive-pagination" id="pagingDiv">
+<%-- 							<% --%>
+								<!-- PaginationUtil pagination = (PaginationUtil) request.getAttribute("pagingConfigMap"); -->
+<%-- 							%> --%>
+<%-- 							<%= pagination.getPaginationHtml(request, new String[] {"search"}) %> --%>
+							<%= pagination.getPaginationHtml(request, new String[] {"cat"}) %>
 <!-- 								<nav> -->
 <!-- 									<ul class="pagination"> -->
 <!-- 										<li><a aria-label="Previous" href="#"> <span -->
@@ -339,7 +108,7 @@
 									<%
 									for (String cat : catList) {
 									%>
-										<li><a href="#"><%=cat %> </a></li>
+										<li><a href="<%=request.getContextPath() %>/store/storeMain.do?page=1&cat=<%= cat %>"><%= cat %> </a></li>
 									<%	
 									}
 									%>
@@ -351,7 +120,7 @@
 									<%
 									for (String tag : tagList) {
 									%>
-										<a href="#">#<%=tag %></a> 
+										<a href="<%=request.getContextPath() %>/store/storeMain.do?page=1&tag=<%= tag %>">#<%=tag %></a> 
 									<%
 									}
 									%>

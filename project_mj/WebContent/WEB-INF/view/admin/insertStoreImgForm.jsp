@@ -32,16 +32,15 @@
 	<%
 		if (!imgStoreVoList.isEmpty()) {
 			for (ImgStoreVO imgStore : imgStoreVoList) {
-				if (imgStore.getGb_rep().equals("N")) {
 	%>
-					$(".imgList .row").append("<div class='col-md-6 alreadyImg botPadding'><a href='#' class='xbtn'><span class='glyphicon glyphicon-minus'></span></a><img src='/storePath/<%=imgStore.getImg_url()%>' class='boxImg'>");
-	<%		
-				} else if (imgStore.getGb_rep().equals("Y")) {
-	%>
-					$(".thumbnailImg .row").prepend("<div class='col-md-6 alreadyThumbImg botPadding'><a href='#' class='xbtn'><span class='glyphicon glyphicon-minus'></span></a><img src='/storePath/<%=imgStore.getImg_url()%>' class='boxImg'>");
-	<%				
-				}
+				$(".imgList .row").append("<div class='col-md-6 alreadyImg botPadding'><a href='#' class='xbtn'><span class='glyphicon glyphicon-minus'></span></a><img src='/storePath/<%=imgStore.getImg_url()%>' class='boxImg'>");
+	<%
 			}
+		}
+		if (storeVo.getThumb_url() != null) {
+	%>
+			$(".thumbnailImg .row").prepend("<div class='col-md-6 alreadyThumbImg botPadding'><a href='#' class='xbtn'><span class='glyphicon glyphicon-minus'></span></a><img src='/storePath/<%=storeVo.getThumb_url()%>' class='boxImg'>");
+	<%				
 		} 
 	%>
 	
