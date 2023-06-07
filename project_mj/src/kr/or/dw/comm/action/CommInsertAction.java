@@ -41,7 +41,6 @@ public class CommInsertAction implements IAction{
 
 			CommVO commVo = service.selectCommView(bd_no);
 			req.setAttribute("commVo", commVo);
-			
 		}
 		
 		List<String> catCommList = service.selectCatComm();

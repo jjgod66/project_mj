@@ -44,7 +44,7 @@
 									for (StoreVO storeVo : storeVoList ) {
 								%>
 								
-<<<<<<< Updated upstream
+
 								
 								
 									<div class="col-md-4 col-sm-4">
@@ -72,28 +72,7 @@
 												
 											</div>
 										</article>
-=======
-									<div class="col-md-4 col-sm-4 mb-3">
-									<a href="<%=request.getContextPath()%>/store/storeView.do?store_no=<%=storeVo.getStore_no()%>" style="text-decoration:none; color:black;">
-										<div class="card h-100">
-											<img alt="img" src="/storePath/<%=storeVo.getThumb_url() != null ? storeVo.getThumb_url() : "default/noImg.jpg" %>" class="card-img-top" style="height: 200px;">
-										  <div class="card-body" style="text-align: center;">
-										 	 <h5 class="card-title"><%=storeVo.getStore_name() %></h5>
-										  		<span><i class="fa fa-eye"></i>  <%=storeVo.getStore_views() %></span> 
-												<span><i class="bi bi-heart-fill" style="color:#FF32B1"></i>  <%=storeVo.getStore_like() %></span>
-												<span><i class="bi bi-bookmark-plus-fill" style="color:#28288C"></i>  <%=storeVo.getStore_fav() %></span> 
-												<span class=""><i class="bi bi-info-square-fill" style="color:#FF8C0A"></i>  <%=storeVo.getCat_name() %></span>
-												<div>
-													<span>#<%=storeVo.getStore_tagNm_1() %></span>
-													<span>#<%=storeVo.getStore_tagNm_2() %></span>
-													<span>#<%=storeVo.getStore_tagNm_3() %></span>
-												</div>
-											<hr>	
-										    <h6 class="card-text"><%=storeVo.getStore_des_s() %> </h6>
-										  </div>
-										</div>
-										</a>
->>>>>>> Stashed changes
+
 									</div>
 								<%
 									}
