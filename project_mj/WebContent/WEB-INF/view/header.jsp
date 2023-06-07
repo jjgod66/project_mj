@@ -52,11 +52,15 @@
 <%	}	%>
   </head>
 
+<style>
+	.nav-link {
+		color : white;
+	}
+</style>
 <body class="layout-top-nav" style="height: auto;">
 <%
 	String gcp = request.getContextPath();
 %>
-
 	<div class="wrapper">
 		<nav
 			class="main-header navbar navbar-expand-md navbar-light navbar-white bg-warning bg-gradient mb-3">
@@ -64,7 +68,7 @@
 				<a href="<%=request.getContextPath() %>/cs/main.do"
 					class="navbar-brand"> <img src="/logoPath/logo.jpg" alt="Logo"
 					class="brand-image img-circle elevation-3"
-					style="opacity: .8; float: left; width:2rem;"> <span
+					style="opacity: .8; float: left; width:2rem; color:white; margin-right:0.5rem;"> <span
 					class="brand-text font-weight">은행나무</span>
 				</a>
 				<button class="navbar-toggler order-1" type="button"
@@ -73,7 +77,7 @@
 					aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<div class="collapse navbar-collapse order-3" id="navbarCollapse">
+				<div class="collapse navbar-collapse order-3" id="navbarCollapse" style="color:white;">
 
 					<ul class="navbar-nav me-auto">
 						<li class="nav-item"><a href="<%=gcp%>/cs/main.do"

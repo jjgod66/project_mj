@@ -3,7 +3,7 @@
 </div>
 </div>
 
-<footer class="welcome-footer">
+<footer class="welcome-footer bg-warning bg-gradient mt-3">
 <div class="container">
 <p>
 </p><div class="footer-links">
