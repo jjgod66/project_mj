@@ -34,7 +34,7 @@ public class AdminStoreFormAction implements IAction {
 		PaginationUtil pagination = new PaginationUtil();
 		String pageParam = req.getParameter("page");	// 사용자가 선택한 페이지 번호
 		int page = (pageParam == null ? 1 : Integer.parseInt(pageParam));
-		int totalCount = service.selectStoreCount();
+		int totalCount = service.selectStoreCount(null);
 		pagination.setConfig(page, 10, 10, totalCount);
 		pagingConfigMap = pagination.getConfig();
 		

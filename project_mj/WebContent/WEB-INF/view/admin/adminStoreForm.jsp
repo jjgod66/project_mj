@@ -55,7 +55,7 @@
 							<th style="width: 15%">태그1</th> 
 							<th style="width: 15%">태그2</th> 
 							<th style="width: 15%">태그3</th> 
-							<th style="width: 10%">등록상태</th>
+							<th style="width: 10%">삭제여부</th>
 							<th style="width: 10%">수정</th>
 							<th style="width: 10%"></th>
 						</tr>

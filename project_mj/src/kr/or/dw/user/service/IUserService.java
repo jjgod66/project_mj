@@ -1,7 +1,6 @@
 package kr.or.dw.user.service;
 
 import java.util.List;
-
 import kr.or.dw.cs.vo.AnnouncementVO;
 import kr.or.dw.user.vo.UserVO;
 
@@ -28,7 +27,5 @@ public interface IUserService {
 	 */
 	public List<AnnouncementVO> selectAnVoList();
 
-
-	
 
 }

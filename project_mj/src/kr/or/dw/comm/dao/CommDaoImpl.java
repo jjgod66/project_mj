@@ -253,8 +253,6 @@ public class CommDaoImpl implements ICommDao {
 		}
 	}
 
-<<<<<<< Updated upstream
-=======
 	
->>>>>>> Stashed changes
+
 }

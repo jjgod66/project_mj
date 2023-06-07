@@ -35,12 +35,18 @@ public interface IAdminDao {
 
 	List<String> selectStoreCatList();
 	
+	
 	/**
 	 * 새로운 점포를 등록한다.
 	 * @param storeVo
-	 * @return
 	 */
-	int insertStore(StoreVO storeVo);
+	void insertStore(StoreVO storeVo);
+	
+	/**
+	 * 점포에 태그를 등록한다.
+	 * @param storeVo
+	 */
+	int insertStoreTag(StoreVO storeVo);
 	
 	/**
 	 * 등록된 점포의 리스트를 불러온다.
@@ -51,9 +57,10 @@ public interface IAdminDao {
 
 	/**
 	 * 등록된 점포의 수를 센다.
+	 * @param cat 
 	 * @return 등록점포 수
 	 */
-	int selectStoreCount();
+	int selectStoreCount(String cat);
 
 	/**
 	 * 점포번호로 해당 점포객체의 정보 불러온다.
@@ -118,6 +125,14 @@ public interface IAdminDao {
 	 * @param store_no
 	 */
 	void deleteThumbImgStore(int store_no);
-	
 
+	/**
+	 * 썸네일 올린다.
+	 * @param storeVo
+	 */
+	void updateThumb(StoreVO storeVo);
+
+	int selectStoreTagCount(String tag);
+
+	List<StoreVO> selectStoreListT(Map<String, Object> paramMap);
 }
