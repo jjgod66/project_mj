@@ -47,8 +47,6 @@ public class CommMainAction implements IAction {
 		paramMap.put("end", pagingConfigMap.get("end"));
 //		paramMap.put("user_no", user_no);
 		
-//		int pageCount = service.pageCount();
-//		req.setAttribute("pageCount", pageCount);
 		
 		// 게시판 목록을 가져온다.
 		List<CommVO> commList = service.selectCommList(paramMap);
