@@ -134,4 +134,49 @@
 		UPDATE user_ SET user_img = #user_img# WHERE user_no = #user_no#
 	</update>
 	
+	<select id="selectStoreLikeCount" parameterClass="int" resultClass="int">
+		SELECT NVL(SUM(like_cnt), 0) FROM store_like WHERE user_no = #user_no#
+	</select>
+	
+	<select id="selectStoreListL" parameterClass="Map" resultClass="storeVO">
+		SELECT *
+		  FROM (
+				SELECT *
+				  FROM (
+				  		SELECT rownum rnum, v1.*
+						  FROM (
+						  		SELECT s.*, st.STORE_TAGNM_1, st.STORE_TAGNM_2, st.STORE_TAGNM_3
+  								  FROM store s, store_like sl, STORE_TAG st 
+ 								 WHERE s.store_no = sl.store_no
+ 								   AND s.store_no = st.STORE_NO 
+  								   AND sl.user_no = #user_no#
+						  		) v1
+						 WHERE rownum <![CDATA[ <= ]]> #end#
+				  		) v2
+				 WHERE rnum <![CDATA[ >= ]]> #start#
+				)
+	</select>
+	
+	<select id="selectStoreFavCount" parameterClass="int" resultClass="int">
+		SELECT NVL(SUM(fav_cnt), 0) FROM store_favorites WHERE user_no = #user_no#
+	</select>
+	
+	<select id="selectStoreListF" parameterClass="Map" resultClass="storeVO">
+		SELECT *
+		  FROM (
+				SELECT *
+				  FROM (
+				  		SELECT rownum rnum, v1.*
+						  FROM (
+						  		SELECT s.*, st.STORE_TAGNM_1, st.STORE_TAGNM_2, st.STORE_TAGNM_3
+  								  FROM store s, STORE_FAVORITES sf, STORE_TAG st 
+ 								 WHERE s.store_no = sf.store_no
+ 								   AND s.store_no = st.STORE_NO 
+  								   AND sf.user_no = #user_no#
+						  		) v1
+						 WHERE rownum <![CDATA[ <= ]]> #end#
+				  		) v2
+				 WHERE rnum <![CDATA[ >= ]]> #start#
+				)
+	</select>
 </sqlMap>
