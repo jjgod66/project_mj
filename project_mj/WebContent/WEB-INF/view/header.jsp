@@ -9,40 +9,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">    
     <title>은행 먹거리  | Home</title>
     
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/dist/css/style.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/dist/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/dist/fonts/icomoon/style.css">
-    
-    <script src="<%=request.getContextPath()%>/assets/dist/js/jquery-3.3.1.min.js"></script>
-    <script src="<%=request.getContextPath()%>/assets/dist/js/popper.min.js"></script>
-    <script src="<%=request.getContextPath()%>/assets/dist/js/bootstrap.min.js"></script>
-    <script src="<%=request.getContextPath()%>/assets/dist/js/main.js"></script>
-    
-    
-    
    <!-- Google Font: Source Sans Pro -->
 	<link rel="stylesheet"
 		href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 	<!-- Font Awesome Icons -->
 	<link rel="stylesheet"
 		href="<%=request.getContextPath()%>/assets/plugins/fontawesome-free/css/all.min.css">
+<!-- 	부트스트랩아이콘 -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 	<!-- Theme style -->
 <%-- 	<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/dist/css/adminlte.min.css"> --%>
 	<!-- 합쳐지고 최소화된 최신 CSS -->
-<%-- 	<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/ddist/css/bootstrap.css"> --%>
-
-
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-	
-	
 	<!-- 부가적인 테마 -->
-<!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	<!-- 제이쿼리 -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-<%-- 	<script type="text/javascript" src="<%=request.getContextPath()%>/assets/ddist/js/bootstrap.bundle.min.js"></script> --%>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	<%
 		UserVO userVO = (UserVO)session.getAttribute("UserVO");
@@ -68,15 +51,11 @@
 <%	}	%>
   </head>
 
-<style>
-	.nav-link {
-		color : white;
-	}
-</style>
 <body class="layout-top-nav" style="height: auto;">
 <%
 	String gcp = request.getContextPath();
 %>
+
 	<div class="wrapper">
 		<nav
 			class="main-header navbar navbar-expand-md navbar-light navbar-white bg-warning bg-gradient mb-3">
@@ -84,8 +63,8 @@
 				<a href="<%=request.getContextPath() %>/cs/main.do"
 					class="navbar-brand"> <img src="/logoPath/logo.jpg" alt="Logo"
 					class="brand-image img-circle elevation-3"
-					style="opacity: .8; float: left; width:2rem; color:white; margin-right:0.5rem;"> <span
-					class="brand-text font-weight">은행나무</span>
+					style="opacity: .8; float: left; width:2rem;"> <span
+					class="brand-text font-weight">은행나무 </span>
 				</a>
 				<button class="navbar-toggler order-1" type="button"
 					data-toggle="collapse" data-target="#navbarCollapse"
@@ -93,7 +72,7 @@
 					aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<div class="collapse navbar-collapse order-3" id="navbarCollapse" style="color:white;">
+				<div class="collapse navbar-collapse order-3" id="navbarCollapse">
 
 					<ul class="navbar-nav me-auto">
 						<li class="nav-item"><a href="<%=gcp%>/cs/main.do"
@@ -101,7 +80,7 @@
 						<li class="nav-item"><a href="<%=gcp%>/store/storeMain.do"
 							class="nav-link">맛집찾기 </a></li>
 						<li class="nav-item"><a href="<%=gcp%>/comm/commMain.do"
-							class="nav-link">커뮤니티  </a></li>
+							class="nav-link">커뮤 </a></li>
 
 					</ul>
 

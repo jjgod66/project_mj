@@ -4,7 +4,7 @@ package kr.or.dw.cs.dao;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import kr.or.dw.cs.vo.AnnouncementVO;
+
 import kr.or.dw.store.vo.StoreVO;
 
 public interface ICsDao {
@@ -21,6 +21,10 @@ public interface ICsDao {
 	 * @return 점포 수 count
 	 */
 	int selectStoreTotalCount();
+
+import kr.or.dw.cs.vo.AnnouncementVO;
+
+public interface ICsDao {
 
 	int insertContent(AnnouncementVO anVo);
 
