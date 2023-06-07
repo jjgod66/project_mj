@@ -9,6 +9,10 @@
 <%@ include file="../header.jsp"%>
 <%
 	List<CommVO> commList = (List<CommVO>) request.getAttribute("commList");
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 %>
 
 
@@ -105,6 +109,10 @@
 								</div>
 							</div>
 							<div class="row">
+<<<<<<< Updated upstream
+=======
+								
+>>>>>>> Stashed changes
 								
 								<div class="container" style="margin-top: 20px;">
 									<%
