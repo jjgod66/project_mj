@@ -9,6 +9,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">    
     <title>은행 먹거리  | Home</title>
     
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/dist/css/style.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/dist/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/dist/fonts/icomoon/style.css">
+    
+    <script src="<%=request.getContextPath()%>/assets/dist/js/jquery-3.3.1.min.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/dist/js/popper.min.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/dist/js/bootstrap.min.js"></script>
+    <script src="<%=request.getContextPath()%>/assets/dist/js/main.js"></script>
+    
+    
+    
    <!-- Google Font: Source Sans Pro -->
 	<link rel="stylesheet"
 		href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -20,7 +32,11 @@
 <%-- 	<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/dist/css/adminlte.min.css"> --%>
 	<!-- 합쳐지고 최소화된 최신 CSS -->
 <%-- 	<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/ddist/css/bootstrap.css"> --%>
+
+
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+	
+	
 	<!-- 부가적인 테마 -->
 <!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
 	<!-- 제이쿼리 -->
