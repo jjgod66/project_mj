@@ -41,12 +41,14 @@ public class CommMainAction implements IAction {
 		int totalCount = service.selectCommCount();
 		pagination.setConfig(page, 10, 10, totalCount);
 		pagingConfigMap = pagination.getConfig();
-		
 		// ibatis에서 받을 parameterMap 을 만든다.
 		Map<String, Object> paramMap = new HashMap<>();
 		paramMap.put("start", pagingConfigMap.get("start"));
 		paramMap.put("end", pagingConfigMap.get("end"));
 //		paramMap.put("user_no", user_no);
+		
+		int pageCount = service.pageCount();
+		req.setAttribute("pageCount", pageCount);
 		
 		// 게시판 목록을 가져온다.
 		List<CommVO> commList = service.selectCommList(paramMap);
