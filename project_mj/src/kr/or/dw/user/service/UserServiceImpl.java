@@ -61,6 +61,12 @@ public class UserServiceImpl implements IUserService {
 		return dao.selectAnVoList();
 	}
 
+	@Override
+	public int selectAnCount() {
+		// TODO Auto-generated method stub
+		return dao.selectAnCount();
+	}
+
 
 
 
