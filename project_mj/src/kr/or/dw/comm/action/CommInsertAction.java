@@ -33,7 +33,6 @@ public class CommInsertAction implements IAction{
 			int bd_no = Integer.parseInt(req.getParameter("bd_no"));
 			CommVO commVo = service.selectCommView(bd_no);
 			req.setAttribute("commVo", commVo);
-			
 		}
 		
 		List<String> catCommList = service.selectCatComm();
