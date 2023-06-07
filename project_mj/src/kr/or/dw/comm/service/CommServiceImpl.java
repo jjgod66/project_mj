@@ -119,11 +119,11 @@ public class CommServiceImpl implements ICommService{
 		
 	}
 
-	@Override
-	public int pageCount() {
-		// TODO Auto-generated method stub
-		dao.pageCount();
-	}
+//	@Override
+//	public int pageCount() {
+//		// TODO Auto-generated method stub
+//		dao.pageCount();
+//	}
 
 	
 }

@@ -41,7 +41,7 @@ public interface ICommService {
 
 	void updateCommLikeCount(int bd_no);
 
-	int pageCount();
+//	int pageCount();
 	
 	
 }

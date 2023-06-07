@@ -9,7 +9,7 @@
 <%@ include file="../header.jsp"%>
 <%
 	List<CommVO> commList = (List<CommVO>) request.getAttribute("commList");
-	 int pageCount = (int)request.getAttribute("pageCount");
+	/*  int pageCount = (int)request.getAttribute("pageCount"); */
 
 %>
 
@@ -107,10 +107,10 @@
 								</div>
 							</div>
 							<div class="row">
-								 <div class="col-sm-12 col-md-5">
+								 <%-- <div class="col-sm-12 col-md-5">
 									<div class="dataTables_info" id="example1_info" role="status"
 										aria-live="polite"><%= pageCount %></div>
-								</div> 
+								</div>  --%>
 								
 								<div class="container" style="margin-top: 20px;">
 									<%
