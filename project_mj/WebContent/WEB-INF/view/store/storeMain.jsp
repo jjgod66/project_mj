@@ -43,33 +43,22 @@
 									for (StoreVO storeVo : storeVoList ) {
 								%>
 								
-								
-								
 									<div class="col-md-4 col-sm-4">
-										<article class="aa-latest-blog-single">
-											<figure class="aa-blog-img">
-												<a href="<%=request.getContextPath()%>/store/storeView.do?store_no=<%=storeVo.getStore_no()%>"><img alt="img" src="/storePath/<%=storeVo.getThumb_url() != null ? storeVo.getThumb_url() : "default/noImg.jpg" %>" class="boxImg"></a>
-												<figcaption class="aa-blog-img-caption">
-													<div>
-														<span href="#"><i class="fa fa-eye"></i>조회수 : <%=storeVo.getStore_views() %></span> 
-														<i class="fa fa-thumbs-o-up"></i>좋아요 : <%=storeVo.getStore_like() %> 
-														<span class="">&lt;<%=storeVo.getCat_name() %>&gt;</span>
-													</div>
-													<div>
-														<span>[<%=storeVo.getStore_tagNm_1() %>]</span>
-														<span>[<%=storeVo.getStore_tagNm_2() %>]</span>
-														<span>[<%=storeVo.getStore_tagNm_3() %>]</span>
-													</div>
-												</figcaption>
-											</figure>
-											<div class="aa-blog-info">
-												<h3 class="aa-blog-title">
-													<a href="<%=gcp%>/user/userLoginForm.do"><%=storeVo.getStore_name() %></a>
-												</h3>
-												<p><%=storeVo.getStore_des_s() %> </p>
-												
-											</div>
-										</article>
+										<div class="card">
+											<a href="<%=request.getContextPath()%>/store/storeView.do?store_no=<%=storeVo.getStore_no()%>" style="text-decoration:none;"><img alt="img" src="/storePath/<%=storeVo.getThumb_url() != null ? storeVo.getThumb_url() : "default/noImg.jpg" %>" class="card-img-top"></a>
+										  <div class="card-body">
+										 	 <h5 class="card-title"><a href="<%=gcp%>/user/userLoginForm.do"><%=storeVo.getStore_name() %></a></h5>
+										  		<span href="#"><i class="fa fa-eye"></i>조회수 : <%=storeVo.getStore_views() %></span> 
+												<i class="fa fa-thumbs-o-up"></i>좋아요 : <%=storeVo.getStore_like() %> 
+												<span class="">&lt;<%=storeVo.getCat_name() %>&gt;</span>
+												<div>
+													<span>[<%=storeVo.getStore_tagNm_1() %>]</span>
+													<span>[<%=storeVo.getStore_tagNm_2() %>]</span>
+													<span>[<%=storeVo.getStore_tagNm_3() %>]</span>
+												</div>
+										    <p class="card-text"><%=storeVo.getStore_des_s() %> </p>
+										  </div>
+										</div>
 									</div>
 								<%
 									}
