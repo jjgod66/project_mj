@@ -57,7 +57,10 @@
 	}
 </style>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 <script>
 	$(function(){
 		
@@ -201,6 +204,7 @@
 		});
 	});
 </script>
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes
 
 <div class="p-4 p-md-5 mb-4 rounded text-bg-dark">
@@ -219,6 +223,8 @@
 
 
 
+=======
+>>>>>>> Stashed changes
 
 <div class="card card-primary">
 	<div class="p-4 p-md-5 mb-4 rounded text-bg-white card-header">

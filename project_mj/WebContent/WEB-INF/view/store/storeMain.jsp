@@ -43,41 +43,32 @@
 								<% 
 									for (StoreVO storeVo : storeVoList ) {
 								%>
-								
 
-								
-								
-									<div class="col-md-4 col-sm-4">
-										<article class="aa-latest-blog-single">
-											<figure class="aa-blog-img">
-												<a href="<%=request.getContextPath()%>/store/storeView.do?store_no=<%=storeVo.getStore_no()%>"><img alt="img" src="/storePath/<%=storeVo.getThumb_url() != null ? storeVo.getThumb_url() : "default/noImg.jpg" %>" class="boxImg"></a>
-												<figcaption class="aa-blog-img-caption">
-													<div>
-														<span href="#"><i class="fa fa-eye"></i>조회수 : <%=storeVo.getStore_views() %></span> 
-														<i class="fa fa-thumbs-o-up"></i>좋아요 : <%=storeVo.getStore_like() %> 
-														<span class="">&lt;<%=storeVo.getCat_name() %>&gt;</span>
-													</div>
-													<div>
-														<span>[<%=storeVo.getStore_tagNm_1() %>]</span>
-														<span>[<%=storeVo.getStore_tagNm_2() %>]</span>
-														<span>[<%=storeVo.getStore_tagNm_3() %>]</span>
-													</div>
-												</figcaption>
-											</figure>
-											<div class="aa-blog-info">
-												<h3 class="aa-blog-title">
-													<a href="<%=gcp%>/user/userLoginForm.do"><%=storeVo.getStore_name() %></a>
-												</h3>
-												<p><%=storeVo.getStore_des_s() %> </p>
-												
-											</div>
-										</article>
-
+									<div class="col-md-4 col-sm-4 mb-3">
+									<a href="<%=request.getContextPath()%>/store/storeView.do?store_no=<%=storeVo.getStore_no()%>" style="text-decoration:none; color:black;">
+										<div class="card h-100">
+											<img alt="img" src="/storePath/<%=storeVo.getThumb_url() != null ? storeVo.getThumb_url() : "default/noImg.jpg" %>" class="card-img-top" style="height: 200px;">
+										  <div class="card-body" style="text-align: center;">
+										 	 <h5 class="card-title"><%=storeVo.getStore_name() %></h5>
+										  		<span><i class="fa fa-eye"></i>  <%=storeVo.getStore_views() %></span> 
+												<span><i class="bi bi-heart-fill" style="color:#FF32B1"></i>  <%=storeVo.getStore_like() %></span>
+												<span><i class="bi bi-bookmark-plus-fill" style="color:#28288C"></i>  <%=storeVo.getStore_fav() %></span> 
+												<span class=""><i class="bi bi-info-square-fill" style="color:#FF8C0A"></i>  <%=storeVo.getCat_name() %></span>
+												<div>
+													<span>#<%=storeVo.getStore_tagNm_1() %></span>
+													<span>#<%=storeVo.getStore_tagNm_2() %></span>
+													<span>#<%=storeVo.getStore_tagNm_3() %></span>
+												</div>
+											<hr>	
+										    <h6 class="card-text"><%=storeVo.getStore_des_s() %> </h6>
+										  </div>
+										</div>
+										</a>
 									</div>
 								<%
 									}
 								%>	
-								</div>
+							</div>
 							</div>
 							<!-- Blog Pagination -->
 							<div class="aa-blog-archive-pagination" id="pagingDiv">
