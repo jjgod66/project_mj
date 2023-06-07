@@ -56,11 +56,7 @@
 		color : white;
 	}
 </style>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-=======
->>>>>>> Stashed changes
+
 <script>
 	$(function(){
 		
@@ -150,6 +146,10 @@
 			});
 		});
 		
+		function rateAvgTemplate(rateAvg) {
+			$("#rateAvg").text(rateAvg);
+		}
+		
 		function reviewTemplate(review) {
 			let reviewSrc = "/profilePath/default/defaultProfile.jpg"; 
 			if (review.user_img != null || review.user_img != "") {
@@ -180,7 +180,9 @@
 		$("#re_form").on("submit", function(e){
 			e.preventDefault();
 			let rate = $("#re_form").find("input[type=range]").val();
+			console.log("rate : " + rate);
 			let re_content = $("#re_form").find("input[type=text]").val();
+			console.log("re_content : " + rate);
 			let store_no = <%=storeVo.getStore_no()%>;
 			$.ajax({
 				url : "<%=request.getContextPath()%>/store/insertReview.do",
@@ -193,9 +195,11 @@
 					re_content : re_content
 				},
 				success : function(res){
-// 					console.log(res);
-					console.log(res.review);
+					console.log(res);
+					console.log(res.rateAvg);
+					rateAvgTemplate(res.rateAvg);
 					reviewTemplate(res.review);
+					$("#re_form").find("input[type=text]").val("");
 				},
 				error : function(err){
 					console.log(err);
@@ -204,28 +208,6 @@
 		});
 	});
 </script>
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-
-<div class="p-4 p-md-5 mb-4 rounded text-bg-dark">
-    <div class="col-md-6 px-0">
-      <h1 class="display-4 fst-italic">Title of a longer featured blog post</h1>
-      <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-      <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
-    </div>
-  </div>
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> Stashed changes
-
 <div class="card card-primary">
 	<div class="p-4 p-md-5 mb-4 rounded text-bg-white card-header">
 		<div class="row">
@@ -233,7 +215,7 @@
 				<img src="/storePath/<%=storeVo.getThumb_url()%>" class="boxImg">
 			</div>
 			<div class="col-md-6 align-self-center">
-				<h1 class="display-4 fst-italic"><%=store_name%> <span class="text-warning" style="float: right;font-family: fantasy; font-style: normal;"><%=store_rate%></span></h1>
+				<h1 class="display-4 fst-italic"><%=store_name%> <span class="text-warning" style="float: right;font-family: fantasy; font-style: normal;" id="rateAvg"><%=store_rate%></span></h1>
 				<hr>
 				<div>
 					<span class="mr-1" style="float: right; margin: 0 0.5rem;"><i class="bi bi-info-square-fill" style="color:#FF8C0A"></i>  <%=storeVo.getCat_name() %></span>

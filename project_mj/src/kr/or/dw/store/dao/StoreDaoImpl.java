@@ -200,4 +200,27 @@ public class StoreDaoImpl implements IStoreDao {
 		
 		return reVo;
 	}
+
+	@Override
+	public float selectRateAvg(int store_no) {
+		float rateAvg = 0;
+		
+		try {
+			rateAvg = (float) client.queryForObject("store.selectRateAvg", store_no);
+			System.out.println("rate : " + rateAvg);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return rateAvg;
+	}
+
+	@Override
+	public void updateRateAvg(int store_no) {
+		try {
+			client.update("store.updateRateAvg", store_no);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

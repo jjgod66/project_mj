@@ -7,9 +7,17 @@
 		ReviewStoreVO reVo = (ReviewStoreVO) request.getAttribute("reVo");
 		Gson gson = new Gson();
 		String review = gson.toJson(reVo);
+	float rateAvg = 0;
+	if (request.getAttribute("rateAvg") != null) {
+		rateAvg = Float.parseFloat(String.valueOf(request.getAttribute("rateAvg")));
+	}
+		
 %>
+
 {
-	"review" : <%=review %>
+	"review" : <%=review %>,
+	"rateAvg" : <%=rateAvg %>
+	
 }
 <%
 	}

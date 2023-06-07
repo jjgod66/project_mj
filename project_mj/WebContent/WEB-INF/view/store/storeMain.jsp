@@ -72,10 +72,6 @@
 							</div>
 							<!-- Blog Pagination -->
 							<div class="aa-blog-archive-pagination" id="pagingDiv">
-<%-- 							<% --%>
-								<!-- PaginationUtil pagination = (PaginationUtil) request.getAttribute("pagingConfigMap"); -->
-<%-- 							%> --%>
-<%-- 							<%= pagination.getPaginationHtml(request, new String[] {"search"}) %> --%>
 							<%= pagination.getPaginationHtml(request, new String[] {"cat"}) %>
 <!-- 								<nav> -->
 <!-- 									<ul class="pagination"> -->

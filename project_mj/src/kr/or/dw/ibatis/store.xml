@@ -275,7 +275,18 @@
 						  VALUES (#re_no#, #user_no#, #store_no#, #user_nick#, #re_content#, #rate#, SYSDATE, 'N')
 	</insert>
 	
-	<select id="selectReview" parameterClass="int">
-		SELECT * FROM store_review sr, user_ u WHERE sr.re_no = #re_no# AND sr.user_no = u.user_no 
+	<select id="selectReview" parameterClass="int" resultClass="reviewStoreVO">
+		SELECT sr.RE_NO, sr.USER_NO, sr.STORE_NO, sr.USER_NICK, sr.RE_CONTENT, sr.RATE, sr.RE_WDT, sr.GB_DEL, us.USER_IMG 
+  		  FROM store_review sr, user_ us 
+ 		 WHERE sr.user_no = us.user_no
+  		   AND sr.re_no = #re_no#
 	</select>
+	
+	<select id="selectRateAvg" parameterClass="int" resultClass="float">
+		SELECT ROUND(AVG(rate), 1) FROM STORE_REVIEW sr WHERE store_no = #store_no#
+	</select>
+	
+	<update id="updateRateAvg" parameterClass="int">
+		UPDATE store SET store_rate = (SELECT ROUND(AVG(rate), 1) FROM STORE_REVIEW sr WHERE store_no = #store_no#) WHERE store_no = #store_no#
+	</update>
 </sqlMap>

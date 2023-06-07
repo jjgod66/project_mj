@@ -88,4 +88,14 @@ public class StoreServiceImpl implements IStoreService {
 	public ReviewStoreVO selectReview(int re_no) {
 		return dao.selectReview(re_no);
 	}
+
+	@Override
+	public float selectRateAvg(int store_no) {
+		return dao.selectRateAvg(store_no);
+	}
+
+	@Override
+	public void updateRateAvg(int store_no) {
+		dao.updateRateAvg(store_no);
+	}
 }

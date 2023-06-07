@@ -44,6 +44,10 @@ public class InsertReviewAction implements IAction {
 			int re_no = service.insertReview(reVo);
 			ReviewStoreVO resultReVo = service.selectReview(re_no);
 			req.setAttribute("reVo", resultReVo);
+			
+			float rateAvg = service.selectRateAvg(store_no);
+			service.updateRateAvg(store_no);
+			req.setAttribute("rateAvg", rateAvg);
 		}
 		
 		return "/store/review_ajax.jsp";
