@@ -105,4 +105,17 @@ public interface IStoreDao {
 	 */
 	ReviewStoreVO selectReview(int re_no);
 
+	/**
+	 * 해당 점포의 평점평균을 구한다.
+	 * @param store_no
+	 * @return
+	 */
+	float selectRateAvg(int store_no);
+
+	/**
+	 * 해당 점포의 평점평균을 업데이트한다.
+	 * @param store_no
+	 */
+	void updateRateAvg(int store_no);
+
 }
