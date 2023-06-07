@@ -20,8 +20,8 @@ public class StoreVO {
 	private String store_tagNm_1;
 	private String store_tagNm_2;
 	private String store_tagNm_3;
+	private String thumb_url;
 	
-
 	public int getStore_no() {
 		return store_no;
 	}
@@ -135,6 +135,12 @@ public class StoreVO {
 	}
 	public void setStore_tagNm_3(String store_tagNm_3) {
 		this.store_tagNm_3 = store_tagNm_3;
+	}
+	public String getThumb_url() {
+		return thumb_url;
+	}
+	public void setThumb_url(String thumb_url) {
+		this.thumb_url = thumb_url;
 	}
 	
 }

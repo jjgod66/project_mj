@@ -88,7 +88,7 @@ public class AdminDaoImpl implements IAdminDao {
 	}
 
 	@Override
-	public int insertStore(StoreVO storeVo) {
+	public void insertStore(StoreVO storeVo) {
 		int result = 0;
 		
 		try {
@@ -96,8 +96,21 @@ public class AdminDaoImpl implements IAdminDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		return result;
+	}
+	
+	@Override
+	public int insertStoreTag(StoreVO storeVo) {
+		Object result = 0;
+		int result2 = 1;
+		try {
+			result = client.insert("store.insertStoreTag", storeVo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		if (result == null) {
+			result2 = 1;
+		}
+		return result2;
 	}
 
 	@Override
@@ -113,11 +126,11 @@ public class AdminDaoImpl implements IAdminDao {
 	}
 
 	@Override
-	public int selectStoreCount() {
+	public int selectStoreCount(String cat) {
 		int count = 0;
 		
 		try {
-			count = (int) client.queryForObject("store.selectStoreCount");
+			count = (int) client.queryForObject("store.selectStoreCount", cat);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -204,8 +217,6 @@ public class AdminDaoImpl implements IAdminDao {
 
 	@Override
 	public void insertImgStore(ImgStoreVO imgStoreVo) {
-		int store_no = imgStoreVo.getStore_no();
-		String imgStore = imgStoreVo.getImg_url();
 		try {
 			client.insert("store.insertImgStore", imgStoreVo);
 		} catch (SQLException e) {
@@ -246,4 +257,38 @@ public class AdminDaoImpl implements IAdminDao {
 		}
 	}
 
+	@Override
+	public void updateThumb(StoreVO storeVo) {
+		try {
+			client.update("store.updateThumb", storeVo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public int selectStoreTagCount(String tag) {
+		int count = 0;
+		
+		try {
+			count = (int) client.queryForObject("store.selectStoreTagCount", tag);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return count;
+	}
+
+	@Override
+	public List<StoreVO> selectStoreListT(Map<String, Object> paramMap) {
+		List<StoreVO> storeList = null;
+		
+		try {
+			storeList = client.queryForList("store.selectStoreListT", paramMap);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return storeList;
+	}
 }

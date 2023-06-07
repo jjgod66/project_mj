@@ -102,8 +102,8 @@
 					<div class="form-group">
 						<div class="row" style="justify-content: space-around;">
 							<div class="col-mid-4 tagBox">
-								<label for="store_tagNm_2">태그2</label> <select
-									class="form-control selectTagNm" name="store_tagNm_2">
+								<label for="store_tagNm_1">태그1</label> <select
+									class="form-control selectTagNm" name="store_tagNm_1">
 									<%
 										for (String tag : tagList) {
 									%>
@@ -112,7 +112,7 @@
 											if (tag.equals("가족식사")) {
 												%>selected<%
 											}
-										} else if (storeVo != null && storeTagList.contains(tag)) {%>
+										} else if (storeVo != null && storeVo.getStore_tagNm_1().equals(tag)) {%>
 										selected <%} %>><%=tag%></option>
 									<%
 										}
@@ -130,7 +130,7 @@
 											if (tag.equals("기념일")) {
 												%>selected<%
 											}
-										} else if (storeVo != null && storeTagList.contains(tag)) {%>
+										} else if (storeVo != null && storeVo.getStore_tagNm_2().equals(tag)) {%>
 										selected <%} %>><%=tag%></option>
 									<%
 										}
@@ -138,8 +138,8 @@
 								</select>
 							</div>
 							<div class="col-mid-4 tagBox">
-								<label for="store_tagNm_2">태그2</label> <select
-									class="form-control selectTagNm" name="store_tagNm_2">
+								<label for="store_tagNm_3">태그3</label> <select
+									class="form-control selectTagNm" name="store_tagNm_3">
 									<%
 										for (String tag : tagList) {
 									%>
@@ -148,7 +148,7 @@
 											if (tag.equals("남자들끼리")) {
 												%>selected<%
 											}
-										} else if (storeVo != null && storeTagList.contains(tag)) {%>
+										} else if (storeVo != null && storeVo.getStore_tagNm_3().equals(tag)) {%>
 										selected <%} %>><%=tag%></option>
 									<%
 										}
@@ -187,6 +187,19 @@
 							<label for="storeDes_d">점포 상세 설명</label> 
 							<textarea class="form-control" rows="6" name="store_des_d" placeholder="" ><%=storeVo == null ? "" : storeVo.getStore_des_d()%></textarea>
 						</div>
+						<%
+						if (storeVo != null) {
+						%>
+						<div class="form-group">
+							<label for="storeCatName">삭제여부</label> 
+							<select class="custom-select" name="gb_del">
+								<option value="N" selected>등록</option>
+								<option value="Y" >삭제</option>
+							</select>
+						</div>
+						<%
+						}
+						%>
 					</div>
 				</div>
 
