@@ -130,5 +130,4 @@ public interface IAdminService {
 	int selectStoreTagCount(String tag);
 
 	List<StoreVO> selectStoreListT(Map<String, Object> paramMap);
-
 }

@@ -1,17 +1,14 @@
 package kr.or.dw.user.service;
 
 import java.util.List;
-import java.util.Map;
 
 import kr.or.dw.cs.vo.AnnouncementVO;
-import kr.or.dw.store.vo.StoreVO;
-import kr.or.dw.user.dao.IUserDao;
 import kr.or.dw.user.dao.UserDaoImpl;
 import kr.or.dw.user.vo.UserVO;
 
 public class UserServiceImpl implements IUserService {
 	
-	private IUserDao dao;
+	private UserDaoImpl dao;
 	private static UserServiceImpl service;
 	
 	
@@ -62,26 +59,6 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public List<AnnouncementVO> selectAnVoList() {
 		return dao.selectAnVoList();
-	}
-
-	@Override
-	public int selectStoreLikeCount(int user_no) {
-		return dao.selectStoreLikeCount(user_no);
-	}
-
-	@Override
-	public List<StoreVO> selectStoreListL(Map<String, Object> paramMap) {
-		return dao.selectStoreListL(paramMap);
-	}
-
-	@Override
-	public int selectStoreFavCount(int user_no) {
-		return dao.selectStoreFavCount(user_no);
-	}
-
-	@Override
-	public List<StoreVO> selectStoreListF(Map<String, Object> paramMap) {
-		return dao.selectStoreListF(paramMap);
 	}
 
 
