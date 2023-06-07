@@ -27,5 +27,7 @@ public interface IUserService {
 	 */
 	public List<AnnouncementVO> selectAnVoList();
 
+	public int selectAnCount();
+
 
 }

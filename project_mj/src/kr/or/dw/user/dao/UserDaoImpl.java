@@ -107,4 +107,18 @@ public class UserDaoImpl implements IUserDao {
 	}
 
 
+	public int selectAnCount() {
+		int count = 0;
+		
+			try {
+				count = (int) client.queryForObject("user.selectAnCount");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		return count;
+	}
+
+
 }

@@ -40,7 +40,7 @@
 							<%}%>
 							
 							<a type="button" class="btn btn-default btn-sm"
-								href="<%=request.getContextPath()%>/cs/announceForm.do"> <i
+								href="<%=request.getContextPath()%>/cs/announceForm.do"><i
 								class="fas fa-reply"></i> 목록
 							</a>
 						</div>
