@@ -28,20 +28,20 @@ public class CsServiceImpl implements ICsService{
 	@Override
 	public List<StoreVO> selectMainStoreVoList() {
 		//총 점포 수 알아오기, 
-		int count = dao.selectStoreTotalCount();
+//		int count = dao.selectStoreTotalCount();
 		//랜덤 숫자 세개 뽑기
-		Map<String, Integer> randomMap = new HashMap<>();
-		for (int i = 1; i < 4; i++) {
-			int random = (int)(Math.random()*count + 1);
-			if (!randomMap.containsValue(random)) {
-				randomMap.put(("num"+i), random);
-			} else {
-				System.out.println("중복");
-				i--;
-			} 
-		}
-		System.out.println("randomMap : " + randomMap);
-		return dao.selectMainStoreVoList(randomMap);
+//		Map<String, Integer> randomMap = new HashMap<>();
+//		for (int i = 1; i < 4; i++) {
+//			int random = (int)(Math.random()*count + 1);
+//			if (!randomMap.containsValue(random)) {
+//				randomMap.put(("num"+i), random);
+//			} else {
+//				System.out.println("중복");
+//				i--;
+//			} 
+//		}
+//		System.out.println("randomMap : " + randomMap);
+		return dao.selectMainStoreVoList();
 	}
 
 

@@ -26,7 +26,8 @@ public class CommInsertAction implements IAction{
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
 		// TODO Auto-generated method stub
-		
+	
+
 		System.out.println("게시글 등록을 누릅니다.");
 		HttpSession session = req.getSession();
 		UserVO UserVO = (UserVO) session.getAttribute("UserVO");

@@ -186,9 +186,7 @@
 		SELECT COUNT(*) FROM store WHERE gb_del = 'N'
 	</select>
 	
-	<select id="mainStoreVoList" parameterClass="Map" resultClass="storeVO">
-		SELECT * FROM store WHERE (store_no IN (#num1#, #num2#, #num3#))
-	</select>
+	
 	
 	<update id="updateStoreViews" parameterClass="int">
 		UPDATE store SET store_views = store_views + 1 WHERE store_no = #store_no#
@@ -296,14 +294,22 @@
 		UPDATE store_review SET gb_del = 'Y' WHERE re_no = #re_no#
 	</update>
 	
-	
-	<select id="selectStoreVoList" resultClass="storeVO">
-		SELECT * FROM store WHERE gb_del = 'N' AND thumb_url is not null 
+	<select id="mainStoreVoList" resultClass="storeVO">
+		SELECT * FROM (
+		    SELECT * FROM store
+		    WHERE gb_del = 'N' AND thumb_url IS NOT NULL
+		    ORDER BY DBMS_RANDOM.VALUE
+			)
+		WHERE ROWNUM <![CDATA[ <= ]]> 12
 	</select>
 	
-	
-	
-	
-	
-	
+	<select id="selectStoreVoList" resultClass="storeVO">
+		<!-- SELECT * FROM store WHERE gb_del = 'N' AND thumb_url is not null AND STORE_NO = 1 OR STORE_NO = 2 OR STORE_NO  = 3 -->
+		SELECT * FROM (
+		    SELECT * FROM store
+		    WHERE gb_del = 'N' AND thumb_url IS NOT NULL
+		    ORDER BY DBMS_RANDOM.VALUE
+			)
+		WHERE ROWNUM <![CDATA[ <= ]]> 3
+	</select>
 </sqlMap>

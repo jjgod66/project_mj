@@ -22,6 +22,7 @@
 							,user_name
 							,user_nick
 							,auth_cd
+							,user_sdt
 							,gb_del
 							)
 					VALUES (
@@ -31,6 +32,7 @@
 							,#user_name#
 							,#user_nick#
 							,'B101'
+							,SYSDATE
 							,'N'
 							)
 	</insert>
@@ -53,7 +55,6 @@
 						  FROM (
 						  		SELECT *
 								  FROM user_
-								 WHERE gb_del = 'N'
 								 ORDER BY user_no
 						  		) v1
 						 WHERE rownum <![CDATA[ <= ]]> #end#
@@ -65,7 +66,6 @@
 	<select id="selectUserCount" resultClass="int">
 		SELECT COUNT(*) cnt
 		  FROM user_
-		WHERE gb_del = 'N'
 	</select>
 	
 	<update id="updateUser" parameterClass="userVO">
@@ -105,6 +105,18 @@
 					   ,'N'
 					)
 	</insert>
+	
+	
+	 <select id="selectAnCount" resultClass="int">
+		SELECT COUNT(*) cnt
+		  FROM bd_announce
+		 WHERE gb_del = 'N'
+	</select>
+
+	<select id="pageCount" resultClass="int">
+			SELECT COUNT(bd_no) FROM bd_announce
+	</select>
+	
 	
 	<select id="selectAnView" parameterClass="int" resultClass="anVo">
 		SELECT bd_no
