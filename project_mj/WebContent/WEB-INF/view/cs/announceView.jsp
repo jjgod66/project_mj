@@ -17,12 +17,12 @@
 				<div class="card card-widget">
 					<div class="card-header">
 						<div class="user-block">
-							<p><%=anVo.getBd_title()%></p>
+							<p style ="text-align: center"><%=anVo.getBd_title()%></p>
 						</div>
 					</div>
 
 					<div class="card-body text-center">
-							<p><%=anVo.getBd_content()%></p>						
+							<p style="text-align: center"><%=anVo.getBd_content()%></p>						
 							<br>
 							<br>
 							<br> 

@@ -227,11 +227,6 @@ section.notice {
 	<div id="board-list">
 		<div class="container">
 			<table class="board-table">
-				<thead>
-					<tr>
-						<th scope="col" class="th-title">제목</th>
-					</tr>
-				</thead>
 				<tbody>
 					<%
 						for (AnnouncementVO anVo : anVOList) {
@@ -247,7 +242,9 @@ section.notice {
 				</tbody>
 			</table>
 		</div>
-	</div>
+	</div>	
+	
+	
 	<div class="row">
 
 
