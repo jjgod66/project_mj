@@ -19,7 +19,8 @@
     }
     .card-title {
         margin: 0;
-        font-size: 24px;
+        font-size: 20px;
+        text-align: left;
     }
     .card-body {
         padding: 20px;
@@ -98,7 +99,7 @@
 							</div>
 						</div>
 												<div class="card-footer" >
-							<button type="submit" class="btn btn-info float-right" style ="background-color: #6c757d" name = "Sign in">Sign in</button>
+							<button type="submit" class="btn btn-block btn-secondary btn-sm" name = "Sign in">Sign in</button>
 
 						</div>
 
