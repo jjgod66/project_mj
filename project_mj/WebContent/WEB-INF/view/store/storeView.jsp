@@ -1,3 +1,5 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="kr.or.dw.store.vo.ImgReviewStoreVO"%>
 <%@page import="kr.or.dw.store.vo.ReviewStoreVO"%>
 <%@page import="kr.or.dw.store.vo.ImgStoreVO"%>
@@ -155,23 +157,48 @@
 			if (review.user_img != null || review.user_img != "") {
 				reviewSrc = "/profilePath/" + review.user_img;
 			}
-			
+
 			$("#re_container").prepend(
-				 '	<div class="row">'
-				+'		<div class="col-md-4">'
-				+'			<div class="user-block">'
-				+'				<img class="img-circle img-bordered-sm" src="' + reviewSrc + '" alt="user image">'
-				+'				<span class="username">'
-				+'					<a href="#">' + review.user_nick + '</a>'
-				+'					<a href="#" class="float-right btn-tool">'
-				+'						<i class="fas fa-times"></i>'
-				+'					</a>'
-				+'				</span>'
-				+'				<span class="description">' + review.re_wdt + '</span>'
-				+'			</div>'
-				+'		</div>'
-				+'		<div class="col-md-8">'	+ review.re_content + '</div>'
-				+'	</div><hr style="margin: 0">'	
+// 				 '	<div class="row">'
+// 				+'		<div class="col-md-4">'
+// 				+'			<div class="user-block">'
+// 				+'				<img class="img-circle img-bordered-sm" src="' + reviewSrc + '" alt="user image" style="width:2rem;">'
+// 				+'				<span class="username">'
+// 				+'					<a href="#">' + review.user_nick + '</a>'
+// 				+'					<a href="#" class="float-right btn-tool">'
+// 				+'						<i class="fas fa-times"></i>'
+// 				+'					</a>'
+// 				+'				</span>'
+// 				+'				<span class="description">' + review.re_wdt + '</span>'
+// 				+'			</div>'
+// 				+'		</div>'
+// 				+'		<div class="col-md-8">'	+ review.re_content + '</div>'
+// 				+'	</div><hr style="margin: 0">'	
+				'<div class="row" style="padding:0.5rem;">'
+				+'<div class="col-md-2 d-flex align-self-center">'
+				+'<div class="user-block col-md-9">'
+				+'<img class="img-circle img-bordered-sm" src="' + reviewSrc + '" alt="user image" style="width:2rem;">'
+				+'<span class="username">' + review.user_nick + '</span>'
+				+'</div>'
+				+'<div class="icon-block col-md-3 align-self-center">'
+				+'<a href="#" class="float-right btn-tool reply-delete-btn">'
+				+'</a>'
+				+'<a href="#" class="float-right btn-tool align-self-center reply-update-btn">'
+				+'</a>'
+				+'</div>'
+				+'</div>'
+				+'<div class="col-md-1 align-self-center">'
+				+'<span class="text-warning" style="font-family: fantasy; font-style: normal;"><i class="bi bi-star-fill"></i>&nbsp;&nbsp;' + review.rate + '</span>'
+				+'</div>'
+				+'<div class="col-md-8 align-self-center">'
+					+'<div class="reply-update col-md-10">' + review.re_content + '</div>'
+				+'</div>'
+				+'<div class="col-md-1">'
+				+'</div>'
+				+'</div><hr style="margin: 0;">'
+				
+				
+				
 			);
 		}
 		
@@ -206,8 +233,39 @@
 				}
 			});
 		});
+		
+		// 댓글 삭제
+		$(document).on('click', '.reply-delete-btn', function(e){
+			if(confirm("삭제하시겠습니까?")){
+				let deleteReplyNo = $(this).parents('.icon-block').find('input[type=hidden]').val();
+				let target = $(this).closest('div .row');
+				$.ajax({
+					url : "<%=request.getContextPath()%>/store/insertReview.do",
+					type : "post",
+					dataType : "json",
+					data : {
+						cmd : "delete",
+						re_no : deleteReplyNo,
+						store_no : "<%=storeVo.getStore_no()%>"
+					},
+					success : function(res){
+						if(res.result == 1){
+							$(target).remove();
+							rateAvgTemplate(res.rateAvg);
+						} else {
+							console.log("fail!")
+						}
+					},
+					error : function(err){
+						console.log(err);
+					}
+				});
+			}
+		});
 	});
 </script>
+<!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=35e6d1bccbd666fa1a2827012cbc4203"></script> -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=35e6d1bccbd666fa1a2827012cbc4203&libraries=services,clusterer,drawing"></script>
 <div class="card card-primary">
 	<div class="p-4 p-md-5 mb-4 rounded text-bg-white card-header">
 		<div class="row">
@@ -260,7 +318,9 @@
 				<h6 class="mb-5"><%=store_url != null ? store_url : ""%></h6>
 				<hr>
 				<h5 class="fw-semibold mt-4">매장소개</h5>
-				<h6 class="mb-3"><%=store_des_d%></h6>
+				<h6 class="mb-5"><%=store_des_d%></h6>
+				<hr>
+				<div id="map" style="width:600px;height:500px; border:1px solid #6c757d; margin-inline: auto;" class="mb-5 mt-5"></div>	
 			</div>
 			
 			<div class="col-md-3">
@@ -282,49 +342,112 @@
 			</div>
 		</div>
 </div>
-	<div class="card-footer">
-		<form id="re_form">
-		<label for="customRange2" class="form-label">평점</label>
-			<input type="range" class="form-range" name="rate" min="1" max="5" id="customRange2" style="width:30%;">
-			<input class="form-control form-control-sm" type="text"
-				placeholder="Type a comment" name="re_content">
-			<button type="submit" style="display: none;"></button>
-		</form>
-	</div>
+		<%
+			if (userVO != null) {
+		%>
+		<div class="card-footer">
+			<form id="re_form">
+			<label for="customRange2" class="form-label">평점</label>
+				<input type="range" class="form-range" name="rate" min="1" max="5" id="customRange2" style="width:10%;">
+				<input class="form-control form-control-sm" type="text"
+					placeholder="Type a comment" name="re_content">
+				<button type="submit" style="display: none;"></button>
+			</form>
+		</div>
+		<%		
+			}
+		%>
 </div>
 <div class="card" id="re_container">
 				
 				<%
+					SimpleDateFormat dtFormat = new SimpleDateFormat("yyyyMMdd");
+					SimpleDateFormat newDtFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+					
 					String hidden = "hidden"; 
 					for (ReviewStoreVO reviewVo : reviewStoreVoList) {
+					// String 타입을 Date 타입으로 변환
+					Date formatDate = dtFormat.parse(reviewVo.getRe_wdt());
+					// Date타입의 변수를 새롭게 지정한 포맷으로 변환
+					String strNewDtFormat = newDtFormat.format(formatDate);
 						if (userVO != null && userVO.getUser_no()==(reviewVo.getUser_no())) {
 							hidden = "";
 						}
 				%>
-					<div class="row">
-						<div class="col-md-4 d-flex">
-							<div class="user-block col-md-8">
-								<img class="img-circle img-bordered-sm" src="" alt="user image">
-								<span class="username">
-									<a href="#"><%= reviewVo.getUser_nick() %></a>
-								</span>
-								<span class="description"><%=reviewVo.getRe_wdt() %></span>
+					<div class="row" style="padding:0.5rem;">
+						<div class="col-md-2 d-flex align-self-center">
+							<div class="user-block col-md-9">
+								<img class="img-circle img-bordered-sm" src="<%= reviewVo.getUser_img() != null ? "/profilePath/" + reviewVo.getUser_img() : "/profilePath/default/defaultProfile.jpg" %>" alt="user image" style="width:2rem;">
+								<span class="username"><%= reviewVo.getUser_nick() %></span>
 							</div>
-							<div class="icon-block col-md-4 align-self-center">
+							<div class="icon-block col-md-3 align-self-center">
 								<input type="hidden" value="<%=reviewVo.getRe_no()%>">
 								<a href="#" class="float-right btn-tool reply-delete-btn">
 									<i class="fas fa-times" <%= hidden %>></i>
 								</a>
-								<a href="#" class="float-right btn-tool align-self-center reply-update-btn">
-									<i class="fas fa-pen" <%= hidden %>></i>
-								</a>
+<!-- 								<a href="#" class="float-right btn-tool align-self-center reply-update-btn"> -->
+<%-- 									<i class="fas fa-pen" <%= hidden %>></i> --%>
+<!-- 								</a> -->
 							</div>
 						</div>
+						<div class="col-md-1 align-self-center">
+							<span class="text-warning" style="font-family: fantasy; font-style: normal;"><i class="bi bi-star-fill"></i>&nbsp;&nbsp;<%=reviewVo.getRate() %></span>
+						</div>
 						<div class="col-md-8 align-self-center">
-							<div class="reply-update"><%=reviewVo.getRe_content() %></div>
-<%-- 						<input style="width:100%;"value="<%=replyVo.getRe_content() %>"> --%>
+							<div class="reply-update col-md-10"><%=reviewVo.getRe_content() %></div>
+						</div>
+						<div class="col-md-1">
+								<div class="description"><%=strNewDtFormat %></div>
 						</div>
 					</div><hr style="margin: 0;">
 				<% } %>	
 				</div>
+<script>
+
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	mapOption = {
+		center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+		level : 3
+	// 지도의 확대 레벨
+	};
+
+	//지도를 생성합니다    
+	var map = new kakao.maps.Map(mapContainer, mapOption);
+
+	//주소-좌표 변환 객체를 생성합니다
+	var geocoder = new kakao.maps.services.Geocoder();
+
+	//주소로 좌표를 검색합니다
+	geocoder
+			.addressSearch(
+					'대전광역시 중구 중앙로121번길 20',
+					function(result, status) {
+
+						// 정상적으로 검색이 완료됐으면 
+						if (status === kakao.maps.services.Status.OK) {
+
+							var coords = new kakao.maps.LatLng(result[0].y,
+									result[0].x);
+
+							// 결과값으로 받은 위치를 마커로 표시합니다
+							var marker = new kakao.maps.Marker({
+								map : map,
+								position : coords
+							});
+
+							// 인포윈도우로 장소에 대한 설명을 표시합니다
+							var infowindow = new kakao.maps.InfoWindow(
+									{
+										content : '<div style="width:150px;text-align:center;padding:6px 0;"><%=store_name%></div>'
+									});
+							infowindow.open(map, marker);
+
+							// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+							map.setCenter(coords);
+						} else {
+							console.log("err");
+						}
+					});
+</script>	
 <%@ include file="../footer.jsp" %>

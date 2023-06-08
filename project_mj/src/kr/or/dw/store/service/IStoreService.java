@@ -113,5 +113,12 @@ public interface IStoreService {
 	 * @param store_no
 	 */
 	void updateRateAvg(int store_no);
+	
+	/**
+	 * 해당 리뷰를 삭제한다.
+	 * @param re_no
+	 * @return
+	 */
+	int deleteReview(int re_no);
 
 }

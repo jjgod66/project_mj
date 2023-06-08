@@ -32,8 +32,8 @@ public class InsertReviewAction implements IAction {
 		int store_no = Integer.parseInt(req.getParameter("store_no"));
 		String re_content = req.getParameter("re_content");
 		String cmd = req.getParameter("cmd");
-		int rate = Integer.parseInt(req.getParameter("rate"));
 		if (cmd.equals("insert")) {
+			int rate = Integer.parseInt(req.getParameter("rate"));
 			ReviewStoreVO reVo = new ReviewStoreVO();
 			reVo.setStore_no(store_no);
 			reVo.setUser_no(user_no);
@@ -45,10 +45,18 @@ public class InsertReviewAction implements IAction {
 			ReviewStoreVO resultReVo = service.selectReview(re_no);
 			req.setAttribute("reVo", resultReVo);
 			
-			float rateAvg = service.selectRateAvg(store_no);
-			service.updateRateAvg(store_no);
-			req.setAttribute("rateAvg", rateAvg);
+//			float rateAvg = service.selectRateAvg(store_no);
+//			service.updateRateAvg(store_no);
+//			req.setAttribute("rateAvg", rateAvg);
+		} else if (cmd.equals("delete")) {
+			int re_no = Integer.parseInt(req.getParameter("re_no"));
+			int result = service.deleteReview(re_no);
+			System.out.println("result : " + result);
+			req.setAttribute("result", result);
 		}
+		service.updateRateAvg(store_no);
+		float rateAvg = service.selectRateAvg(store_no);
+		req.setAttribute("rateAvg", rateAvg);
 		
 		return "/store/review_ajax.jsp";
 	}

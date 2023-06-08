@@ -98,4 +98,9 @@ public class StoreServiceImpl implements IStoreService {
 	public void updateRateAvg(int store_no) {
 		dao.updateRateAvg(store_no);
 	}
+
+	@Override
+	public int deleteReview(int re_no) {
+		return dao.deleteReview(re_no);
+	}
 }

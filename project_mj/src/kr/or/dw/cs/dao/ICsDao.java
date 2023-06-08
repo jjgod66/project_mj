@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 import kr.or.dw.store.vo.StoreVO;
+import kr.or.dw.cs.vo.AnnouncementVO;
 
 public interface ICsDao {
 
@@ -21,10 +22,6 @@ public interface ICsDao {
 	 * @return 점포 수 count
 	 */
 	int selectStoreTotalCount();
-
-import kr.or.dw.cs.vo.AnnouncementVO;
-
-public interface ICsDao {
 
 	int insertContent(AnnouncementVO anVo);
 
