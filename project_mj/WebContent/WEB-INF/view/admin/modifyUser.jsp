@@ -41,8 +41,8 @@
 <section class="content-header">
 	<div class="container-fluid">
 		<div class="row mb-2">
-			<div class="col-sm-6">
-				<h1>회원 수정 Page</h1>
+			<div class="col-sm-12" style="text-align: center; margin: 5rem 0 ;">
+				<h1>ADMIN USER</h1>
 			</div>
 <!-- 			<div class="col-sm-6"> -->
 <!-- 				<ol class="breadcrumb float-sm-right"> -->
@@ -60,31 +60,22 @@
 		<div class="row">
 			<div class="col-md-1"></div>
 			<div class="col-md-10">
-				<div class="card">
+				<div class="card" style="text-align: center;">
 					<div class="card-header">
-						<h3 class="card-title">등록회원정보</h3>
-						<div class="card-tools">
-<!-- 							<div class="input-group input-group-sm"> -->
-<!-- 								<input type="text" class="form-control" placeholder="Search"> -->
-<!-- 								<div class="input-group-append"> -->
-<!-- 									<div class="btn btn-primary"> -->
-<!-- 										<i class="fas fa-search"></i> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
-						</div>    
+						<h4 class="card-title" style="text-align: center;" >등록회원정보</h4>
 					</div>
 					<div class="card-body p-0">
 						<table class="table table-striped projects">
 							<thead>
 							
 								<tr>
-									<th style="width: 15%;">회원번호</th>
+									<th style="width: 10%;">회원번호</th>
 									<th style="">이메일</th>
-									<th style="width: 20%;">닉네임</th>
-									<th style="width: 30%;">가입날짜</th>
-									<th style="width: 5%;"></th>
-									<th style="width: 5%;"></th>
+									<th style="width: 15%;">닉네임</th>
+									<th style="width: 20%;">가입날짜</th>
+									<th style="width: 10%;">삭제여부</th>
+									<th style="width: 5%;">게시글</th>
+									<th style="width: 5%;">삭제</th>
 								</tr>
 							</thead>
 							<%
@@ -92,7 +83,8 @@
 								int user_no = user.getUser_no ();
 								String user_email = user.getUser_email();
 								String user_nick = user.getUser_nick();
-								String user_sdt = user.getUser_sdt();							
+								String user_sdt = user.getUser_sdt();		
+								String gb_del = user.getGb_del();
 							%>
 							<tbody>
 								<tr class="userRow">
@@ -104,13 +96,16 @@
 										<%= user_nick %>
 									</td>
 									<td><%=user_sdt %></td>
+									<td><%=gb_del %></td>
 									<td>
 									<a href="<%=request.getContextPath()%>/admin/userCommListView.do?user_no=<%=user_no%>">
-									<button type="button" class="btn btn-block bg-gradient-danger btn-sm viewUserCommList">Comm</button>
+									<button type="button" class="btn btn-secondary">Comm</button>
 									</a>
 									</td>
 									<td>
-									<button type="button" class="btn btn-block bg-gradient-danger btn-sm deleteUser">Delete</button>
+									<a href="<%=request.getContextPath()%>/admin/userDelete.do?user_no=<%=user_no%>">
+									<button type="button" class="btn btn-danger">Delete</button>
+									</a>
 									</td>
 								</tr>
 							<% } %>
