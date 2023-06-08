@@ -421,7 +421,7 @@
 	//주소로 좌표를 검색합니다
 	geocoder
 			.addressSearch(
-					'대전광역시 중구 중앙로121번길 20',
+					'<%=store_addr%>',
 					function(result, status) {
 
 						// 정상적으로 검색이 완료됐으면 

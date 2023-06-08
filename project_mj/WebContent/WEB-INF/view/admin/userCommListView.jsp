@@ -14,22 +14,17 @@
 			$(this).css("cursor","pointer");
 		});
 		$(".userRow").on("click", function(){
-			location.href="#<%-- <%=request.getContextPath()%>/cs/main.do --%>";
+			let no = $(this).find("#bd_no").text();
+			location.href="<%=request.getContextPath()%>/admin/userCommView.do?bd_no="+no;
 		});
 	});
 </script>
 <section class="content-header">
 	<div class="container-fluid">
 		<div class="row mb-2">
-			<div class="col-sm-6">
-				<h1><%=user_no %>번 회원 커뮤게시글 리스트  Page</h1>
+			<div class="col-sm-12" style="text-align: center; margin: 5rem 0 ;">
+				<h3>'No_<%=user_no %>' 회원 커뮤니티 게시글</h3>
 			</div>
-<!-- 			<div class="col-sm-6"> -->
-<!-- 				<ol class="breadcrumb float-sm-right"> -->
-<!-- 					<li class="breadcrumb-item"><a href="#">Home</a></li> -->
-<!-- 					<li class="breadcrumb-item active">Admin Page</li> -->
-<!-- 				</ol> -->
-<!-- 			</div> -->
 		</div>
 	</div>
 </section>
@@ -77,7 +72,7 @@
 							<tbody>
 								
 								<tr class="userRow">
-										<td><%= bd_no %></td>
+										<td id="bd_no"><%= bd_no %></td>
 										<td><%= bd_cat %></td>
 										<td><%= bd_title %></td>
 										<td><%= bd_wdt %></td>
