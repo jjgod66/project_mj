@@ -171,5 +171,18 @@ public class UserDaoImpl implements IUserDao {
 		return count;
 	}
 
+	@Override
+	public UserVO selectUser(int user_no) {
+		UserVO userVo = null;
+		
+		try {
+			userVo = (UserVO) client.queryForObject("user.selectUser", user_no);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return userVo;
+	}
+
 
 }

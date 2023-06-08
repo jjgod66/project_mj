@@ -87,8 +87,7 @@ $(function(){
 	$("#nickCheckBtn").on("click", function () {
 		if (nickCheck) {
 			$.ajax({
-				url : "<%=request.getContextPath()%>
-	/user/nickCheck.do",
+				url : "<%=request.getContextPath() %>/user/nickCheck.do",
 					method : "post",
 					data : {
 						"user_nick" : nickVal
@@ -120,11 +119,11 @@ $(function(){
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			height: 100vh;
+/* 			height: 100vh; */
 		}
 
 		.card {
-			width: 400px;
+ 			width: 400px;
 		}
 
 		.card-header {
@@ -163,7 +162,7 @@ $(function(){
 		button.btn-secondary {
 			width: 100%;
 		}
-	</style>
+</style>
 
 
 

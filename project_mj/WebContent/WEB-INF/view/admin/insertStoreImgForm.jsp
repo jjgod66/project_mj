@@ -21,6 +21,7 @@
 	}
 	.xbtn {
 		position : absolute;
+		left : 8rem;
 		display : none;
 		color : red;
 	}
@@ -111,7 +112,7 @@
 				let reader = new FileReader();
 				reader.onload = function (e) {
 
-					previewBox.closest(".imgList .row").append("<div class='col-md-6 botPadding' style='text-align: -webkit-center;'><a href='#' class='xbtn'><span class='glyphicon glyphicon-minus'></span></a><img src='" + e.target.result + "'class='boxImg' id='" + cnt + "' style='width: width: 40rem; height:30rem; padding:0.3rem; border: 1px solid #6c757d;'></div>");
+					previewBox.closest(".imgList .row").append("<div class='col-md-6 botPadding' style='text-align: -webkit-center;'><a href='#' class='xbtn'><span class='glyphicon glyphicon-minus'></span></a><img src='" + e.target.result + "'class='boxImg' id='" + cnt + "' style='width:40rem; height:30rem; padding:0.3rem; border: 1px solid #6c757d;'></div>");
 
 				};
 				reader.readAsDataURL(e.target.files[cnt]);
@@ -154,7 +155,7 @@
 	<div class="container-fluid">
 		<div class="row mb-2">
 			<div class="col-sm-12" style="text-align: center; margin: 5rem 0 ;">
-				<h1>점포 사진 추가 page</h1>
+				<h1>사진 변경</h1>
 				
 			</div>
 		</div>
@@ -165,25 +166,23 @@
 		<div class="thumbnailImg">
 			<div class="row rowImg">
 <!-- 				<div class="col-md-6"></div> -->
-				<div class="col-md-6">
+				<div class="col-md-6" style="text-align: center;align-self: center;">
 					<form id ="thumb_upload_form" method="post" enctype="multipart/form-data">
-						<input type="file" name="thumbUp" id="thumbUp" accept=".jpg, .jpeg, .png" style="padding-left: 3rem;"multiple>
-						<a href="#" class="btn btn-primary btn-block" id="saveThumbnailImgBtn"><b>썸네일 저장</b></a>
+						<a href="#" class="btn btn-primary" id="saveThumbnailImgBtn" style="padding: 3rem 5rem;font-size: 2rem;"><b>썸네일 저장</b></a>
+						<input type="file" name="thumbUp" id="thumbUp" accept=".jpg, .jpeg, .png" style="padding-left: 1rem; display:inline-block;">
 					</form>
 				</div>
 			</div>
 		</div>
-		<hr>
+		<hr style="border-color: darkgrey;">
 		<div class="imgList">
 			<div class="row rowImg">
-				<div class="col-md-4 botPadding"></div>			
-				<div class="col-md-4 botPadding" style="text-align: center; padding-bottom: 1rem;">
+				<div class="col-md-12 botPadding" style="text-align: center; padding-bottom: 1rem;">
 					<form id="upload_form" method="post" enctype="multipart/form-data">
-						<input type="file" name="imgUp" id="imgUp" accept=".jpg, .jpeg, .png" style="padding-left: 3rem;"multiple>
-						<a href="#" class="btn btn-primary btn-block" id="saveImgBtn"><b>사진 저장</b></a>
+						<a href="#" class="btn btn-primary" id="saveImgBtn" style="padding: 3rem 5rem;font-size: 2rem;"><b>사진 저장</b></a>
+						<input type="file" name="imgUp" id="imgUp" accept=".jpg, .jpeg, .png" style="padding-left: 3rem;display:inline-block;"multiple>
 					</form>
 				</div>
-				<div class="col-md-4 botPadding"></div>
 			</div>
 		</div>
 	</div>

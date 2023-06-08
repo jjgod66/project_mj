@@ -80,8 +80,8 @@
 <section class="content-header">
 	<div class="container-fluid">
 		<div class="row mb-2">
-			<div class="col-sm-6">
-				<h1>태그관리 Page</h1>
+			<div class="col-sm-12" style="text-align: center; margin: 5rem 0 ;">
+				<h1>태그관리</h1>
 			</div>
 		</div>
 	</div>
@@ -89,7 +89,6 @@
 
 <div class="card card-primary card-outline">
 	<div class="card-header">
-		<h5 class="card-title m-0">Featured</h5>
 		<div class="card-tools float-right">
 			<form id="insertTag" method="post">
 				<div class="input-group input-group-sm">
@@ -101,14 +100,14 @@
 			</form>
 		</div>
 	</div>
-	<div class="card-body">
+	<div class="card-body" style="text-align: center;">
 		<div class="tagList">
 			<div class="row">
 				<%	
 					int i;
 					for (i = 0; i < tagList.size(); i++) {
 				%>
-				<div class="col-12 col-sm-2 tagBox">
+				<div class="col-12 col-sm-2 tagBox mb-3">
 					<div class="info-box bg-light">
 						<div class="info-box-content">
 							<span class="info-box-number text-center text-muted mb-0"><%=tagList.get(i)%></span>
