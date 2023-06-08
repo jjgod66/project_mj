@@ -1,4 +1,5 @@
 
+<%@page import="kr.or.dw.util.PaginationUtil"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.or.dw.cs.vo.AnnouncementVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -117,6 +118,43 @@
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<!-- board list area -->
+	<div id="board-list">
+		<div class="container">
+			<table class="board-table">
+				<tbody>
+					<%
+						for (AnnouncementVO anVo : anVOList) {
+						String bd_title = anVo.getBd_title();
+					%>
+					<tr>
+						<th scope="col" class="th-title"><a
+							href="<%=request.getContextPath()%>/cs/announceView.do?bd_no=<%=anVo.getBd_no()%>"><%=anVo.getBd_title()%></a></th>
+					</tr>
+					<%
+						}
+					%>
+				</tbody>
+			</table>
+		</div>
+	</div>
+		<div id="board-search">
+		<div class="container">
+			<div class="search-window">
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+
+
+		<div class="container" style="margin-top: 20px;">
+			<%
+				PaginationUtil pagination = (PaginationUtil) request.getAttribute("pagingConfigMap");
+			%>
+			<%= pagination.getPaginationHtml(request, new String[] { "search" }) %>
 		</div>
 
 	</div>

@@ -270,7 +270,7 @@
 	<div class="p-4 p-md-5 mb-4 rounded text-bg-white card-header">
 		<div class="row">
 			<div class="col-md-6">
-				<img src="/storePath/<%=storeVo.getThumb_url()%>" class="boxImg">
+				<img src="/storePath/<%=storeVo.getThumb_url()%>" class="boxImg" style="width: 26rem; height:18rem; padding:0.3rem; border: 1px solid #6c757d;">
 			</div>
 			<div class="col-md-6 align-self-center">
 				<h1 class="display-4 fst-italic"><%=store_name%> <span class="text-warning" style="float: right;font-family: fantasy; font-style: normal;" id="rateAvg"><%=store_rate%></span></h1>
@@ -291,7 +291,7 @@
 				for (ImgStoreVO imgStoreVo : imgStoreVoList) {
 			%>
 			<div class="col-md-4 mb-3">
-				<img src="/storePath/<%=imgStoreVo.getImg_url()%>" class="boxImg">
+				<img src="/storePath/<%=imgStoreVo.getImg_url()%>" class="boxImg" style="width: 20rem; height: 15rem; padding:0.3rem; border: 1px solid #6c757d;">
 			</div>
 			<%
 				}
