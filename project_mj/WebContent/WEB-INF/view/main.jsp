@@ -51,8 +51,9 @@
 					%>
 			
 				<div class="carousel-item active">
+				<a href="<%=request.getContextPath()%>/store/storeView.do?store_no=<%=store.getStore_no()%>">
 					<img src="<%= store_picPath %>" class="d-block boxImg" style="width: 30rem; height: 30rem;"
-						alt="...">
+						alt="..."></a>
 				</div>
 			<% } %>
 			</div>

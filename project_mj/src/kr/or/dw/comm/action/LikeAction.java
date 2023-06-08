@@ -35,7 +35,7 @@ public class LikeAction implements IAction{
 		System.out.println(likeFlag);
 		int user_no = ((UserVO)session.getAttribute("UserVO")).getUser_no();
 		System.out.println("LikeAction 클래스입니");
-		System.out.println(user_no);
+		System.out.println("likeAction user_no : " + user_no);
 		
 		
 		LikeVO likeVo = new LikeVO();
