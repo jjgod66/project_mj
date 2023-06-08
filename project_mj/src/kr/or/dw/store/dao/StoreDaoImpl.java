@@ -223,4 +223,17 @@ public class StoreDaoImpl implements IStoreDao {
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public int deleteReview(int re_no) {
+		
+		int count = 0;
+		try {
+			count = client.update("store.deleteReview", re_no);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return count;
+	}
 }

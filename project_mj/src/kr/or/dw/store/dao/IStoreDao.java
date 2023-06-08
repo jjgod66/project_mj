@@ -118,4 +118,11 @@ public interface IStoreDao {
 	 */
 	void updateRateAvg(int store_no);
 
+	/**
+	 * 해당 리뷰를 삭제한다.
+	 * @param re_no
+	 * @return
+	 */
+	int deleteReview(int re_no);
+
 }

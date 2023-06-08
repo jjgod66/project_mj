@@ -37,11 +37,11 @@
 					   		   ,#cat_name#
 					   		   ,#store_addr#
 					   		   ,#store_tel#
-					   		   ,#store_hour#
-					   		   ,#store_break#
-					   		   ,#store_url#
-					   		   ,#store_des_s#
-					   		   ,#store_des_d#
+					   		   ,NVL(#store_hour#, ' ')
+					   		   ,NVL(#store_break#, ' ')
+					   		   ,NVL(#store_url#, ' ')
+					   		   ,NVL(#store_des_s#, ' ')
+					   		   ,NVL(#store_des_d#, ' ')
 					   		   ,'0'
 					   		   ,'0'
 					   		   ,'0'
@@ -255,9 +255,11 @@
 	</select>
 	
 	<select id="selectReviewStoreVoList" parameterClass="int" resultClass="reviewStoreVO">
-		SELECT *
-		  FROM store_review
-		 WHERE store_no = #store_no#
+		SELECT sr.*, u.user_img
+		  FROM store_review sr, user_ u
+		 WHERE sr.store_no = #store_no#
+		   AND sr.user_no = u.user_no
+		   AND sr.gb_del = 'N'
 		ORDER BY re_no DESC
 	</select>
 	
@@ -283,10 +285,14 @@
 	</select>
 	
 	<select id="selectRateAvg" parameterClass="int" resultClass="float">
-		SELECT ROUND(AVG(rate), 1) FROM STORE_REVIEW sr WHERE store_no = #store_no#
+		SELECT ROUND(AVG(rate), 1) FROM STORE_REVIEW sr WHERE store_no = #store_no# AND gb_del = 'N'
 	</select>
 	
 	<update id="updateRateAvg" parameterClass="int">
-		UPDATE store SET store_rate = (SELECT ROUND(AVG(rate), 1) FROM STORE_REVIEW sr WHERE store_no = #store_no#) WHERE store_no = #store_no#
+		UPDATE store SET store_rate = (SELECT ROUND(AVG(rate), 1) FROM STORE_REVIEW sr WHERE store_no = #store_no# AND gb_del = 'N') WHERE store_no = #store_no#
+	</update>
+	
+	<update id="deleteReview" parameterClass="int">
+		UPDATE store_review SET gb_del = 'Y' WHERE re_no = #re_no#
 	</update>
 </sqlMap>

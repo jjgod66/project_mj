@@ -52,7 +52,7 @@
 										 	 <h5 class="card-title"><%=storeVo.getStore_name() %></h5>
 										  		<span><i class="fa fa-eye"></i>  <%=storeVo.getStore_views() %></span> 
 												<span><i class="bi bi-heart-fill" style="color:#FF32B1"></i>  <%=storeVo.getStore_like() %></span>
-												<span><i class="bi bi-bookmark-plus-fill" style="color:#28288C"></i>  <%=storeVo.getStore_fav() %></span> 
+												<span><i class="bi bi-bookmark-plus-fill" ></i>  <%=storeVo.getStore_fav() %></span> 
 												<span class=""><i class="bi bi-info-square-fill" style="color:#FF8C0A"></i>  <%=storeVo.getCat_name() %></span>
 												<div>
 													<span>#<%=storeVo.getStore_tagNm_1() %></span>
