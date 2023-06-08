@@ -33,13 +33,13 @@
 		if (!imgStoreVoList.isEmpty()) {
 			for (ImgStoreVO imgStore : imgStoreVoList) {
 	%>
-				$(".imgList .row").append("<div class='col-md-6 alreadyImg botPadding'><a href='#' class='xbtn'><span class='glyphicon glyphicon-minus'></span></a><img src='/storePath/<%=imgStore.getImg_url()%>' class='boxImg'>");
+				$(".imgList .row").append("<div class='col-md-6 alreadyImg botPadding' style='text-align: -webkit-center;'><a href='#' class='xbtn'><span class='glyphicon glyphicon-minus'></span></a><img src='/storePath/<%=imgStore.getImg_url()%>' class='boxImg' style='width: 40rem; height:30rem; padding:0.3rem; border: 1px solid #6c757d;'>");
 	<%
 			}
 		}
 		if (storeVo.getThumb_url() != null) {
 	%>
-			$(".thumbnailImg .row").prepend("<div class='col-md-6 alreadyThumbImg botPadding'><a href='#' class='xbtn'><span class='glyphicon glyphicon-minus'></span></a><img src='/storePath/<%=storeVo.getThumb_url()%>' class='boxImg'>");
+			$(".thumbnailImg .row").prepend("<div class='col-md-6 alreadyThumbImg botPadding' style='text-align: -webkit-center;'><a href='#' class='xbtn'><span class='glyphicon glyphicon-minus'></span></a><img src='/storePath/<%=storeVo.getThumb_url()%>' class='boxImg' style='width: 40rem; height:30rem; padding:0.3rem; border: 1px solid #6c757d;'>");
 	<%				
 		} 
 	%>
@@ -67,7 +67,7 @@
 			let priviewImg;
 			let reader = new FileReader();
 			reader.onload = function (e) {
-				previewBox.closest(".rowImg").prepend("<div class='col-md-6 botPadding'><a href='#' class='xbtn'><span class='glyphicon glyphicon-minus'></span></a><img src='" + e.target.result + "'class='boxImg'></div>");
+				previewBox.closest(".rowImg").prepend("<div class='col-md-6 botPadding' style='text-align: -webkit-center;'><a href='#' class='xbtn'><span class='glyphicon glyphicon-minus'></span></a><img src='" + e.target.result + "'class='boxImg' style='width: 40rem; height:30rem; padding:0.3rem; border: 1px solid #6c757d;'></div>");
 			};
 			reader.readAsDataURL(e.target.files[0]);
 		};
@@ -111,7 +111,7 @@
 				let reader = new FileReader();
 				reader.onload = function (e) {
 
-					previewBox.closest(".imgList .row").append("<div class='col-md-6 botPadding'><a href='#' class='xbtn'><span class='glyphicon glyphicon-minus'></span></a><img src='" + e.target.result + "'class='boxImg' id='" + cnt + "'></div>");
+					previewBox.closest(".imgList .row").append("<div class='col-md-6 botPadding' style='text-align: -webkit-center;'><a href='#' class='xbtn'><span class='glyphicon glyphicon-minus'></span></a><img src='" + e.target.result + "'class='boxImg' id='" + cnt + "' style='width: width: 40rem; height:30rem; padding:0.3rem; border: 1px solid #6c757d;'></div>");
 
 				};
 				reader.readAsDataURL(e.target.files[cnt]);
@@ -153,7 +153,7 @@
 <section class="content-header">
 	<div class="container-fluid">
 		<div class="row mb-2">
-			<div class="col-sm-6">
+			<div class="col-sm-12" style="text-align: center; margin: 5rem 0 ;">
 				<h1>점포 사진 추가 page</h1>
 				
 			</div>

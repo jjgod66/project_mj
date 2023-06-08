@@ -11,8 +11,8 @@
 <section class="content-header">
 	<div class="container-fluid">
 		<div class="row mb-2">
-			<div class="col-sm-6">
-				<h1>등록 점포 리스트 Page</h1>
+			<div class="col-sm-12" style="text-align: center; margin: 5rem 0 ;">
+				<h1>등록 점포 리스트</h1>
 			</div>
 <!-- 			<div class="col-sm-6"> -->
 <!-- 				<ol class="breadcrumb float-sm-right"> -->
@@ -28,11 +28,11 @@
 		<div class="card">
 			<div class="card-header">
 				<h3 class="card-title"><!-- Simple Full Width Table --></h3>
-				<div class="card-tools float-right">
-					<a href="<%=request.getContextPath() %>/admin/modifyTagForm.do" class="btn btn-app bg-info" style="margin:0;">
+				<div class="card-tools float-right" style="float: right;">
+					<a href="<%=request.getContextPath() %>/admin/modifyTagForm.do" class="btn btn-danger" style="margin:0;">
 						<i class="fas fa-solid fa-tag"></i>태그 관리
 					</a>
-					<a href="<%=request.getContextPath() %>/admin/insertStoreForm.do" class="btn btn-app bg-success" style="margin:0;">
+					<a href="<%=request.getContextPath() %>/admin/insertStoreForm.do" class="btn btn-dark" style="margin:0;">
 						<i class="fas fa-store"></i>점포 추가
 					</a>
 <!-- 					<ul class="pagination pagination-sm float-right"> -->
@@ -80,12 +80,12 @@
 							<td><%=store_tagNm_3%></td>
 							<td><%=gb_del %></td>
 							<td>
-								<a href="<%=request.getContextPath() %>/admin/insertStoreForm.do?store_no=<%=store_no %>&w=m" class="btn btn-app bg-secondary" style="margin:0;">
+								<a href="<%=request.getContextPath() %>/admin/insertStoreForm.do?store_no=<%=store_no %>&w=m" class="btn btn-secondary" style="margin:0;">
 									<i class="fas fa-solid fa-wrench"></i> 정보수정
 								</a>
 							</td>
 							<td>
-								<a href="<%=request.getContextPath() %>/admin/insertStoreImgForm.do?store_no=<%=store_no %>&w=m" class="btn btn-app bg-secondary" style="margin:0;">
+								<a href="<%=request.getContextPath() %>/admin/insertStoreImgForm.do?store_no=<%=store_no %>&w=m" class="btn btn-primary" style="margin:0;">
 									<i class="fas fa-solid fa-image"></i> 사진등록
 								</a>
 							</td>

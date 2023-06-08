@@ -80,7 +80,7 @@
 						<li class="nav-item"><a href="<%=gcp%>/store/storeMain.do"
 							class="nav-link">맛집찾기 </a></li>
 						<li class="nav-item"><a href="<%=gcp%>/comm/commMain.do"
-							class="nav-link">커뮤 </a></li>
+							class="nav-link">커뮤니티 </a></li>
 
 					</ul>
 

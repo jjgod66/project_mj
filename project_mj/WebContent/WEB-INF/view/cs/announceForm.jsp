@@ -1,3 +1,5 @@
+
+<%@page import="java.util.List"%>
 <%@page import="kr.or.dw.util.PaginationUtil"%>
 <%@page import="kr.or.dw.cs.vo.AnnouncementVO"%>
 <%@page import="java.util.List"%>
@@ -219,6 +221,7 @@ section.notice {
 				%>
 				</form>
 			</div>
+
 		</div>
 	</div>
 

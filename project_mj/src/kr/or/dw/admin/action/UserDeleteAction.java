@@ -14,7 +14,7 @@ public class UserDeleteAction implements IAction{
 
 	@Override
 	public boolean isRedirect() {
-		return false;
+		return true;
 	}
 
 	@Override
@@ -23,7 +23,8 @@ public class UserDeleteAction implements IAction{
 		int user_no = Integer.parseInt(req.getParameter("user_no"));
 		IAdminService service = AdminServiceImpl.getInstance();
 		int result = service.deleteUser(user_no);
-		return "/admin/modifyUser.jsp";
+		
+		return "/admin/modifyUserForm.do";
 	}
 
 }

@@ -41,11 +41,11 @@
 									<a class="float-right"><%=userVO.getUser_name() %></a>
 								</li>
 							</ul>
-							<form action ="<%=request.getContextPath()%>/user/userChange.do" id ="change" method="post">
+							<form action ="<%=request.getContextPath()%>/user/userChange.do" id ="change" method="post" style="text-align: center; margin-bottom:0.5rem;">
 							<button type= "submit"
 						class="btn btn-block btn-outline-primary btn-sm"  >
 							개인정보수정 </button></form>
-							<form><button type="button" class="btn btn-block btn-primary btn-xs" id="sudmit">저장</button></form>
+							<form style="text-align: center;"><button type="button" class="btn btn-block btn-primary btn-xs" id="sudmit">저장</button></form>
 							
 						</div>
 						<div class="card-footer" style="text-align:center;">

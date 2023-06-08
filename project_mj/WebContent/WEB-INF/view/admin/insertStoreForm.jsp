@@ -5,7 +5,9 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp"%>
 <style>
-	
+	#insertStoreForm .form-group {
+		margin-bottom : 1rem;
+	}
 </style>
 <%
 	List<String> storeCatList = (List<String>) request.getAttribute("storeCatList");
@@ -54,8 +56,8 @@
 <section class="content-header">
 	<div class="container-fluid">
 		<div class="row mb-2">
-			<div class="col-sm-6">
-				<h1>점포등록 Page</h1>
+			<div class="col-sm-12" style="text-align: center; margin: 5rem 0 ;">
+				<h1>점포 등록/수정</h1>
 			</div>
 			<!-- 			<div class="col-sm-6"> -->
 			<!-- 				<ol class="breadcrumb float-sm-right"> -->
