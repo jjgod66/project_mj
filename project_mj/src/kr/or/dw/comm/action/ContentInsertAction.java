@@ -28,8 +28,8 @@ public class ContentInsertAction implements IAction{
 		UserVO userVO = (UserVO) session.getAttribute("UserVO");
 		System.out.println("uservo : " + userVO);
 		System.out.println(userVO.getUser_nick());
-		String title = req.getParameter("title");
-		String content = req.getParameter("content");
+		String title = req.getParameter("bdtitle");
+		String content = req.getParameter("bdcontent");
 		String choice = req.getParameter("choice");
 
 		CommVO commVO = new CommVO();
