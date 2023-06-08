@@ -40,7 +40,9 @@ public class CsServiceImpl implements ICsService{
 				i--;
 			} 
 		}
-		System.out.println("randomMap : " + randomMap);
+		System.out.println("랜덤리스트 : " + randomMap);
+		
+		/* 점보 정보 가지러가는 쿼리 */
 		return dao.selectMainStoreVoList(randomMap);
 	}
 

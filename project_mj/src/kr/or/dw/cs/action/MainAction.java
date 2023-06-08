@@ -24,7 +24,7 @@ public class MainAction implements IAction {
 		
 		ICsService service = CsServiceImpl.getInstance();
 		List<StoreVO> mainStoreVoList = service.selectMainStoreVoList();
-		System.out.println("mainStoreVoList : " + mainStoreVoList);
+		System.out.println("메인스토어보리스트 : " + mainStoreVoList);
 		req.setAttribute("mainStoreVoList", mainStoreVoList);
 		return "/main.jsp";
 	}

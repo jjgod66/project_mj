@@ -49,7 +49,7 @@ public class StoreMainAction implements IAction {
 			totalCount = service.selectStoreCount(null);	
 		}
 		System.out.println("totalCount : " + totalCount);
-		pagination.setConfig(page, 9, 10, totalCount);
+		pagination.setConfig(page, 8, 10, totalCount);
 		pagingConfigMap = pagination.getConfig();
 		
 		

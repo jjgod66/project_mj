@@ -32,7 +32,7 @@ public class ProfilePicture implements IAction{
 		userVO.setUser_no(user_no);
 		System.out.println(user_no);
 		String picFoldName = "" + user_no;
-		String realPath = "C:/file_project_mj/upload/userProfile/" + picFoldName;
+		String realPath = "C:/project_mj/file_project_mj/upload/userProfile/" + picFoldName;
 		
 		String fileName = "";
 		

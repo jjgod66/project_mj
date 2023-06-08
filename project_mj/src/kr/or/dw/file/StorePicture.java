@@ -43,7 +43,8 @@ public class StorePicture implements IAction{
 			// 일단 올려놓은 썸네일 지운다(db)
 			service.deleteThumbImgStore(store_no);
 			String picFoldName = String.valueOf(storeVo.getStore_no());		// 점포번호(폴더이름)
-			String realPath = "C:/file_project_mj/upload/storeImg/" + picFoldName + "/thumb";
+			String realPath = "C:/project_mj/file_project_mj/upload/storeImg/" + picFoldName + "/thumb";
+			
 			
 			String fileName = "";	//파일 이름을 담을 곳
 			File fileUploadDirectory = new File(realPath);	//  
@@ -80,7 +81,7 @@ public class StorePicture implements IAction{
 			
 			// 이미지 추가한다
 			String picFoldName = String.valueOf(storeVo.getStore_no());		// 점포번호(폴더이름)
-			String realPath = "C:/file_project_mj/upload/storeImg/" + picFoldName + "/notThumb";	// 실제폴더경로
+			String realPath = "C:/project_mj/file_project_mj/upload/storeImg/" + picFoldName + "/notThumb";	// 실제폴더경로
 			
 			String fileName = "";	//파일 이름을 담을 곳
 			File fileUploadDirectory = new File(realPath);	//  

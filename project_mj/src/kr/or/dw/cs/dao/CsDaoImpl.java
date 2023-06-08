@@ -23,7 +23,7 @@ public class CsDaoImpl implements ICsDao {
 	}
 
 
-	@Override
+	@Override /* 점포 정보 가지러가는 쿼리 */
 	public List<StoreVO> selectMainStoreVoList(Map<String, Integer> randomMap) {
 		List<StoreVO> mainStoreVoList = null;
 		
@@ -36,7 +36,7 @@ public class CsDaoImpl implements ICsDao {
 		return mainStoreVoList;
 	}
 
-	@Override
+	@Override /* 점포총갯수 */
 	public int selectStoreTotalCount() {
 		int count = 0;
 		

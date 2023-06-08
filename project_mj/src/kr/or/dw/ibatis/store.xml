@@ -182,10 +182,12 @@
 		  AND s.store_no = #store_no#
 	</select>
 	
+	<!-- 점포 총 갯수 -->
 	<select id="selectStoreTotalCount" resultClass="int">
 		SELECT COUNT(*) FROM store WHERE gb_del = 'N'
 	</select>
 	
+	<!-- 점포 정보 가지러가는 쿼리 -->
 	<select id="mainStoreVoList" parameterClass="Map" resultClass="storeVO">
 		SELECT * FROM store WHERE (store_no IN (#num1#, #num2#, #num3#))
 	</select>

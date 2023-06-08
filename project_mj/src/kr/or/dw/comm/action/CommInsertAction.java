@@ -26,15 +26,15 @@ public class CommInsertAction implements IAction{
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
 		// TODO Auto-generated method stub
-		if(req.getParameter("bd_no") != null ) {
-			int bd_no = Integer.parseInt(req.getParameter("bd_no"));
-			ICommService service = CommServiceImpl.getInstance();
+//		if(req.getParameter("bd_no") != null ) {
+//			int bd_no = Integer.parseInt(req.getParameter("bd_no"));
+//			ICommService service = CommServiceImpl.getInstance();
 
 		System.out.println("게시글 등록을 누릅니다.");
 		HttpSession session = req.getSession();
 		UserVO UserVO = (UserVO) session.getAttribute("UserVO");
 		ICommService service = CommServiceImpl.getInstance();
-		
+		System.out.println("컴인서트액션 UserVO : " + UserVO);
 		if( req.getParameter("bd_no") != null ) {
 			int bd_no = Integer.parseInt(req.getParameter("bd_no"));
 

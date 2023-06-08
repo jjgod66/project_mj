@@ -1,3 +1,4 @@
+<%@page import="java.io.Console"%>
 <%@page import="java.util.Formatter"%>
 <%@page import="kr.or.dw.comm.vo.LikeVO"%>
 <%@page import="kr.or.dw.util.PaginationUtil"%>
@@ -21,87 +22,11 @@
 	width: 80%;
 }
 </style>
+<%-- <script>
+	console.log("<%=userVO.getUser_img()%>");
+</script> --%>
 
 
-<%-- <section class="content">
-	<div class="container-fluid pt-4">
-		<div class="row">
-			<div class="col-12">
-				<div class="card">
-					<div class="card-body">
-						<div id="example1_wrapper"
-							class="dataTables_wrapper dt-bootstrap4">
-							<div class="row">
-								<div class="col-sm-12 col-md-6">
-									<div class="btn-group flex-wrap" role="group"
-										aria-label="Button group with nested dropdown">
-										<button class="btn btn-secondary" tabindex="0"
-											aria-controls="example1" type="button">최신순서</button>
-										<button class="btn btn-secondary" tabindex="0"
-											aria-controls="example1" type="button">좋아요</button>
-										<%
-											if (userVO != null) {
-										%>
-										<a class="btn btn-primary btn-sm"
-											href="<%=request.getContextPath()%>/comm/commInsert.do">글작성</a>
-										<%
-											}
-										%>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-12">
-									<table id="example1" class="table table-bordered table-striped">
-										<thead>
-											<tr>
-												<th scope="col">순번</th>
-												<th scope="col" class="sorting_asc">제목</th>
-												<th scope="col">작성자</th>
-												<th scope="col">조회수</th>
-												<th scope="col">좋아요</th>
-											</tr>
-										</thead>
-										<tbody>
-											<%
-												for (CommVO comm : commList) {
-													int bd_no = comm.getBd_no();
-													String bd_title = comm.getBd_title();
-													String bd_nick = comm.getUser_nick();
-													int bd_hit = comm.getBd_hit();
-													int bd_like = comm.getBd_like();
-											%>
-											<tr>
-												<td><%=bd_no%></td>
-												<td><a
-													href="<%=request.getContextPath()%>/comm/commView.do?bd_no=<%=bd_no%>"><%=bd_title%></a></td>
-												<td><img src="/avatarPath/avatar.jpg" alt="사진  "
-													class="table-avatar"><%=bd_nick%></td>
-												<td><%=bd_hit%></td>
-												<td><%=bd_like%></td>
-											</tr>
-											<%
-												}
-											%>
-										</tbody>
-									</table>
-								</div>
-							</div>
-							<div class="row">
-								<div class="container" style="margin-top: 20px;">
-									<%
-										PaginationUtil pagination = (PaginationUtil) request.getAttribute("pagingConfigMap");
-									%>
-									<%=pagination.getPaginationHtml(request, new String[] { "search" })%>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section> --%>
 
 <!-- ------------------------------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------------------------------ -->
@@ -143,11 +68,12 @@
 								int bd_no = comm.getBd_no();
 								String bd_title = comm.getBd_title();
 								String bd_nick = comm.getUser_nick();
-								/* String bd_picPath = "/profilePath/default/defaultProfile.jpg"; */
-
-								/* if (comm.getUser_img() != null) {
+								 String bd_picPath = "/profilePath/default/defaultProfile.jpg";
+								
+								  if (comm.getUser_img() != null) {
 									bd_picPath = "/profilePath/" + comm.getUser_img();
-								} */
+									
+								}  
 
 								int bd_hit = comm.getBd_hit();
 								int bd_like = comm.getBd_like();
@@ -161,8 +87,7 @@
 								<td><%=bd_no%></td>
 								<td><a
 									href="<%=request.getContextPath()%>/comm/commView.do?bd_no=<%=bd_no%>"><%=bd_title%></a></td>
-								<td><img src="/avatarPath/avatar.jpg" alt="."
-													class="table-avatar">
+								<td><img class="table-avatar" style="width: 2rem;" src="<%= bd_picPath%>">
 									<%=bd_nick%></td>
 								<td><%=bd_hit%></td>
 								<td><%=bd_like%></td>

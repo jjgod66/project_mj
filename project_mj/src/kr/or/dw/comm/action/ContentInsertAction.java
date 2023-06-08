@@ -26,10 +26,10 @@ public class ContentInsertAction implements IAction{
 		// TODO Auto-generated method stub
 		HttpSession session = req.getSession();
 		UserVO userVO = (UserVO) session.getAttribute("UserVO");
-		System.out.println("uservo : " + userVO);
+		System.out.println("컨덴트인서트액션 uservo : " + userVO);
 		System.out.println(userVO.getUser_nick());
-		String title = req.getParameter("title");
-		String content = req.getParameter("content");
+		String title = req.getParameter("bdtitle");
+		String content = req.getParameter("bdcontent");
 		String choice = req.getParameter("choice");
 
 		CommVO commVO = new CommVO();
@@ -37,6 +37,7 @@ public class ContentInsertAction implements IAction{
 		commVO.setBd_content(content);
 		
 		System.out.println(userVO.getUser_no());
+		
 		commVO.setUser_no(userVO.getUser_no());
 		commVO.setUser_nick(userVO.getUser_nick());
 		commVO.setBd_cat(choice);
