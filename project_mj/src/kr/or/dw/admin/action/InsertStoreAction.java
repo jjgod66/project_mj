@@ -46,6 +46,9 @@ public class InsertStoreAction implements IAction {
 			req.setAttribute("type", "update");
 		// 등록일 때
 		} else {
+//			if (storeVo.getStore_url()==null) {
+//				storeVo.setStore_url("");
+//			}
 			storeVo.setGb_del("N");
 			store_no = service.insertStore(storeVo);
 			req.setAttribute("type", "insert");

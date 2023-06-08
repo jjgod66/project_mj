@@ -38,8 +38,5 @@ public interface ICommDao {
 	int updateReply(ReplyVO replyVo);
 
 	int deleteReply(int re_no);
-
-	void updateCommLikeCount(int bd_no);
-
 	
 }

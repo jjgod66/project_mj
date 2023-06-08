@@ -51,7 +51,7 @@
 					 '<div class="row">'
 			+		'<div class="card-footer card-comments col-md-12">'
 			+		'<div class="card-comment">'
-			+			'<img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" >'
+			+			'<img class="img-circle img-sm" src="../dist/img/user3-128x128.jpg" alt="User Image">'
 			+			'<div class="comment-text">'
 			+				'<span class="username">' + reply.user_nick + '<span class="text-muted float-right">' + reply.re_wdt + '</span>'
 			+				'</span>'
@@ -77,10 +77,10 @@
 			
 			$(target).after(
 				 '<form id="re_update_form">'
-				+	'<div class="d-flex form-control ">'
+				+	'<div class="d-flex">'
 				+		'<input type="hidden" name="update_re_no" value="' + update_re_no + '">'
-				+		'<input style="width: 100%;" type="text" name="update_re_content" value="' + update_re_content + '">'
-				+		'<a style="width: 20%;" class="btn btn-default btn-sm reply-cancel-btn" href="#">취소</a>'
+				+		'<input style="width: 90%;" type="text" name="update_re_content" value="' + update_re_content + '">'
+				+		'<a style="width: 10%;" class="btn btn-default btn-sm reply-cancel-btn" href="#">취소</a>'
 				+		'<input type="submit" hidden>'
 				+	'</div>'
 				+'</form>'
@@ -197,9 +197,6 @@
 			}
 		});
 		
-		
-		
-		
 		// 좋아요 손가락 색상 변경 함수
 		function changeLikeColor(){
 			let l = $('#likeBtn');	// 좋아요 'a' 태그 요소 가져오기
@@ -224,9 +221,6 @@
 			if(<%=userVO == null%>)	return; // 로그인을 했을 때만 이벤트 로직 수행
 			let flag = changeLikeColor();
 			
-			// 좋아요 상태 저장
-		  
-			
 			$.ajax({
 				url : "<%=request.getContextPath()%>/comm/like.do",
 				dataType : "json",
@@ -238,7 +232,6 @@
 				success : function(res){
 					console.log(res);
 					$('#likeCnt').text('(' + res.count + ')');
-					console.log($('#likeCnt').text('(' + res.count + ')'));
 				},
 				error : function(err){
 					alert(err.status);

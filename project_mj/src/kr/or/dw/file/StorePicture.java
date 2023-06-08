@@ -72,6 +72,7 @@ public class StorePicture implements IAction{
 //			service.insertImgStore(imgStoreVo);
 			
 			storeVo.setThumb_url(picFoldName + "/thumb/" + fileName);
+			System.out.println(storeVo.getThumb_url());
 			service.updateThumb(storeVo);
 			
 		} else if (cmd.equals("notThumb")) {

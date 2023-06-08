@@ -5,6 +5,7 @@
 
 <footer class="welcome-footer bg-warning bg-gradient mt-3">
 <div class="container" >
+
 <p>
 </p><div class="footer-links" style = "color: gray ">
 <a href="<%=request.getContextPath()%>/cs/main.do" style = "color: gray ">홈 </a> 

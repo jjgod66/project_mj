@@ -2,10 +2,12 @@ package kr.or.dw.user.dao;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
 import kr.or.dw.cs.vo.AnnouncementVO;
+import kr.or.dw.store.vo.StoreVO;
 import kr.or.dw.user.vo.UserVO;
 import kr.or.dw.util.BuildSqlMapClient;
 
@@ -106,5 +108,54 @@ public class UserDaoImpl implements IUserDao {
 		return AnVoList;
 	}
 
+	@Override
+	public int selectStoreLikeCount(int user_no) {
+		int count = 0;
+		
+		try {
+			count = (int) client.queryForObject("user.selectStoreLikeCount", user_no);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return count;
+	}
 
+	public List<StoreVO> selectStoreListL(Map<String, Object> paramMap) {
+		List<StoreVO> storeVoList = null;
+		
+		try {
+			storeVoList = client.queryForList("user.selectStoreListL", paramMap);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return storeVoList;
+	}
+
+	@Override
+	public int selectStoreFavCount(int user_no) {
+		int count = 0;
+		
+		try {
+			count = (int) client.queryForObject("user.selectStoreFavCount", user_no);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return count;
+	}
+
+	@Override
+	public List<StoreVO> selectStoreListF(Map<String, Object> paramMap) {
+		List<StoreVO> storeVoList = null;
+		
+		try {
+			storeVoList = client.queryForList("user.selectStoreListF", paramMap);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return storeVoList;
+	}
 }
