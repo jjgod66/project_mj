@@ -83,6 +83,13 @@ public class UserServiceImpl implements IUserService {
 	public List<StoreVO> selectStoreListF(Map<String, Object> paramMap) {
 		return dao.selectStoreListF(paramMap);
 	}
+	
+	@Override
+	public int selectAnCount() {
+		// TODO Auto-generated method stub
+		return dao.selectAnCount();
+	}
+
 
 
 

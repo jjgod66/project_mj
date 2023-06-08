@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ include file="../header.jsp" %>
-
+	pageEncoding="UTF-8"%>
+<%@ include file="../header.jsp"%>
 <script>
-
 $(function(){
 	
 	n_check = false;
@@ -89,40 +87,136 @@ $(function(){
 	$("#nickCheckBtn").on("click", function () {
 		if (nickCheck) {
 			$.ajax({
-				url : "<%=request.getContextPath()%>/user/nickCheck.do",
-				method : "post",
-				data : {"user_nick" : nickVal},
-				dataType : "json",
-				success : function (res) {
-					if(res == "사용가능한 닉네임입니다.") {
-						alert(res);
-						n_check = true;
-					} else {
-						alert(res);
-						n_check = false;
+				url : "<%=request.getContextPath()%>
+	/user/nickCheck.do",
+					method : "post",
+					data : {
+						"user_nick" : nickVal
+					},
+					dataType : "json",
+					success : function(res) {
+						if (res == "사용가능한 닉네임입니다.") {
+							alert(res);
+							n_check = true;
+						} else {
+							alert(res);
+							n_check = false;
+						}
+					},
+					error : function(req) {
+						alert("상태 : " + req.status);
 					}
-				},
-				error : function (req) {
-					alert("상태 : " + req.status);
-				}
-			});
-		} else {
-			alert("닉네임을 확인해주세요.");
-		}
-	});
-	
-	
-});
+				});
+			} else {
+				alert("닉네임을 확인해주세요.");
+			}
+		});
 
+	});
 </script>
+
+<style>
+body {
+	background-color: #f2f2f2;
+}
+
+.content {
+	 display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+	
+}
+
+.card {
+	border: none;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+	background-color: #6c757d;
+	text-align: center;
+	padding: 20px;
+	border-bottom: 1px solid #ddd;
+	color: #fff;
+}
+
+.card-title {
+	margin: 0;
+	font-size: 24px;
+}
+
+.card-body {
+	padding: 20px;
+}
+
+.input-group {
+	margin-bottom: 20px;
+}
+
+.input-group-prepend .input-group-text {
+	background-color: #6c757d;
+	color: #fff;
+	border: none;
+}
+
+.form-control {
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 10px;
+	width: 100%;
+}
+
+.btn {
+	background-color: #6c757d;
+	color: #fff;
+	border-radius: 4px;
+	padding: 10px 20px;
+	border: none;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.btn:hover {
+	background-color: #4f5a61;
+}
+
+.error {
+	color: red;
+}
+
+.invalid-feedback {
+	display: none;
+}
+
+.input-group-append .btn-info {
+	background-color: #6c757d;
+	color: #fff;
+	border-radius: 4px;
+	border: none;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.input-group-append .btn-info:hover {
+	background-color: #4f5a61;
+}
+
+.col-md-6 {
+	margin: 0 auto;
+}
+
+</style>
+
+
 
 <div class="content">
 	<div class="container-fluid">
-		<div class="row" style="padding-top:150px">
+		<div class="row" >
 			<div class="col-md-3"></div>
 			<div class="col-md-6">
 				<div class="card card-info">
-					<div class="card-header">
+					<div class="card-header" style="background-color: #6c757d">
 						<h3 class="card-title">Sign Up</h3>
 					</div>
 					<form method="post"
@@ -169,10 +263,11 @@ $(function(){
 								</div>
 								<input type="text" class="form-control" placeholder="nickname"
 									name="user_nick" required> <span
+									class="input-group-append"><span
 									class="error invalid-feedback"> 닉네임은 특수문자를 제외한 3-13 자리로
-									입력해주세요. </span> <span class="input-group-append">
+										입력해주세요. </span>
 									<button type="button" class="btn btn-info btn-flat"
-										id="nickCheckBtn">중복확인</button>
+										id="nickCheckBtn" style="background-color: #6c757d">중복확인</button>
 								</span>
 							</div>
 							<div class="input-group mb-3">
@@ -183,11 +278,9 @@ $(function(){
 								<input type="text" class="form-control" placeholder="name"
 									name="user_name" required>
 							</div>
-							
-							<div class="input-group input-group-sm">
-								<input type="text" class="form-control"> <span
-									class="input-group-append">
-									<button type="submit" class="btn btn-info btn-flat">Go!</button>
+														<div class="input-group input-group-sm" >
+								<span class="input-group-append">
+									<button type="submit" style= "background-color: #6c757d" class="btn btn-info btn-flat">로그인</button>
 								</span>
 							</div>
 						</div>
@@ -196,10 +289,8 @@ $(function(){
 			</div>
 			<div class="col-md-3"></div>
 		</div>
-		<!-- /.row -->
-	</div>
-	<!-- /.container-fluid -->
-</div>
-<!-- /.content -->
+			</div>
+			</div>
+			
 
 <%@ include file="../footer.jsp" %>
