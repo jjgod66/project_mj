@@ -49,16 +49,16 @@
 								%>
 							<div class="carousel-inner">
 								<div class="carousel-item active">
-									<img src="" class="d-block boxImg"
+									<img src="<%= store_picPath %>" class="d-block boxImg"
 										alt="...">
 								</div>
 								
 								<div class="carousel-item">
-									<img src="" class="d-block boxImg"
+									<img src="<%= store_picPath %>" class="d-block boxImg"
 										alt="...">
 								</div>
 								<div class="carousel-item">
-									<img src="<%= request.getContextPath()%>/assets/dist/img/about.jpg" class="d-block boxImg"
+									<img src="<%= store_picPath %>" class="d-block boxImg"
 										alt="...">
 								</div>
 							</div>
@@ -158,32 +158,10 @@
                 </div>
             </div>
             
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-                <figure class="effect-ming tm-video-item">
-                    <img src="<%= request.getContextPath()%>/assets/dist/img/img-01.jpg" alt="Image" class="img-fluid">
-                    <figcaption class="d-flex align-items-center justify-content-center">
-                        <h2>Hangers</h2>
-                        <a href="photo-detail.html">View more</a>
-                    </figcaption>                    
-                </figure>
-                <div class="d-flex justify-content-between tm-text-gray">
-                    <span class="tm-text-gray-light">24 Sep 2020</span>
-                    <span>16,008 views</span>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
-                <figure class="effect-ming tm-video-item">
-                    <img src="<%= request.getContextPath()%>/assets/dist/img/img-02.jpg" alt="Image" class="img-fluid">
-                    <figcaption class="d-flex align-items-center justify-content-center">
-                        <h2>Perfumes</h2>
-                        <a href="photo-detail.html">View more</a>
-                    </figcaption>                    
-                </figure>
-                <div class="d-flex justify-content-between tm-text-gray">
-                    <span class="tm-text-gray-light">20 Sep 2020</span>
-                    <span>12,860 views</span>
-                </div>
-            </div>
+
+            
+            
+
         </div> 
     </div> 
 
