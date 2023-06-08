@@ -50,4 +50,6 @@ public interface IUserDao {
 	 * @return
 	 */
 	public List<StoreVO> selectStoreListF(Map<String, Object> paramMap);
+
+	public int selectAnCount();
 }

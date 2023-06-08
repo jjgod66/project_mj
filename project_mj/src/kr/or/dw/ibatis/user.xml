@@ -106,6 +106,18 @@
 					)
 	</insert>
 	
+	
+	 <select id="selectAnCount" resultClass="int">
+		SELECT COUNT(*) cnt
+		  FROM bd_announce
+		 WHERE gb_del = 'N'
+	</select>
+
+	<select id="pageCount" resultClass="int">
+			SELECT COUNT(bd_no) FROM bd_announce
+	</select>
+	
+	
 	<select id="selectAnView" parameterClass="int" resultClass="anVo">
 		SELECT bd_no
 			  ,bd_title

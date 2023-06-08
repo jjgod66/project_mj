@@ -58,5 +58,8 @@ public interface IUserService {
 	 */
 	public List<StoreVO> selectStoreListF(Map<String, Object> paramMap);
 
+	public int selectAnCount();
+
+
 
 }
