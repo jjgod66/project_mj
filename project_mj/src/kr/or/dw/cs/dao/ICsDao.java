@@ -31,5 +31,7 @@ public interface ICsDao {
 
 	int updateAn(AnnouncementVO anVo);
 
+	List<StoreVO> selectStoreVoList();
+
 
 }

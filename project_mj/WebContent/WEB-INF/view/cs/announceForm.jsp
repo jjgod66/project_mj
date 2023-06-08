@@ -1,4 +1,5 @@
 
+<%@page import="kr.or.dw.util.PaginationUtil"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.or.dw.cs.vo.AnnouncementVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

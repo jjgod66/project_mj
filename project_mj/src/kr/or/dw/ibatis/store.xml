@@ -295,4 +295,15 @@
 	<update id="deleteReview" parameterClass="int">
 		UPDATE store_review SET gb_del = 'Y' WHERE re_no = #re_no#
 	</update>
+	
+	
+	<select id="selectStoreVoList" resultClass="storeVO">
+		SELECT * FROM store WHERE gb_del = 'N' AND thumb_url is not null 
+	</select>
+	
+	
+	
+	
+	
+	
 </sqlMap>

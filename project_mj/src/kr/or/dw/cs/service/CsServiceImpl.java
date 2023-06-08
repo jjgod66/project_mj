@@ -69,6 +69,12 @@ public class CsServiceImpl implements ICsService{
 		return dao.updateAn(anVo);
 	}
 
+	@Override
+	public List<StoreVO> selectStoreVoList() {
+		// TODO Auto-generated method stub
+		return dao.selectStoreVoList();
+	}
+
 
 
 }

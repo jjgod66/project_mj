@@ -36,4 +36,6 @@ public interface ICsService {
 
 	int updateAn(AnnouncementVO anVo);
 
+	List<StoreVO> selectStoreVoList();
+
 }

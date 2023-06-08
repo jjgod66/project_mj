@@ -104,6 +104,21 @@ public class CsDaoImpl implements ICsDao {
 		return result;
 	}
 
+	@Override
+	public List<StoreVO> selectStoreVoList() {
+		// TODO Auto-generated method stub
+		List<StoreVO> stvolist = null;
+		
+		try {
+			stvolist = client.queryForList("store.selectStoreVoList");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return stvolist;
+	}
+
 
 	
 
