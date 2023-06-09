@@ -9,7 +9,7 @@
 	</select>
 	
 	<select id="selectCommList" parameterClass="Map" resultClass="commVO">
-		SELECT *
+		SELECT b.*, u.user_img
 		  FROM (
 				SELECT *
 				  FROM (
@@ -24,6 +24,7 @@
 				  		) v2
 				 WHERE rnum <![CDATA[ >= ]]> #start#
 				) b
+				 JOIN USER_ u ON b.user_no = u.user_no
 	</select>
 	
  	<select id="selectCommCount" resultClass="int">

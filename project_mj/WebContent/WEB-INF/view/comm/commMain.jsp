@@ -82,6 +82,10 @@
 													int bd_no = comm.getBd_no();
 													String bd_title = comm.getBd_title();
 													String bd_nick = comm.getUser_nick();
+													String bd_picPath = "/profilePath/default/defaultProfile.jpg"; 
+													if (comm.getUser_img() != null) {
+														bd_picPath = "/profilePath/" + comm.getUser_img();
+													}
 													int bd_hit = comm.getBd_hit();
 													int bd_like = comm.getBd_like();
 											%>
@@ -90,8 +94,8 @@
 												<td><a
 													href="<%=request.getContextPath()%>/comm/commView.do?bd_no=<%=bd_no%>"><%=bd_title%></a>
 												</td>
-												<td><img alt="작성자 프로필사진" class="table-avatar"
-													><%=bd_nick%></td>
+												<td><img style="width: 2rem;"  alt="작성자 프로필사진" class="table-avatar"  src="<%= bd_picPath %>">
+													<%=bd_nick%></td>
 												<td><%=bd_hit%></td>
 												<td><%=bd_like%></td>
 											</tr>

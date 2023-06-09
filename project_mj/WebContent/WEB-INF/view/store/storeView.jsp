@@ -81,7 +81,11 @@
 		changeLikeColor();
 		
 		$('#likeBtn').on('click', function(){
-			if(<%=userVO == null%>)	return; // 로그인을 했을 때만 이벤트 로직 수행
+			if(<%=userVO == null%>){
+				alert("로그인이 필요합니다.");
+				return; // 로그인을 했을 때만 이벤트 로직 수행
+			}	
+				
 			let flag = changeLikeColor();
 			
 			// 좋아요 상태 저장
@@ -123,8 +127,10 @@
 		changeFavColor();
 		
 		$('#favBtn').on('click', function(){
-			if(<%=userVO == null%>)	return; // 로그인을 했을 때만 이벤트 로직 수행
-			let flag = changeFavColor();
+			if(<%=userVO == null%>)	{ 
+				alert("로그인이 필요합니다.");
+				return; // 로그인을 했을 때만 이벤트 로직 수행
+			}	
 			
 			// 즐겨찾기 상태 저장
 			
@@ -269,7 +275,7 @@
 </script>
 <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=35e6d1bccbd666fa1a2827012cbc4203"></script> -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=35e6d1bccbd666fa1a2827012cbc4203&libraries=services,clusterer,drawing"></script>
-<div class="card card-primary">
+<div class="card card-primary mt-3 mb-3">
 	<div class="p-4 p-md-5 mb-4 rounded text-bg-white card-header">
 		<div class="row">
 			<div class="col-md-6">

@@ -161,7 +161,7 @@
 		</div>
 	</div>
 </section>
-<div class="card card-primary card-outline">
+<div class="card card-primary card-outline mb-5">
 	<div class="card-body">
 		<div class="thumbnailImg">
 			<div class="row rowImg">

@@ -115,5 +115,5 @@
 			</div>
 		</div>
 	</div>
-	<div class="content-wrapper" style="min-height: 822px;">
+	<div class="content-wrapper" style="min-height: 822px; background-color:white;">
 		<div class="container">
