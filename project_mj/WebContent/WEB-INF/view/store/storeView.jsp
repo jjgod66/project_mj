@@ -124,7 +124,7 @@
 			return flag;
 		}
 		
-		changeFavColor();
+		let flagf = changeFavColor();
 		
 		$('#favBtn').on('click', function(){
 			if(<%=userVO == null%>)	{ 
@@ -140,7 +140,7 @@
 				type : "post",
 				data : {
 					store_no : "<%=storeVo.getStore_no()%>",
-					favFlag : flag
+					favFlag : flagf
 				},
 				success : function(res){
 					console.log(res);
