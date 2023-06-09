@@ -296,11 +296,12 @@
 	
 	<select id="mainStoreVoList" resultClass="storeVO">
 		SELECT * FROM (
-		    SELECT * FROM store
-		    WHERE gb_del = 'N' AND thumb_url IS NOT NULL
+		    SELECT s.*, st.store_tagNm_1,st.store_tagNm_2,st.store_tagNm_3 FROM store s, store_tag st
+		    WHERE s.store_no = st.store_no And s.gb_del = 'N' AND s.thumb_url IS NOT NULL
 		    ORDER BY DBMS_RANDOM.VALUE
 			)
 		WHERE ROWNUM <![CDATA[ <= ]]> 12
+		
 	</select>
 	
 	<select id="selectStoreVoList" resultClass="storeVO">

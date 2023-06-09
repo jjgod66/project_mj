@@ -27,7 +27,7 @@ public class MainAction implements IAction {
 		List<StoreVO> storeVoList =service.selectStoreVoList();
 		
 		
-		System.out.println("스토어 1번의 섬네일 입니다 : "+mainStoreVoList.get(1).getThumb_url());
+		System.out.println("스토어 1번의 섬네일 입니다 : "+mainStoreVoList.get(1).getStore_tagNm_1());
 		
 		
 		

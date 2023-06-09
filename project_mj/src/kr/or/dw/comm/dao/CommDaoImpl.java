@@ -241,4 +241,15 @@ public class CommDaoImpl implements ICommDao {
 		
 		return result;
 	}
+
+	@Override
+	public void updateCommLikeCount(int bd_no) {
+		// TODO Auto-generated method stub
+		try {
+			client.update("comm.updateCommLikeCount" , bd_no);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

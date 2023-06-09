@@ -29,7 +29,7 @@
 <!-- ------------------------------------------------------------------------------------------------------ -->
 
 <div class=" bg-light">
-	<div class="content ">
+	<div class="content" style="padding-top : 100px;">
 		<div class="container ">
 			<h2 class="mb-5 text-center wpahr">은행나무 커뮤니티 </h2>
 			<div class="table-responsive custom-table-responsive wpahr1">
@@ -45,7 +45,7 @@
 					<thead>
 						<tr>
 							<th scope="col"><label class="control control--checkbox">
-									<input type="checkbox" class="js-check-all" />
+									
 							</label></th>
 							<th scope="col" style="width: 10%">순번</th>
 							<th scope="col" >제목</th>
@@ -70,9 +70,7 @@
 						%>
 						<tr scope="row">
 							<th scope="row">
-								<label class="control control--checkbox">
-									<input type="checkbox" />
-								</label>
+								
 							</th>
 								<td><%=bd_no%></td>
 								<td><a

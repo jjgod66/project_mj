@@ -59,11 +59,11 @@
 						JOIN USER_ u ON b.user_no = u.user_no
 	</select>
 	
-	<update id="updateCommLikeCount" parameterClass="int">
+	<!-- <update id="updateCommLikeCount" parameterClass="int">
 	    UPDATE BD_COMM
 	    SET BD_LIKE = (SELECT COUNT(*) FROM BD_COMM_LIKE WHERE BD_NO = #bd_no#)
 	    WHERE BD_NO = #bd_no#
-	</update>
+	</update> -->
 	
 	
 	
@@ -203,6 +203,13 @@
 		  FROM bd_comm_like
 		 WHERE bd_no = #bd_no#
 	</select>
+	
+	<update id="updateCommLikeCount" parameterClass="int">
+		UPDATE bd_comm 
+		SET bd_like = (SELECT NVL(SUM(like_cnt), 0) FROM bd_comm_like WHERE bd_no = #bd_no#)
+	</update>
+	
+	
 	
 	
 	<insert id="insertReply" parameterClass="replyVO">

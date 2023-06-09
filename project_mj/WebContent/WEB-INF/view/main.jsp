@@ -94,17 +94,17 @@
 
 <div class="container-fluid tm-container-content tm-mt-60">
 	<div class="row mb-4 mx-3">
-		<h5 class=" tm-text-primary mb-4" style="text-align: center;">새로고침시 새로운 상점이 등장합니다.</h5>
+		<h5 class=" tm-text-primary mb-4" style="text-align: center;"></h5>
 	</div>
 	<div class="row tm-mb-90 tm-gallery">
 
 			<% 
 				for (StoreVO storeVo : mainStoreVoList ) {
 			%>
-		<div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-12 mb-5">
+		<div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-12 mb-5" >
 			<figure class="effect-ming tm-video-item">
 				<img src="/storePath/<%=storeVo.getThumb_url() != null ? storeVo.getThumb_url() : "default/noImg.jpg" %>"
-					alt="Image" class="img-fluid">
+					alt="Image" class="img-fluid" style="width: 20rem; height: 15rem;">
 				<figcaption class="d-flex align-items-center justify-content-center">
 					<h2><a style="font-weight: bold; color: white;" href="<%=gcp%>/user/userLoginForm.do"><%=storeVo.getStore_name() %></a></h2>
 					<a href="<%=request.getContextPath()%>/store/storeView.do?store_no=<%=storeVo.getStore_no()%>"></a>
