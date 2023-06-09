@@ -23,9 +23,17 @@ public class MainAction implements IAction {
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		
 		ICsService service = CsServiceImpl.getInstance();
-//		List<StoreVO> mainStoreVoList = service.selectMainStoreVoList();
+		List<StoreVO> mainStoreVoList = service.selectMainStoreVoList();
+		List<StoreVO> storeVoList =service.selectStoreVoList();
+		
+		
+		System.out.println("스토어 1번의 섬네일 입니다 : "+mainStoreVoList.get(1).getStore_tagNm_1());
+		
+		
+		
 //		System.out.println("mainStoreVoList : " + mainStoreVoList);
-//		req.setAttribute("mainStoreVoList", mainStoreVoList);
+		req.setAttribute("mainStoreVoList", mainStoreVoList);
+		req.setAttribute("storeVoList", storeVoList);
 		return "/main.jsp";
 	}
 

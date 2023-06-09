@@ -52,7 +52,6 @@ public interface IUserDao {
 	public List<StoreVO> selectStoreListF(Map<String, Object> paramMap);
 
 	public int selectAnCount();
-
 	/**
 	 * 해당 유저 정보를 가져온다.
 	 * @param user_no

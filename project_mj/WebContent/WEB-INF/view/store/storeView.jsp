@@ -294,6 +294,7 @@
 				for (ImgStoreVO imgStoreVo : imgStoreVoList) {
 			%>
 			<div class="col-md-4 mb-3">
+
 				<img src="/storePath/<%=imgStoreVo.getImg_url()%>" class="boxImg" style="width: 20rem; height: 15rem; padding:0.3rem; border: 1px solid #6c757d; margin:auto;">
 			</div>
 			<%

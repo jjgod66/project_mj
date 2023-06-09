@@ -149,7 +149,6 @@ section.notice {
 	transition: all 0.3s;
 }
 
-
 .btn-dark {
 	background: #555;
 	color: #fff;
@@ -495,6 +494,7 @@ section.notice {
 				%>
 				</form>
 			</div>
+
 		</div>
 	</div>
 

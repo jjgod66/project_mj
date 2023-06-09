@@ -41,10 +41,12 @@ public class CommViewAction implements IAction{
 		HttpSession session = req.getSession();
 		UserVO userVo = null;
 		int user_no = 0;
-		if(session.getAttribute("userVO") != null ) {
-			user_no = ((UserVO)session.getAttribute("userVO")).getUser_no();
+		if(session.getAttribute("UserVO") != null ) {
+			user_no = ((UserVO)session.getAttribute("UserVO")).getUser_no();
 		};
-
+		
+		System.out.println(user_no);
+		
 		LikeVO likeVo = new LikeVO();
 		likeVo.setBd_no(bd_no);
 		likeVo.setUser_no(user_no);
