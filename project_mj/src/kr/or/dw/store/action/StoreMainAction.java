@@ -63,7 +63,7 @@ public class StoreMainAction implements IAction {
 			totalCount = service.selectStoreCount(null);	
 		} 
 		
-		pagination.setConfig(page, 8, 10, totalCount);
+		pagination.setConfig(page, 9, 10, totalCount);
 		pagingConfigMap = pagination.getConfig();
 		// ibatis에서 받을 parameterMap 을 만든다.
 		Map<String, Object> paramMap = new HashMap<>();

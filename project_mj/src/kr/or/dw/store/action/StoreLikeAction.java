@@ -40,7 +40,7 @@ public class StoreLikeAction implements IAction{
 		result = service.updateLike(likeVo);	// store_like에 머지
 		service.updateStoreLikeCount(store_no);	// 
 		if (result > 0) {// MERGE 구문이 성공하면(update 태그로 되어있어서 성공하면 '1'반환)
-//			좋아요갯수를 샘 
+//			좋아요갯수를 샘  
 			count = service.selectLikeCount(store_no);
 		}
 		req.setAttribute("count", count);

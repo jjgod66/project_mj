@@ -16,7 +16,7 @@ import kr.or.dw.web.IAction;
 public class StoreFavAction implements IAction {
 
 	@Override
-	public boolean isRedirect() {
+	public boolean isRedirect() { 
 		return false;
 	}
 
