@@ -69,11 +69,11 @@
 			if(flag){	// data-like 값으로 분개
 				// 좋아요 눌려있을 때
 				l.data('like', false);
-				l.css('background-color', '#dc3545');
+				l.css('color', 'yellow');
 			}else{
 				// 좋아요를 안눌려있을 때
 				l.data('like', true);
-				l.css('background-color', '#6c757d');
+				l.css('color', 'white');
 			};
 			return flag;
 		}
@@ -96,8 +96,7 @@
 				},
 				success : function(res){
 					console.log(res);
-					$('#likeCnt').text('(' + res.count + ')');
-					console.log($('#likeCnt').text('(' + res.count + ')'));
+					$('#likeCnt').text(res.count);
 				},
 				error : function(err){
 					alert(err.status);
@@ -112,11 +111,11 @@
 			if(flag){	// data-like 값으로 분개
 				// 좋아요 눌려있을 때
 				l.data('like', false);
-				l.css('background-color', '#0d6efd');
+				l.css('color', 'yellow');
 			}else{
 				// 좋아요를 안눌려있을 때
 				l.data('like', true);
-				l.css('background-color', '#6c757d');
+				l.css('color', 'white');
 			};
 			return flag;
 		}
@@ -139,8 +138,7 @@
 				},
 				success : function(res){
 					console.log(res);
-					$('#likeCnt').text('(' + res.count + ')');
-					console.log($('#favCnt').text('(' + res.count + ')'));
+					$('#favCnt').text(res.count);
 				},
 				error : function(err){
 					alert(err.status);
@@ -262,6 +260,11 @@
 				});
 			}
 		});
+		
+		$("#customRange2").on("change", function(){
+			$("#rateSpan").text(this.value);
+		});
+
 	});
 </script>
 <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=35e6d1bccbd666fa1a2827012cbc4203"></script> -->
@@ -277,8 +280,8 @@
 				<hr>
 				<div>
 					<span class="mr-1" style="float: right; margin: 0 0.5rem;"><i class="bi bi-info-square-fill" style="color:#FF8C0A"></i>  <%=storeVo.getCat_name() %></span>
-					<span class="mr-1" style="float: right; margin: 0 0.5rem;"><i class="bi bi-bookmark-plus-fill" style="color:#28288C"></i>  <%=storeVo.getStore_fav() %></span> 
-					<span class="mr-1" style="float: right; margin: 0 0.5rem;"><i class="bi bi-heart-fill" style="color:#FF32B1"></i>  <%=storeVo.getStore_like() %></span>
+					<span class="mr-1" style="float: right; margin: 0 0.5rem;"><i class="bi bi-bookmark-plus-fill" style="color:#28288C"></i><span id="favCnt" style="margin-left:0.5rem;"><%=storeVo.getStore_fav() %></span></span> 
+					<span class="mr-1" style="float: right; margin: 0 0.5rem;"><i class="bi bi-heart-fill" style="color:#FF32B1"></i>  <span id="likeCnt" style="margin-left:0.5rem;"><%=storeVo.getStore_like() %></span></span>
 				</div>
 				<p class="lead my-3"><%=store_des_s%></p>
 			</div>
@@ -291,7 +294,8 @@
 				for (ImgStoreVO imgStoreVo : imgStoreVoList) {
 			%>
 			<div class="col-md-4 mb-3">
-				<img src="/storePath/<%=imgStoreVo.getImg_url()%>" class="boxImg" style="width: 20rem; height: 15rem; padding:0.3rem; border: 1px solid #6c757d;">
+
+				<img src="/storePath/<%=imgStoreVo.getImg_url()%>" class="boxImg" style="width: 20rem; height: 15rem; padding:0.3rem; border: 1px solid #6c757d; margin:auto;">
 			</div>
 			<%
 				}
@@ -323,7 +327,7 @@
 				<div id="map" style="width:600px;height:500px; border:1px solid #6c757d; margin-inline: auto;" class="mb-5 mt-5"></div>	
 			</div>
 			
-			<div class="col-md-3">
+			<div class="col-md-3 bg-light">
 				<div class="position-sticky" style="top: 2rem; align-self: center;">
 					<div class="p-4 mb-3 bg-light rounded" style="text-align: center;">
 						<button type="button" class="btn btn-danger mb-3" id="likeBtn" data-like=<%= userLike == 1 ? true:false %>><i class="bi bi-heart"></i>&nbsp;좋아요</button>
@@ -347,8 +351,9 @@
 		%>
 		<div class="card-footer">
 			<form id="re_form">
-			<label for="customRange2" class="form-label">평점</label>
-				<input type="range" class="form-range" name="rate" min="1" max="5" id="customRange2" style="width:10%;">
+			<label for="customRange2" class="form-label" style="font-family: fantasy; font-style: normal;">평점 ></label>
+				<input type="range" class="form-range" name="rate" min="1" max="5" id="customRange2" style="width:10%; padding: 0.8rem 1rem 0 1rem;">
+				<span id="rateSpan" class="text-warning" style="margin-left:1rem; font-family: fantasy; font-style: normal;">3</span>
 				<input class="form-control form-control-sm" type="text"
 					placeholder="Type a comment" name="re_content">
 				<button type="submit" style="display: none;"></button>

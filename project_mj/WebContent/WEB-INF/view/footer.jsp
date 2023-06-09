@@ -3,7 +3,7 @@
 </div>
 </div>
 <footer class="tm-bg-gray pt-5 pb-3 tm-text-gray tm-footer">
-	<div class="container-fluid tm-container-small">
+	<div class="container-fluid tm-container-small" style="height: auto;">
 		<div class="row">
 			<div class="col-lg-6 col-md-12 col-12 px-5 mb-5">
 				<h3 class="tm-text-primary mb-4 tm-footer-title">은행나무 홈페이지는?</h3>
@@ -48,7 +48,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-lg-8 col-md-7 col-12 px-5 mb-3">maid in
+				<div class="col-lg-8 col-md-7 col-12 px-5 mb-3">made in
 					dw©academy !!</div>
 				<div class="col-lg-4 col-md-5 col-12 px-5 text-right">@Big day
 					: 2023/06/09</div>

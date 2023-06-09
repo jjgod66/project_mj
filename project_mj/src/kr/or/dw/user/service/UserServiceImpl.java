@@ -90,6 +90,11 @@ public class UserServiceImpl implements IUserService {
 		return dao.selectAnCount();
 	}
 
+	@Override
+	public UserVO selectUser(int user_no) {
+		return dao.selectUser(user_no);
+	}
+
 
 
 
