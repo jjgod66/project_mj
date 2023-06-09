@@ -34,6 +34,7 @@ public class MainAction implements IAction {
 //		System.out.println("mainStoreVoList : " + mainStoreVoList);
 		req.setAttribute("mainStoreVoList", mainStoreVoList);
 		req.setAttribute("storeVoList", storeVoList);
+		System.out.println("TEST!!!");
 		return "/main.jsp";
 	}
 

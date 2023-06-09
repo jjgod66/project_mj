@@ -34,6 +34,10 @@
 	    WHERE BD_NO = #bd_no#
 	</update> -->
 	
+	<update id="updateCommLikeCount" parameterClass="int">
+		UPDATE bd_comm 
+		SET bd_like = (SELECT NVL(SUM(like_cnt), 0) FROM bd_comm_like WHERE bd_no = #bd_no#)
+	</update>
 	
 	
  	<select id="selectCommCount" resultClass="int">
@@ -173,10 +177,7 @@
 		 WHERE bd_no = #bd_no#
 	</select>
 	
-	<update id="updateCommLikeCount" parameterClass="int">
-		UPDATE bd_comm 
-		SET bd_like = (SELECT NVL(SUM(like_cnt), 0) FROM bd_comm_like WHERE bd_no = #bd_no#)
-	</update>
+	
 	
 	
 	

@@ -14,7 +14,7 @@ public class UserLogoutAction implements IAction{
 	@Override
 	public boolean isRedirect() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
@@ -22,8 +22,8 @@ public class UserLogoutAction implements IAction{
 		HttpSession session = req.getSession();
 		
 		session.invalidate();
-		
-		return "/main.jsp";
+		System.out.println("test22");
+		return "/cs/main.do";
 	}
 
 }
