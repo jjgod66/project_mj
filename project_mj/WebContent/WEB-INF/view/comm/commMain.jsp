@@ -17,10 +17,82 @@
 	margin-bottom: 100px;
 }
 
+
+  <!--
+											<%
+												for (CommVO comm : commList) {
+													int bd_no = comm.getBd_no();
+													String bd_title = comm.getBd_title();
+													String bd_nick = comm.getUser_nick();
+													String bd_picPath = "/profilePath/default/defaultProfile.jpg"; 
+													if (comm.getUser_img() != null) {
+														bd_picPath = "/profilePath/" + comm.getUser_img();
+													}
+													int bd_hit = comm.getBd_hit();
+													int bd_like = comm.getBd_like();
+											%>
+											<tr>
+												<td><%=bd_no%></td>
+												<td><a
+													href="<%=request.getContextPath()%>/comm/commView.do?bd_no=<%=bd_no%>"><%=bd_title%></a>
+												</td>
+												<td><img style="width: 2rem;"  alt="작성자 프로필사진" class="table-avatar"  src="<%= bd_picPath %>">
+													<%=bd_nick%></td>
+												<td><%=bd_hit%></td>
+												<td><%=bd_like%></td>
+											</tr>
+											<% } %>
+										</tbody>
+										
+									</table>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-12 col-md-5">
+									<div class="dataTables_info" id="example1_info" role="status"
+										aria-live="polite">Showing 1 to 10 of 57 entries</div>
+								</div>
+								<div class="col-sm-12 col-md-7">
+									<div class="dataTables_paginate paging_simple_numbers"
+										id="example1_paginate">
+										<ul class="pagination">
+											<li class="paginate_button page-item previous disabled"
+												id="example1_previous"><a href="#"
+												aria-controls="example1" data-dt-idx="0" tabindex="0"
+												class="page-link">이전 </a></li>
+											<li class="paginate_button page-item active"><a href="#"
+												aria-controls="example1" data-dt-idx="1" tabindex="0"
+												class="page-link">1</a></li>
+											<li class="paginate_button page-item "><a href="#"
+												aria-controls="example1" data-dt-idx="2" tabindex="0"
+												class="page-link">2</a></li>
+											<li class="paginate_button page-item "><a href="#"
+												aria-controls="example1" data-dt-idx="3" tabindex="0"
+												class="page-link">3</a></li>
+											<li class="paginate_button page-item "><a href="#"
+												aria-controls="example1" data-dt-idx="4" tabindex="0"
+												class="page-link">4</a></li>
+											<li class="paginate_button page-item "><a href="#"
+												aria-controls="example1" data-dt-idx="5" tabindex="0"
+												class="page-link">5</a></li>
+											<li class="paginate_button page-item "><a href="#"
+												aria-controls="example1" data-dt-idx="6" tabindex="0"
+												class="page-link">6</a></li>
+											<li class="paginate_button page-item next" id="example1_next"><a
+												href="#" aria-controls="example1" data-dt-idx="7"
+												tabindex="0" class="page-link">다음 </a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
 .custom-table tbody tr {
 	width: 80%;
 }
-</style>
+</style> -->
+
 
 
 

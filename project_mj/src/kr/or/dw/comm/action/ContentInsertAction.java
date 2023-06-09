@@ -31,7 +31,7 @@ public class ContentInsertAction implements IAction{
 		String title = req.getParameter("bdtitle");
 		String content = req.getParameter("bdcontent");
 		String choice = req.getParameter("choice");
-
+//		String user_img = userVO.getUser_img();
 		CommVO commVO = new CommVO();
 		commVO.setBd_title(title);
 		commVO.setBd_content(content);
@@ -40,6 +40,7 @@ public class ContentInsertAction implements IAction{
 		commVO.setUser_no(userVO.getUser_no());
 		commVO.setUser_nick(userVO.getUser_nick());
 		commVO.setBd_cat(choice);
+//		commVO.setUser_img(user_img);
 		
 		ICommService service = CommServiceImpl.getInstance();
 		int bd_no = 0;

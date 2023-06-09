@@ -50,7 +50,9 @@ public class CommMainAction implements IAction {
 		
 		// 게시판 목록을 가져온다.
 		List<CommVO> commList = service.selectCommList(paramMap);
-		System.out.println(commList);
+		System.out.println("test : " + commList.get(0).getBd_no());
+		System.out.println("test : " + commList.get(0).getBd_content());
+		System.out.println("test : " + commList.get(0).getUser_img());
 		req.setAttribute("commList", commList);
 		req.setAttribute("pagingConfigMap", pagination);
 		System.out.println("커뮤게시판에 들어갔습니다.");

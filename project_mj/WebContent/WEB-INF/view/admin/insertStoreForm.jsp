@@ -70,7 +70,7 @@
 </section>
 <div class="row">
 	<div class="col-md-2"></div>
-	<div class="col-md-8">
+	<div class="col-md-8 mb-5">
 		<div class="card card-primary">
 			<div class="card-header">
 				<h3 class="card-title"></h3>

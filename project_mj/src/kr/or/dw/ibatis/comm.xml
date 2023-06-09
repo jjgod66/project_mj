@@ -9,22 +9,6 @@
 	</select>
 	
 	<select id="selectCommList" parameterClass="Map" resultClass="commVO">
-		<!-- SELECT *
-		  FROM (
-				SELECT *
-				  FROM (
-				  		SELECT rownum rnum, v1.*
-						  FROM (
-						  		SELECT *
-								  FROM bd_comm
-								 WHERE gb_del = 'N'
-								 ORDER BY bd_no DESC
-						  		) v1
-						 WHERE rownum <![CDATA[ <= ]]> #end#
-				  		) v2
-				 WHERE rnum <![CDATA[ >= ]]> #start#
-				) b  -->
-				
 				SELECT b.*, u.USER_IMG
 						FROM (
 						    SELECT *
@@ -41,6 +25,7 @@
 						    WHERE rnum <![CDATA[ >= ]]> #start#
 						) b
 						JOIN USER_ u ON b.user_no = u.user_no
+
 	</select>
 	
 	<!-- <update id="updateCommLikeCount" parameterClass="int">

@@ -71,8 +71,8 @@
 <div class="content">
 	<div class="container">
 		<div class="row" style="padding-top : 150px;">
-			<div class="col-sm-2"></div>
-			<div class="col-sm-8">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-6">
 				<div class="card card-info">
 									<div class="card-header" style ="background-color: #6c757d">
 						<h3 class="card-title">Login</h3>
@@ -99,14 +99,14 @@
 							</div>
 						</div>
 												<div class="card-footer" >
-							<button type="submit" class="btn btn-block btn-secondary btn-sm" name = "Sign in">Sign in</button>
+							<button type="submit" class="btn btn-block btn-secondary btn-sm" name = "Sign in">Log In</button>
 
 						</div>
 
 					</form>
 				</div>
 			</div>
-			<div class="col-sm-2"></div>
+			<div class="col-sm-3"></div>
 		</div>
 	</div>
 </div>

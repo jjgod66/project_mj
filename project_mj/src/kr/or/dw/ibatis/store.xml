@@ -212,7 +212,7 @@
 	
 	<update id="updateStoreLikeCount" parameterClass="int">
 		UPDATE store
-	    SET store_like = (SELECT NVL(SUM(LIKE_CNT), 0) FROM store_like WHERE store_no = #store_no# )
+	    SET store_like = (SELECT NVL(SUM(LIKE_CNT), 0) FROM v WHERE store_no = #store_no# )
 	    WHERE store_no = #store_no#
 	</update>
 	

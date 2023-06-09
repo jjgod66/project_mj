@@ -11,7 +11,9 @@
 		width:100%;
 		height:auto;
 	}
-	
+	.tag-cloud a:hover {
+		color: #ffc107;
+	}
 </style>
 <%
 
@@ -37,7 +39,7 @@
 			<div class="col-md-12">
 				<div class="aa-blog-archive-area aa-blog-archive-2">
 					<div class="row" style="margin:0;">
-						<div class="col-md-9 border rounded-3 pt-3">
+						<div class="col-md-9 border rounded-3 pt-3 mb-5">
 							<div class="aa-blog-content">
 								<div class="row" style="margin:0;">
 								<% 
@@ -47,7 +49,7 @@
 									<div class="col-md-4 col-sm-4 mb-3">
 									<a href="<%=request.getContextPath()%>/store/storeView.do?store_no=<%=storeVo.getStore_no()%>" style="text-decoration:none; color:black;">
 										<div class="card h-100">
-											<img alt="img" src="/storePath/<%=storeVo.getThumb_url() != null ? storeVo.getThumb_url() : "default/noImg.jpg" %>" class="card-img-top" style="height: 200px;">
+											<img alt="img" src="/storePath/<%=storeVo.getThumb_url() != null ? storeVo.getThumb_url() : "default/noImg.jpg" %>" class="card-img-top" style="height: 200px; padding:0.5rem;">
 										  <div class="card-body" style="text-align: center;">
 										 	 <h4 class="card-title"><%=storeVo.getStore_name() %></h4>
 										  		<span><i class="fa fa-eye"></i>  <%=storeVo.getStore_views() %></span> 
@@ -99,7 +101,7 @@
 									<%
 									for (String cat : catList) {
 									%>
-										<li class="mb-2"><a href="<%=request.getContextPath() %>/store/storeMain.do?page=1&cat=<%= cat %>" class="bg-warning text-white rounded-3 p-1" style="text-decoration:none;"><%= cat %> </a></li>
+										<li class="mb-2"><a href="<%=request.getContextPath() %>/store/storeMain.do?page=1&cat=<%= cat %>" class="btn btn-warning bg-warning text-white rounded-3 p-1" style="text-decoration:none;"><%= cat %> </a></li>
 									<%	
 									}
 									%>
