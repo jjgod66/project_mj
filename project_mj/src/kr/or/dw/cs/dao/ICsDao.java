@@ -15,7 +15,6 @@ public interface ICsDao {
 	 * @param randomSet
 	 * @return
 	 */
-	List<StoreVO> selectMainStoreVoList(Map<String, Integer> randomMap);
 
 	/**
 	 * 등록이 된 총 점포 수 조회
@@ -30,6 +29,11 @@ public interface ICsDao {
 	void deleteAn(int bd_no);
 
 	int updateAn(AnnouncementVO anVo);
+
+	List<StoreVO> selectStoreVoList();
+
+	List<StoreVO> selectMainStoreVoList();
+
 
 
 }

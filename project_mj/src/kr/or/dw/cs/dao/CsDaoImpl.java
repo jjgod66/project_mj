@@ -23,18 +23,18 @@ public class CsDaoImpl implements ICsDao {
 	}
 
 
-	@Override
-	public List<StoreVO> selectMainStoreVoList(Map<String, Integer> randomMap) {
-		List<StoreVO> mainStoreVoList = null;
-		
-		try {
-			mainStoreVoList = client.queryForList("store.mainStoreVoList", randomMap);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return mainStoreVoList;
-	}
+//	@Override
+//	public List<StoreVO> selectMainStoreVoList(Map<String, Integer> randomMap) {
+//		List<StoreVO> mainStoreVoList = null;
+//		
+//		try {
+//			mainStoreVoList = client.queryForList("store.mainStoreVoList");
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		return mainStoreVoList;
+//	}
 
 	@Override
 	public int selectStoreTotalCount() {
@@ -103,6 +103,38 @@ public class CsDaoImpl implements ICsDao {
 		
 		return result;
 	}
+
+	@Override
+	public List<StoreVO> selectStoreVoList() {
+		// TODO Auto-generated method stub
+		List<StoreVO> stvolist = null;
+		
+		try {
+			stvolist = client.queryForList("store.selectStoreVoList");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return stvolist;
+	}
+
+	@Override
+	public List<StoreVO> selectMainStoreVoList() {
+		// TODO Auto-generated method stub
+		List<StoreVO> mainStoreVoList = null;
+		
+		try {
+			mainStoreVoList = client.queryForList("store.mainStoreVoList");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return mainStoreVoList;
+	}
+
+	
 
 
 	

@@ -29,6 +29,7 @@
 <!-- 부가적인 테마 -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/assets/dist/css/templatemo-style.css">
 <%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/dist/css/templatemo-style.css"> --%>
 <!-- 제이쿼리 -->
 <script

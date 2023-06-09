@@ -35,7 +35,7 @@ public class LikeAction implements IAction{
 		System.out.println(likeFlag);
 		int user_no = ((UserVO)session.getAttribute("UserVO")).getUser_no();
 		System.out.println("LikeAction 클래스입니");
-		System.out.println(user_no);
+		System.out.println("likeAction user_no : " + user_no);
 		
 		
 		LikeVO likeVo = new LikeVO();
@@ -47,6 +47,7 @@ public class LikeAction implements IAction{
 		int count = 0;	// 좋아요 수를 다시 조회해서 화면으로 가져가기 위한 변수
 		result = service.updateLike(likeVo);
 		System.out.println("라이크액션에서result: "+result);
+		service.updateCommLikeCount(bd_no);
 		if(result > 0) {	// MERGE 구문이 성공하면(update 태그로 되어있어서 성공하면 '1'반환)
 			count = service.selectLikeCount(bd_no);
 		}
