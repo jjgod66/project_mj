@@ -191,4 +191,8 @@
 				 WHERE rnum <![CDATA[ >= ]]> #start#
 				)
 	</select>
+	
+	<select id="selectUser" parameterClass="int" resultClass="userVO">
+		SELECT * FROM user_ WHERE user_no = #user_no#
+	</select>
 </sqlMap>

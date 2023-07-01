@@ -30,6 +30,7 @@ $(function(){
 			
 			reader.readAsDataURL(e.target.files[0]);
 			
+// 			$('#saveProfileBtn').css("display", "block");
 			$('#saveProfileBtn').toggle();
 		};
 		

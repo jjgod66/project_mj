@@ -25,7 +25,7 @@ public class ProfilePicture implements IAction{
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-//		HttpSession session = req.getSession();
+		HttpSession session = req.getSession();
 //		UserVO userVO = (UserVO) session.getAttribute("userVO");
 		int user_no = Integer.parseInt(req.getParameter("user_no"));
 		UserVO userVO = new UserVO();
@@ -53,9 +53,9 @@ public class ProfilePicture implements IAction{
 		
 		IUserService service = UserServiceImpl.getInstance();
 		service.updateUserPicPath(userVO);
-		
+		userVO = service.selectUser(user_no);
 		req.setAttribute("userVO", userVO);
-		
+		session.setAttribute("UserVO", userVO);
 		return "/user/myPageModResJson.jsp";
 	}
 
