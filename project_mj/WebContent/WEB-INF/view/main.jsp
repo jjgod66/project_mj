@@ -41,7 +41,9 @@
 			
 			<div class="carousel-inner">
 					<%	
+						String active = "active";
 						for (StoreVO store : storeVoList) {
+							
 							String thumb_url = store.getThumb_url();
 							String store_picPath = "/storePath/default/noImg.jpg";
 							
@@ -50,12 +52,12 @@
 							}
 					%>
 			
-				<div class="carousel-item active">
+				<div class="carousel-item <%=active%>">
 				<a href="<%=request.getContextPath()%>/store/storeView.do?store_no=<%=store.getStore_no()%>">
 					<img src="<%= store_picPath %>" class="d-block boxImg" style="width: 30rem; height: 30rem;"
 						alt="..."></a>
 				</div>
-			<% } %>
+			<% active = "";} %>
 			</div>
 			
 			<button class="carousel-control-prev" type="button"
