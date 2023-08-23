@@ -369,7 +369,7 @@
 			}
 		%>
 </div>
-<div class="card" id="re_container">
+<div class="card" id="re_container" style="margin-bottom: 50px;">
 				
 				<%
 					SimpleDateFormat dtFormat = new SimpleDateFormat("yyyyMMdd");

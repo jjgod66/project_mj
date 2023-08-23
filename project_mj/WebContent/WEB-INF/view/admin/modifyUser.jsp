@@ -42,7 +42,7 @@
 	<div class="container-fluid">
 		<div class="row mb-2">
 			<div class="col-sm-12" style="text-align: center; margin: 5rem 0 ;">
-				<h1>ADMIN USER</h1>
+				<h1>등록 회원</h1>
 			</div>
 <!-- 			<div class="col-sm-6"> -->
 <!-- 				<ol class="breadcrumb float-sm-right"> -->

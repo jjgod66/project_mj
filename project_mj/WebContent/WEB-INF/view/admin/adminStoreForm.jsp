@@ -12,7 +12,7 @@
 	<div class="container-fluid">
 		<div class="row mb-2">
 			<div class="col-sm-12" style="text-align: center; margin: 5rem 0 ;">
-				<h1>등록 점포 리스트</h1>
+				<h1>등록 점포</h1>
 			</div>
 <!-- 			<div class="col-sm-6"> -->
 <!-- 				<ol class="breadcrumb float-sm-right"> -->
@@ -80,13 +80,13 @@
 							<td><%=store_tagNm_3%></td>
 							<td><%=gb_del %></td>
 							<td>
-								<a href="<%=request.getContextPath() %>/admin/insertStoreForm.do?store_no=<%=store_no %>&w=m" class="btn btn-secondary" style="margin:0;">
+								<a href="<%=request.getContextPath() %>/admin/insertStoreForm.do?store_no=<%=store_no %>&w=m" class="btn btn-success" style="margin:0;">
 									<i class="fas fa-solid fa-wrench"></i> 정보수정
 								</a>
 							</td>
 							<td>
-								<a href="<%=request.getContextPath() %>/admin/insertStoreImgForm.do?store_no=<%=store_no %>&w=m" class="btn btn-primary" style="margin:0;">
-									<i class="fas fa-solid fa-image"></i> 사진등록
+								<a href="<%=request.getContextPath() %>/admin/insertStoreImgForm.do?store_no=<%=store_no %>&w=m" class="btn btn-secondary" style="margin:0; padding: 0.375rem 0.75rem;">
+									<i class="fas fa-solid fa-image"></i>사진등록
 								</a>
 							</td>
 						</tr>
