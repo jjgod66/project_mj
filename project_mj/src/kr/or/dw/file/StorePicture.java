@@ -64,13 +64,6 @@ public class StorePicture implements IAction{
 			MultipartRequest multi = new MultipartRequest(req, realPath, 100*1024*1024, "utf-8");
 			fileName = multi.getFilesystemName("thumbUp");
 			
-//			ImgStoreVO imgStoreVo = new ImgStoreVO();
-//			imgStoreVo.setImg_url(picFoldName + "/thumb/" + fileName);
-//			imgStoreVo.setStore_no(store_no);
-//			imgStoreVo.setGb_rep("Y");
-//			
-//			service.insertImgStore(imgStoreVo);
-			
 			storeVo.setThumb_url(picFoldName + "/thumb/" + fileName);
 			System.out.println(storeVo.getThumb_url());
 			service.updateThumb(storeVo);
